@@ -1,0 +1,32 @@
+/main -> /
+	/index
+	/login
+		/post_login
+	/register
+		/post_register
+	/profile/{u}
+		/edit_profile
+		/post_edit_profile
+
+/journals
+	/new
+		/post_new
+	/browse/{page}
+	/search/{query}/{page}
+	/view/{id_journal}/{comment_page}
+		/post_comment/{id_journal}
+
+/course
+	/new
+		/post_new
+	/browse/{page}
+	/search/{query}/{page}
+	/view/{id_course}
+
+/group_discussion
+	/new
+		/post_new
+	/browse/{category}/{page}
+	/search/{query}/{page}
+	/view/{id_discussion}
+		/comment_post
