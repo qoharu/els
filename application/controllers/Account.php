@@ -8,6 +8,10 @@ class Account extends CI_Controller
 	{
 		echo "account index page";
 	}
+	public function apa($value='default')
+	{
+		echo $value;
+	}
 	
 
 }
