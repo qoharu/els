@@ -1,0 +1,108 @@
+body {
+  font: 400 15px/1.8 Lato, sans-serif;
+  color: #777;
+}
+
+/*Navbar Atas-Semua*/
+.navbar {
+    margin-bottom: 0;
+    background-color: #2D2D30;
+    border: 0;
+    font-size: 11px !important;
+    font-family: Montserrat, sans-serif;
+    letter-spacing: 4px;
+    opacity:0.9;
+}
+
+h3, h4 {
+  margin: 10px 0 30px 0;
+  letter-spacing: 10px;
+  font-size: 20px;
+  color: #111;
+}
+/*Navbar Bagian Logo, Menu Abu*/
+.navbar li a, .navbar .navbar-brand {
+  color: #D5D5D5 !important;
+}
+
+/*Navbar Bagian Logo, Menu Kalau Hover Putih*/
+.navbar-nav li a:hover {
+  color: #FFF !important;
+}
+
+/*Navbar Bagian Logo, Menu Yang Lagi Di Scroll (Active)*/
+.navbar-nav li.active a {
+  color: #FFF !important;
+  background-color: #29292C !important;
+}
+
+.container {
+	padding: 80px 120px;
+}
+/*--.feature-icon {
+	border: 5px solid transparent;
+	transition: box-shadow 0.5s;
+}
+.feature-icon:hover {
+    border-color: #EAEAE1;
+}--*/
+/*Panah Slider Kanan-Kiri Warna*/
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #E6E6E6;
+}
+/*Indikator Gambar Slider*/
+.carousel-indicators li {
+    border-color: #E6E6E6;
+}
+/*Indikator Gambar Slider Aktif*/
+.carousel-indicators li.active {
+    background-color: #E6E6E6;
+}
+/*Size Gambar Slider*/
+.carousel-inner img {
+	width: 100%;
+	margin: auto;
+}
+/*Bagian About Warna*/
+.elsabout {
+	background-color: #F2F2F2;
+}
+/*Bagian Regis Warna*/
+.elslogregis {
+	background-color: #999999;
+}
+/*CLearfix Untuk col-md*/
+.clearfix {
+  clear: both;
+}
+/*Bagian Button Log Regis*/
+.btn {
+      padding: 20px 50px;
+      background-color: #404040;
+      color: #F1F1F1;
+      font-size: 20px;
+      border-radius: 0;
+      transition: .2s;
+}
+
+.btn:hover, .btn:focus {
+      border: 1px solid #404040;
+      background-color: #FFFFFF;
+      color: #000;
+}
+
+footer {
+  background-color: #B60E10;
+  color: #F5F5F5;
+  padding: 32px;
+}
+
+footer a {
+  color: #F5F5F5;
+}
+
+footer a:hover {
+  color: #777;
+  text-decoration: none;
+}
