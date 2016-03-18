@@ -11,7 +11,7 @@ class Account extends CI_Controller
 
 	public function index()
 	{
-		echo "account index page";
+		redirect('account/login');
 	}
 
 	public function login()
@@ -20,7 +20,15 @@ class Account extends CI_Controller
 	}
 
 	public function post_login(){
+		$data['username'] = $this->input->post('username');
+		$data['password'] = md5($this->input->post('password'));
+		$validasi = $this->Account_model->validate($data);
+		if ($validasi) {
+			redirect('home');
 
+		}else{
+			redirect('account/login');
+		}
 	}
 
 	public function register(){

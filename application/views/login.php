@@ -33,13 +33,12 @@
 	</nav>
 
 		<div class="container-text">
-			<form class="form-login">
+			<form class="form-login" action="<?php echo site_url('account/post_login') ?>" method="POST">
 				<h2 class"form-login-heading">Please Login</h2>
 				<br>
-				<label for="inputUsername" class="sr-only">Username</label>
-				<input type="text" id="inputUsername" class="form-control" placeholder="Email" required>
-				<label for="inputPassword" class="sr-only">Password</label>
-				<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+				<input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required>
+
+				<input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="remember-me"> Remember Me
