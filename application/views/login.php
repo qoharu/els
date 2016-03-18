@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Sign Up</title>
+		<title>Login</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -26,7 +26,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="index.html"><span class="glyphicon glyphicon-home fa-fw"></span> HOME</a></li>
-					<li><a href="index.html"><span class="glyphicon glyphicon-menu-hamburger"></span> MENU</a></li> <!--tambah dropdown-->
+					<!--<li><a href="index.html"><span class="glyphicon glyphicon-menu-hamburger"></span> MENU</a></li>-->
 				</ul>
 			</div>
 		</div>

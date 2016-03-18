@@ -93,7 +93,7 @@
 					<p><strong>Group Discussion</strong></p>
 				</div>
 				<div class="col-sm-4">
-					<img src="<?php echo base_url('assets/img/capinov.png') ?>" alt="COPInov">
+					<img src="<?php echo base_url('assets/img/copinov.png') ?>" alt="COPInov">
 					<br>
 					<p><strong>Communities Of Practice</strong></p>
 				</div>
