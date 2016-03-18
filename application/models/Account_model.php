@@ -5,11 +5,11 @@ class Account_model extends CI_Model
 	function validate($data){
 		$password=$data['password'];
 		$username=$data['username'];
-		$query="select user_id,username,level_name 
-				from user,user_level
+		$query="select id_user,username,level_name 
+				from user,level
 				where user.username='$username' 
 					and user.password='$password' 
-					and user_level.level_id = user.level ";
+					and level.id_level = user.id_level ";
 		$db=$this->db->query($query);
 		if($db->num_rows()==1){
 			$data=$db->row();
@@ -20,7 +20,7 @@ class Account_model extends CI_Model
 		}
 	}
 	function setsession($data){
-		$sesi = array(	'uid' => $data->user_id,
+		$sesi = array(	'uid' => $data->id_user,
 					  	'username' => $data->username,
 					  	'level' => $data->level_name,
 					  	'isLogin' => FALSE
