@@ -34,21 +34,19 @@
 	</nav>
 
 		<div class="container">
-			<form class="form-signup">
+			<form class="form-signup" action="<?php echo site_url('account/post_register') ?>" method="POST">
 				<h2 class"form-signup-heading">Please Sign Up</h2>
 				<br>
-				<label for="inputFullname" class="sr-only">Full Name</label>
-					<input type="text" id="inputFullname" class="form-control" placeholder="Fullname" required autofocus>
-				<label for="inputUsername" class="sr-only">Username</label>
-					<input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-				<label for="inputPassword" class="sr-only">Password</label>
-					<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-				<label for="inputRepass" class="sr-only">Retype Password</label>
-					<input type="password" id="inputRepass" class="form-control" placeholder="Repassword" required>
-				<label for="inputEmail" class="sr-only">Email</label>
-					<input type="email" id="inputEmail" class="form-control" placeholder="Email" required>
-				<label for="inputDirectorate" class="sr-only">Email</label>
-					<input type="Text" id="inputDirectorate" class="form-control" placeholder="Directorate" required>
+
+					<input type="text" name="fullname" class="form-control" placeholder="Fullname" required autofocus>
+					<input type="text" name="nip" class="form-control" placeholder="NIP" required autofocus>
+					<input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+					<input type="email" name="email" class="form-control" placeholder="Email" required>
+					<input type="password" name="password" class="form-control" placeholder="Password" required>
+					<select name="posisi" class="form-control">
+						<option value="karyawan"> Karyawan</option>
+						<option value="be">BE</option>
+					</select>
 				<br>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
 			</form>

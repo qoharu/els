@@ -40,16 +40,13 @@
 						<button class="btn col-md-1 btn-primary">Search</button>
 					</div>
 					<div  class="col-md-12 well">
-						<div class="col-md-3 well">
+						<div class="col-md-3  well">
 							Journal 1 asldjawidjlkj
 						</div> 
-						<div class="col-md-3 well">
+						<div class="col-md-3 col-md-offset-1 well">
 							Journal 1 asldjawidjlkj
 						</div>
-						<div class="col-md-3 well">
-							Journal 1 asldjawidjlkj
-						</div>
-						<div class="col-md-3 well">
+						<div class="col-md-3 col-md-offset-1 well">
 							Journal 1 asldjawidjlkj
 						</div>
 					</div>

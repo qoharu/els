@@ -11,9 +11,6 @@ class Journal extends CI_Controller
 		$this->load->view('journal');
 	}
 
-	// public function new(){
-
-	// }
 
 	public function post_new(){
 
