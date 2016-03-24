@@ -24,7 +24,11 @@ class Account extends CI_Controller
 		$data['password'] = md5($this->input->post('password'));
 		$validasi = $this->Account_model->validate($data);
 		if ($validasi) {
-			redirect('home');
+			if ($this->session->userdata('level')=='admin') {
+				redirect('admin');
+			}else{
+				redirect('home/dash');
+			}
 
 		}else{
 			redirect('account/login');

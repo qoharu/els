@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Sign Up</title>
+		<title>Journal</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -39,7 +39,18 @@
 						<input type="text" class="input col-md-11"></input>
 						<button class="btn col-md-1 btn-primary">Search</button>
 					</div>
+
 					<div  class="col-md-12 well">
+						<a href="<?php echo site_url('journal/newpost') ?>" class="btn btn-primary pull-right">New</a>
+						<div class="col-md-3  well">
+							Journal 1 asldjawidjlkj
+						</div> 
+						<div class="col-md-3 col-md-offset-1 well">
+							Journal 1 asldjawidjlkj
+						</div>
+						<div class="col-md-3 col-md-offset-1 well">
+							Journal 1 asldjawidjlkj
+						</div>
 						<div class="col-md-3  well">
 							Journal 1 asldjawidjlkj
 						</div> 
