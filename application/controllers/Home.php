@@ -10,6 +10,10 @@ class Home extends CI_Controller
 		$this->load->view('home');
 	}
 
+	public function dash(){
+		$this->load->view('dash');
+	}
+
 	public function about(){
 		echo "about";
 	}
