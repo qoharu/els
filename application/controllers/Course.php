@@ -6,9 +6,10 @@
 class Course extends CI_Controller
 {
 	
-	function __construct(argument)
+	function __construct()
 	{
-		# code...
+		parent::__construct();
+		$this->load->model('Course_model');
 	}
 
 	public function new(){

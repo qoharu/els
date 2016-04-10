@@ -36,26 +36,36 @@ class Journal extends CI_Controller
 			echo "false";
 		}
 	}
+
+	public function edit($id_journal)
+	{
+		# code...
+	}
 	
+	public function post_comment($id_journal){
+		$data['content'] = @$_POST['content'];
+		$hasil = $this->Journal_model->postcomment($data);
+		if ($hasil) {
+			# code...
+		}
+	}
+
 	public function newpost(){
-		$data['directorate'] = $this->Journal_model->getDirectorate();
+		$data['directorate'] = $this->General_model->getdirectorate();
 		$this->load->view('journal_new', $data);
 	}
 
 	public function browse($page){
-
-	}
-
-	public function search($query="", $page=0){
-
+		$q = mysql_escape_string(@$_GET['q']);
+		$data['listjournal'] = $this->Journal_model->browsejournal($page);
+		// $this->load->view('');
 	}
 
 	public function view($id_journal, $comment_page){
-
+		$data['journal'] = $this->Journal_model->viewjournal($id_journal);
+		$data['comment'] = $this->Journal_model->getcomment($id_journal, $comment_page);
+		// $this->load->view('');
 	}
 
-	public function post_comment($id_journal){
-
-	}
 	
 }

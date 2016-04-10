@@ -19,6 +19,12 @@ class Account extends CI_Controller
 		$this->load->view('login');
 	}
 
+	public function logout(){
+		session_start();
+		session_destroy();
+		redirect('home');
+	}
+
 	public function post_login(){
 		$data['username'] = $this->input->post('username');
 		$data['password'] = md5($this->input->post('password'));
@@ -53,8 +59,8 @@ class Account extends CI_Controller
 	}
 
 	public function profile($u){
-
+		$data['profile'] = $this->Account_model->getprofile();
+		// $this->load->view('profile',$data);
 	}
 	
-
 }

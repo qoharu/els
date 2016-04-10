@@ -28,13 +28,42 @@ class Journal_model extends CI_Model
 
 	}
 
+	function edit($data){
+
+	}
+
+	function postcomment($data){
+		
+	}
+
 	function listJournal(){
 		return $this->db->query(" SELECT * FROM journal, directorate, user 
 			WHERE journal.id_directorate = directorate.id_directorate 
 				AND user.id_user = journal.id_user");
 	}
 
-	function getDirectorate(){
-		return $this->db->query(" SELECT id_directorate, directorate_name FROM directorate")->result();
+	function browsejournal($page,$query=""){
+		return $this->db->query(" SELECT * FROM journal, directorate, user 
+			WHERE journal.id_directorate = directorate.id_directorate 
+				AND user.id_user = journal.id_user
+			LIMIT '$page',10 ");
 	}
+
+	function viewjournal($id){
+		return $this->db->query("SELECT * FROM journal, directorate, user 
+			WHERE journal.id_directorate = directorate.id_directorate 
+				AND user.id_user = journal.id_user
+				AND journal.id_journal = '$id'
+		");
+	}
+
+	function getcomment($id,$page){
+		return $this->db->query("SELECT * FROM journal_comment, user, profile
+			WHERE journal_comment.id_comment = '$id'
+			ORDER BY id_comment DESC
+			LIMIT '$page',15
+			");
+	}
+
+
 }

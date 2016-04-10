@@ -19,6 +19,12 @@ class Account_model extends CI_Model
 			return false;
 		}
 	}
+
+	function getprofile($u){
+		return $this->db->query("SELECT * FROM user, profile, directorate, expert, scope
+			WHERE NIP = '$u' ");
+	}
+
 	function setsession($data){
 		$sesi = array(	'uid' => $data->id_user,
 					  	'username' => $data->username,
@@ -27,6 +33,7 @@ class Account_model extends CI_Model
 					  	);
 		$this->session->set_userdata($sesi);
 	}
+
 	function checkaccount($type,$name){
 		if ($type=='username') {
 			$query="select username
@@ -44,6 +51,7 @@ class Account_model extends CI_Model
 			return true;
 		}
 	}
+
 	function register($data){
 		$fullname = $data['fullname'];
 		$email = $data['email'];
