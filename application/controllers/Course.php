@@ -16,6 +16,7 @@ class Course extends CI_Controller
 	{
 		$this->load->view('course');
 	}
+	
 	public function new(){
 		$this->load->view('course_new');
 	}
