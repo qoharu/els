@@ -6,16 +6,15 @@
 class Journal extends CI_Controller
 {
 	
-	function __construct()
-		{
+	function __construct(){
 			parent::__construct();
-			$this->load->model("Journal_model");
+			$this->load->model("Journal_model"); // include Journal_model pada setiap fungsi
 		}
 
 	public function index(){
-		$data['listjournal'] = $this->Journal_model->listjournal();
+		$data['listjournal'] = $this->Journal_model->listjournal(); //ambil data list journal
 
-		$this->load->view('journal', $data);
+		$this->load->view('journal', $data); //tampilkan view journal.php dengan $data
 	}
 
 
@@ -31,7 +30,7 @@ class Journal extends CI_Controller
 
 		// Jika upload berhasil, maka ....
 		if ($hasil) {
-			echo "true";
+			redirect('journal'); // redirect ke index journal
 		}else{
 			echo "false";
 		}
@@ -44,7 +43,7 @@ class Journal extends CI_Controller
 	
 	public function post_comment($id_journal){
 		$data['content'] = @$_POST['content'];
-		$hasil = $this->Journal_model->postcomment($data);
+		$hasil = $this->Journal_model->postcomment($data,$id_journal);
 		if ($hasil) {
 			# code...
 		}

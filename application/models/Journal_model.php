@@ -32,11 +32,19 @@ class Journal_model extends CI_Model
 
 	}
 
-	function postcomment($data){
-		
+	function postcomment($data,$id){
+		$content = $data['content'];
+		$uid = $this->session->userdata('uid');
+		$kirim = $this->db->query("INSERT INTO journal_comment (id_user, id_journal, content) 
+				VALUES ('$uid','$id', '$content') ");
+		if ($kirim) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 
-	function listJournal(){
+	function listjournal(){
 		return $this->db->query(" SELECT * FROM journal, directorate, user 
 			WHERE journal.id_directorate = directorate.id_directorate 
 				AND user.id_user = journal.id_user");
@@ -46,6 +54,7 @@ class Journal_model extends CI_Model
 		return $this->db->query(" SELECT * FROM journal, directorate, user 
 			WHERE journal.id_directorate = directorate.id_directorate 
 				AND user.id_user = journal.id_user
+				AND (title LIKE %'$query'% OR description LIKE %'$query'%)
 			LIMIT '$page',10 ");
 	}
 
