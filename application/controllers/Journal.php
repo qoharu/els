@@ -13,13 +13,11 @@ class Journal extends CI_Controller
 
 	public function index(){
 		$data['listjournal'] = $this->Journal_model->listjournal(); //ambil data list journal
-
 		$this->load->view('journal', $data); //tampilkan view journal.php dengan $data
 	}
 
 
 	public function post_new(){
-		// Ambil data POST dari form
 		$data['title'] = $this->input->post('title');
 		$data['desc'] = $this->input->post('description');
 		$data['dir'] = $this->input->post('directorate');
