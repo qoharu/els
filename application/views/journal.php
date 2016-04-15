@@ -39,7 +39,7 @@
 						<input type="text" class="input col-md-11"></input>
 						<button class="btn col-md-1 btn-primary">Search</button>
 					</div>
-
+					<?php var_dump($listjournal) ?>
 					<div  class="col-md-12 well">
 						<a href="<?php echo site_url('journal/newpost') ?>" class="btn btn-primary pull-right">New</a>
 						<div class="col-md-3  well">

@@ -47,7 +47,7 @@ class Journal_model extends CI_Model
 	function listjournal(){
 		return $this->db->query(" SELECT * FROM journal, directorate, user 
 			WHERE journal.id_directorate = directorate.id_directorate 
-				AND user.id_user = journal.id_user");
+				AND user.id_user = journal.id_user")->result();
 	}
 
 	function browsejournal($page,$query=""){

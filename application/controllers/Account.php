@@ -26,13 +26,27 @@ class Account extends CI_Controller
 	}
 
 	public function post_login(){
-		$data['username'] = $this->input->post('username');
+		$data['email'] = $this->input->post('email');
 		$data['password'] = md5($this->input->post('password'));
 		$validasi = $this->Account_model->validate($data);
 		if ($validasi) {
+			switch ($this->session->userdata('level')) {
+				case 'admin':
+					redirect('admin');
+					break;
+				case 'be':
+					if ($this->Account_model->hasprofile($this->session->userdata('uid'))) {
+						# code...
+					}
+					break;
+				default:
+					# code...
+					break;
+			}
 			if ($this->session->userdata('level')=='admin') {
 				redirect('admin');
-			}else{
+			}else if(){
+
 				redirect('home/dash');
 			}
 
@@ -43,6 +57,10 @@ class Account extends CI_Controller
 
 	public function register(){
 		$this->load->view('signup');
+	}
+
+	public function editprofile(){
+		
 	}
 
 	public function post_register(){

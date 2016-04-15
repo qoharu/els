@@ -4,10 +4,10 @@ class Account_model extends CI_Model
 {
 	function validate($data){
 		$password=$data['password'];
-		$username=$data['username'];
-		$query="select id_user,username,level_name 
+		$email=$data['email'];
+		$query="select id_user,email,level_name 
 				from user,level
-				where user.username='$username' 
+				where user.email='$email' 
 					and user.password='$password' 
 					and level.id_level = user.id_level ";
 		$db=$this->db->query($query);
@@ -25,9 +25,16 @@ class Account_model extends CI_Model
 			WHERE NIP = '$u' ");
 	}
 
+	function hasprofile($uid){
+		$db=$this->db->query("SELECT id_profile FROM profile WHERE id_user='$uid' AND login='1' ");
+		if ($db->num->rows()!=1) {
+			$this->db->query("UPDATE profile SET login='1' WHERE id_user='$uid' ")
+		}
+	}
+
 	function setsession($data){
 		$sesi = array(	'uid' => $data->id_user,
-					  	'username' => $data->username,
+					  	'email' => $data->email,
 					  	'level' => $data->level_name,
 					  	'isLogin' => FALSE
 					  	);
