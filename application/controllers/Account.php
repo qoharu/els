@@ -36,23 +36,24 @@ class Account extends CI_Controller
 					break;
 				case 'be':
 					if ($this->Account_model->hasprofile($this->session->userdata('uid'))) {
-						# code...
+						redirect('account/edit');
+					}else{
+						redirect('home/dash');
 					}
 					break;
 				default:
-					# code...
+					redirect('home/dash');
 					break;
 			}
-			if ($this->session->userdata('level')=='admin') {
-				redirect('admin');
-			}else if(){
-
-				redirect('home/dash');
-			}
-
 		}else{
-			redirect('account/login');
+			redirect('account/login?message=');
 		}
+	}
+
+	public function edit(){
+		$uid = $this->session->userdata('uid');
+		$data['user'] = $this->Account_model->getprofile();
+
 	}
 
 	public function register(){

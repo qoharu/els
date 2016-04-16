@@ -22,13 +22,16 @@ class Account_model extends CI_Model
 
 	function getprofile($u){
 		return $this->db->query("SELECT * FROM user, profile, directorate, expert, scope
-			WHERE NIP = '$u' ");
+			WHERE NIP = '$u' ")->result();
 	}
 
 	function hasprofile($uid){
 		$db=$this->db->query("SELECT id_profile FROM profile WHERE id_user='$uid' AND login='1' ");
 		if ($db->num->rows()!=1) {
-			$this->db->query("UPDATE profile SET login='1' WHERE id_user='$uid' ")
+			$this->db->query("UPDATE profile SET login='1' WHERE id_user='$uid' ");
+			return 0;
+		}else{
+			return 1;
 		}
 	}
 
