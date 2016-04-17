@@ -45,9 +45,14 @@ class Journal_model extends CI_Model
 	}
 
 	function listjournal(){
-		return $this->db->query(" SELECT * FROM journal, directorate, user 
+		return $this->db->query(" SELECT journal.title, profile.fullname, journal.description, journal.id_journal, user.id_user, directorate.directorate_name  
+			FROM journal, directorate, user, profile 
 			WHERE journal.id_directorate = directorate.id_directorate 
-				AND user.id_user = journal.id_user")->result();
+				AND user.id_user = journal.id_user
+				AND user.id_user = profile.id_user
+				AND status=1
+				ORDER BY journal.views
+				LIMIT 0,9")->result();
 	}
 
 	function browsejournal($page,$query=""){
@@ -63,15 +68,15 @@ class Journal_model extends CI_Model
 			WHERE journal.id_directorate = directorate.id_directorate 
 				AND user.id_user = journal.id_user
 				AND journal.id_journal = '$id'
-		");
+		")->result();
 	}
 
 	function getcomment($id,$page){
 		return $this->db->query("SELECT * FROM journal_comment, user, profile
 			WHERE journal_comment.id_comment = '$id'
 			ORDER BY id_comment DESC
-			LIMIT '$page',15
-			");
+			LIMIT $page,15
+			")->result();
 	}
 
 

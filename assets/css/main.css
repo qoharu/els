@@ -13,6 +13,10 @@ body {
     -o-background-size: cover;
 }
 
+.coba{
+	font-size: 50pt;
+}
+
 .navbar {
     margin-bottom: 0;
     background-color: #2D2D30;
@@ -81,4 +85,13 @@ body {
 }
 .isi{
 	margin-top: 40px;
+}
+.isi-dash{
+	margin-top:8%;
+}
+.komentar{
+	padding: 10px !important;
+}
+.komentar-badan{
+	background-color: #f7f7f7 !important;
 }

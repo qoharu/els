@@ -12,6 +12,7 @@ class Journal extends CI_Controller
 		}
 
 	public function index(){
+		$data['title'] = "Journal";
 		$data['listjournal'] = $this->Journal_model->listjournal(); //ambil data list journal
 		$this->load->view('journal', $data); //tampilkan view journal.php dengan $data
 	}
@@ -48,6 +49,7 @@ class Journal extends CI_Controller
 	}
 
 	public function newpost(){
+		$data['title'] = "Post Journal";
 		$data['directorate'] = $this->General_model->getdirectorate();
 		$this->load->view('journal_new', $data);
 	}
@@ -58,10 +60,12 @@ class Journal extends CI_Controller
 		// $this->load->view('');
 	}
 
-	public function view($id_journal, $comment_page){
+	public function view($id_journal, $comment_page=1){
+		$comment_page--;
 		$data['journal'] = $this->Journal_model->viewjournal($id_journal);
+		$data['title'] = $data['journal'][0]->title." | Journal";
 		$data['comment'] = $this->Journal_model->getcomment($id_journal, $comment_page);
-		// $this->load->view('');
+		$this->load->view('journal_view',$data);
 	}
 
 }
