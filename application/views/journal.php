@@ -4,15 +4,16 @@
 			<div class="row">
 				<div class="col-md-12 isi">
 					<div class="col-md-12 well">
+					<form action="<?php echo site_url('journal/browse') ?>" method="GET">
 						<div class="input-group">
-		                    <input type="text" class="form-control">
+		                    <input type="text" name="q" class="form-control" placeholder="Search" >
 		                    <span class="input-group-btn">
-		                    	<button class="btn btn-primary btn-flat" type="button">Search!</button>
+		                    	<button class="btn btn-primary btn-flat" type="submit">Search!</button>
 		                	</span>
 		                </div>
+					</form>
 					</div>
-					<?php var_dump($listjournal) ?>
-					<div  class="col-md-12 well">
+					<div  class="col-md-12 panel">
 						<a href="<?php echo site_url('journal/newpost') ?>" title="New post" class="btn btn-primary btn-lg btn-flat pull-right"><i class="fa fa-plus"></i></a>
 						<h2>Popular Journal</h2>
 						<div class="col-md-3  well">

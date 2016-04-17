@@ -14,9 +14,9 @@ class Account extends CI_Controller
 		redirect('account/login');
 	}
 
-	public function login()
-	{
-		$this->load->view('login');
+	public function login(){
+		$data['title'] = "Login Page";
+		$this->load->view('login', $data);
 	}
 
 	public function logout(){
@@ -36,9 +36,9 @@ class Account extends CI_Controller
 					break;
 				case 'be':
 					if ($this->Account_model->hasprofile($this->session->userdata('uid'))) {
-						redirect('account/edit');
-					}else{
 						redirect('home/dash');
+					}else{
+						redirect('account/edit');
 					}
 					break;
 				default:
@@ -52,16 +52,13 @@ class Account extends CI_Controller
 
 	public function edit(){
 		$uid = $this->session->userdata('uid');
-		$data['user'] = $this->Account_model->getprofile();
+		$data['user'] = $this->Account_model->getprofile($uid);
 
 	}
 
 	public function register(){
-		$this->load->view('signup');
-	}
-
-	public function editprofile(){
-		
+		$data['title'] = "Register Page";
+		$this->load->view('signup', $data);
 	}
 
 	public function post_register(){
@@ -79,7 +76,8 @@ class Account extends CI_Controller
 
 	public function profile($u){
 		$data['profile'] = $this->Account_model->getprofile();
-		// $this->load->view('profile',$data);
+		$data['title'] = "Profile";
+		$this->load->view('profile',$data);
 	}
 	
 }

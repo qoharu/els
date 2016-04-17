@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Login</title>
+		<title><?php echo $title ?></title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -27,7 +27,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.html"><span class="glyphicon glyphicon-home fa-fw"></span> HOME</a></li>
+					<li><a href="<?php echo site_url('home/dash') ?>"><span class="glyphicon glyphicon-home fa-fw"></span> HOME</a></li>
 					<!--<li><a href="index.html"><span class="glyphicon glyphicon-menu-hamburger"></span> MENU</a></li>-->
 				</ul>
 			</div>
