@@ -21,14 +21,19 @@ body {
     background-color: #2D2D30;
     border: 0;
     font-size: 11px !important;
-    font-family: Montserrat, sans-serif;
     letter-spacing: 4px;
     opacity:0.9;
 }
 
-/*Navbar Bagian Logo, Menu Abu*/
-.navbar li a, .navbar .navbar-brand {
-  color: #D5D5D5 !important;
+/*Biar logo pas posisinya di navbar brand*/
+.navbar-brand {
+  margin-top:-13px;
+}
+
+/*Ukuran logo experta*/
+.navbar-brand img {
+  width: 100%;
+  opacity: 1;
 }
 
 /*Navbar Bagian Logo, Menu Kalau Hover Putih*/
@@ -82,6 +87,21 @@ body {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
+
+.btn {
+	 padding: 15px 50px;
+	 background-color: #404040;
+     color: #F1F1F1;
+     font-size: 16px;
+     border-radius: 0;
+     transition: .2s;
+}
+
+.btn:hover, .btn:focus {
+      background-color: #595959;
+      color: #000;
+}
+
 .isi{
 	margin-top: 40px;
 }

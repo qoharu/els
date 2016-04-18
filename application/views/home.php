@@ -7,7 +7,7 @@
 	<link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/font-awesome.min.css') ?>" rel="stylesheet"/>
 	<link href="<?php echo base_url('assets/css/index.css') ?>" rel="stylesheet" type="text/css">
-	<link rel="icon" type="image/png" href="<?php echo base_url('assets/img/favicon.ico') ?>">
+	<link rel="icon" type="image/png" href="<?php echo base_url('assets/img/mini.ico') ?>">
 	<script src="<?php echo base_url('assets/js/jquery.main.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('assets/js/jquery-1.12.1.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
@@ -23,7 +23,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#myPage">ELS</a>
+				<a class="navbar-brand" href="<?php echo site_url('home') ?>">
+					<img src="<?php echo base_url('assets/img/Experta-Logo.png') ?>">
+				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">

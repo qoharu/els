@@ -9,20 +9,25 @@ body {
     background-color: #2D2D30;
     border: 0;
     font-size: 11px !important;
-    font-family: Montserrat, sans-serif;
     letter-spacing: 4px;
     opacity:0.9;
 }
 
 h3, h4 {
   margin: 10px 0 30px 0;
-  letter-spacing: 10px;
   font-size: 20px;
   color: #111;
 }
-/*Navbar Bagian Logo, Menu Abu*/
-.navbar li a, .navbar .navbar-brand {
-  color: #D5D5D5 !important;
+
+/*Biar logo pas posisinya di navbar brand*/
+.navbar-brand {
+  margin-top:-13px;
+}
+
+/*Ukuran logo experta*/
+.navbar-brand img {
+  width: 100%;
+  opacity: 1;
 }
 
 /*Navbar Bagian Logo, Menu Kalau Hover Putih*/
@@ -39,13 +44,7 @@ h3, h4 {
 .container {
 	padding: 80px 120px;
 }
-/*--.feature-icon {
-	border: 5px solid transparent;
-	transition: box-shadow 0.5s;
-}
-.feature-icon:hover {
-    border-color: #EAEAE1;
-}--*/
+
 /*Panah Slider Kanan-Kiri Warna*/
 .carousel-control.right, .carousel-control.left {
     background-image: none;
@@ -87,8 +86,7 @@ h3, h4 {
 }
 
 .btn:hover, .btn:focus {
-      border: 1px solid #404040;
-      background-color: #FFFFFF;
+      background-color: #595959;
       color: #000;
 }
 
