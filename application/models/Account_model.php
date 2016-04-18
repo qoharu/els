@@ -5,11 +5,12 @@ class Account_model extends CI_Model
 	function validate($data){
 		$password=$data['password'];
 		$email=$data['email'];
-		$query="select id_user,email,level_name 
-				from user,level
+		$query="select user.id_user, email, level_name, fullname 
+				from user, level, profile
 				where user.email='$email' 
 					and user.password='$password' 
-					and level.id_level = user.id_level ";
+					and level.id_level = user.id_level
+					and user.id_user = profile.id_user ";
 		$db=$this->db->query($query);
 		if($db->num_rows()==1){
 			$data=$db->row();
@@ -39,6 +40,7 @@ class Account_model extends CI_Model
 		$sesi = array(	'uid' => $data->id_user,
 					  	'email' => $data->email,
 					  	'level' => $data->level_name,
+					  	'fullname' => $data->fullname,
 					  	'isLogin' => FALSE
 					  	);
 		$this->session->set_userdata($sesi);

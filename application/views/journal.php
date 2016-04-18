@@ -8,7 +8,7 @@
 						<div class="input-group">
 		                    <input type="text" name="q" class="form-control" placeholder="Search" >
 		                    <span class="input-group-btn">
-		                    	<button class="btn btn-primary btn-flat" type="submit">Search!</button>
+		                    	<button class="btn btn-primary btn-flat" type="submit">Search</button>
 		                	</span>
 		                </div>
 					</form>

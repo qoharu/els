@@ -5,9 +5,9 @@
 	<div class="row">
 	
 	<div class="col-md-12 isi-dash">
-		<div class="col-lg-6 col-lg-offset-3">
-			<div class="well lead">
-				Selamat datang, <strong>Salman</strong>
+		<div class="col-lg-6 col-lg-offset-3 panel">
+			<div class="panel-heading">
+				<h4>Selamat datang, <strong><?php echo $this->session->userdata('fullname'); ?></strong></h4>
 			</div>
 		</div>	
 	    <div class="col-lg-3 col-lg-offset-3">
@@ -21,15 +21,20 @@
 	        </div>
 	        </a>
 	    </div>
-
+	    <?php 
+	    	if ($this->session->userdata('level_name') == 'karyawan') {
+	    		$class = 'disabled';
+	    		$keterangan = '(Hanya BE)';
+	    	}
+	    ?>
 	    <div class="col-lg-3">
 			<!-- small box -->
-	        <a class="btn btn-flat small-box btn-success disabled" href="<?php echo site_url('cop') ?>">
+	        <a class="btn btn-flat small-box btn-success <?php echo @$class ?>" href="<?php echo site_url('cop') ?>">
 	        <div class="inner">
 	        	<i class="fa fa-commenting-o coba"></i>
 	        </div>
 	        <div class="small-box-footer">
-	            COP (Hanya BE)
+	            COP <?php echo @$keterangan ?>
 	        </div>
 	        </a>
 	    </div>

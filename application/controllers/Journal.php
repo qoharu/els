@@ -54,10 +54,11 @@ class Journal extends CI_Controller
 		$this->load->view('journal_new', $data);
 	}
 
-	public function browse($page){
-		$q = mysql_escape_string(@$_GET['q']);
-		$data['listjournal'] = $this->Journal_model->browsejournal($page);
-		// $this->load->view('');
+	public function browse($page=1){
+		$page--;
+		$q = $this->db->escape_str(@$_GET['q']);
+		$data['listjournal'] = $this->Journal_model->browsejournal($page,$q);
+		$this->load->view('journal_browse',$data);
 	}
 
 	public function view($id_journal, $comment_page=1){
@@ -65,6 +66,7 @@ class Journal extends CI_Controller
 		$data['journal'] = $this->Journal_model->viewjournal($id_journal);
 		$data['title'] = $data['journal'][0]->title." | Journal";
 		$data['comment'] = $this->Journal_model->getcomment($id_journal, $comment_page);
+		
 		$this->load->view('journal_view',$data);
 	}
 

@@ -55,19 +55,24 @@ class Journal_model extends CI_Model
 				LIMIT 0,9")->result();
 	}
 
-	function browsejournal($page,$query=""){
-		return $this->db->query(" SELECT * FROM journal, directorate, user 
+	function browsejournal($page,$query){
+		return $this->db->query(" SELECT journal.title, profile.fullname, journal.description, journal.id_journal, user.id_user, directorate.directorate_name  
+			FROM journal, directorate, user, profile 
 			WHERE journal.id_directorate = directorate.id_directorate 
 				AND user.id_user = journal.id_user
-				AND (title LIKE %'$query'% OR description LIKE %'$query'%)
-			LIMIT '$page',10 ");
+				AND user.id_user = profile.id_user
+				AND status=1
+				AND (title LIKE '%$query%' OR description LIKE '%$query%')
+			LIMIT $page,10 ")->result();
 	}
 
 	function viewjournal($id){
-		return $this->db->query("SELECT * FROM journal, directorate, user 
-			WHERE journal.id_directorate = directorate.id_directorate 
-				AND user.id_user = journal.id_user
+		return $this->db->query("SELECT title, fullname, description, id_journal, user.id_user, expert_name, directorate_name, created_at, file, views
+			FROM journal, directorate, user, profile, expert
+			WHERE journal.id_directorate = directorate.id_directorate
 				AND journal.id_journal = '$id'
+				AND user.id_user = journal.id_user
+				AND profile.id_expert = expert.id_expert
 		")->result();
 	}
 
