@@ -44,7 +44,7 @@ class Journal extends CI_Controller
 		$data['content'] = @$_POST['content'];
 		$hasil = $this->Journal_model->postcomment($data,$id_journal);
 		if ($hasil) {
-			# code...
+			redirect('journal/view/'.$id_journal);
 		}
 	}
 
