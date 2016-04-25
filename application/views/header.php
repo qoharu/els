@@ -1,3 +1,10 @@
+<?php 
+	$name = @$this->session->userdata('fullname');
+	$uid = @$this->session->userdata('uid');
+	$islogin = @$this->session->userdata('islogin');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -29,8 +36,37 @@
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<?php echo site_url('home/dash') ?>"><span class="glyphicon glyphicon-home fa-fw"></span> HOME</a></li>
+				<ul class="navbar nav navbar-nav navbar-right">
+					<?php if ($islogin): ?>
+						<li class="dropdown messages-menu">
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				            <i class="fa fa fa-bell">(4)</i>
+				          </a>
+				          <ul class="dropdown-menu">
+				            <li class="header">You have 4 messages</li>
+				            <li>
+				              <!-- inner menu: contains the actual data -->
+				              <ul class="menu">
+				                <li><!-- start message -->
+				                  <a href="#">
+				                    <div class="pull-left">
+				                      <i class="fa fa-user"></i>
+				                    </div>
+				                    <h4>
+				                      Sender Name
+				                      <small><i class="fa fa-clock-o"></i> 5 mins</small>
+				                    </h4>
+				                    <p>Message Excerpt</p>
+				                  </a>
+				                </li><!-- end message -->
+				              </ul>
+				            </li>
+				            <li class="footer"><a href="#">See All Messages</a></li>
+				          </ul>
+				        </li>
+						<li><a href="<?php echo site_url('account/user/'.$uid) ?>"><?php echo $name ?></a></li>
+						<li><a class="" href="<?php echo site_url('account/logout') ?>"><span class="fa fa-sign-out"></span> Logout</a></li>	
+					<?php endif ?>
 					<!--<li><a href="index.html"><span class="glyphicon glyphicon-menu-hamburger"></span> MENU</a></li>-->
 				</ul>
 			</div>
