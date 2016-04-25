@@ -41,7 +41,7 @@ class Account_model extends CI_Model
 					  	'email' => $data->email,
 					  	'level' => $data->level_name,
 					  	'fullname' => $data->fullname,
-					  	'isLogin' => FALSE
+					  	'islogin' => TRUE
 					  	);
 		$this->session->set_userdata($sesi);
 	}

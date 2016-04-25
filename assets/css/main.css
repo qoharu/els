@@ -20,7 +20,7 @@ body {
     margin-bottom: 0;
     background-color: #2D2D30;
     border: 0;
-    font-size: 11px !important;
+    /*font-size: 11px !important;*/
     letter-spacing: 4px;
     opacity:0.9;
 }
@@ -88,19 +88,19 @@ body {
 	border-top-right-radius: 0;
 }
 
-.btn {
+/*.btn {
 	 padding: 15px 50px;
 	 background-color: #404040;
      color: #F1F1F1;
      font-size: 16px;
      border-radius: 0;
      transition: .2s;
-}
+}*/
 
-.btn:hover, .btn:focus {
+/*.btn:hover, .btn:focus {
       background-color: #595959;
       color: #000;
-}
+}*/
 
 .isi{
 	margin-top: 40px;

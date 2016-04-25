@@ -15,6 +15,9 @@ class Account extends CI_Controller
 	}
 
 	public function login(){
+		if ($this->session->userdata('islogin')) {
+			redirect('home/dash');
+		}
 		$data['title'] = "Login Page";
 		$this->load->view('login', $data);
 	}
@@ -26,6 +29,9 @@ class Account extends CI_Controller
 	}
 
 	public function post_login(){
+		if ($this->session->userdata('islogin')) {
+			redirect('home/dash');
+		}
 		$data['email'] = $this->input->post('email');
 		$data['password'] = md5($this->input->post('password'));
 		$validasi = $this->Account_model->validate($data);
