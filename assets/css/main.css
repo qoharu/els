@@ -25,6 +25,10 @@ body {
     opacity:0.9;
 }
 
+h2 {
+	text-align: center;
+}
+
 /*Biar logo pas posisinya di navbar brand*/
 .navbar-brand {
   margin-top:-13px;
