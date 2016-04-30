@@ -22,7 +22,7 @@
 		<script src="<?php echo base_url('assets/js/jquery.main.js') ?>" type="text/javascript"></script>
 	</head>
 
-	<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+	<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50" class="full">
 		<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">

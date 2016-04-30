@@ -3,7 +3,7 @@
 		<div class="container-text">
 			<form class="form-login" action="<?php echo site_url('account/post_login') ?>" method="POST">
 				<center><h2 class"form-login-heading center">Please Login</h2></center>
-				
+				<br>
 				<div class="form-group">
 					<input type="email" class="form-control" name="email" placeholder="Email" required>
 				</div>
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<button class="btn btn-lg btn-primary btn-flat btn-block" type="submit">Login</button>
+					<button class="btn btn-block" type="submit">Login</button>
 				</div>
 			</form>
 		</div>
