@@ -25,6 +25,10 @@ body {
     /*opacity:0.9;*/
 }
 
+h2 {
+	text-align: center;
+}
+
 /*Biar logo pas posisinya di navbar brand*/
 .navbar-brand {
   margin-top:-13px;
@@ -88,19 +92,19 @@ body {
 	border-top-right-radius: 0;
 }
 
-/*.btn {
+.btn {
 	 padding: 15px 50px;
 	 background-color: #404040;
      color: #F1F1F1;
      font-size: 16px;
      border-radius: 0;
      transition: .2s;
-}*/
+}
 
-/*.btn:hover, .btn:focus {
+.btn:hover, .btn:focus {
       background-color: #595959;
       color: #000;
-}*/
+}
 
 .isi{
 	margin-top: 40px;
