@@ -22,7 +22,7 @@
 	        </a>
 	    </div>
 	    <?php 
-	    	if ($this->session->userdata('level_name') == 'karyawan') {
+	    	if ($this->session->userdata('level') == 'karyawan') {
 	    		$class = 'disabled';
 	    		$keterangan = '(Hanya BE)';
 	    	}
@@ -34,7 +34,7 @@
 	        	<i class="fa fa-commenting-o coba"></i>
 	        </div>
 	        <div class="small-box-footer">
-	            COP <?php echo @$keterangan ?>
+	            COP <?= @$keterangan ?>
 	        </div>
 	        </a>
 	    </div>

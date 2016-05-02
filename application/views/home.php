@@ -8,8 +8,8 @@
 	<link href="<?php echo base_url('assets/css/font-awesome.min.css') ?>" rel="stylesheet"/>
 	<link href="<?php echo base_url('assets/css/index.css') ?>" rel="stylesheet" type="text/css">
 	<link rel="icon" type="image/png" href="<?php echo base_url('assets/img/mini.ico') ?>">
-	<script src="<?php echo base_url('assets/js/jquery.main.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('assets/js/jquery-1.12.1.min.js') ?>"></script>
+	<script src="<?php echo base_url('assets/js/jquery.main.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 
 </head>

@@ -47,7 +47,7 @@ class Account extends CI_Controller
 						redirect('account/edit');
 					}
 					break;
-				default:
+				case 'karyawan':
 					redirect('home/dash');
 					break;
 			}
