@@ -7,19 +7,21 @@ class Discussion extends CI_Controller
 	function __construct(){
 		parent::__construct();
 		$this->load->model("Discussion_model"); // include Discussion_model pada setiap fungsi
+
 	}
 	public function index($waktu = 'early'){
-		
+		$waktu = date('d');
+		$data['title'] = date('d');
 		switch ($waktu) {
-			case 'early':
-				$this->load->view('discussion_early');
+			case ($waktu <= 7):
+				$data['title'] = 'Vote Topic';
+				$this->load->view('discussion_early',$data);
 				break;
-			
-			case 'mid':
-				$this->load->view('discussion_mid');
+			case ($waktu >= 7 && $waktu <= 21):
+				$this->load->view('discussion_mid',$data);
 				break;
-			case 'late':
-				$this->load->view('discussion_late');
+			case ($waktu >= 22):
+				$this->load->view('discussion_late',$data);
 				break;
 		}
 	}
