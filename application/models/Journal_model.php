@@ -77,8 +77,11 @@ class Journal_model extends CI_Model
 	}
 
 	function getcomment($id,$page){
-		return $this->db->query("SELECT * FROM journal_comment, user, profile
-			WHERE journal_comment.id_comment = '$id'
+		return $this->db->query("SELECT * FROM journal_comment, user, profile, level
+			WHERE journal_comment.id_journal = '$id'
+				AND journal_comment.id_user = user.id_user
+				AND user.id_user = profile.id_user
+				AND user.id_level = level.id_level
 			ORDER BY id_comment DESC
 			LIMIT $page,15
 			")->result();

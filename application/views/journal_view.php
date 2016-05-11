@@ -20,40 +20,40 @@
                   <span class="pull-right text-muted"><?php echo $journal[0]->views ?> views - 2 comments</span>
                 </div>
                 <div class="box-footer col-md-12 komentar-badan">
-                  <form action="#" method="post">
+                  <form action="<?php echo site_url('journal/post_comment/'.$journal[0]->id_journal) ?>" method="post">
                   	<div class="input-group send-comment">
-                      <input type="text" class="form-control input-md" placeholder="Press enter to post comment">
+                      <input type="text" name="content" class="form-control input-md" placeholder="Press enter to post comment">
                       <span class="input-group-btn">
-                      	<button class="btn btn-flat bg-blue">Send</button>
+                      	<button type="submit" class="btn btn-flat bg-blue">Send</button>
                       </span>
                   	</div>
                   </form>
-                    <div class="comment-text komentar box">
-                      <span class="username">
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                        <strong>Maria Gonzales </strong><br>
-                      </span>
-                      It is a long established fact that a reader will be distracted
-                      by the readable content of a page when looking at its layout. the coast of the Semantics, a large language ocean.
-                    A small river named Duden flows by their place and supplies
-                    it with the necessary regelialia. It is a paradisematic
-                    country, in which roasted parts of sentences fly into
-                    your mouth
-                    </div><!-- /.comment-text -->
-                  <div class="comment-text komentar box box-danger">
-                      <span class="username">
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                        <small class="label bg-red">be</small>
-                        <strong><a href=""> Maria Gonzales</a></strong><br>
-                      </span><!-- /.username -->
-                      It is a long established fact that a reader will be distracted
-                      by the readable content of a page when looking at its layout. the coast of the Semantics, a large language ocean.
-                    A small river named Duden flows by their place and supplies
-                    it with the necessary regelialia. It is a paradisematic
-                    country, in which roasted parts of sentences fly into
-                    your mouth
-                    </div>
+                  <?php $i = 0; ?>
+                  <?php foreach ($comment as $komentar): ?>
+                    <?php if ($komentar->level_name == 'be'): ?>
+                      <div class="comment-text komentar box box-danger">
+                        <span class="username">
+                          <span class="text-muted pull-right"><?php echo $komentar->created_at ?></span>
+                          <small class="label bg-red">be</small>
+                          <strong><a href=""> <?php echo $komentar->fullname ?></a></strong><br>
+                        </span><!-- /.username -->
+                        <?php echo $komentar->content ?>
+                      </div>
+                    <?php else: ?>
+                      <div class="comment-text komentar box">
+                        <span class="username">
+                          <span class="text-muted pull-right"><?php echo $komentar->created_at ?></span>
+                          <strong><?php echo $komentar->fullname ?></strong><br>
+                        </span>
+                          <?php echo $komentar->content ?>
+                      </div>
+                    <?php endif ?>
+                    <?php $i++ ?>
+                  <?php endforeach ?>
+                    
+                  <?php if ($i): ?>
                     <button class="btn btn-danger btn-block btn-flat" id="load-comment">Load more...</button>
+                  <?php endif ?>
                 </div>
               </div>
 
