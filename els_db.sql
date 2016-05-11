@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 Apr 2016 pada 09.45
+-- Generation Time: 11 Mei 2016 pada 05.28
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -28,16 +28,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cop` (
   `id_cop` int(11) NOT NULL,
-  `id_directorate` int(11) NOT NULL,
+  `id_scope` int(11) DEFAULT NULL,
   `id_user` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
   `content` text NOT NULL,
-  `best_answer` int(11) NOT NULL,
+  `summary` text,
   `type` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `cop`
+--
+
+INSERT INTO `cop` (`id_cop`, `id_scope`, `id_user`, `title`, `content`, `summary`, `type`, `created_at`, `updated_at`, `status`) VALUES
+(5, NULL, 2, 'asdasdds', '<p>asdasdasdasd</p>', NULL, 1, '2016-05-10 17:03:50', '2016-05-10 17:03:50', 1);
 
 -- --------------------------------------------------------
 
@@ -47,7 +54,7 @@ CREATE TABLE `cop` (
 
 CREATE TABLE `cop_comment` (
   `id_comment` int(11) NOT NULL,
-  `id_question` int(11) NOT NULL,
+  `id_cop` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `content` text NOT NULL,
@@ -66,6 +73,15 @@ CREATE TABLE `cop_invitation` (
   `id_cop` int(11) NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `cop_invitation`
+--
+
+INSERT INTO `cop_invitation` (`id_invitation`, `id_cop`, `id_user`) VALUES
+(6, 5, 2),
+(7, 5, 4),
+(8, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -209,7 +225,8 @@ INSERT INTO `expert` (`id_expert`, `id_directorate`, `expert_name`) VALUES
 (33, 9, 'Business Expert Sales and Service Strategy'),
 (34, 9, 'Senior Business Expert CRM Project Management'),
 (35, 9, 'Senior Business Expert Product, Service and Distribution Strategy'),
-(36, 7, 'Advisor CNOP Internal Business Control');
+(36, 7, 'Advisor CNOP Internal Business Control'),
+(37, 7, 'Expert Engineer CNOP Planning and Deployment');
 
 -- --------------------------------------------------------
 
@@ -234,7 +251,8 @@ CREATE TABLE `journal` (
 --
 
 INSERT INTO `journal` (`id_journal`, `id_user`, `id_directorate`, `title`, `description`, `file`, `views`, `created_at`, `status`) VALUES
-(2, 2, 6, 'Analisis dan Implementasi Aplikasi Ini dan Itu', 'Ini adalah panduan umum startup challenge unpas 2016, lalala yeyeye, karena tulisan ini adalah deskripsi maka harusnya tulisan ini panjang banget gitu loh ya biar keliatannya bagus pake banget', '34160e9a6fbc8078bc2a45d0716af20e[NEW] Panduan Umum Startup Challenge UNPAS 2016 (update 4 April 2016).pdf', 0, '2016-04-17 12:36:28', 1);
+(2, 2, 6, 'Analisis dan Implementasi Aplikasi Ini dan Itu', 'Ini adalah panduan umum startup challenge unpas 2016, lalala yeyeye, karena tulisan ini adalah deskripsi maka harusnya tulisan ini panjang banget gitu loh ya biar keliatannya bagus pake banget', '34160e9a6fbc8078bc2a45d0716af20e[NEW] Panduan Umum Startup Challenge UNPAS 2016 (update 4 April 2016).pdf', 0, '2016-04-17 12:36:28', 1),
+(3, 2, 4, 'Coba', 'aslkdjawidjjd aslkdjawid aslkdjawi', '61eb65bb2a3245a730b54b9ace3fa8a9Slide Sebuku.pdf', 0, '2016-05-10 15:09:14', 1);
 
 -- --------------------------------------------------------
 
@@ -244,9 +262,19 @@ INSERT INTO `journal` (`id_journal`, `id_user`, `id_directorate`, `title`, `desc
 
 CREATE TABLE `journal_comment` (
   `id_comment` int(11) NOT NULL,
+  `id_journal` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `content` text NOT NULL
+  `content` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `journal_comment`
+--
+
+INSERT INTO `journal_comment` (`id_comment`, `id_journal`, `id_user`, `content`, `created_at`) VALUES
+(1, 2, 2, '', '2016-05-11 03:12:27'),
+(2, 2, 2, 'Wah, journalnya keren gan', '2016-05-11 03:12:55');
 
 -- --------------------------------------------------------
 
@@ -281,7 +309,7 @@ CREATE TABLE `profile` (
   `fullname` varchar(255) NOT NULL,
   `birthdate` date DEFAULT NULL,
   `gender` enum('L','P') DEFAULT NULL,
-  `id_expert` int(11) NOT NULL,
+  `id_expert` int(11) DEFAULT NULL,
   `point` int(11) NOT NULL DEFAULT '0',
   `be_file` varchar(500) DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -293,7 +321,10 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id_profile`, `NIK`, `id_user`, `fullname`, `birthdate`, `gender`, `id_expert`, `point`, `be_file`, `updated_at`, `login`) VALUES
-(1, '62012', 2, 'Rochadi', NULL, NULL, 36, 0, '', '2016-04-16 16:05:22', 1);
+(1, '62012', 2, 'Rochadi', NULL, NULL, 36, 0, '', '2016-04-16 16:05:22', 1),
+(2, '1234', 3, 'Karyawan', NULL, 'L', NULL, 0, NULL, '2016-05-02 10:14:00', 1),
+(3, '75238', 4, 'Yudi Nugraha', NULL, NULL, 32, 0, NULL, '2016-05-10 16:24:31', 1),
+(4, '740195', 5, 'Mohamad Noer Fajar', NULL, NULL, 37, 0, NULL, '2016-05-10 16:30:36', 0);
 
 -- --------------------------------------------------------
 
@@ -347,7 +378,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `email`, `password`, `id_level`, `registered_at`) VALUES
 (1, 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 1, '2016-03-18 02:56:24'),
-(2, 'rochadi@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-04-16 15:55:16');
+(2, 'rochadi@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-04-16 15:55:16'),
+(3, 'karyawan@gmail.com', '9e014682c94e0f2cc834bf7348bda428', 3, '2016-05-02 10:12:00'),
+(4, 'yudi_nugraha@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-05-10 16:21:40'),
+(5, 'mohamad_n_fajar@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-05-10 16:26:40');
 
 --
 -- Indexes for dumped tables
@@ -459,7 +493,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cop`
 --
 ALTER TABLE `cop`
-  MODIFY `id_cop` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `cop_comment`
 --
@@ -469,7 +503,7 @@ ALTER TABLE `cop_comment`
 -- AUTO_INCREMENT for table `cop_invitation`
 --
 ALTER TABLE `cop_invitation`
-  MODIFY `id_invitation` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_invitation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `course`
 --
@@ -499,17 +533,17 @@ ALTER TABLE `discussion_comment`
 -- AUTO_INCREMENT for table `expert`
 --
 ALTER TABLE `expert`
-  MODIFY `id_expert` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_expert` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `journal`
 --
 ALTER TABLE `journal`
-  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `journal_comment`
 --
 ALTER TABLE `journal_comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `level`
 --
@@ -519,7 +553,7 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `scope`
 --
@@ -534,7 +568,7 @@ ALTER TABLE `topic`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --

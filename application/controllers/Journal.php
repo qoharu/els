@@ -66,7 +66,11 @@ class Journal extends CI_Controller
 		$data['journal'] = $this->Journal_model->viewjournal($id_journal);
 		$data['title'] = $data['journal'][0]->title." | Journal";
 		$data['comment'] = $this->Journal_model->getcomment($id_journal, $comment_page);
-		
+		$data['count'] = array(
+						'journal' => $this->General_model->getjournalcount($data['journal'][0]->id_user), 
+						'course' => $this->General_model->getcoursecount($data['journal'][0]->id_user),
+						'discussion' => $this->General_model->getdiscussioncount($data['journal'][0]->id_user)
+						);
 		$this->load->view('journal_view',$data);
 	}
 
