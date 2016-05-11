@@ -2,7 +2,10 @@
 
 <div class="container">
 	<div class="row isi">
-		<h2>Kelas tersedia</h2>
+		<h2>
+		Kelas tersedia
+		</h2>
+		<button class="btn btn-danger">Mulai Kelas Baru</button>
 
             <section class="col-md-8 col-md-offset-2">
               <div class="box box-solid bg-light-blue">

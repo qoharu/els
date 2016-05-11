@@ -32,10 +32,16 @@ class Cop extends CI_Controller
 		}
 	}
 
-	public function innovation_view($id_cop){
+	public function innovation_view($id_cop, $page = 1){
+		$page--;
 		$data['thread'] = $this->Cop_model->innov_get_thread($id_cop);
-		$data['title'] = "Discussion - ".$data['thread'][0]->title;
+		$data['title'] = "Innovation - ".$data['thread'][0]->title;
 		$data['comment'] = $this->Cop_model->get_comment($id_cop);
+
+		$data['tree'][0] = array('title' => 'COP' , 'url' => site_url('cop') );
+		$data['tree'][1] = array('title' => $data['thread'][0]->title , 'url' => site_url('cop/innovation_view/'.$id_cop) );
+		$data['tree'][2] = array('title' => 'page '.($page+1) , 'url' => site_url('cop/innovation_view/'.$page+1) );
+
 		$this->load->view('discussion_view',$data);
 
 	}
