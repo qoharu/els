@@ -13,7 +13,8 @@ class Course extends CI_Controller
 	}
 
 	public function index(){
-		$this->load->view('course');
+		$data['title'] = 'Available Course';
+		$this->load->view('course',$data);
 	}
 	
 

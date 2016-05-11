@@ -80,10 +80,10 @@ class Account extends CI_Controller
 		}
 	}
 
-	public function profile($u){
-		$data['profile'] = $this->Account_model->getprofile();
+	public function user($u){
+		$data['profile'] = $this->Account_model->getprofile($u);
 		$data['title'] = "Profile";
-		$this->load->view('profile',$data);
+		$this->load->view('user',$data);
 	}
 	
 }
