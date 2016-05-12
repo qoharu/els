@@ -5,7 +5,7 @@
 				<div class="col-md-12 isi">
             	<div class="col-md-12">
 						<a href="<?php echo site_url('cop/innovation_new') ?>" class="btn btn-flat btn-lg btn-primary pull-right">New Innovation</a>
-						<a href="" title="Archive" class="btn btn-flat btn-lg bg-navy pull-right"><span class="fa fa-file-archive-o"></span></a>
+						<a href="<?php echo site_url('cop/innovation_archive') ?>" title="Archive" class="btn btn-flat btn-lg bg-navy pull-right"><span class="fa fa-file-archive-o"></span></a>
 						<h3>Innovation</h3>
 						<?php foreach ($list_innov as $inov): ?>
 							<div class="box box-primary">

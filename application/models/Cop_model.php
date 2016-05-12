@@ -51,6 +51,18 @@
 				WHERE cop.id_user = user.id_user
 					AND user.id_user = profile.id_user
 					AND id_cop IN (SELECT id_cop FROM cop_invitation WHERE id_user='$uid' )
+					AND status = 1
+				")->result();
+		}
+
+		function innov_archive(){
+			$uid = $this->session->userdata('uid');
+			return $this->db->query("SELECT title, id_cop, content, cop.created_at, cop.updated_at, fullname
+				FROM cop, user, profile
+				WHERE cop.id_user = user.id_user
+					AND user.id_user = profile.id_user
+					AND id_cop IN (SELECT id_cop FROM cop_invitation WHERE id_user='$uid' )
+					AND status = 0
 				")->result();
 		}
 
@@ -73,7 +85,7 @@
 		}
 
 		function innov_get_thread($id){
-			return $this->db->query("SELECT title, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
+			return $this->db->query("SELECT title, cop.status, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
 				FROM cop, user, profile, expert
 				WHERE cop.id_user = user.id_user
 					AND user.id_user = profile.id_user
@@ -81,8 +93,8 @@
 				")->result();
 		}
 
-		function innov_close_forum($id){
-
+		function innov_close($id, $summary){
+			return $this->db->query("UPDATE cop SET summary = '$summary', status = 0 WHERE id_cop = '$id' ");
 		}
 
 		function innov_post_comment($data){

@@ -45,7 +45,7 @@
 						<?= $thread[0]->content; ?>
 					</div>
 					<?php if ($this->session->userdata('uid') == $thread[0]->id_user): ?>
-						<a class="btn btn-default pull-right" href="<?php echo site_url('cop/close_innovation/'.$id_cop) ?>">
+						<a class="btn btn-default pull-right" href="<?php echo $close ?>">
 							Close Forum
 						</a>
 					<?php endif ?>

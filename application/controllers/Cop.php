@@ -55,6 +55,7 @@ class Cop extends CI_Controller
 		$data['comment'] = $comment['data'];
 		$data['action'] = site_url('cop/innovation_post_comment/'.$id_cop);
 		$data['id_cop'] = $id_cop;
+		$data['close'] = site_url('cop/innovation_close/'.$id_cop);
 
 		$count = $comment['count'][0]->count;
 		$halaman = (int) ceil($count / 20);
@@ -74,13 +75,27 @@ class Cop extends CI_Controller
 
 	}
 
-	public function close_innovation($id_cop){
+	public function innovation_close($id_cop){
+
+		$detil = $this->Cop_model->innov_get_thread($id_cop);
+		$data['title'] = $detil[0]->title;
+		$data['id_cop'] = $id_cop;
+		$this->load->view('innovation_close', $data);
+	}
+
+	public function innovation_close_post($id_cop){
 		$summary = $this->input->post('summary');
-		$hasil = $this->Cop_model->close_innovation($id_cop, $summary);
+		$hasil = $this->Cop_model->innov_close($id_cop, $summary);
 
 		if ($hasil) {
 			redirect('cop');
 		}
+	}
+
+	public function innovation_archive(){
+		$data['title'] = "Innovation Archive";
+		$data['list_innov'] = $this->Cop_model->innov_archive();
+		$this->load->view('innovation_archive', $data);
 	}
 
 	public function bestpractice($scope=''){
