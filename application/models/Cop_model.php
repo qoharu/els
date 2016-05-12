@@ -54,18 +54,39 @@
 				")->result();
 		}
 
-		function get_comment($id){
-			return $this->db->query("SELECT * FROM cop_comment
-				WHERE id_cop = '$id' ")->result();
+		function get_comment($id, $page=0){
+			$page = ($page * 20);
+
+			$hasil['data'] = $this->db->query("SELECT fullname, user.id_user, title, content, expert_name, level_name, created_at 
+				FROM cop_comment, user, profile, level, expert
+				WHERE id_cop = '$id' 
+					AND cop_comment.id_user = user.id_user
+					AND user.id_user = profile.id_user
+					AND user.id_level = level.id_level
+					AND profile.id_expert = expert.id_expert
+				ORDER BY id_cop ASC
+				LIMIT $page, 20
+				")->result();
+
+			$hasil['count'] = $this->db->query("SELECT COUNT(*) as count FROM cop_comment WHERE id_cop = '$id' ")->result();
+			return $hasil;
 		}
 
 		function innov_get_thread($id){
-			return $this->db->query("SELECT title, content, cop.created_at, cop.updated_at, fullname, expert_name
+			return $this->db->query("SELECT title, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
 				FROM cop, user, profile, expert
 				WHERE cop.id_user = user.id_user
 					AND user.id_user = profile.id_user
 					AND profile.id_expert = expert.id_expert
 				")->result();
+		}
+
+		function innov_close_forum($id){
+
+		}
+
+		function innov_post_comment($data){
+			return $this->db->insert('cop_comment',$data);
 		}
 
 	}
