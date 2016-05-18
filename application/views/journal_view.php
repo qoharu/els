@@ -9,7 +9,9 @@
 					<span class="badge bg-green"><?php echo $journal[0]->directorate_name ?></span>
                 </div>
                 <div class="box-body">
-                  <p><?php echo $journal[0]->description ?></p>
+                  <div class="well">
+                    <p><?php echo $journal[0]->description ?></p>
+                  </div>
 
 
                   <div class="clearfix">

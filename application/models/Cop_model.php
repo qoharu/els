@@ -85,9 +85,10 @@
 		}
 
 		function innov_get_thread($id){
-			return $this->db->query("SELECT title, cop.status, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
+			return $this->db->query("SELECT title, cop.status, cop.summary, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
 				FROM cop, user, profile, expert
 				WHERE cop.id_user = user.id_user
+					AND id_cop = '$id'
 					AND user.id_user = profile.id_user
 					AND profile.id_expert = expert.id_expert
 				")->result();
