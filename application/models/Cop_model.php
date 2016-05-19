@@ -4,15 +4,6 @@
 	*/
 	class Cop_model extends CI_Model
 	{
-		function getbe(){
-			return $this->db->query(" SELECT fullname, user.id_user, scope.scope_name, directorate.directorate_name
-				FROM directorate, user, profile, scope, expert
-				WHERE user.id_user = profile.id_user
-					AND profile.id_expert = expert.id_expert
-					AND expert.id_directorate = directorate.id_directorate 
-					AND directorate.id_scope = scope.id_scope
-				")->result();
-		}
 
 		function insert_innovation($data){
 			$uid = $this->session->userdata('uid');
@@ -84,6 +75,39 @@
 			return $hasil;
 		}
 
+		function bp_close($id, $data){
+			$summary = $data['summary'];
+			$id_scope = $data['scope'];
+			$topic = $data['topic'];
+
+			$update =  $this->db->query("UPDATE cop SET summary = '$summary', status = 0 WHERE id_cop = '$id' ");
+
+			$count = 0;
+			foreach ($data['be'] as $be) {
+				if (!empty($be)) {
+					$keterangan = $topic[$count];
+					if ($count == 0) {
+						$builder = "('$be', '$id_scope', 1, '$keterangan', '$id' )";
+					}else{
+						$builder .= ", ('$be', '$id_scope', 1, '$keterangan', '$id' )";
+					}
+					$count++;
+				}
+			}
+
+			if ($count >= 1 ) {
+				$insert = $this->db->query("INSERT INTO step(id_user, id_scope, step, keterangan, id_cop ) 
+					VALUES".$builder);
+			}
+			
+			if ($update && $insert) {
+				return 1;
+			}else{
+				return 0;
+			}
+
+		}
+
 		function innov_get_thread($id){
 			return $this->db->query("SELECT title, cop.status, cop.summary, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
 				FROM cop, user, profile, expert
@@ -100,6 +124,58 @@
 
 		function innov_post_comment($data){
 			return $this->db->insert('cop_comment',$data);
+		}
+
+		function bp_get_thread($id){
+			return $this->db->query("SELECT scope_name, scope.id_scope, title, cop.status, cop.summary, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
+				FROM cop, user, profile, expert, scope
+				WHERE cop.id_user = user.id_user
+					AND cop.id_scope = scope.id_scope
+					AND id_cop = '$id'
+					AND user.id_user = profile.id_user
+					AND profile.id_expert = expert.id_expert
+				")->result();
+		}
+
+		function list_bp(){
+			$uid = $this->session->userdata('uid');
+			return $this->db->query("SELECT title, scope_name, id_cop, content, cop.created_at, cop.updated_at, fullname
+				FROM cop, user, profile, scope
+				WHERE cop.id_user = user.id_user
+					AND cop.id_scope = scope.id_scope
+					AND user.id_user = profile.id_user
+					AND type = 2
+					AND status = 1
+				")->result();
+		}
+
+		function bp_post_comment($data){
+			return $this->db->insert('cop_comment',$data);
+		}
+
+		function insert_bp($data){
+			$insert = $this->db->insert('cop',$data);
+			if ($insert) {
+				$lastid = $this->db->insert_id();
+				return $lastid;
+			}else{
+				return 0;
+			}
+		}
+
+		function bp_topic($id_scope=1){
+			return $this->db->query("SELECT keterangan, fullname, user.id_user, id_cop
+				FROM step, user, profile
+				WHERE step.id_scope = '$id_scope'
+					AND step.id_user = user.id_user
+					AND user.id_user = profile.id_user")->result();
+		}
+
+		function bp_penugasan($id_cop){
+			return $this->db->query("SELECT keterangan, fullname, step.id_user
+				FROM step, profile
+				WHERE step.id_user = profile.id_user
+					AND id_cop = '$id_cop' ")->result();
 		}
 
 	}

@@ -9,13 +9,11 @@
 					<span class="badge bg-green"><?php echo $journal[0]->directorate_name ?></span>
                 </div>
                 <div class="box-body">
-                  <div class="well">
-                    <p><?php echo $journal[0]->description ?></p>
-                  </div>
-
-
                   <div class="clearfix">
                     <iframe width="100%" height="600px" border="0" src="<?php echo base_url('pdfjs/web/viewer.html?file='.base_url('uploads/'.$journal[0]->file)) ?>"></iframe>
+                  </div>
+                  <div class="well">
+                    <p><?php echo $journal[0]->description ?></p>
                   </div>
                   <a class="btn bg-blue col-md-2 col-md-offset-5" href="<?php echo base_url('uploads/'.$journal[0]->file) ?>"><i class="fa fa-download"></i>&nbsp; Download</a>
 
