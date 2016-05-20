@@ -15,7 +15,7 @@
             <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
                     <?php foreach ($ec as $data): ?>
-                        <li><a href="#"><?php echo $data->title ?> <span class="pull-right badge bg-blue">$data->vote</span></a></li>
+                        <li><a href="#"><?php echo $data->title ?> (<?php echo $data->fullname ?>) <span class="pull-right badge bg-blue"><?php echo $data->vote ?></span></a></li>
                     <?php endforeach ?>
                 </ul>
             </div>
@@ -30,7 +30,7 @@
             <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
                     <?php foreach ($em as $data): ?>
-                        <li><a href="#"><?php echo $data->title ?> <span class="pull-right badge bg-blue">$data->vote</span></a></li>
+                        <li><a href="#"><?php echo $data->title ?> (<?php echo $data->fullname ?>) <span class="pull-right badge bg-blue"><?php echo $data->vote ?></span></a></li>
                     <?php endforeach ?>
                 </ul>
             </div>
@@ -45,7 +45,7 @@
             <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
                     <?php foreach ($spb as $data): ?>
-                        <li><a href="#"><?php echo $data->title ?> <span class="pull-right badge bg-blue">$data->vote</span></a></li>
+                        <li><a href="#"><?php echo $data->title ?> (<?php echo $data->fullname ?>) <span class="pull-right badge bg-blue"><?php echo $data->vote ?></span></a></li>
                     <?php endforeach ?>
                 </ul>
             </div>
@@ -60,7 +60,7 @@
             <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
                     <?php foreach ($ict as $data): ?>
-                        <li><a href="#"><?php echo $data->title ?> <span class="pull-right badge bg-blue">$data->vote</span></a></li>
+                        <li><a href="#"><?php echo $data->title ?> (<?php echo $data->fullname ?>) <span class="pull-right badge bg-blue"><?php echo $data->vote ?></span></a></li>
                     <?php endforeach ?>
                 </ul>
             </div>

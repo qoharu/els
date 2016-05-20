@@ -1,5 +1,8 @@
 <?php include "header.php" ?>
-
+<div class="pull-right col-md-2 isi">
+        <a class="btn btn-primary" href="<?php echo site_url('discussion/my_discussion') ?>">My discussion</a>
+    </div>
+    
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1 isi ">

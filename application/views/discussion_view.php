@@ -33,7 +33,7 @@
                 <div class="box-footer">
                   <h5><?= $thread[0]->expert_name; ?></h5>
                 </div>
-              </div><!-- /.widget-user -->
+              </div>
 			</div>
 			<div class="col-md-9">
 				<div class="box box-widget widget-user-2">
@@ -44,9 +44,20 @@
 					<div class="box-footer content-forum">
 						<?= $thread[0]->content; ?>
 					</div>
-					<?php if ($this->session->userdata('uid') == $thread[0]->id_user): ?>
-						<a class="btn btn-default pull-right" href="<?php echo $close ?>">
+					<?php if ($this->session->userdata('uid') == $thread[0]->id_user && $thread[0]->status == 2): ?>
+						<a class="btn btn-default pull-right" href="<?php echo site_url('disc_close/'.$id_disc) ?>">
 							Close Forum
+						</a>
+					<?php endif ?>
+
+					<?php if ($thread[0]->status != 2): ?>
+						<?php
+							$status = switchstatus($thread[0]->status);
+		                    $kelas = $status['class'];
+		                    $judul = $status['title'];
+						?>
+						<a class="btn disabled <?php echo $kelas ?> pull-right" >
+							<?php echo $judul ?>
 						</a>
 					<?php endif ?>
 				</div>
@@ -99,6 +110,7 @@
 	<?php echo $page ?>
 </div>
 
+<?php if ($thread[0]->status ==2 ): ?>
 <div class="col-md-12 box box-primary well isi">
 		<div class="box-body well">
 			<div class="col-md-3">
@@ -119,7 +131,7 @@
               </div><!-- /.widget-user -->
 			</div>
 			<div class="col-md-9">
-			<form action="<?php echo $action ?>" method="post">
+			<form action="<?php echo site_url('discussion/discussion') ?>" method="post">
 				<div class="box box-widget widget-user-2">
 					<div class="widget-user-header bg-blue">
 							<small class="pull-right"><?php echo date('D, d M Y h:m:s') ?></small>
@@ -134,8 +146,8 @@
 					</form>
 				</div>
 			</div>
-			
 		</div>
+<?php endif ?>
 	</div>
 
 	<script type="text/javascript">
