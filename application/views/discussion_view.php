@@ -42,6 +42,7 @@
 							<h4><?= $thread[0]->title; ?></h4>
 					</div>
 					<div class="box-footer content-forum">
+					<span class="badge bg-blue pull-right"><?php echo $thread[0]->scope_name ?></span>
 						<?= $thread[0]->content; ?>
 					</div>
 					<?php if ($this->session->userdata('uid') == $thread[0]->id_user && $thread[0]->status == 2): ?>

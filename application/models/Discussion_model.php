@@ -10,7 +10,8 @@ class Discussion_model extends CI_Model
 	}
 
 	function vote_detail($id_scope=1){
-		return $this->db->query("SELECT id_discussion, fullname, title, (SELECT COUNT(*) FROM discussion_vote where discussion.id_discussion = discussion_vote.id_discussion) as vote
+		$uid = $this->session->userdata('uid');
+		return $this->db->query("SELECT id_discussion, fullname, title, (SELECT COUNT(*) FROM discussion_vote where discussion.id_discussion = discussion_vote.id_discussion) as vote, (SELECT IF( EXISTS(SELECT * FROM discussion_vote WHERE id_user='$uid' AND discussion.id_discussion = discussion_vote.id_discussion ),1,0)) as voted
 			FROM discussion, profile
 			WHERE discussion.id_user = profile.id_user
 				AND id_scope = '$id_scope' ")->result();
@@ -80,5 +81,13 @@ class Discussion_model extends CI_Model
 		}else{
 			return 0;
 		}
+	}
+
+	function vote($data){
+		return $this->db->insert('discussion_vote',$data);
+	}
+
+	function disc_trigger(){
+
 	}
 }

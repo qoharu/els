@@ -7,22 +7,17 @@ class Discussion extends CI_Controller
 	function __construct(){
 		parent::__construct();
 		$this->load->model("Discussion_model"); // include Discussion_model pada setiap fungsi
+		$this->Discussion_model->disc_trigger();
 
 	}
-	public function index($waktu = 12){
+	public function index($waktu = 1){
 		$data['title'] = date('d');
 		switch ($waktu) {
 			case ($waktu <= 7):
-				$data['title'] = 'Vote Topic';
-				$data['ec'] = $this->Discussion_model->vote_detail(1);
-				$data['em'] = $this->Discussion_model->vote_detail(2);
-				$data['spb'] = $this->Discussion_model->vote_detail(3);
-				$data['ict'] = $this->Discussion_model->vote_detail(4);
-
-				$this->load->view('discussion_early',$data);
+				redirect('discussion/vote');
 				break;
 			case ($waktu >= 7 && $waktu <= 21):
-				$this->load->view('discussion_mid',$data);
+				redirect('discussion/forum');
 				break;
 			case ($waktu >= 22):
 				$this->load->view('discussion_late',$data);
@@ -30,6 +25,28 @@ class Discussion extends CI_Controller
 		}
 	}
 
+	public function vote(){
+		$data['title'] = 'Vote Topic';
+		$data['ec'] = $this->Discussion_model->vote_detail(1);
+		$data['em'] = $this->Discussion_model->vote_detail(2);
+		$data['spb'] = $this->Discussion_model->vote_detail(3);
+		$data['ict'] = $this->Discussion_model->vote_detail(4);
+
+		$this->load->view('discussion_early',$data);
+	}
+
+	public function vote_topic($id_disc){
+		$data['id_discussion'] = $id_disc;
+		$data['id_user'] = $this->session->userdata('uid');
+		$vote = $this->Discussion_model->vote($data);
+		if ($vote) {
+			redirect('discussion/vote');
+		}
+	}
+
+	public function forum(){
+		$this->load->view('discussion_mid',$data);
+	}
 	public function my_discussion(){
 		$data['title'] = "My discussion";
 		$data['todo'] = $this->Discussion_model->todo();
@@ -59,8 +76,8 @@ class Discussion extends CI_Controller
 		}
 
 		$data['tree'][0] = array('title' => 'Group Discussion' , 'url' => site_url('discussion') );
-		$data['tree'][1] = array('title' => $data['thread'][0]->title , 'url' => site_url('cop/view_discussion/'.$id_disc) );
-		$data['tree'][2] = array('title' => 'page '.($page+1) , 'url' => site_url('cop/view_discussion/'.$id_disc.'/'.($page+1) ));
+		$data['tree'][1] = array('title' => $data['thread'][0]->title , 'url' => site_url('discussion/view_discussion/'.$id_disc) );
+		$data['tree'][2] = array('title' => 'page '.($page+1) , 'url' => site_url('discussion/view_discussion/'.$id_disc.'/'.($page+1) ));
 
 		$this->load->view('discussion_view',$data);
 
