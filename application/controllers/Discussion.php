@@ -8,10 +8,10 @@ class Discussion extends CI_Controller
 		parent::__construct();
 		$this->load->model("Discussion_model"); // include Discussion_model pada setiap fungsi
 		$this->Discussion_model->disc_trigger();
-
 	}
 	public function index($waktu = 1){
 		$data['title'] = date('d');
+		$waktu = date('d');
 		switch ($waktu) {
 			case ($waktu <= 7):
 				redirect('discussion/vote');
@@ -20,7 +20,7 @@ class Discussion extends CI_Controller
 				redirect('discussion/forum');
 				break;
 			case ($waktu >= 22):
-				$this->load->view('discussion_late',$data);
+				$this->load->view('discussion/discussion_late',$data);
 				break;
 		}
 	}
@@ -32,7 +32,7 @@ class Discussion extends CI_Controller
 		$data['spb'] = $this->Discussion_model->vote_detail(3);
 		$data['ict'] = $this->Discussion_model->vote_detail(4);
 
-		$this->load->view('discussion_early',$data);
+		$this->load->view('discussion/discussion_early',$data);
 	}
 
 	public function vote_topic($id_disc){
@@ -45,14 +45,31 @@ class Discussion extends CI_Controller
 	}
 
 	public function forum(){
-		$this->load->view('discussion_mid',$data);
+		$data['title'] = "Discussion Forum";
+		for ($i=1; $i <= 4 ; $i++) { 
+			$data['forum'][] = @$this->Discussion_model->get_discussion($i);
+		}
+		$this->load->view('discussion/discussion_mid',$data);
 	}
+
 	public function my_discussion(){
 		$data['title'] = "My discussion";
 		$data['todo'] = $this->Discussion_model->todo();
 		$data['list'] = $this->Discussion_model->disc_list();
 
-		$this->load->view('discussion_my', $data);
+		$this->load->view('discussion/discussion_my', $data);
+	}
+
+	public function respond_post($id){
+		$data['title'] = $this->input->post('title');
+		$data['content'] = $this->input->post('content');
+		$data['id_discussion'] = $id;
+		$data['id_user'] = $this->session->userdata('uid');
+
+		$insert = $this->Discussion_model->post_respond($data);
+		if ($insert) {
+			redirect('discussion/view_discussion/'.$id);
+		}
 	}
 
 	public function view_discussion($id_disc, $page = 1){
@@ -79,7 +96,7 @@ class Discussion extends CI_Controller
 		$data['tree'][1] = array('title' => $data['thread'][0]->title , 'url' => site_url('discussion/view_discussion/'.$id_disc) );
 		$data['tree'][2] = array('title' => 'page '.($page+1) , 'url' => site_url('discussion/view_discussion/'.$id_disc.'/'.($page+1) ));
 
-		$this->load->view('discussion_view',$data);
+		$this->load->view('discussion/discussion_view',$data);
 
 	}
 
@@ -87,7 +104,7 @@ class Discussion extends CI_Controller
 		$data['title'] = "New Discussion";
 		$data['step'] = $this->Discussion_model->detail_new($id_step);
 
-		$this->load->view('discussion_new',$data);
+		$this->load->view('discussion/discussion_new',$data);
 	}
 
 	public function post_discussion($id_step){
@@ -108,11 +125,17 @@ class Discussion extends CI_Controller
 
 	public function browse($scope="all", $page){
 		$q = mysql_escape_string($_GET['q']);
-		$data['list'] = $this->Discussion_model->browse($scope, $page, $q);
-		
+		$data['list'] = $this->Discussion_model->browse($scope, $page, $q);	
+	}
+
+	public function disc_close($id){
+		$data['thread'] = $this->Discussion_model->disc_get_thread($id);
+		$data['title'] = "Close Forum";
+
+		$this->load->view('discussion/discussion_close',$data);
 	}
 
 	public function view($id=1){
-		$this->load->view('discussion_view');
+		$this->load->view('discussion/discussion_view');
 	}
 }

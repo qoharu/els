@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include '/application/views/header.php' ?>
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap3-wysihtml5.min.css') ?>">
 	<script type="text/javascript" src="<?= base_url('assets/js/bootstrap3-wysihtml5.all.min.js') ?>"></script>
 	<div class="container">
@@ -50,10 +50,16 @@
 							<hr>
 							<h2 class="text-left">Summary</h2>
 							<?php echo $thread[0]->summary ?>
+							<br>
+							<strong>Penugasan BE :</strong> <br>
+							<?php foreach ($penugasan as $topic): ?>
+								<?php echo $topic->keterangan ?> - <a href="<?php echo site_url('profile/'.$topic->id_user) ?>"><?php echo $topic->fullname ?></a><br>
+							<?php endforeach ?>
 						<?php endif ?>
+						<span class="pull-right badge bg-blue"><?php echo $thread[0]->scope_name ?></span>
 					</div>
 					<?php if ($this->session->userdata('uid') == $thread[0]->id_user && $thread[0]->status): ?>
-						<a class="btn btn-default pull-right" href="<?php echo site_url('cop/innovation_close/'.$id_cop) ?>">
+						<a class="btn btn-default pull-right" href="<?php echo site_url('cop/bp_close/'.$id_cop) ?>">
 							Close Forum
 						</a>
 					<?php endif ?>
@@ -137,7 +143,7 @@
               </div><!-- /.widget-user -->
 			</div>
 			<div class="col-md-9">
-			<form action="<?php echo site_url('cop/innovation_post_comment/'.$id_cop) ?>" method="post">
+			<form action="<?php echo site_url('cop/bp_post_comment/'.$id_cop) ?>" method="post">
 				<div class="box box-widget widget-user-2">
 					<div class="widget-user-header bg-blue">
 							<small class="pull-right"><?php echo date('D, d M Y h:m:s') ?></small>

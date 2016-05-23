@@ -22,3 +22,20 @@ function switchstatus($status){
 		return $ret;
 	}
 
+function greet(){
+	$waktu = date('H');
+	switch ($waktu) {
+		case ($waktu <= 3 && $waktu >= 19) :
+			echo "Malam";
+			break;
+		case ($waktu <= 10 && $waktu >= 4) :
+			echo "Pagi";
+			break;
+		case ($waktu <= 14 && $waktu >= 11) :
+			echo "Siang";
+			break;
+		case ($waktu <= 18 && $waktu >= 15) :
+			echo "Sore";
+			break;
+	}
+}

@@ -1,11 +1,10 @@
 body {
-	padding-top: 40px;
-	padding-bottom: 40px;
 	background-color: #ecf0f5;
+	margin-top: 50px;
 }
 
 .full {
-	/*background: url('../img/backimg.png') no-repeat center center fixed;*/
+	background: url('../img/backimg.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -16,40 +15,10 @@ body {
 	font-size: 50pt;
 }
 
-.navbar {
-    margin-bottom: 0;
-    background-color: #2D2D30;
-    border: 0;
-    /*font-size: 11px !important;*/
-    letter-spacing: 4px;
-    /*opacity:0.9;*/
-}
-
 h2 {
 	text-align: center;
 }
 
-/*Biar logo pas posisinya di navbar brand*/
-.navbar-brand {
-  margin-top:-13px;
-}
-
-/*Ukuran logo experta*/
-.navbar-brand img {
-  width: 100%;
-  opacity: 1;
-}
-
-/*Navbar Bagian Logo, Menu Kalau Hover Putih*/
-.navbar-nav li a:hover {
-  color: #FFF !important;
-}
-
-/*Navbar Bagian Logo, Menu Yang Lagi Di Scroll (Active)*/
-.navbar-nav li.active a {
-  color: #FFF !important;
-  background-color: #29292C !important;
-}
 
 .form-login {
 	max-width: 330px;
@@ -62,7 +31,15 @@ h2 {
 	margin-bottom: 10px;
 }
 
-
+.logo{
+	width: 130px !important;
+}
+.logo-exp{
+	margin-bottom: 1px;
+}
+.navbar {
+	margin-left: 130px !important;
+}
 .form-login .checkbox {
 	font-weight: normal;
 }

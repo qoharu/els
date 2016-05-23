@@ -1,5 +1,6 @@
-<?php include 'header.php'; ?>
+<?php include '/application/views/header.php' ?>
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap3-wysihtml5.min.css') ?>">
+	<script type="text/javascript" src="<?php echo base_url('assets/js/select2.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/bootstrap3-wysihtml5.all.min.js') ?>"></script>
 		<div class="container">
 			<div class="row">
@@ -17,7 +18,7 @@
 								<textarea name="description" class="form-control input-md textarea" id="" rows="12" maxlength="500" required="" placeholder="Deskripsi"></textarea>	
 							</div>
 							<div class="form-group">
-								<select name="directorate" class="form-control invite-be" multiple required="">
+								<select name="user[]" class="form-control invite-be" multiple required="">
 								<?php
 									$scope = ""; 
 									foreach ($be as $data) {
@@ -38,5 +39,8 @@
 			</div>
 		</div>
 	<script type="text/javascript">
+		$(".invite-be").select2({
+			placeholder: "Invite BE"
+		});
 		$('.textarea').wysihtml5();
 	</script>

@@ -13,14 +13,14 @@ class Cop extends CI_Controller
 		$data['title'] = "COP";
 		$data['list_innov'] = $this->Cop_model->list_innov();
 		$data['list_bp'] = $this->Cop_model->list_bp();
-		$this->load->view('cop', $data);
+		$this->load->view('cop/cop', $data);
 	}
 
 // BEST PRACTICE
 	public function bp_new(){
 		$data['title'] = "New Best Practice";
 		$data['scope'] = $this->General_model->getscope();
-		$this->load->view('bp_new',$data);
+		$this->load->view('cop/bp_new',$data);
 	}
 
 	public function bp_post(){
@@ -74,7 +74,7 @@ class Cop extends CI_Controller
 		$data['tree'][1] = array('title' => $data['thread'][0]->title , 'url' => site_url('cop/bp_view/'.$id_cop) );
 		$data['tree'][2] = array('title' => 'page '.($page+1) , 'url' => site_url('cop/bp_view/'.$id_cop.'/'.($page+1) ));
 
-		$this->load->view('bp_view',$data);
+		$this->load->view('cop/bp_view',$data);
 
 	}
 
@@ -87,7 +87,7 @@ class Cop extends CI_Controller
 		$data['step'] = $this->General_model->cekstep($detil[0]->id_scope, 1);
 
 		$data['id_cop'] = $id_cop;
-		$this->load->view('bp_close', $data);
+		$this->load->view('cop/bp_close', $data);
 	}
 
 	public function bp_close_post($id_cop, $scope){
@@ -110,14 +110,14 @@ class Cop extends CI_Controller
 		$data['spb'] = $this->Cop_model->bp_topic(3);
 		$data['ict'] = $this->Cop_model->bp_topic(4);
 
-		$this->load->view('bp_topic', $data);
+		$this->load->view('cop/bp_topic', $data);
 	}
 
 // INNOVATION
 	public function innovation_new(){
 		$data['title'] = "New Innovation";
 		$data['be'] = $this->General_model->getbe();
-		$this->load->view('innovation_new',$data);
+		$this->load->view('cop/innovation_new',$data);
 	}
 	public function innovation_post(){
 		var_dump($_POST);
@@ -169,7 +169,7 @@ class Cop extends CI_Controller
 		$data['tree'][1] = array('title' => $data['thread'][0]->title , 'url' => site_url('cop/innovation_view/'.$id_cop) );
 		$data['tree'][2] = array('title' => 'page '.($page+1) , 'url' => site_url('cop/innovation_view/'.$id_cop.'/'.($page+1) ));
 
-		$this->load->view('innovation_view',$data);
+		$this->load->view('cop/innovation_view',$data);
 
 	}
 
@@ -177,7 +177,7 @@ class Cop extends CI_Controller
 		$detil = $this->Cop_model->innov_get_thread($id_cop);
 		$data['title'] = $detil[0]->title;
 		$data['id_cop'] = $id_cop;
-		$this->load->view('innovation_close', $data);
+		$this->load->view('cop/innovation_close', $data);
 	}
 
 	public function innovation_close_post($id_cop){
@@ -192,14 +192,14 @@ class Cop extends CI_Controller
 	public function innovation_archive(){
 		$data['title'] = "Innovation Archive";
 		$data['list_innov'] = $this->Cop_model->innov_archive();
-		$this->load->view('innovation_archive', $data);
+		$this->load->view('cop/innovation_archive', $data);
 	}
 
 	public function bestpractice($scope=''){
 		$data['title'] = "Best Practice $scope";
 		$data['forum'] = $this->Cop_model->getbpscope($scope);
 
-		$this->load->view('bestpractice',$data);
+		$this->load->view('cop/bestpractice',$data);
 	}
 
 }

@@ -7,7 +7,7 @@
 	<div class="col-md-12 isi-dash">
 		<div class="col-lg-6 col-lg-offset-3 panel">
 			<div class="panel-heading">
-				<h4>Selamat datang, <strong><?php echo $this->session->userdata('fullname'); ?></strong></h4>
+				<h4>Selamat <?php echo greet() ?>, <strong><?php echo $this->session->userdata('fullname'); ?></strong></h4>
 			</div>
 		</div>	
 	    <div class="col-lg-3 col-lg-offset-3">

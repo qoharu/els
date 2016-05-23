@@ -1,4 +1,4 @@
-<?php include "header.php" ?>
+<?php include '/application/views/header.php' ?>
 <?php //echo $this->session->userdata('uid') ?>
 		<div class="container">
 			<div class="row">

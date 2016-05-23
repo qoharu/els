@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include '/application/views/header.php' ?>
 <div class="pull-right col-md-2 isi">
         <a class="btn btn-primary" href="<?php echo site_url('discussion/my_discussion') ?>">My discussion</a>
     </div>

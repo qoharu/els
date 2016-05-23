@@ -1,4 +1,4 @@
-<?php include "header.php" ?>
+<?php include '/application/views/header.php' ?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9 isi ">
@@ -22,7 +22,7 @@
                 <div class="box-footer col-md-12 komentar-badan">
                   <form action="<?php echo site_url('journal/post_comment/'.$journal[0]->id_journal) ?>" method="post">
                   	<div class="input-group send-comment">
-                      <input type="text" name="content" class="form-control input-md" placeholder="Press enter to post comment">
+                      <input type="text" name="content" class="form-control input-md" placeholder="Press enter to post comment" required>
                       <span class="input-group-btn">
                       	<button type="submit" class="btn btn-flat bg-blue">Send</button>
                       </span>

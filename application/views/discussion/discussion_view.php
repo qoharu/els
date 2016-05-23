@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include '/application/views/header.php' ?>
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap3-wysihtml5.min.css') ?>">
 	<script type="text/javascript" src="<?= base_url('assets/js/bootstrap3-wysihtml5.all.min.js') ?>"></script>
 	<div class="container">
@@ -46,7 +46,7 @@
 						<?= $thread[0]->content; ?>
 					</div>
 					<?php if ($this->session->userdata('uid') == $thread[0]->id_user && $thread[0]->status == 2): ?>
-						<a class="btn btn-default pull-right" href="<?php echo site_url('disc_close/'.$id_disc) ?>">
+						<a class="btn btn-default pull-right" href="<?php echo site_url('discussion/disc_close/'.$id_disc) ?>">
 							Close Forum
 						</a>
 					<?php endif ?>
@@ -94,7 +94,7 @@
 			</div>
 			<div class="col-md-9">
 				<div class="box box-widget widget-user-2">
-					<div class="widget-user-header bg-red">
+					<div class="widget-user-header <?php echo $kelas ?>">
 							<small class="pull-right"><?php echo $komentar->created_at ?></small>
 							<h4><?php echo $komentar->title ?></h4>
 					</div>
@@ -132,7 +132,7 @@
               </div><!-- /.widget-user -->
 			</div>
 			<div class="col-md-9">
-			<form action="<?php echo site_url('discussion/discussion') ?>" method="post">
+			<form action="<?php echo site_url('discussion/respond_post/'.$thread[0]->id_discussion) ?>" method="post">
 				<div class="box box-widget widget-user-2">
 					<div class="widget-user-header bg-blue">
 							<small class="pull-right"><?php echo date('D, d M Y h:m:s') ?></small>
@@ -141,7 +141,7 @@
 		                    </div>
 					</div>
 					<div class="box-footer content-forum">
-						<textarea class="textarea textarea-forum" name="content" placeholder="Description"></textarea>
+						<textarea class="textarea textarea-forum" name="content" placeholder="Description" required ></textarea>
 					</div>
 						<button class="pull-right btn btn-primary" type="submit">Submit</button>
 					</form>
