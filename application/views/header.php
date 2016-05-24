@@ -21,9 +21,13 @@
 		<script src="<?= base_url('assets/js/jquery-1.12.1.min.js') ?>"></script>
 		<script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
 		<script src="<?= base_url('assets/js/jquery.main.js') ?>" type="text/javascript"></script>
+		<script src="<?= base_url('assets/js/moment.min.js') ?>"></script>
+    <!-- <script src="<?= base_url('assets/js/jquery.slimscroll.min.js') ?>"></script> -->
+    <script src="<?= base_url('assets/js/app.min.js') ?>"></script>
 	</head>
 
 	<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50" class="full hold-transition skin-black-light fixed">
+		
 		<header class="main-header">
         <a href="<?php echo site_url('home') ?>" class="logo">
         	<img class="logo-exp" src="<?php echo base_url('assets/img/Experta-Logo.png') ?>">
@@ -32,9 +36,10 @@
 
         <nav class="navbar navbar-static-top" role="navigation">
       
+<?php if ($this->session->userdata('islogin')): ?>
+	
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-
               <!-- Notifications Menu -->
               <li class="dropdown notifications-menu">
                 <!-- Menu toggle button -->
@@ -88,6 +93,7 @@
               </li>
             </ul>
           </div>
+<?php endif ?>
         </nav>
       </header>
 

@@ -5,15 +5,25 @@ class Account_model extends CI_Model
 	function validate($data){
 		$password=$data['password'];
 		$email=$data['email'];
-		$query="select user.id_user, email, level_name, fullname 
-				from user, level, profile
-				where user.email='$email' 
-					and user.password='$password' 
-					and level.id_level = user.id_level
-					and user.id_user = profile.id_user ";
-		$db=$this->db->query($query);
-		if($db->num_rows()==1){
-			$data=$db->row();
+		$user = $this->db->query("SELECT * FROM user WHERE email='$email' AND password = '$password' ");
+
+		if($user->num_rows()==1){
+			$datauser = $user->row();
+			if ($datauser->id_level == 2) {
+				$query="SELECT user.id_user, email, level_name, fullname 
+					FROM user, level, profile
+					WHERE user.email='$email' 
+						AND user.password='$password' 
+						AND level.id_level = user.id_level
+						AND user.id_user = profile.id_user ";
+			}else{
+				$query="SELECT user.id_user, email, level_name
+					FROM user, level
+					WHERE user.email='$email' 
+						AND user.password='$password' 
+						AND level.id_level = user.id_level ";
+			}
+			$data=$this->db->query($query)->row();
 			$this->setsession($data);
 			return true;
 		}else{
@@ -37,10 +47,11 @@ class Account_model extends CI_Model
 	}
 
 	function setsession($data){
+		$fullname = ($data->level_name == 'be') ? $data->fullname : explode('@',$data->email)[0] ;
 		$sesi = array(	'uid' => $data->id_user,
 					  	'email' => $data->email,
 					  	'level' => $data->level_name,
-					  	'fullname' => $data->fullname,
+					  	'fullname' => $fullname,
 					  	'islogin' => TRUE
 					  	);
 		$this->session->set_userdata($sesi);

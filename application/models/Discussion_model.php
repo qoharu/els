@@ -142,18 +142,31 @@ class Discussion_model extends CI_Model
 					$disc = join(',', $id_dis);
 					$id_step = join(',', $id_step);
 					$update = $this->db->query("UPDATE discussion SET status = 2 WHERE id_discussion IN ($disc) ");
-					$updatedis = $this->db->query("UPDATE discussion SET status = 3 WHERE id_discussion NOT IN ($disc) ");
+					$updatedis = $this->db->query("UPDATE discussion SET status = 3 WHERE status = 2 ");
 
 					$step = $this->db->query("UPDATE step SET step = 4 WHERE id_step IN ($id_step) ");
 					$step2 = $this->db->query("UPDATE step SET step = 8 WHERE step = 3 ");
 					$state = $this->db->query("UPDATE state SET step = 2");
 
+					if ($update && $updatedis && $step && $step2 && $state) {
+						return 1;
+					} else {
+						return 0;
+					}	
 				}
 				break;
 			case ($date >= 22):
-				$update = $this->db->query("UPDATE discussion SET status = 0 WHERE status = 2");
-				$step = $this->db->query("UPDATE step SET step = 5 WHERE id_step = 4 ");
-				
+				if ($state != 3) {
+					$update = $this->db->query("UPDATE discussion SET status = 0 WHERE status = 2");
+					$step = $this->db->query("UPDATE step SET step = 5 WHERE step = 4 ");
+					$state = $this->db->query("UPDATE state SET step = 3");
+					
+					if ($update && $step) {
+						return 1;
+					} else {
+						return 0;
+					}
+				}
 				break;
 		}
 	}

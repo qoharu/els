@@ -14,17 +14,46 @@ class Course extends CI_Controller
 
 	public function index(){
 		$data['title'] = 'Available Course';
+		$data['course'] = $this->Course_model->listcourse();
+
 		$this->load->view('course/course',$data);
+	}
+
+	public function mycourse(){
+		$data['title'] = 'My Class';
+
+		$data['todo'] = $this->Course_model->todo();
+		$data['mycourse'] = $this->Course_model->mycourse();
+		$data['enrolled'] = $this->Course_model->enrolled();
+		
+		$this->load->view('course/course_my', $data);
+	}
+
+	public function create_course($id_step){
+		$data['title'] = 'Open new course';
+		$data['detail'] = $this->Course_model->detail_new($id_step);
+
+		$this->load->view('course/course_new', $data);
 	}
 	
 
-	public function post_new(){
+	public function post_new($id_step){
+		$data['title'] = $this->input->post('title');
+		$data['description'] = $this->input->post('description');
+		$data['quota'] = $this->input->post('quota');
+		$data['datetime'] = $this->input->post('datetime');
+		$data['location'] = $this->input->post('location');
+		$data['id_scope'] = $this->input->post('id_scope');
+		$data['id_user'] = $this->session->userdata('uid');
+		$data['id_step'] = $id_step;
+
+		$insert = $this->Course_model->post_new($data);
+		if ($insert) {
+			redirect('course');
+		}
 
 	}
 
-	public function newcourse(){
-		$this->load->view('course_new');
-	}
 	public function browse($page){
 		$q = mysql_escape_string(@$_GET['q']);
 		$data['course'] = $this->Course_model->browsecourse($page,$q);
@@ -33,7 +62,10 @@ class Course extends CI_Controller
 
 
 	public function enroll($id_course){
-
+		$insert = $this->Course_model->enroll($id_course);
+		if ($insert) {
+			redirect('course');
+		}
 	}
 	
 	public function view($id_course){

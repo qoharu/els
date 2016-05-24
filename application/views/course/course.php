@@ -5,45 +5,57 @@
 		<h2>
 		Kelas tersedia
 		</h2>
-		<button class="btn btn-danger">Mulai Kelas Baru</button>
+		<a class="btn btn-danger" href="<?php echo site_url('course/mycourse') ?>">My Course</a>
 
             <section class="col-md-8 col-md-offset-2">
+            <?php foreach ($course as $data): ?>
+              
               <div class="box box-solid bg-light-blue">
                 <div class="box-header" >
                   <h3 class="box-title">
-                    Kelas pelatihan android untuk yang sudah mahir, yang cupu jangan ikut
+                  <a href="<?php echo site_url('course/view_course/'.$data->id_course) ?>" class="clearlink">
+                    <?php echo $data->title ?>
+                  </a>
                   </h3>
-                  <button class="btn bg-blue pull-right"><i class="fa fa-user-plus">&nbsp;</i> JOIN</button>
+                  <?php if ($data->enrolled): ?>
+                    <a class="btn bg-green pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Enrolled</a>
+                  <?php else: ?>
+                    <?php if ($data->count >= $data->quota): ?>
+                      <a class="btn bg-red pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Full</a>
+                    <?php else: ?>
+                      <a class="btn bg-blue pull-right" href="<?php echo site_url('course/enroll/'.$data->id_course) ?>"><i class="fa fa-user-plus">&nbsp;</i> JOIN</a>
+                    <?php endif ?>
+                  <?php endif ?>
                 </div>
                 <div class="box-body">
-	                <span class="label bg-blue ">Ecommerce</span>
+                  <span class="label bg-blue "><?php echo $data->scope_name ?></span>
                 </div>
-                <div class="box-footer no-border">
-                	<p class="text-black">Android adalah teknologi yang sebentar lagi akan punah, oleh sebab itu, daripada keburu punah
-                	yuk kita belajar bareng-bareng dengan mang ikin tukang bakso keliling yang lagi ngehits banget</p>
+                <div class="box-footer no-border text-black">
+                  <p class="text-black"><?php echo $data->description ?></p>
                   <div class="row">
                     <div class="col-xs-3 text-center border-right text-black">
                       <canvas class="canvas-course"></canvas>
-                      <i class="fa fa-map-marker"></i>&nbsp; A 202
+                      <i class="fa fa-map-marker"></i>&nbsp; <?php echo $data->location ?>
                     </div>
                     <div class="col-xs-3 text-center border-right text-black">
                       <canvas class="canvas-course"></canvas>
-                      <i class="fa fa-calendar"> </i>&nbsp; 20-5-2016 20:00:00
+                      <i class="fa fa-calendar"> </i>&nbsp; <?php echo $data->datetime ?>
                     </div>
                     <div class="col-xs-3 text-center border-right text-black">
                       <canvas class="canvas-course"></canvas>
-                      <i class="fa fa-users"></i>&nbsp; <strong>12</strong>/20
+                      <i class="fa fa-users"></i>&nbsp; <strong><?php echo $data->count ?></strong>/<?php echo $data->quota ?>
                     </div>
                     <div class="col-xs-3 text-center">
                       <canvas class="canvas-course"></canvas>
-                      <i class="text-black fa fa-male"></i>&nbsp; <a href="asd">Bapak Ikin Tukang Bakso</a>
+                      <i class="text-black fa fa-male"></i>&nbsp; <a href="<?php echo site_url('profile/'.$data->id_user) ?>"><?php echo $data->fullname ?></a>
                     </div>
                   </div>
                 </div>
               </div>
+            <?php endforeach ?>
             </section>
 
 
 
-	</div>
+  </div>
 </div>
