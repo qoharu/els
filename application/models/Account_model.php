@@ -13,14 +13,16 @@ class Account_model extends CI_Model
 				$query="SELECT user.id_user, email, level_name, fullname 
 					FROM user, level, profile
 					WHERE user.email='$email' 
-						AND user.password='$password' 
+						AND user.password='$password'
+						AND user.stat = 1
 						AND level.id_level = user.id_level
 						AND user.id_user = profile.id_user ";
 			}else{
 				$query="SELECT user.id_user, email, level_name
 					FROM user, level
 					WHERE user.email='$email' 
-						AND user.password='$password' 
+						AND user.password='$password'
+						AND user.stat = 1 
 						AND level.id_level = user.id_level ";
 			}
 			$data=$this->db->query($query)->row();

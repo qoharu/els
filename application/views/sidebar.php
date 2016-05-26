@@ -6,7 +6,7 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="http://localhost/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <img src="<?php echo base_url('assets/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p><?php echo $this->session->userdata('fullname') ?></p>
@@ -22,13 +22,7 @@
             <li class="<?php echo @$active[2] ?>"><a href="<?php echo site_url('admin/journal') ?>"><i class="fa fa-book"></i><span>Journals</span></a></li>
             <li class="<?php echo @$active[3] ?>"><a href="<?php echo site_url('admin/course') ?>"><i class="fa fa-pencil"></i><span>Courses</span></a></li>
             <li class="<?php echo @$active[4] ?>"><a href="<?php echo site_url('admin/discussion') ?>"><i class="fa fa-comments"></i><span>Group Discussion</span></a></li>
-            <li class="treeview <?php echo @$active[5] ?>">
-              <a href="#"><i class="fa fa-commenting"></i> <span>COP</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo site_url('admin/innovation') ?>">Innovation</a></li>
-                <li><a href="<?php echo site_url('admin/best_practice') ?>">Best Practice</a></li>
-              </ul>
-            </li>
+            <li class="<?php echo @$active[5] ?>"><a href="<?php echo site_url('admin/cop') ?>"><i class="fa fa-commenting"></i><span>COP</span></a></li>
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->

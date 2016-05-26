@@ -135,3 +135,16 @@ h2 {
 .clear-a{
 	cursor: default;
 }
+
+.content-wrapper{
+	margin-top: -50px !important;
+}
+
+.content-left{
+	height: 100%;
+}
+.content-reg{
+	border-right: 1px dashed #dddddd;
+	border-left: 1px dashed #dddddd;
+	height: 500px;
+}

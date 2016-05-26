@@ -15,14 +15,14 @@ class Admin_model extends CI_Model
 	}
 
 	function getbe(){
-		return $this->db->query("SELECT fullname, email, user.id_user, nik, registered_at
+		return $this->db->query("SELECT fullname, email, stat, user.id_user, nik, registered_at
 			FROM user, profile
 			WHERE user.id_user = profile.id_user
 				AND user.id_level = 2")->result();
 	}
 
 	function getkaryawan(){
-		return $this->db->query("SELECT email, registered_at, id_user
+		return $this->db->query("SELECT email, registered_at, stat, id_user
 			FROM user
 			WHERE user.id_level = 3")->result();
 	}
@@ -47,7 +47,18 @@ class Admin_model extends CI_Model
 	}
 
 	function getdiscussion(){
-		return $this->db->query("SELECT * FROM discussion, profile WHERE discussion.id_user = discussion.id_user AND status = 1")->result();
+		return $this->db->query("SELECT * FROM discussion, profile WHERE discussion.id_user = profile.id_user ")->result();
+	}
+
+	function getbp(){
+		return $this->db->query("SELECT * FROM cop, profile WHERE type = 2 AND cop.id_user = profile.id_user")->result();
+	}
+	function getinnov(){
+		return $this->db->query("SELECT * FROM cop, profile WHERE type = 1 AND cop.id_user = profile.id_user")->result();
+	}
+
+	function approve_journal($id_journal){
+		return $this->db->query("UPDATE journal SET status = 1 WHERE id_journal = '$id_journal' ");
 	}
 
 }

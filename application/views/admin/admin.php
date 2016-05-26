@@ -14,12 +14,12 @@
 	              <div class="small-box bg-aqua">
 	                <div class="inner">
 	                  <h3><?php echo $summary->user ?></h3>
-	                  <p>User Registered</p>
+	                  <p>User</p>
 	                </div>
 	                <div class="icon">
 	                  <i class="fa fa-users"></i>
 	                </div>
-	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	                <a href="<?php echo site_url('admin/user') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 	              </div>
 	              </div>
 
@@ -27,12 +27,12 @@
 	              <div class="small-box bg-red">
 	                <div class="inner">
 	                  <h3><?php echo $summary->journal ?></h3>
-	                  <p>Journal Published</p>
+	                  <p>Journal</p>
 	                </div>
 	                <div class="icon">
 	                  <i class="fa fa-book"></i>
 	                </div>
-	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	                <a href="<?php echo site_url('admin/journal') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 	              </div>
                 </div>
 
@@ -45,7 +45,7 @@
 	                <div class="icon">
 	                  <i class="fa fa-pencil"></i>
 	                </div>
-	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	                <a href="<?php echo site_url('admin/course') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 	              </div>
                 </div>
 
@@ -58,7 +58,7 @@
 	                <div class="icon">
 	                  <i class="fa fa-comments"></i>
 	                </div>
-	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	                <a href="<?php echo site_url('admin/discussion') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 	              </div>
                 </div>
 
@@ -71,7 +71,7 @@
 	                <div class="icon">
 	                  <i class="fa fa-lightbulb-o"></i>
 	                </div>
-	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	                <a href="<?php echo site_url('admin/innovation') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 	              </div>
                 </div>
 
@@ -84,7 +84,7 @@
 	                <div class="icon">
 	                  <i class="fa fa-commenting-o"></i>
 	                </div>
-	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	                <a href="<?php echo site_url('admin/best_practice') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 	              </div>
                 </div>
 

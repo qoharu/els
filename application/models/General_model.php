@@ -14,6 +14,7 @@ class General_model extends CI_Model
 			FROM directorate, user, profile, scope, expert
 			WHERE user.id_user = profile.id_user
 				AND user.id_level = 2
+				AND user.stat = 1
 				AND profile.id_expert = expert.id_expert
 				AND expert.id_directorate = directorate.id_directorate 
 				AND directorate.id_scope = scope.id_scope

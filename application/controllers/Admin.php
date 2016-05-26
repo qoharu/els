@@ -28,10 +28,6 @@ class Admin extends CI_Controller
 			$this->load->view('admin/user',$data);
 		}
 
-		public function register(){
-			$this->load->view('admin/register');
-		}
-
 		public function journal(){
 			$data['title'] = "Admin - Journal";
 			$data['active'][2] = 'active';
@@ -39,6 +35,14 @@ class Admin extends CI_Controller
 			$data['journal'] = $this->Admin_model->getjournal();
 
 			$this->load->view('admin/journal', $data);
+		}
+
+		public function approve_journal($id_journal){
+			$update = $this->Admin_model->approve_journal($id_journal);
+
+			if ($update) {
+				redirect('admin/journal');
+			}
 		}
 
 		public function course(){
@@ -52,17 +56,24 @@ class Admin extends CI_Controller
 		public function discussion(){
 			$data['title'] = "Admin - Discussion";
 			$data['active'][4] = 'active';
-			$data['course'] = $this->Admin_model->getdiscussion();
+			$data['discussion'] = $this->Admin_model->getdiscussion();
 
 			$this->load->view('admin/discussion', $data);
 		}
 
-		public function innovation(){
-			# code...
+		public function cop(){
+			$data['title'] = "Admin - COP";
+			$data['active'][5] = 'active';
+			$data['best_practice'] = $this->Admin_model->getbp();
+			$data['innovation'] = $this->Admin_model->getinnov();
+
+			$this->load->view('admin/cop', $data);
 		}
 
-		public function best_practice(){
-			# code...
+		public function register(){
+			$data['title'] = "Admin - Register";
+			$data['active'][1] = 'active';
+			$this->load->view('admin/register', $data);
 		}
 
 }

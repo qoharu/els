@@ -126,7 +126,6 @@ class Cop extends CI_Controller
 		$this->load->view('cop/innovation_new',$data);
 	}
 	public function innovation_post(){
-		var_dump($_POST);
 		$insert = $this->Cop_model->insert_innovation($_POST);
 		if ($insert) {
 			echo "inserted";

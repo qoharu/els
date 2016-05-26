@@ -39,6 +39,7 @@
                       <th>Fullname</th>
                       <th>Email</th>
                       <th>Registered</th>
+                      <th>Status</th>
                       <th>Action</th>
                     </tr>
                   <?php foreach ($be as $data): ?>
@@ -48,10 +49,11 @@
                       <td><?php echo $data->fullname ?></td>
                       <td><?php echo $data->email ?></td>
                       <td><?php echo $data->registered_at ?></td>
+                      <td><?php echo $data->stat ?></td>
                       <td>
                         <a class="btn btn-xs btn-primary" href="<?php echo site_url('profile/'.$data->id_user) ?>">view</a>
                         <a class="btn btn-xs btn-success" href="">edit</a>
-                        <a class="btn btn-xs btn-danger" href="">delete</a>
+                        <a class="btn btn-xs btn-danger" href="<?php echo site_url('admin/deactivate/'.$data->id_user) ?>">deactivate</a>
                         </td>
                     </tr>
                   <?php endforeach ?>
@@ -64,6 +66,7 @@
                       <th>ID</th>
                       <th>Email</th>
                       <th>Registered</th>
+                      <th>Status</th>
                       <th>Action</th>
                     </tr>
                     <?php foreach ($karyawan as $data): ?>
@@ -71,10 +74,9 @@
                         <td><?php echo $data->id_user ?></td>
                         <td><?php echo $data->email ?></td>
                         <td><?php echo $data->registered_at ?></td>
+                        <td><?php echo $data->stat ?></td>
                         <td>
-                          <a class="btn btn-xs btn-primary" href="">view</a>
-                          <a class="btn btn-xs btn-success" href="">edit</a>
-                          <a class="btn btn-xs btn-danger" href="">delete</a>
+                          <a class="btn btn-xs btn-danger" href="<?php echo site_url('admin/deactivate/'.$data->id_user) ?>">deactivate</a>
                           </td>
                       </tr>
                     <?php endforeach ?>
