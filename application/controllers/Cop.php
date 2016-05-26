@@ -113,6 +113,12 @@ class Cop extends CI_Controller
 		$this->load->view('cop/bp_topic', $data);
 	}
 
+	public function bp_archive(){
+		$data['title'] = "Best Practive Archive";
+		$data['list_bp'] = $this->Cop_model->bp_archive();
+		$this->load->view('cop/bp_archive',$data);
+	}
+
 // INNOVATION
 	public function innovation_new(){
 		$data['title'] = "New Innovation";

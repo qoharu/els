@@ -52,7 +52,7 @@
 				FROM cop, user, profile
 				WHERE cop.id_user = user.id_user
 					AND user.id_user = profile.id_user
-					AND id_cop IN (SELECT id_cop FROM cop_invitation WHERE id_user='$uid' )
+					AND type = 1
 					AND status = 0
 				")->result();
 		}
@@ -148,6 +148,18 @@
 					AND user.id_user = profile.id_user
 					AND type = 2
 					AND status = 1
+				")->result();
+		}
+
+		function bp_archive(){
+			$uid = $this->session->userdata('uid');
+			return $this->db->query("SELECT title, scope_name, id_cop, content, cop.created_at, cop.updated_at, fullname
+				FROM cop, user, profile, scope
+				WHERE cop.id_user = user.id_user
+					AND cop.id_scope = scope.id_scope
+					AND user.id_user = profile.id_user
+					AND type = 2
+					AND status = 0
 				")->result();
 		}
 
