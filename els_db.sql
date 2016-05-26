@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 24 Mei 2016 pada 10.24
+-- Generation Time: 26 Mei 2016 pada 09.40
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -51,9 +51,11 @@ INSERT INTO `cop` (`id_cop`, `id_scope`, `id_user`, `title`, `content`, `summary
 (9, 3, 2, 'Coba practice', '<p>Best practice</p>', '<p>intinya gitu sih</p>', 2, '2016-05-19 05:55:21', '2016-05-19 05:55:47', 0),
 (10, 4, 2, 'zz', '<p>zz</p>', '<p>Kesimpulannya ya gitu</p>', 2, '2016-05-19 06:15:48', '2016-05-19 06:20:37', 0),
 (11, 2, 2, 'Wooyah', '<p>Apalah ini deskripsi gak jelas</p>', '<p>gitulah gatau gue juga pusing</p>', 2, '2016-05-19 08:05:13', '2016-05-19 08:10:13', 0),
-(12, 3, 2, 'Apalah kumaha sia we', '<p>Yongkru mamen</p>', '<p>apa?</p>', 2, '2016-05-19 12:00:11', '2016-05-21 16:16:10', 0),
+(12, 3, 5, 'Apalah kumaha sia we', '<p>Yongkru mamen</p>', '<p>apa?</p>', 2, '2016-05-19 12:00:11', '2016-05-26 05:01:10', 0),
 (13, 2, 2, 'Ini kita bahas ginian', '<p>aaaaaaaaaaaaa</p>', '<p>Kesimpulan gak penting</p>', 2, '2016-05-19 12:00:33', '2016-05-19 12:01:09', 0),
-(14, 3, 2, 'Testing BP', '<p>Yongkru mamen</p>', '<p>Kesimpulan</p>', 2, '2016-05-22 09:23:55', '2016-05-22 09:24:16', 0);
+(14, 2, 4, 'Testing BP', '<p>Yongkru mamen</p>', '<p>Kesimpulan</p>', 2, '2016-05-22 09:23:55', '2016-05-26 05:00:59', 0),
+(15, 2, 2, 'juduuul', '<p>aaaaaa</p>', '<p>kes</p>', 2, '2016-05-26 01:08:30', '2016-05-26 01:25:56', 0),
+(16, 2, 2, 'enter', '<p>a</p>', '<p>Cu</p>', 2, '2016-05-26 01:26:14', '2016-05-26 01:26:23', 0);
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,9 @@ CREATE TABLE `course` (
 
 INSERT INTO `course` (`id_course`, `id_user`, `id_step`, `id_scope`, `title`, `description`, `datetime`, `location`, `quota`, `summary`, `report_file`, `status`, `created_at`, `updated_at`) VALUES
 (1, 2, 5, 2, 'Kuliah menjadi pribadi yang tidak membanggakan (Private)', 'Rahasia', '2016-05-25 00:00:00', 'On request', 1, '', '', 1, '2016-05-24 06:57:19', '2016-05-24 07:01:37'),
-(2, 2, 2, 3, 'Kuliah anti bahlul', '<p>Pokoknya ente-ente harus ikut</p>', '2016-05-26 11:00:00', 'Kelas', 20, '', '', 1, '2016-05-24 07:19:49', '2016-05-24 07:20:26');
+(2, 2, 2, 3, 'Kuliah anti bahlul', '<p>Pokoknya ente-ente harus ikut</p>', '2016-05-26 11:00:00', 'Kelas', 20, '', '', 1, '2016-05-24 07:19:49', '2016-05-24 07:20:26'),
+(3, 4, 4, 4, 'Kelas android untuk orang bego', '<p>Cek 123456789</p>', '2016-05-27 11:00:00', 'Rahasia', 20, '', '', 1, '2016-05-25 14:16:20', '2016-05-25 14:16:20'),
+(4, 5, 3, 4, 'Laravel 101', '<p>Tentang sesuatu yang.... gak tau itulah pokoknya</p>', '2016-05-28 05:00:00', 'Gedung sebelah', 20, '', '', 1, '2016-05-25 14:20:05', '2016-05-25 14:20:05');
 
 -- --------------------------------------------------------
 
@@ -156,7 +160,8 @@ CREATE TABLE `course_participant` (
 --
 
 INSERT INTO `course_participant` (`id_participant`, `id_course`, `id_user`, `enrolled_at`) VALUES
-(1, 1, 2, '2016-05-24 07:11:07');
+(1, 1, 2, '2016-05-24 07:11:07'),
+(2, 2, 4, '2016-05-25 14:17:07');
 
 -- --------------------------------------------------------
 
@@ -342,7 +347,7 @@ CREATE TABLE `journal` (
   `description` text NOT NULL,
   `file` varchar(500) NOT NULL,
   `views` int(11) NOT NULL DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -351,9 +356,9 @@ CREATE TABLE `journal` (
 --
 
 INSERT INTO `journal` (`id_journal`, `id_user`, `id_directorate`, `title`, `description`, `file`, `views`, `created_at`, `status`) VALUES
-(2, 2, 6, 'Analisis dan Implementasi Aplikasi Ini dan Itu', 'Ini adalah panduan umum startup challenge unpas 2016, lalala yeyeye, karena tulisan ini adalah deskripsi maka harusnya tulisan ini panjang banget gitu loh ya biar keliatannya bagus pake banget', '34160e9a6fbc8078bc2a45d0716af20e[NEW] Panduan Umum Startup Challenge UNPAS 2016 (update 4 April 2016).pdf', 0, '2016-04-17 12:36:28', 1),
-(3, 2, 4, 'Coba', 'aslkdjawidjjd aslkdjawid aslkdjawi', '61eb65bb2a3245a730b54b9ace3fa8a9Slide Sebuku.pdf', 0, '2016-05-10 15:09:14', 1),
-(4, 2, 6, 'apaan tuh', 'gak tau deh', '5f0e070824382c6c79cd0dae28b28fc0Sebuku Business Model.pdf', 0, '2016-05-22 09:39:49', 0);
+(2, 2, 6, 'Analisis dan Implementasi Aplikasi Ini dan Itu', 'Ini adalah panduan umum startup challenge unpas 2016, lalala yeyeye, karena tulisan ini adalah deskripsi maka harusnya tulisan ini panjang banget gitu loh ya biar keliatannya bagus pake banget', '34160e9a6fbc8078bc2a45d0716af20e[NEW] Panduan Umum Startup Challenge UNPAS 2016 (update 4 April 2016).pdf', 8, '2016-05-26 02:40:02', 1),
+(3, 2, 4, 'Coba', 'aslkdjawidjjd aslkdjawid aslkdjawi', '61eb65bb2a3245a730b54b9ace3fa8a9Slide Sebuku.pdf', 1, '2016-05-10 15:09:14', 1),
+(4, 2, 6, 'apaan tuh', 'gak tau deh', '5f0e070824382c6c79cd0dae28b28fc0Sebuku Business Model.pdf', 2, '2016-05-26 02:30:13', 1);
 
 -- --------------------------------------------------------
 
@@ -380,7 +385,8 @@ INSERT INTO `journal_comment` (`id_comment`, `id_journal`, `id_user`, `content`,
 (4, 2, 2, 'asdasd', '2016-05-19 14:48:32'),
 (5, 2, 2, '', '2016-05-22 09:41:59'),
 (6, 2, 2, 'asd', '2016-05-22 09:42:34'),
-(7, 3, 2, 'asd', '2016-05-23 09:52:38');
+(7, 3, 2, 'asd', '2016-05-23 09:52:38'),
+(8, 2, 3, 'euy', '2016-05-26 04:56:44');
 
 -- --------------------------------------------------------
 
@@ -416,7 +422,6 @@ CREATE TABLE `profile` (
   `birthdate` date DEFAULT NULL,
   `gender` enum('M','F') DEFAULT NULL,
   `id_expert` int(11) DEFAULT NULL,
-  `point` int(11) NOT NULL DEFAULT '0',
   `pic` varchar(500) DEFAULT 'default.jpeg',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `login` int(11) NOT NULL DEFAULT '0'
@@ -426,11 +431,28 @@ CREATE TABLE `profile` (
 -- Dumping data untuk tabel `profile`
 --
 
-INSERT INTO `profile` (`id_profile`, `NIK`, `id_user`, `fullname`, `birthdate`, `gender`, `id_expert`, `point`, `pic`, `updated_at`, `login`) VALUES
-(1, '62012', 2, 'Rochadi', NULL, NULL, 36, 0, NULL, '2016-05-18 01:00:45', 1),
-(2, '1234', 3, 'Karyawan', NULL, NULL, 99, 0, NULL, '2016-05-18 01:03:17', 1),
-(3, '75238', 4, 'Yudi Nugraha', NULL, NULL, 32, 0, NULL, '2016-05-10 16:24:31', 1),
-(4, '740195', 5, 'Mohamad Noer Fajar', NULL, NULL, 37, 0, NULL, '2016-05-11 03:33:20', 1);
+INSERT INTO `profile` (`id_profile`, `NIK`, `id_user`, `fullname`, `birthdate`, `gender`, `id_expert`, `pic`, `updated_at`, `login`) VALUES
+(1, '62012', 2, 'Rochadi', NULL, NULL, 36, NULL, '2016-05-18 01:00:45', 1),
+(2, '1234', 3, 'Karyawan', NULL, NULL, 99, NULL, '2016-05-18 01:03:17', 1),
+(3, '75238', 4, 'Yudi Nugraha', NULL, NULL, 32, NULL, '2016-05-10 16:24:31', 1),
+(4, '740195', 5, 'Mohamad Noer Fajar', NULL, NULL, 37, NULL, '2016-05-11 03:33:20', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `profile_pending`
+--
+
+CREATE TABLE `profile_pending` (
+  `id_pending` int(11) NOT NULL,
+  `id_profile` int(11) NOT NULL,
+  `NIK` int(11) DEFAULT NULL,
+  `fullname` varchar(255) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `gender` enum('M','F','','') DEFAULT NULL,
+  `id_expert` int(11) DEFAULT NULL,
+  `pic` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -495,23 +517,15 @@ CREATE TABLE `step` (
 INSERT INTO `step` (`id_step`, `id_user`, `id_scope`, `step`, `keterangan`, `id_cop`, `bp_quota`) VALUES
 (1, 4, 2, 2, 'Bagien eta', 8, 1),
 (2, 2, 3, 6, 'Bagean ieu', 9, 1),
-(3, 5, 4, 5, 'maneh jelasin itu', 10, 1),
-(4, 4, 4, 5, 'maneh jelasin ini', 10, 1),
+(3, 5, 4, 6, 'maneh jelasin itu', 10, 1),
+(4, 4, 4, 6, 'maneh jelasin ini', 10, 1),
 (5, 2, 2, 6, 'yah', 11, 1),
 (6, 5, 2, 2, 'Bahas itu ya coy', 13, 1),
 (7, 4, 3, 2, 'yoi bray', 12, 0),
-(8, 5, 3, 1, 'Topik BP', 14, 0);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `topic`
---
-
-CREATE TABLE `topic` (
-  `id_topic` int(11) NOT NULL,
-  `topic_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(8, 5, 3, 1, 'Topik BP', 14, 0),
+(9, 2, 2, 1, 'aaaaaaaaaaa', 15, 0),
+(10, 4, 2, 1, 'bbbbbbbbbbbbbb', 15, 0),
+(11, 5, 2, 1, 'cccccccccccc', 15, 0);
 
 -- --------------------------------------------------------
 
@@ -524,19 +538,20 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `id_level` int(11) NOT NULL,
-  `registered_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `registered_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `stat` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `email`, `password`, `id_level`, `registered_at`) VALUES
-(1, 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 1, '2016-03-18 02:56:24'),
-(2, 'rochadi@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-04-16 15:55:16'),
-(3, 'karyawan@gmail.com', '9e014682c94e0f2cc834bf7348bda428', 3, '2016-05-02 10:12:00'),
-(4, 'yudi_nugraha@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-05-10 16:21:40'),
-(5, 'mohamad_n_fajar@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-05-10 16:26:40');
+INSERT INTO `user` (`id_user`, `email`, `password`, `id_level`, `registered_at`, `stat`) VALUES
+(1, 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 1, '2016-03-18 02:56:24', 1),
+(2, 'rochadi@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-04-16 15:55:16', 1),
+(3, 'karyawan@gmail.com', '9e014682c94e0f2cc834bf7348bda428', 3, '2016-05-02 10:12:00', 1),
+(4, 'yudi_nugraha@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-05-10 16:21:40', 1),
+(5, 'mohamad_n_fajar@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-05-10 16:26:40', 1);
 
 --
 -- Indexes for dumped tables
@@ -629,6 +644,12 @@ ALTER TABLE `profile`
   ADD UNIQUE KEY `NIP` (`NIK`);
 
 --
+-- Indexes for table `profile_pending`
+--
+ALTER TABLE `profile_pending`
+  ADD PRIMARY KEY (`id_pending`);
+
+--
 -- Indexes for table `scope`
 --
 ALTER TABLE `scope`
@@ -647,12 +668,6 @@ ALTER TABLE `step`
   ADD PRIMARY KEY (`id_step`);
 
 --
--- Indexes for table `topic`
---
-ALTER TABLE `topic`
-  ADD PRIMARY KEY (`id_topic`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -666,7 +681,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cop`
 --
 ALTER TABLE `cop`
-  MODIFY `id_cop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_cop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `cop_comment`
 --
@@ -681,12 +696,12 @@ ALTER TABLE `cop_invitation`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id_course` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_course` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `course_participant`
 --
 ALTER TABLE `course_participant`
-  MODIFY `id_participant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_participant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `directorate`
 --
@@ -721,7 +736,7 @@ ALTER TABLE `journal`
 -- AUTO_INCREMENT for table `journal_comment`
 --
 ALTER TABLE `journal_comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `level`
 --
@@ -732,6 +747,11 @@ ALTER TABLE `level`
 --
 ALTER TABLE `profile`
   MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `profile_pending`
+--
+ALTER TABLE `profile_pending`
+  MODIFY `id_pending` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `scope`
 --
@@ -746,12 +766,7 @@ ALTER TABLE `state`
 -- AUTO_INCREMENT for table `step`
 --
 ALTER TABLE `step`
-  MODIFY `id_step` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `topic`
---
-ALTER TABLE `topic`
-  MODIFY `id_topic` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_step` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `user`
 --

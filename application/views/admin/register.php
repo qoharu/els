@@ -23,9 +23,9 @@
 
               <div class="form-group col-md-12">
                 <div class="input-group">
-                  <input class="form-control input-md" type="password"  name="password" placeholder="Password" required="">
+                  <input class="form-control input-md" type="password" id="password" name="password" placeholder="Password" required="">
                   <span class="input-group-btn">
-                    <button class="btn btn-flat btn-default" id="passbtn" ><i class="fa fa-eye"></i></button>
+                    <a class="btn btn-flat btn-default" id="passbtn" ><i class="fa fa-eye"></i></a>
                   </span>
                   
                 </div>
@@ -64,3 +64,15 @@
     </div>
   </section>
 </div>
+
+<script type="text/javascript">
+$("#passbtn").click(function(){
+  if ($("#password").attr('type') == "password") {
+    $("#password").attr('type', 'text');
+    $("#passbtn").html("<i class='fa fa-eye-slash'></i>");
+  }else{
+    $("#password").attr('type', 'password');
+    $("#passbtn").html("<i class='fa fa-eye'></i>");
+  }
+});
+</script>
