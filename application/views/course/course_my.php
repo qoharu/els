@@ -1,4 +1,4 @@
-<?php include '/application/views/header.php' ?>
+<?php include 'application/views/header.php' ?>
 
 <div class="container">
 	<div class="row isi">
@@ -15,7 +15,7 @@
 		                    <?php foreach ($todo as $data): ?>
 		                    	<?php $i++; ?>
 		                        <li>
-			                        <a href="<?php echo site_url('course/create_course/'.$data->id_step) ?>">
+			                        <a href="<?php echo site_url('course/newcourse/'.$data->id_step) ?>">
 			                        <?php echo $data->title ?>
 			                        <span class="pull-right badge bg-blue"><?php echo $data->scope_name ?></span></a>
 		                        </li>

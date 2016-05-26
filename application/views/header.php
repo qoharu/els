@@ -22,7 +22,7 @@
 		<script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
 		<script src="<?= base_url('assets/js/jquery.main.js') ?>" type="text/javascript"></script>
 		<script src="<?= base_url('assets/js/moment.min.js') ?>"></script>
-    <!-- <script src="<?= base_url('assets/js/jquery.slimscroll.min.js') ?>"></script> -->
+    <script src="<?= base_url('assets/js/jquery.slimscroll.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/app.min.js') ?>"></script>
 	</head>
 

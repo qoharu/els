@@ -83,7 +83,7 @@
 			$update =  $this->db->query("UPDATE cop SET summary = '$summary', status = 0 WHERE id_cop = '$id' ");
 
 			$count = 0;
-			foreach ($data['be'] as $be) {
+			foreach (@$data['be'] as $be) {
 				if (!empty($be)) {
 					$keterangan = $topic[$count];
 					if ($count == 0) {
@@ -98,6 +98,8 @@
 			if ($count >= 1 ) {
 				$insert = $this->db->query("INSERT INTO step(id_user, id_scope, step, keterangan, id_cop ) 
 					VALUES".$builder);
+			}else{
+				$insert = 1;
 			}
 			
 			if ($update && $insert) {

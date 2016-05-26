@@ -9,8 +9,15 @@
 			<div class="panel-heading">
 				<h4>Selamat <?php echo greet() ?>, <strong><?php echo $this->session->userdata('fullname'); ?></strong></h4>
 			</div>
-		</div>	
-	    <div class="col-lg-3 col-lg-offset-3">
+		</div>
+		<?php 
+			if (iskaryawan()) {
+				$kelas = 'col-lg-6';
+			}else{
+				$kelas = 'col-lg-3';
+			}
+		?>
+	    <div class="<?php echo $kelas ?> col-lg-offset-3">
 			<!-- small box -->
 	        <a class="btn btn-flat small-box bg-primary" href="<?php echo site_url('discussion') ?>">
 	        <div class="inner">
@@ -21,15 +28,11 @@
 	        </div>
 	        </a>
 	    </div>
-	    <?php 
-	    	if ($this->session->userdata('level') == 'karyawan') {
-	    		$class = 'disabled';
-	    		$keterangan = '(Hanya BE)';
-	    	}
-	    ?>
+	    
+	    <?php if (!iskaryawan()): ?>
 	    <div class="col-lg-3">
 			<!-- small box -->
-	        <a class="btn btn-flat small-box btn-success <?php echo @$class ?>" href="<?php echo site_url('cop') ?>">
+	        <a class="btn btn-flat small-box btn-success" href="<?php echo site_url('cop') ?>">
 	        <div class="inner">
 	        	<i class="fa fa-commenting-o coba"></i>
 	        </div>
@@ -38,6 +41,7 @@
 	        </div>
 	        </a>
 	    </div>
+	    <?php endif ?>
 	    <div class="col-lg-3 col-lg-offset-3">
 			<!-- small box -->
 	        <a class="btn btn-flat small-box btn-info" href="<?php echo site_url('journal') ?>">

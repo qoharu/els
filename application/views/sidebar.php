@@ -17,13 +17,16 @@
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Summary</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span></span></a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <li class="<?php echo @$active[0] ?>"><a href="<?php echo site_url('admin/summary') ?>"><i class="fa fa-list"></i> <span>Summary</span></a></li>
+            <li class="<?php echo @$active[1] ?>"><a href="<?php echo site_url('admin/user') ?>"><i class="fa fa-users"></i><span>Users</span></a></li>
+            <li class="<?php echo @$active[2] ?>"><a href="<?php echo site_url('admin/journal') ?>"><i class="fa fa-book"></i><span>Journals</span></a></li>
+            <li class="<?php echo @$active[3] ?>"><a href="<?php echo site_url('admin/course') ?>"><i class="fa fa-pencil"></i><span>Courses</span></a></li>
+            <li class="<?php echo @$active[4] ?>"><a href="<?php echo site_url('admin/discussion') ?>"><i class="fa fa-comments"></i><span>Group Discussion</span></a></li>
+            <li class="treeview <?php echo @$active[5] ?>">
+              <a href="#"><i class="fa fa-commenting"></i> <span>COP</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#">Link in level 2</a></li>
-                <li><a href="#">Link in level 2</a></li>
+                <li><a href="<?php echo site_url('admin/innovation') ?>">Innovation</a></li>
+                <li><a href="<?php echo site_url('admin/best_practice') ?>">Best Practice</a></li>
               </ul>
             </li>
           </ul><!-- /.sidebar-menu -->

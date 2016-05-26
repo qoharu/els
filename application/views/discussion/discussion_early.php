@@ -1,5 +1,5 @@
 <?php 
-    include '/application/views/header.php';
+    include 'application/views/header.php';
     $i=0;
     $j = array('Ecommerce', 'Enterprise Management', 'Strategic Planning and Business', 'Information Communication Technology');
     $data = array($ec, $em, $spb, $ict);

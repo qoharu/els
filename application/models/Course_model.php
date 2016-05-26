@@ -49,9 +49,10 @@ class Course_model extends CI_Model
 				AND step.id_step = '$id_step' ")->row();
 	}
 
-	function post_new($data){
+	function post_course($data){
 		$insert =  $this->db->insert('course', $data);
 		$update = $this->db->query("UPDATE step SET step = 6 WHERE id_step = '$data[id_step]' ");
+		return ($insert && $update);
 	}
 
 	function enroll($id_course){

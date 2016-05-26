@@ -31,7 +31,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#myPage">HOME</a></li>
 					<li><a href="#about">ABOUT</a></li>
-					<li><a href="#logreg">LOGIN/SIGN UP</a></li>
+					<li><a href="#logreg">LOGIN</a></li>
 					<!--<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
 							<span class="caret"></span>
@@ -125,11 +125,7 @@
 				</div>
 			<!--End Space Antar Button-->
 			<!--Button 2-->
-				<div class="clearfix col-md-4"></div>
-					<div class="col-lg-4">
-						<a href="<?php echo site_url('account/register') ?>" class="btn btn-block"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
-					</div>
-				<div class="clearfix col-md-4"></div>
+
 			<!--End Button 2-->
 		</div>
 	</div>

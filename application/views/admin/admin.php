@@ -1,66 +1,95 @@
+<?php include 'application/views/header.php' ?>
+<?php include 'application/views/sidebar.php' ?>
+
 <div class="content-wrapper">
-	
-<div class="container">
-	<div class="row">
-	
-	<div class="col-md-12 isi-dash">
-		<div class="col-lg-6 col-lg-offset-3 panel">
-			<div class="panel-heading">
-				<h4>Selamat <?php echo greet() ?>, <strong><?php echo $this->session->userdata('fullname'); ?></strong></h4>
-			</div>
-		</div>	
-	    <div class="col-lg-3 col-lg-offset-3">
-			<!-- small box -->
-	        <a class="btn btn-flat small-box bg-primary" href="<?php echo site_url('discussion') ?>">
-	        <div class="inner">
-	        	<i class="fa fa-comments coba"></i>
-	        </div>
-	        <div class="small-box-footer">
-	        Group Discussion 
-	        </div>
-	        </a>
-	    </div>
-	    <?php 
-	    	if ($this->session->userdata('level') == 'karyawan') {
-	    		$class = 'disabled';
-	    		$keterangan = '(Hanya BE)';
-	    	}
-	    ?>
-	    <div class="col-lg-3">
-			<!-- small box -->
-	        <a class="btn btn-flat small-box btn-success <?php echo @$class ?>" href="<?php echo site_url('cop') ?>">
-	        <div class="inner">
-	        	<i class="fa fa-commenting-o coba"></i>
-	        </div>
-	        <div class="small-box-footer">
-	            COP <?= @$keterangan ?>
-	        </div>
-	        </a>
-	    </div>
-	    <div class="col-lg-3 col-lg-offset-3">
-			<!-- small box -->
-	        <a class="btn btn-flat small-box btn-info" href="<?php echo site_url('journal') ?>">
-	        <div class="inner">
-	        	<i class="fa fa-book coba"></i>
-	        </div>
-	        <div class="small-box-footer">
-	            Journal
-	        </div>
-	        </a>
-	    </div>
 
-	    <div class="col-lg-3">
-			<!-- small box -->
-	        <a class="btn btn-flat small-box btn-danger" href="<?php echo site_url('course') ?>">
-	        <div class="inner">
-	        	<i class="fa  fa-pencil coba"></i>
-	        </div>
-	        <div class="small-box-footer">
-	            Course
-	        </div>
-	        </a>
-	    </div>
+<section class="content col-md-12">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Summary</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                <div class="row">
+                  <div class="col-md-4">
+	              <div class="small-box bg-aqua">
+	                <div class="inner">
+	                  <h3><?php echo $summary->user ?></h3>
+	                  <p>User Registered</p>
+	                </div>
+	                <div class="icon">
+	                  <i class="fa fa-users"></i>
+	                </div>
+	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	              </div>
+	              </div>
 
+	              <div class="col-md-4">
+	              <div class="small-box bg-red">
+	                <div class="inner">
+	                  <h3><?php echo $summary->journal ?></h3>
+	                  <p>Journal Published</p>
+	                </div>
+	                <div class="icon">
+	                  <i class="fa fa-book"></i>
+	                </div>
+	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	              </div>
+                </div>
+
+                <div class="col-md-4">
+	              <div class="small-box bg-blue">
+	                <div class="inner">
+	                  <h3><?php echo $summary->course ?></h3>
+	                  <p>Course</p>
+	                </div>
+	                <div class="icon">
+	                  <i class="fa fa-pencil"></i>
+	                </div>
+	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	              </div>
+                </div>
+
+                <div class="col-md-4">
+	              <div class="small-box bg-teal">
+	                <div class="inner">
+	                  <h3><?php echo $summary->discussion ?></h3>
+	                  <p>Group Discussion</p>
+	                </div>
+	                <div class="icon">
+	                  <i class="fa fa-comments"></i>
+	                </div>
+	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	              </div>
+                </div>
+
+                <div class="col-md-4">
+	              <div class="small-box bg-green">
+	                <div class="inner">
+	                  <h3><?php echo $summary->innovation ?></h3>
+	                  <p>Innovation</p>
+	                </div>
+	                <div class="icon">
+	                  <i class="fa fa-lightbulb-o"></i>
+	                </div>
+	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	              </div>
+                </div>
+
+                <div class="col-md-4">
+	              <div class="small-box bg-orange">
+	                <div class="inner">
+	                  <h3><?php echo $summary->best_practice ?></h3>
+	                  <p>Best Practice</p>
+	                </div>
+	                <div class="icon">
+	                  <i class="fa fa-commenting-o"></i>
+	                </div>
+	                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+	              </div>
+                </div>
+
+	            </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </section>
 	</div>
-	</div>
-</div>

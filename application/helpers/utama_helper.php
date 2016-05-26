@@ -26,7 +26,7 @@ function switchstatus($status){
 function greet(){
 	$waktu = date('H');
 	switch ($waktu) {
-		case ($waktu <= 3 && $waktu >= 19) :
+		case ($waktu <= 3 || $waktu >= 18) :
 			echo "Malam";
 			break;
 		case ($waktu <= 10 && $waktu >= 3) :

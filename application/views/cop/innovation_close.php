@@ -1,4 +1,4 @@
-<?php include '/application/views/header.php' ?>
+<?php include 'application/views/header.php' ?>
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap3-wysihtml5.min.css') ?>">
 <script type="text/javascript" src="<?= base_url('assets/js/bootstrap3-wysihtml5.all.min.js') ?>"></script>
 

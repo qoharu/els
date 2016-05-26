@@ -29,7 +29,7 @@ class Course extends CI_Controller
 		$this->load->view('course/course_my', $data);
 	}
 
-	public function create_course($id_step){
+	public function newcourse($id_step){
 		$data['title'] = 'Open new course';
 		$data['detail'] = $this->Course_model->detail_new($id_step);
 
@@ -47,7 +47,7 @@ class Course extends CI_Controller
 		$data['id_user'] = $this->session->userdata('uid');
 		$data['id_step'] = $id_step;
 
-		$insert = $this->Course_model->post_new($data);
+		$insert = $this->Course_model->post_course($data);
 		if ($insert) {
 			redirect('course');
 		}
@@ -63,7 +63,7 @@ class Course extends CI_Controller
 
 	public function enroll($id_course){
 		$insert = $this->Course_model->enroll($id_course);
-		if ($insert) {
+		if ($insert){
 			redirect('course');
 		}
 	}

@@ -1,4 +1,4 @@
-<?php include '/application/views/header.php' ?>
+<?php include 'application/views/header.php' ?>
 
 <div class="container">
 	<div class="row isi">
