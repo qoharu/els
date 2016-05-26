@@ -45,4 +45,9 @@ class Admin_model extends CI_Model
 			ORDER BY id_course DESC
 			")->result();
 	}
+
+	function getdiscussion(){
+		return $this->db->query("SELECT * FROM discussion, profile WHERE discussion.id_user = discussion.id_user AND status = 1")->result();
+	}
+
 }

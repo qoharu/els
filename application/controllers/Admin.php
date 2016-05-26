@@ -49,8 +49,12 @@ class Admin extends CI_Controller
 			$this->load->view('admin/course', $data);
 		}
 
-		public function group_discussion(){
-			# code...
+		public function discussion(){
+			$data['title'] = "Admin - Discussion";
+			$data['active'][4] = 'active';
+			$data['course'] = $this->Admin_model->getdiscussion();
+
+			$this->load->view('admin/discussion', $data);
 		}
 
 		public function innovation(){

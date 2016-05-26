@@ -10,7 +10,6 @@
                 <div class="box-body">
                 <a class="btn btn-primary pull-right" href="<?php echo site_url('admin/register') ?>">Register</a>
 
-                <div class="col-md-10">
                 <h3>Pending edit</h3>
 				<table class="table table-striped table-bordered">
                     <tbody>
@@ -31,9 +30,7 @@
                     </tr>
                   </tbody>
                   </table>
-                </div>
 
-            <div class="col-md-10">
 			<h3>Business Expert</h3>
 				<table class="table table-striped">
                     <tbody><tr>
@@ -60,9 +57,7 @@
                   <?php endforeach ?>
                   </tbody>
                   </table>
-                </div>
 
-			<div class="col-md-10">
 			<h3>Karyawan</h3>
 				<table class="table table-striped">
                     <tbody><tr>
@@ -85,7 +80,6 @@
                     <?php endforeach ?>
                   </tbody>
                   </table>
-                </div>
 
 </div>
 </div>
