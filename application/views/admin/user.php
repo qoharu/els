@@ -53,7 +53,11 @@
                       <td>
                         <a class="btn btn-xs btn-primary" href="<?php echo site_url('profile/'.$data->id_user) ?>">view</a>
                         <a class="btn btn-xs btn-success" href="">edit</a>
-                        <a class="btn btn-xs btn-danger" href="<?php echo site_url('admin/deactivate/'.$data->id_user) ?>">deactivate</a>
+                        <?php if ($data->stat): ?>
+                          <a class="btn btn-xs btn-danger" href="<?php echo site_url('admin/deactivate/'.$data->id_user) ?>">deactivate</a>
+                        <?php else: ?>
+                          <a class="btn btn-xs btn-success" href="<?php echo site_url('admin/activate/'.$data->id_user) ?>">activate</a>
+                        <?php endif ?>
                         </td>
                     </tr>
                   <?php endforeach ?>
@@ -76,7 +80,11 @@
                         <td><?php echo $data->registered_at ?></td>
                         <td><?php echo $data->stat ?></td>
                         <td>
+                          <?php if ($data->stat): ?>
                           <a class="btn btn-xs btn-danger" href="<?php echo site_url('admin/deactivate/'.$data->id_user) ?>">deactivate</a>
+                        <?php else: ?>
+                          <a class="btn btn-xs btn-success" href="<?php echo site_url('admin/activate/'.$data->id_user) ?>">activate</a>
+                        <?php endif ?>
                           </td>
                       </tr>
                     <?php endforeach ?>

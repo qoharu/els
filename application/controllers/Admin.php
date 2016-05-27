@@ -28,6 +28,22 @@ class Admin extends CI_Controller
 			$this->load->view('admin/user',$data);
 		}
 
+		public function deactivate($id_user){
+			$deactivate = $this->Admin_model->deactivate($id_user);
+
+			if ($deactivate) {
+				redirect('admin/user');
+			}
+		}
+
+		public function activate($id_user){
+			$activate = $this->Admin_model->activate($id_user);
+
+			if ($activate) {
+				redirect('admin/user');
+			}
+		}
+
 		public function journal(){
 			$data['title'] = "Admin - Journal";
 			$data['active'][2] = 'active';
@@ -75,5 +91,18 @@ class Admin extends CI_Controller
 			$data['active'][1] = 'active';
 			$this->load->view('admin/register', $data);
 		}
+
+		public function register_post(){
+		$data['email'] = $this->input->post('email');
+		$data['fullname'] = $this->input->post('fullname');
+		$data['password'] = $this->input->post('password');
+		$data['level'] = $this->input->post('level');
+		
+		$input = $this->Admin_model->register($data);
+		
+		if ($input) {
+			redirect('admin/register');
+		}
+	}
 
 }

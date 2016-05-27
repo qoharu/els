@@ -5,7 +5,7 @@ class Account_model extends CI_Model
 	function validate($data){
 		$password=$data['password'];
 		$email=$data['email'];
-		$user = $this->db->query("SELECT * FROM user WHERE email='$email' AND password = '$password' ");
+		$user = $this->db->query("SELECT * FROM user WHERE email='$email' AND password = '$password' AND stat = 1 ");
 
 		if($user->num_rows()==1){
 			$datauser = $user->row();
@@ -77,26 +77,5 @@ class Account_model extends CI_Model
 		}
 	}
 
-	function register($data){
-		$fullname = $data['fullname'];
-		$email = $data['email'];
-		$username = $data['username'];
-		$password = $data['password'];
-		// $this->db->query("BEGIN");
-		$query = "INSERT INTO user(username,password,email) VALUES('$username','$password','$email')";
-		
-		// $this->db->query($query);
-		// $query = "SELECT LAST_INSERT_ID() as A";
-		// $lastid = $this->db->query($query)->row()->A;
-		// echo $lastid;
-		// $query = "INSERT INTO profile(fullname,user_id) VALUES('$fullname',$lastid)";
-	  	$this->db->query($query);
-	  	$lastid = $this->db->insert_id();
-		$query1 = "INSERT INTO profile(fullname,user_id) VALUES('$fullname','$lastid')";
-		if ($this->db->query($query1)) {
-			return true;
-		}else{
-			return false;
-		}
-	}
+	
 }

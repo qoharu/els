@@ -61,4 +61,29 @@ class Admin_model extends CI_Model
 		return $this->db->query("UPDATE journal SET status = 1 WHERE id_journal = '$id_journal' ");
 	}
 
+	function register($data){
+		$fullname = $data['fullname'];
+		$email = $data['email'];
+		$password = md5($data['password']);
+		$level = $data['level'];
+
+		$insert = $this->db->query("INSERT INTO user(password, email, id_level) VALUES('$password','$email', '$level')");
+		if ($insert && $level == 2) {
+			$id = $this->db->query("SELECT max(id_user) as id_user FROM user ")->row()->id_user;
+			$masukin = $this->db->query("INSERT INTO profile(fullname, id_user) VALUES ('$fullname','$id') ");
+
+			return $masukin;
+		}else{
+			return 1;
+		}
+	}
+
+	function deactivate($id_user){
+		return $this->db->query("UPDATE user SET stat = 0 WHERE id_user = '$id_user' ");
+	}
+
+	function activate($id_user){
+		return $this->db->query("UPDATE user SET stat = 1 WHERE id_user = '$id_user' ");
+	}
+
 }

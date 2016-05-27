@@ -67,19 +67,6 @@ class Account extends CI_Controller
 		$this->load->view('signup', $data);
 	}
 
-	public function post_register(){
-		$data['username'] = $this->input->post('username');
-		$data['email'] = $this->input->post('email');
-		$data['nip'] = $this->input->post('nip');
-		$data['fullname'] = $this->input->post('fullname');
-		$data['posisi'] = $this->input->post('posisi');
-		
-		$input = $this->Account_model->register($data);
-		if ($input) {
-			# code...
-		}
-	}
-
 	public function user($u){
 		$data['profile'] = $this->Account_model->getprofile($u);
 		$data['title'] = "Profile";

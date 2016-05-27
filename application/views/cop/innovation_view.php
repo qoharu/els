@@ -146,7 +146,7 @@
 		                    </div>
 					</div>
 					<div class="box-footer content-forum">
-						<textarea class="textarea textarea-forum" name="content" placeholder="Description"></textarea>
+						<textarea class="textarea textarea-forum" required="" name="content" placeholder="Description"></textarea>
 					</div>
 						<button class="pull-right btn btn-primary" type="submit">Submit</button>
 					</form>

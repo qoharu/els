@@ -45,7 +45,7 @@
 		                    		$kelas = ($data->status) ? 'bg-green' : 'bg-red' ;
 		                    	?>
 		                        <li>
-			                        <a href="<?php echo site_url('discussion/view_course/'.$data->id_course) ?>">
+			                        <a href="<?php echo site_url('course/view_course/'.$data->id_course) ?>">
 			                        <?php echo $data->title ?>
 			                        <span class="pull-right badge <?php echo $kelas ?>"><?php echo $judul ?></span></a>
 		                        </li>

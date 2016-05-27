@@ -151,15 +151,17 @@
 				")->result();
 		}
 
-		function bp_archive(){
+		function bp_archive($page){
+			$page = ($page * 5);
 			$uid = $this->session->userdata('uid');
-			return $this->db->query("SELECT title, scope_name, id_cop, content, cop.created_at, cop.updated_at, fullname
+			return $this->db->query("SELECT title, scope_name, id_cop, content, cop.created_at, cop.updated_at, fullname, (SELECT COUNT(*) FROM cop WHERE type=2 AND status = 0) AS count
 				FROM cop, user, profile, scope
 				WHERE cop.id_user = user.id_user
 					AND cop.id_scope = scope.id_scope
 					AND user.id_user = profile.id_user
 					AND type = 2
 					AND status = 0
+				LIMIT $page, 5
 				")->result();
 		}
 

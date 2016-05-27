@@ -17,13 +17,15 @@
                     <?php echo $data->title ?>
                   </a>
                   </h3>
-                  <?php if ($data->enrolled): ?>
-                    <a class="btn bg-green pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Enrolled</a>
-                  <?php else: ?>
-                    <?php if ($data->count >= $data->quota): ?>
-                      <a class="btn bg-red pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Full</a>
+                  <?php if ($this->session->userdata('uid') != $data->id_user): ?>
+                    <?php if ($data->enrolled): ?>
+                      <a class="btn bg-green pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Enrolled</a>
                     <?php else: ?>
-                      <a class="btn bg-blue pull-right" href="<?php echo site_url('course/enroll/'.$data->id_course) ?>"><i class="fa fa-user-plus">&nbsp;</i> JOIN</a>
+                      <?php if ($data->count >= $data->quota): ?>
+                        <a class="btn bg-red pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Full</a>
+                      <?php else: ?>
+                        <a class="btn bg-blue pull-right" href="<?php echo site_url('course/enroll/'.$data->id_course) ?>"><i class="fa fa-user-plus">&nbsp;</i> JOIN</a>
+                      <?php endif ?>
                     <?php endif ?>
                   <?php endif ?>
                 </div>
@@ -32,6 +34,7 @@
                 </div>
                 <div class="box-footer no-border text-black">
                   <p class="text-black"><?php echo $data->description ?></p>
+                  
                   <div class="row">
                     <div class="col-xs-3 text-center border-right text-black">
                       <canvas class="canvas-course"></canvas>

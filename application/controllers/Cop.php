@@ -113,9 +113,21 @@ class Cop extends CI_Controller
 		$this->load->view('cop/bp_topic', $data);
 	}
 
-	public function bp_archive(){
+	public function bp_archive($page=1){
+		$page--;
 		$data['title'] = "Best Practive Archive";
-		$data['list_bp'] = $this->Cop_model->bp_archive();
+		$data['list_bp'] = $this->Cop_model->bp_archive($page);
+
+		$count = @$data['list_bp'][0]->count;
+		$halaman = (int) ceil($count / 5);
+		$data['page'] = '';
+		for ($i=1; $i <= $halaman; $i++) {
+			if ($i == $page+1) {
+				$data['page'] .= "<a href='".site_url('cop/bp_archive/'.$i)."' class='btn btn-default active disabled'>$i</a>";
+			}else{
+				$data['page'] .= "<a href='".site_url('cop/bp_archive/'.$i)."' class='btn btn-default'>$i</a>";
+			}
+		}
 		$this->load->view('cop/bp_archive',$data);
 	}
 

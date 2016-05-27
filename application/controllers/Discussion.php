@@ -138,4 +138,22 @@ class Discussion extends CI_Controller
 	public function view($id=1){
 		$this->load->view('discussion/discussion_view');
 	}
+
+	public function discussion_archive($page=1){
+		$page--;
+		$data['title'] = 'Discussion Archive';
+		$data['archive'] = $this->Discussion_model->get_archive($page);
+
+		$count = @$data['archive'][0]->count;
+		$halaman = (int) ceil($count / 20);
+		$data['page'] = '';
+		for ($i=1; $i <= $halaman; $i++) {
+			if ($i == $page+1) {
+				$data['page'] .= "<a href='".site_url('discussion/discussion_archive/'.$i)."' class='btn btn-default active disabled'>$i</a>";
+			}else{
+				$data['page'] .= "<a href='".site_url('discussion/discussion_archive/'.$i)."' class='btn btn-default'>$i</a>";
+			}
+		}
+		$this->load->view('discussion/discussion_archive', $data);
+	}
 }

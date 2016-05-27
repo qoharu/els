@@ -54,6 +54,28 @@ class Course extends CI_Controller
 
 	}
 
+	public function view_course($id_course){
+		$data['course'] = $this->Course_model->detail_course($id_course);
+		$data['participant'] = $this->Course_model->course_participant($id_course);
+		$data['title'] = "Course - ".$data['course']->title;
+
+		$this->load->view('course/course_view',$data);
+	}
+
+	public function close_course($id_course){
+		$data['id_course'] = $id_course;
+		$data['title'] = 'Course Summary';
+
+		$this->load->view('course/course_close',$data);
+	}
+
+	public function post_close($id_course){
+		$close = $this->Course_model->course_summary($id_course, $this->input->post('summary'));
+		if ($close) {
+			redirect('course/mycourse');
+		}
+	}	
+
 	public function browse($page){
 		$q = mysql_escape_string(@$_GET['q']);
 		$data['course'] = $this->Course_model->browsecourse($page,$q);

@@ -36,6 +36,16 @@ class Discussion_model extends CI_Model
 				AND status = 2 ")->row();
 	}
 
+	function get_archive($page){
+		$page = ($page * 20);
+		return $this->db->query("SELECT title, fullname, content, scope_name, id_discussion, (SELECT COUNT(*) FROM discussion WHERE status = 0) AS count
+			FROM discussion, scope, profile
+			WHERE discussion.status = 0
+				AND discussion.id_scope = scope.id_scope
+				AND discussion.id_user = profile.id_user
+			LIMIT $page, 20 ")->result();
+	}
+
 	function disc_list(){
 		$uid = $this->session->userdata('uid');
 		return $this->db->query("SELECT title, content, scope_name, status, id_step, id_discussion

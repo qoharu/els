@@ -49,6 +49,27 @@ class Course_model extends CI_Model
 				AND step.id_step = '$id_step' ")->row();
 	}
 
+	function detail_course($id_course){
+		return $this->db->query("SELECT title, scope_name, description, status, location, datetime, id_course,
+				(SELECT COUNT(*) FROM course_participant WHERE course_participant.id_course = course.id_course) AS count, quota, fullname, course.id_user
+			FROM course, profile, scope
+			WHERE id_course = '$id_course'
+				AND course.id_scope = scope.id_scope
+				AND course.id_user = profile.id_user")->row();
+	}
+
+	function course_participant($id_course){
+		return $this->db->query("SELECT * 
+			FROM course_participant, profile
+			WHERE course_participant.id_user = profile.id_user
+				AND id_course = '$id_course' ")->result();
+	}
+
+	function course_summary($id_course, $summary){
+		$course = $this->db->query("UPDATE course SET summary='$summary', status = 0 WHERE id_course = '$id_course' ");
+		return $course;
+	}
+
 	function post_course($data){
 		$insert =  $this->db->insert('course', $data);
 		$update = $this->db->query("UPDATE step SET step = 6 WHERE id_step = '$data[id_step]' ");
