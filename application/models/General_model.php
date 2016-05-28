@@ -37,8 +37,8 @@ class General_model extends CI_Model
 		return $this->db->query("SELECT * FROM course where id_user = '$id_user' ")->num_rows();
 	}
 
-	function cekstep($id_scope, $step){
-		return 3 - $this->db->query("SELECT * FROM step where id_scope= '$id_scope' AND step = '$step' ")->num_rows();
+	function cekstep($id_scope){
+		return 3 - $this->db->query("SELECT * FROM step where id_scope= '$id_scope' AND bp_quota = 1 ")->num_rows();
 	}
 
 	

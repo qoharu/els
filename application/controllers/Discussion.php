@@ -4,28 +4,37 @@
 */
 class Discussion extends CI_Controller
 {
+	private $state;
+
 	function __construct(){
 		parent::__construct();
 		$this->load->model("Discussion_model"); // include Discussion_model pada setiap fungsi
-		$this->Discussion_model->disc_trigger();
+		$this->state = $this->Discussion_model->cekstate();
+		// $this->Discussion_model->disc_trigger();
 	}
-	public function index($waktu = 1){
-		$data['title'] = date('d');
-		$waktu = date('d');
-		switch ($waktu) {
-			case ($waktu <= 7):
+
+	public function index(){
+		switch ($this->state) {
+			case 1:
 				redirect('discussion/vote');
 				break;
-			case ($waktu >= 7 && $waktu <= 21):
+			case 2:
 				redirect('discussion/forum');
 				break;
-			case ($waktu >= 22):
+			case 3:
+				$data['title'] = "Discussion";
 				$this->load->view('discussion/discussion_late',$data);
 				break;
 		}
 	}
 
+	public function setdate($tanggal){
+		$this->Discussion_model->disc_trigger($tanggal);
+	}
 	public function vote(){
+		if ($this->state != 1) {
+			redirect('discussion');
+		}
 		$data['title'] = 'Vote Topic';
 		$data['ec'] = $this->Discussion_model->vote_detail(1);
 		$data['em'] = $this->Discussion_model->vote_detail(2);
@@ -36,6 +45,9 @@ class Discussion extends CI_Controller
 	}
 
 	public function vote_topic($id_disc){
+		if ($this->state != 1) {
+			redirect('discussion');
+		}
 		$data['id_discussion'] = $id_disc;
 		$data['id_user'] = $this->session->userdata('uid');
 		$vote = $this->Discussion_model->vote($data);
@@ -45,6 +57,9 @@ class Discussion extends CI_Controller
 	}
 
 	public function forum(){
+		if ($this->state != 2) {
+			redirect('discussion');
+		}
 		$data['title'] = "Discussion Forum";
 		for ($i=1; $i <= 4 ; $i++) { 
 			$data['forum'][] = @$this->Discussion_model->get_discussion($i);
@@ -56,6 +71,7 @@ class Discussion extends CI_Controller
 		$data['title'] = "My discussion";
 		$data['todo'] = $this->Discussion_model->todo();
 		$data['list'] = $this->Discussion_model->disc_list();
+		$data['state'] = $this->Discussion_model->cekstate();
 
 		$this->load->view('discussion/discussion_my', $data);
 	}
@@ -135,8 +151,12 @@ class Discussion extends CI_Controller
 		$this->load->view('discussion/discussion_close',$data);
 	}
 
-	public function view($id=1){
-		$this->load->view('discussion/discussion_view');
+	public function disc_close_post($id_discussion){
+		$close = $this->Discussion_model->close_post($id_discussion, $this->input->post('summary'));
+		if ($close){
+			redirect('discussion/view_discussion/'.$id_discussion);
+		}
+
 	}
 
 	public function discussion_archive($page=1){

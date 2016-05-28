@@ -23,7 +23,8 @@ class Course_model extends CI_Model
 			WHERE scope.id_scope = discussion.id_scope
 				AND discussion.id_user = '$uid'
 				AND discussion.id_step = step.id_step
-				AND step.step = 5 ")->result();
+				AND discussion.status = 0
+				AND step.step = 4 ")->result();
 	}
 
 	function mycourse(){
@@ -67,12 +68,13 @@ class Course_model extends CI_Model
 
 	function course_summary($id_course, $summary){
 		$course = $this->db->query("UPDATE course SET summary='$summary', status = 0 WHERE id_course = '$id_course' ");
+		$update = $this->db->query("UPDATE step SET step = 6 WHERE id_step = '$data[id_step]' ");
 		return $course;
 	}
 
 	function post_course($data){
 		$insert =  $this->db->insert('course', $data);
-		$update = $this->db->query("UPDATE step SET step = 6 WHERE id_step = '$data[id_step]' ");
+		$update = $this->db->query("UPDATE step SET step = 5 WHERE id_step = '$data[id_step]' ");
 		return ($insert && $update);
 	}
 

@@ -184,7 +184,8 @@
 				FROM step, user, profile
 				WHERE step.id_scope = '$id_scope'
 					AND step.id_user = user.id_user
-					AND step.step = 1
+					AND (step.step = 1 OR step.step = 2)
+					AND bp_quota = 1
 					AND user.id_user = profile.id_user")->result();
 		}
 

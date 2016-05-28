@@ -84,7 +84,7 @@ class Cop extends CI_Controller
 		$data['title'] = $detil[0]->title;
 		$data['scope'] = $detil[0]->scope_name;
 		$data['id_scope'] = $detil[0]->id_scope;
-		$data['step'] = $this->General_model->cekstep($detil[0]->id_scope, 1);
+		$data['step'] = $this->General_model->cekstep($detil[0]->id_scope);
 
 		$data['id_cop'] = $id_cop;
 		$this->load->view('cop/bp_close', $data);

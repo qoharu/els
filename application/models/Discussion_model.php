@@ -79,7 +79,7 @@ class Discussion_model extends CI_Model
 					AND user.id_user = profile.id_user
 					AND user.id_level = level.id_level
 					AND profile.id_expert = expert.id_expert
-				ORDER BY id_discussion ASC
+				ORDER BY id_comment ASC
 				LIMIT $page, 20
 				")->result();
 
@@ -110,19 +110,30 @@ class Discussion_model extends CI_Model
 		return $this->db->insert('discussion_vote',$data);
 	}
 
-	function disc_trigger(){
-		$date = date('d');
+	function cekstate(){
+		return $this->db->query("SELECT step FROM state")->row()->step;
+	}
+
+	function close_post($id_discussion, $summary){
+		return $this->db->query("UPDATE discussion SET status = 0 AND summary = '$summary' WHERE id_discussion = '$id_discussion' ");
+	}
+
+	function disc_trigger($date = 0){
+		if ($date == 0) {
+			$date = date('d');
+		}
 		$state = $this->db->query("SELECT step FROM state")->row();
 		$state = $state->step;
 
 		switch ($date) {
 			case ($date <= 7):
 				if ($state != 1) {
+					// update state waktu
 					$state = $this->db->query("UPDATE state SET step = 1");
-					$quota = $this->db->query("UPDATE step SET bp_quota = 0 WHERE step = 1 OR step = 2");
+					
+					// Yang belum floor judul discussion otomatis fail
 					$fail = $this->db->query("UPDATE step SET step = 9 WHERE step = 1");
-					$next = $this->db->query("UPDATE step SET step = 3 WHERE step = 2");
-					if ($state && $quota && $fail && $next) {
+					if ($state && $fail) {
 						return 1;
 					}else{
 						return 0;
@@ -130,7 +141,10 @@ class Discussion_model extends CI_Model
 				}
 				break;
 			case ($date > 7 && $date <= 21):
+				// setting quota jadi 0 biar di bp bisa nambah penugasan
+				$quota = $this->db->query("UPDATE step SET bp_quota = 0 WHERE step = 2 OR step = 9");
 				if ($state != 2) {
+					// ambil id_discussion dengan vote terbesar
 					for ($i=1; $i <=4 ; $i++) { 
 						$id_disc[$i] = $this->db->query("
 							SELECT id_step, id_discussion,
@@ -139,23 +153,36 @@ class Discussion_model extends CI_Model
 									WHERE discussion.id_discussion = discussion_vote.id_discussion) AS vote
 							FROM discussion
 							WHERE id_scope = '$i'
+								AND status = 1
 							ORDER BY vote DESC, discussion.created_at ASC
 							LIMIT 1
 							 ")->row();
-						
+						// Jika ada hasilnya lalu simpan id_discussion dan id_step ke array
 						if (! empty(@$id_disc[$i]->id_discussion)) {
 							$id_dis[$i] = @$id_disc[$i]->id_discussion;
 							$id_step[$i] = @$id_disc[$i]->id_step;
 						}
-						
 					}
-					$disc = join(',', $id_dis);
-					$id_step = join(',', $id_step);
-					$update = $this->db->query("UPDATE discussion SET status = 2 WHERE id_discussion IN ($disc) ");
-					$updatedis = $this->db->query("UPDATE discussion SET status = 3 WHERE status = 2 ");
 
-					$step = $this->db->query("UPDATE step SET step = 4 WHERE id_step IN ($id_step) ");
-					$step2 = $this->db->query("UPDATE step SET step = 8 WHERE step = 3 ");
+					//convert array jadi string dengan pemisah koma
+					// set status discussion dgn vote terbesar jadi open
+					if (!empty($id_disc) && !empty($id_step)) {
+						$disc = join(',', $id_dis);
+						$id_step = join(',', $id_step);
+						$update = $this->db->query("UPDATE discussion SET status = 2 WHERE id_discussion IN ($disc) ");
+						// sisanya jadi disabled
+						$updatedis = $this->db->query("UPDATE discussion SET status = 3 WHERE status = 1 AND id_discussion NOT IN ($disc) ");
+						// set step jadi 3 utk pemenang vote
+						$step = $this->db->query("UPDATE step SET step = 3 WHERE id_step IN ($id_step) ");
+						// set step selesai (8) utk yang kalah
+						$step2 = $this->db->query("UPDATE step SET step = 8 WHERE step = 2 ");
+					}else{
+						$update = 1;
+						$updatedis = 1;
+						$step = 1;
+						$step2 = 1;
+					}
+					// set state waktu jadi 2 (on going discussion)
 					$state = $this->db->query("UPDATE state SET step = 2");
 
 					if ($update && $updatedis && $step && $step2 && $state) {
@@ -167,11 +194,14 @@ class Discussion_model extends CI_Model
 				break;
 			case ($date >= 22):
 				if ($state != 3) {
+					// Close semua forum yang masih aktif
 					$update = $this->db->query("UPDATE discussion SET status = 0 WHERE status = 2");
-					$step = $this->db->query("UPDATE step SET step = 5 WHERE step = 4 ");
+					// Wajib buka course untuk BE yang buka diskusi
+					$step = $this->db->query("UPDATE step SET step = 4 WHERE step = 3 ");
+					// Set state waktu jadi 3 (Selamat berbahagia)
 					$state = $this->db->query("UPDATE state SET step = 3");
 					
-					if ($update && $step) {
+					if ($update && $step && $state) {
 						return 1;
 					} else {
 						return 0;
