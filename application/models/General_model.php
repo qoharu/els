@@ -21,10 +21,44 @@ class General_model extends CI_Model
 			")->result();
 	}
 
+	function getexpert(){
+		return $this->db->query("SELECT id_expert, expert_name FROM expert")->result();
+	}
+
+	function getnotif(){
+		$uid = $this->session->userdata('uid');
+		return $this->db->query("SELECT * FROM notif WHERE id_user= '$uid' AND red = 0 ")->result();
+	}
+
+	function setnotif($uid, $title, $link, $type){
+		$builder = "('$uid[0]', '$title', '$link', '$type')";
+		$count = count($uid);
+		if ($count > 1) {
+			for ($i=1; $i < $count ; $i++) {
+				$builder .= ", ('$uid[$i]', '$title', '$link', '$type')";
+			}
+		}
+		$query = $this->db->query("INSERT INTO notif(id_user, title, link, type) VALUES".$builder);
+
+		return $query;
+	}
+
+	function setpoint($id_user, $value, $keterangan ){
+		$data['id_user'] = $id_user;
+		$data['value'] = $value;
+		$data['keterangan'] = $keterangan;
+
+		return $this->db->insert('point', $data);
+	}
+
 	function getscope(){
 		return $this->db->query("SELECT scope_name, id_scope FROM scope")->result();
 	}
-	
+
+	function clearnotif(){
+		$uid = $this->session->userdata('uid');
+		return $this->db->query("UPDATE notif SET red = 1 WHERE id_user = '$uid' ");
+	}
 	function getjournalcount($id_user){
 		return $this->db->query("SELECT * FROM journal where id_user = '$id_user' ")->num_rows();
 	}

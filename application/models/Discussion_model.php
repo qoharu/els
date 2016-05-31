@@ -36,13 +36,14 @@ class Discussion_model extends CI_Model
 				AND status = 2 ")->row();
 	}
 
-	function get_archive($page){
+	function get_archive($page,$q=''){
 		$page = ($page * 20);
 		return $this->db->query("SELECT title, fullname, content, scope_name, id_discussion, (SELECT COUNT(*) FROM discussion WHERE status = 0) AS count
 			FROM discussion, scope, profile
 			WHERE discussion.status = 0
 				AND discussion.id_scope = scope.id_scope
 				AND discussion.id_user = profile.id_user
+				AND (title LIKE '%$q%' OR content LIKE '%$q%')
 			LIMIT $page, 20 ")->result();
 	}
 
@@ -72,13 +73,13 @@ class Discussion_model extends CI_Model
 	function get_disc_comment($id, $page=0){
 			$page = ($page * 20);
 
-			$hasil['data'] = $this->db->query("SELECT fullname, user.id_user, title, content, expert_name, level_name, created_at 
-				FROM discussion_comment, user, profile, level, expert
-				WHERE id_discussion = '$id' 
-					AND discussion_comment.id_user = user.id_user
-					AND user.id_user = profile.id_user
-					AND user.id_level = level.id_level
-					AND profile.id_expert = expert.id_expert
+			$hasil['data'] = $this->db->query("SELECT fullname, user.id_user, email, title, content, expert_name, level_name, created_at 
+				FROM discussion_comment
+				LEFT JOIN user ON discussion_comment.id_user = user.id_user 
+				LEFT JOIN profile ON user.id_user = profile.id_user
+				LEFT JOIN level ON user.id_level = level.id_level
+				LEFT JOIN expert ON profile.id_expert = expert.id_expert
+				WHERE id_discussion = '$id'
 				ORDER BY id_comment ASC
 				LIMIT $page, 20
 				")->result();
@@ -115,7 +116,24 @@ class Discussion_model extends CI_Model
 	}
 
 	function close_post($id_discussion, $summary){
-		return $this->db->query("UPDATE discussion SET status = 0 AND summary = '$summary' WHERE id_discussion = '$id_discussion' ");
+		return $this->db->query("UPDATE discussion SET status = 0, summary = '$summary' WHERE id_discussion = '$id_discussion' ");
+	}
+
+	function disc_participant($id){
+			$uid = $this->session->userdata('uid');
+			$cop = $this->db->query("SELECT DISTINCT id_user
+				FROM discussion_comment
+				WHERE id_discussion = '$id'
+					AND id_user != '$uid'
+				")->result();
+			foreach ($cop as $data) {
+				$hasil[] = $data->id_user;
+			}
+			return $hasil;
+		}
+
+	function getidstarter($id){
+		return $this->db->query("SELECT id_user, title FROM discussion WHERE id_discussion = '$id' ")->row();
 	}
 
 	function disc_trigger($date = 0){

@@ -11,7 +11,7 @@ class Home extends CI_Controller
 		if ($this->session->userdata('islogin')) {
 			if (isbe() or iskaryawan()) {
 				redirect('home/dash');
-			}else if(isadmin()){
+			}else if(isadmin() or issuperadmin()){
 				redirect('admin');
 			}
 		}else{

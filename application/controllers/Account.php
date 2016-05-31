@@ -23,7 +23,7 @@ class Account extends CI_Controller
 	}
 
 	public function logout(){
-		session_start();
+		$this->General_model->clearnotif();
 		session_destroy();
 		redirect('home');
 	}
@@ -38,6 +38,9 @@ class Account extends CI_Controller
 		if ($validasi) {
 			switch ($this->session->userdata('level')) {
 				case 'admin':
+					redirect('admin');
+					break;
+				case 'superadmin':
 					redirect('admin');
 					break;
 				case 'be':
@@ -58,8 +61,10 @@ class Account extends CI_Controller
 
 	public function edit(){
 		$uid = $this->session->userdata('uid');
-		$data['user'] = $this->Account_model->getprofile($uid);
-
+		$data['title'] = "Edit Profile";
+		$data['profile'] = $this->Account_model->getprofile($uid);
+		$data['expert'] = $this->General_model->getexpert();
+		$this->load->view('edit',$data);
 	}
 
 	public function register(){
@@ -67,10 +72,43 @@ class Account extends CI_Controller
 		$this->load->view('signup', $data);
 	}
 
-	public function user($u){
-		$data['profile'] = $this->Account_model->getprofile($u);
+	public function user($uid){
+		$data['profile'] = $this->Account_model->getprofile($uid);
+		$data['experience'] = $this->Account_model->getexp($uid);
 		$data['title'] = "Profile";
+
 		$this->load->view('user',$data);
+	}
+
+	public function addexp(){
+		$this->load->view('addexp');
+	}
+
+	public function addexp_post(){
+		$data['keterangan'] = $this->input->post('keterangan');
+		$data['file'] = $_FILES['file'];
+		$data['id_user'] = $this->session->userdata('uid');
+		$insert = $this->Account_model->addexp($data);
+
+		if ($insert) {
+			redirect("account/user/".$this->session->userdata('uid'));
+		}
+
+	}
+
+	public function post_edit(){
+		$data['NIK'] = $this->input->post('NIK');
+		$data['fullname'] = $this->input->post('fullname');
+		$data['gender'] = $this->input->post('gender');
+		$data['birthdate'] = $this->input->post('birthdate');
+		$data['id_expert'] = $this->input->post('expert');
+		$data['id_profile'] = $this->Account_model->getidprofile($this->session->userdata('uid'));
+		$data['pic'] = $_FILES['picture'];
+
+		$edit = $this->Account_model->post_edit($data);
+		if ($edit) {
+			redirect('account/user/'.$this->session->userdata('uid'));
+		}
 	}
 	
 }

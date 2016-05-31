@@ -68,7 +68,7 @@ class Journal_model extends CI_Model
 
 	function viewjournal($id){
 		$this->db->query("UPDATE journal SET views = views + 1 WHERE id_journal = '$id' ");
-		return $this->db->query("SELECT title, fullname, description, id_journal, user.id_user, expert_name, directorate_name, created_at, file, views
+		return $this->db->query("SELECT title, pic, fullname, description, id_journal, user.id_user, expert_name, directorate_name, created_at, file, views
 			FROM journal, directorate, user, profile, expert
 			WHERE journal.id_directorate = directorate.id_directorate
 				AND journal.id_journal = '$id'

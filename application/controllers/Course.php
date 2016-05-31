@@ -47,6 +47,9 @@ class Course extends CI_Controller
 		$data['id_user'] = $this->session->userdata('uid');
 		$data['id_step'] = $id_step;
 
+		if (isbe()) {
+			$this->General_model->setpoint($this->session->userdata('uid'), 50, "Open Course");
+		}
 		$insert = $this->Course_model->post_course($data);
 		if ($insert) {
 			redirect('course');

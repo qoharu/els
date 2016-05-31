@@ -3,22 +3,24 @@
 <div class="container">
 	<div class="row isi">
 		<div class="col-md-3">
-              <!-- Profile Image -->
               <div class="box box-primary">
                 <div class="box-body box-profile">
-                  <img class="profile-user-img img-responsive img-circle" src="http://localhost/adminlte/dist/img/user7-128x128.jpg" alt="User profile picture">
-                  <h3 class="profile-username text-center">Nina Mcintire</h3>
-                  <p class="text-muted text-center">Software Engineer</p>
+                  <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('uploads/profile/'.$profile->pic) ?>" alt="User profile picture">
+                  <h3 class="profile-username text-center"><?php echo $profile->fullname ?></h3>
+                  <p class="text-muted text-center"><?php echo $profile->expert_name ?></p>
 
                   <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
-                      <b>Followers</b> <a class="pull-right">1,322</a>
+                      <b>Journal</b> <a class="pull-right"><?php echo $profile->countjournal ?></a>
                     </li>
                     <li class="list-group-item">
-                      <b>Following</b> <a class="pull-right">543</a>
+                      <b>Discussion</b> <a class="pull-right"><?php echo $profile->countdisc ?></a>
                     </li>
                     <li class="list-group-item">
-                      <b>Friends</b> <a href="asd" class="pull-right">13,287</a>
+                      <b>Course</b> <a href="asd" class="pull-right"><?php echo $profile->countcourse ?></a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Point</b> <a href="asd" class="pull-right"><?php echo $profile->point ?></a>
                     </li>
                   </ul>
                 </div><!-- /.box-body -->
@@ -29,36 +31,46 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                   <h2 class="box-title"><strong> About Me </strong></h2>
-                  <button class="btn btn-primary pull-right">Edit</button>
+                  <?php if ($this->session->userdata('uid') == $profile->id_user): ?>
+                    
+                  <a class="btn btn-primary pull-right" href="<?php echo site_url('account/edit') ?>">Edit</a>
+                  <?php endif ?>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <strong><i class="fa fa-book margin-r-5"></i>  Education</strong>
+                  <strong><i class="fa fa-book margin-r-5"></i>Position</strong>
                   <p class="text-muted">
-                    B.S. in Computer Science from the University of Tennessee at Knoxville
+                    <?php echo $profile->scope_name." - ".$profile->directorate_name." - ".$profile->expert_name ?>
                   </p>
 
                   <hr>
-
-                  <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-                  <p class="text-muted">Malibu, California</p>
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Birthdate</strong>
+                  <p class="text-muted"><?php echo $profile->birthdate ?></p>
 
                   <hr>
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Gender</strong>
+                  <p class="text-muted"><?php echo $profile->gender ?></p>
 
-                  <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                  <hr>
+                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Contact</strong>
+                  <p>Email : <?php echo $profile->email ?></p>
+
+                  <hr>
+                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Registered at</strong>
+                  <p><?php echo $profile->registered_at ?></p>
+
+                  <hr>
+                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Experience</strong>
+                  <?php if ($this->session->userdata('uid') == $profile->id_user): ?>
+                    
+                  <a class="btn btn-primary pull-right" href="<?php echo site_url('account/addexp') ?>">Add Experience</a>
+                  <?php endif ?>
                   <p>
-                    <span class="label label-danger">UI Design</span>
-                    <span class="label label-success">Coding</span>
-                    <span class="label label-info">Javascript</span>
-                    <span class="label label-warning">PHP</span>
-                    <span class="label label-primary">Node.js</span>
+                  <?php foreach ($experience as $data): ?>
+                    <li><?php echo $data->keterangan ?></li>
+                  <?php endforeach ?>
                   </p>
-
-                  <hr>
-
-                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
+                </div>
+              </div>
             </div>
 	</div>
 </div>

@@ -11,7 +11,8 @@
 
                 <h3>Best Practice</h3>
                 <table class="table table-striped table-bordered">
-                    <tbody><tr>
+                    <thead>
+                    <tr>
                       <th>ID</th>
                       <th>Fullname</th>
                       <th>Title</th>
@@ -19,6 +20,8 @@
                       <th>Created</th>
                       <th>Action</th>
                     </tr>
+                    </thead>
+                    <tbody>
                   <?php foreach ($best_practice as $data): ?>
                     <tr>
                       <td><?php echo $data->id_cop ?></td>
@@ -26,7 +29,10 @@
                       <td><?php echo $data->title ?></td>
                       <td><?php echo $data->status ?></td>
                       <td><?php echo $data->created_at ?></td>
-                      <td></td>
+                      <td>
+                        <a class="btn btn-xs btn-primary" href="<?php echo site_url('cop/bp_view/'.$data->id_cop) ?>">View</a>
+                        <a class="btn btn-xs btn-success" target="_blank" href="<?php echo site_url('admin/print_cop/'.$data->id_cop) ?>">Print Report</a>
+                      </td>
                     </tr>
                   <?php endforeach ?>
                   </tbody>
@@ -34,7 +40,8 @@
 
                   <h3>Innovation</h3>
                 <table class="table table-striped table-bordered">
-                    <tbody><tr>
+                    <thead>
+                    <tr>
                       <th>ID</th>
                       <th>Fullname</th>
                       <th>Title</th>
@@ -42,6 +49,8 @@
                       <th>Created</th>
                       <th>Action</th>
                     </tr>
+                    </thead>
+                    <tbody>
                   <?php foreach ($innovation as $data): ?>
                     <tr>
                       <td><?php echo $data->id_cop ?></td>
@@ -49,7 +58,10 @@
                       <td><?php echo $data->title ?></td>
                       <td><?php echo $data->status ?></td>
                       <td><?php echo $data->created_at ?></td>
-                      <td></td>
+                      <td>
+                        <a class="btn btn-xs btn-primary" href="<?php echo site_url('cop/innovation_view/'.$data->id_cop) ?>">View</a>
+                        <a class="btn btn-xs btn-success" target="_blank" href="<?php echo site_url('admin/print_cop/'.$data->id_cop) ?>">Print Report</a>
+                      </td>
                     </tr>
                   <?php endforeach ?>
                   </tbody>
@@ -59,3 +71,6 @@
                 </div>
                 </section>
                 </div>
+<script type="text/javascript">
+  $('table').DataTable();
+</script>

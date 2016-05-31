@@ -2,8 +2,17 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 isi">
+				<div class="col-md-12">
 						<h3>Best Practice Archive</h3>
+						<form>
+						<div class="input-group">
+			                    <input type="text" name="q" class="form-control" placeholder="Search" >
+			                    <span class="input-group-btn">
+			                    	<button class="btn btn-primary btn-flat" type="submit">Search</button>
+			                	</span>
+		                </div>
+		                <div class="isi"></div>
+		                	</form>
 						<?php foreach ($list_bp as $inov): ?>
 							<div class="box box-primary">
 								<div class="box-header with-border">

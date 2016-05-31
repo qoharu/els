@@ -23,6 +23,33 @@ function switchstatus($status){
 	return $ret;
 }
 
+function kelasnotif($tipe){
+	switch ($tipe) {
+		case 0:
+			$ret = 'fa fa-comments text-blue';
+			break;
+		case 1:
+			$ret = 'fa fa-commenting text-green';
+			break;
+		case 2:
+			$ret = 'fa fa-book text-aqua';
+			break;
+		case 3:
+			$ret = 'fa fa-pencil text-red';
+			break;
+		case 4:
+			$ret = 'fa fa-lightbulb-o text-black';
+			break;
+	}
+	return $ret;
+}
+
+function getnotif(){
+	$ci = & get_instance();
+	$uid = $ci->session->userdata('uid');
+	return $ci->db->query("SELECT * FROM notif WHERE id_user= '$uid' AND red = 0 ORDER BY id_notif DESC ")->result();
+}
+
 function greet(){
 	$waktu = date('H');
 	switch ($waktu) {
@@ -50,6 +77,12 @@ function isbe(){
 function iskaryawan(){
 	$ci = & get_instance();
 	$retVal = ($ci->session->userdata('level')=='karyawan') ? 1 : 0 ;
+	return $retVal;
+}
+
+function issuperadmin(){
+	$ci = & get_instance();
+	$retVal = ($ci->session->userdata('level')=='superadmin') ? 1 : 0 ;
 	return $retVal;
 }
 

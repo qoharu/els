@@ -9,10 +9,13 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
-
+                <?php if (issuperadmin()): ?>
+                  
                 <h3>Pending</h3>
                 <table class="table table-striped table-bordered">
-                    <tbody><tr>
+                    <thead>
+                      
+                    <tr>
                       <th>ID</th>
                       <th>Fullname</th>
                       <th>Title</th>
@@ -21,6 +24,8 @@
                       <th>Created</th>
                       <th>Action</th>
                     </tr>
+                    </thead>
+                    <tbody>
                   <?php foreach ($pending_journal as $data): ?>
                     <tr>
                       <td><?php echo $data->id_journal ?></td>
@@ -30,16 +35,18 @@
                       <td><?php echo $data->views ?></td>
                       <td><?php echo $data->created_at ?></td>
                       <td>
-                      	<a class="btn btn-success" href="<?php echo site_url('admin/approve_journal/'.$data->id_journal) ?>"> Approve</a>
+                        <a class="btn btn-success" href="<?php echo site_url('admin/approve_journal/'.$data->id_journal) ?>"> Approve</a>
                       </td>
                     </tr>
                   <?php endforeach ?>
                   </tbody>
                   </table>
+                <?php endif ?>
 
                   <h3>Published Journal</h3>
                 <table class="table table-striped table-bordered">
-                    <tbody><tr>
+                    <thead>
+                    <tr>
                       <th>ID</th>
                       <th>Fullname</th>
                       <th>Title</th>
@@ -49,6 +56,8 @@
                       <th>Created</th>
                       <th>Action</th>
                     </tr>
+                    </thead>
+                    <tbody>
                   <?php foreach ($journal as $data): ?>
                     <tr>
                       <td><?php echo $data->id_journal ?></td>
@@ -68,3 +77,6 @@
                 </div>
                 </section>
                 </div>
+<script type="text/javascript">
+  $('table').DataTable();
+</script>

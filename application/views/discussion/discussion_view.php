@@ -22,7 +22,7 @@
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header bg-red">
                   <div class="widget-user-image">
-                    <img class="img-thumbnail" width="20" height="20" src="http://localhost/adminlte/dist/img/user7-128x128.jpg" alt="user image">
+                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$thread[0]->pic) ?>" alt="user image">
                   </div><!-- /.widget-user-image -->
                   <h4 class="widget-user-username">
                   	<a class="clearlink" href="<?php echo site_url('account/user/'.$thread[0]->id_user)  ?>">
@@ -44,6 +44,11 @@
 					<div class="box-footer content-forum">
 					<span class="badge bg-blue pull-right"><?php echo $thread[0]->scope_name ?></span>
 						<?= $thread[0]->content; ?>
+
+						<?php if ($thread[0]->status == 0 && !empty($thread[0]->summary)): ?>
+							<h3>Summary</h3>
+							<?php echo $thread[0]->summary; ?>
+						<?php endif ?>
 					</div>
 					<?php if ($this->session->userdata('uid') == $thread[0]->id_user && $thread[0]->status == 2): ?>
 						<a class="btn btn-default pull-right" href="<?php echo site_url('discussion/disc_close/'.$id_disc) ?>">
@@ -71,6 +76,13 @@
 <?php 
 	$kelas = ($komentar->level_name == 'be') ? 'bg-red' : 'bg-blue' ;
 	$box = ($komentar->level_name == 'be') ? 'box-danger' : 'box-primary' ;
+    if ($komentar->level_name == 'karyawan') {
+        $fullname = explode('@', $komentar->email)[0];
+        $expert = 'Karyawan';
+    }else{
+    	$fullname = $komentar->fullname;
+        $expert = $komentar->expert_name;
+    }
  ?>
 
 <div class="col-md-12 box <?php echo $box ?> well">
@@ -79,16 +91,16 @@
 				<div class="box box-widget widget-user-2">
                 <div class="widget-user-header <?php echo $kelas ?>">
                   <div class="widget-user-image">
-                    <img class="img-thumbnail" width="20" height="20" src="http://localhost/adminlte/dist/img/user7-128x128.jpg" alt="user image">
+                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$thread[0]->pic) ?>" alt="user image">
                   </div>
                   <h4 class="widget-user-username">
                   	<a class="clearlink" href="<?php echo site_url('account/user/'.$komentar->id_user)  ?>">
-                  		<?php echo $komentar->fullname ?>
+                  		<?php echo $fullname ?>
                   	</a>
                   </h4>
                 </div>
                 <div class="box-footer">
-                  <h5><?php echo $komentar->expert_name ?></h5>
+                  <h5><?php echo $expert ?></h5>
                 </div>
               </div><!-- /.widget-user -->
 			</div>
@@ -118,7 +130,7 @@
 				<div class="box box-widget widget-user-2">
                 <div class="widget-user-header bg-blue">
                   <div class="widget-user-image">
-                    <img class="img-thumbnail" width="20" height="20" src="http://localhost/adminlte/dist/img/user7-128x128.jpg" alt="user image">
+                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$this->session->userdata('pic')) ?>" alt="user image">
                   </div>
                   <h4 class="widget-user-username">
                   	<a class="clearlink" href="<?php echo site_url('account/user/'.$this->session->userdata('uid'))  ?>">

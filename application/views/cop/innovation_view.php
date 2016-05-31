@@ -22,7 +22,7 @@
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header bg-red">
                   <div class="widget-user-image">
-                    <img class="img-thumbnail" width="20" height="20" src="http://localhost/adminlte/dist/img/user7-128x128.jpg" alt="user image">
+                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$thread[0]->pic) ?>" alt="user image">
                   </div><!-- /.widget-user-image -->
                   <h4 class="widget-user-username">
                   	<a class="clearlink" href="<?php echo site_url('account/user/'.$thread[0]->id_user)  ?>">
@@ -81,7 +81,7 @@
 				<div class="box box-widget widget-user-2">
                 <div class="widget-user-header <?php echo $kelas ?>">
                   <div class="widget-user-image">
-                    <img class="img-thumbnail" width="20" height="20" src="http://localhost/adminlte/dist/img/user7-128x128.jpg" alt="user image">
+                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$thread[0]->pic) ?>" alt="user image">
                   </div>
                   <h4 class="widget-user-username">
                   	<a class="clearlink" href="<?php echo site_url('account/user/'.$komentar->id_user)  ?>">
@@ -123,7 +123,7 @@
 				<div class="box box-widget widget-user-2">
                 <div class="widget-user-header bg-blue">
                   <div class="widget-user-image">
-                    <img class="img-thumbnail" width="20" height="20" src="http://localhost/adminlte/dist/img/user7-128x128.jpg" alt="user image">
+                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$this->session->userdata('pic')) ?>" alt="user image">
                   </div>
                   <h4 class="widget-user-username">
                   	<a class="clearlink" href="<?php echo site_url('account/user/'.$this->session->userdata('uid'))  ?>">

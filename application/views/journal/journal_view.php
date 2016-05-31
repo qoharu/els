@@ -65,7 +65,7 @@
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header bg-blue">
                   <div class="widget-user-image">
-                    <img class="img-circle" src="http://localhost/adminlte/dist/img/user7-128x128.jpg" alt="User Avatar">
+                    <img class="img-circle" src="<?php echo site_url('uploads/profile/'.$journal[0]->pic) ?>" alt="User Avatar">
                   </div><!-- /.widget-user-image -->
                   <h3 class="widget-user-username">
                   	<a class="clearlink" href="<?php echo site_url('user/'.$journal[0]->id_user) ?>">

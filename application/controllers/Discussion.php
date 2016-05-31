@@ -83,6 +83,18 @@ class Discussion extends CI_Controller
 		$data['id_user'] = $this->session->userdata('uid');
 
 		$insert = $this->Discussion_model->post_respond($data);
+
+		$participant = $this->Discussion_model->disc_participant($id);
+		$idtitle = $this->Discussion_model->getidstarter($id);
+		if ($idtitle->id_user != $this->session->userdata('uid')) {
+			$participant[count($participant)] = $idtitle->id_user;
+		}
+		$notif = $this->General_model->setnotif($participant, "New Respond on ".$idtitle->title,site_url('discussion/view_discussion/'.$id),0);
+
+		if (isbe()) {
+			$this->General_model->setpoint($this->session->userdata('uid'), 1, "Respond Discussion");
+		}
+
 		if ($insert) {
 			redirect('discussion/view_discussion/'.$id);
 		}
@@ -162,7 +174,8 @@ class Discussion extends CI_Controller
 	public function discussion_archive($page=1){
 		$page--;
 		$data['title'] = 'Discussion Archive';
-		$data['archive'] = $this->Discussion_model->get_archive($page);
+		$q = @$this->input->get('q');
+		$data['archive'] = $this->Discussion_model->get_archive($page, $q);
 
 		$count = @$data['archive'][0]->count;
 		$halaman = (int) ceil($count / 20);

@@ -10,7 +10,7 @@ class Account_model extends CI_Model
 		if($user->num_rows()==1){
 			$datauser = $user->row();
 			if ($datauser->id_level == 2) {
-				$query="SELECT user.id_user, email, level_name, fullname 
+				$query="SELECT user.id_user, email, level_name, fullname, pic 
 					FROM user, level, profile
 					WHERE user.email='$email' 
 						AND user.password='$password'
@@ -34,8 +34,20 @@ class Account_model extends CI_Model
 	}
 
 	function getprofile($u){
-		return $this->db->query("SELECT * FROM user, profile, directorate, expert, scope
-			WHERE user.id_user = '$u' ")->result();
+		$uid = (int) $u;
+		return $this->db->query("SELECT
+			fullname, NIK, expert_name, email, directorate_name, scope_name, gender, birthdate, user.id_user, pic, registered_at,
+			(SELECT COUNT(*) FROM journal WHERE id_user = '$uid') AS countjournal,
+			(SELECT COUNT(*) FROM course WHERE id_user = '$uid') AS countcourse,
+			(SELECT COUNT(*) FROM discussion WHERE id_user = '$uid') AS countdisc,
+			(SELECT SUM(value) FROM point WHERE id_user='$uid' ) AS point
+		FROM user, profile, directorate, expert, scope
+		WHERE user.id_user = '$uid'
+			AND user.id_user = profile.id_user
+			AND profile.id_expert = expert.id_expert
+			AND expert.id_directorate = directorate.id_directorate
+			AND directorate.id_scope = scope.id_scope
+		")->row();
 	}
 
 	function hasprofile($uid){
@@ -48,12 +60,35 @@ class Account_model extends CI_Model
 		}
 	}
 
+	function post_edit($data){
+		$filename = md5(microtime()).basename($data["pic"]["name"]);
+		$target_file = "uploads/profile/".$filename;
+				
+		if (move_uploaded_file($data["pic"]["tmp_name"], $target_file)){
+			$data["pic"] = $filename;
+			$insert = $this->db->insert('profile_pending',$data);
+			return $insert;
+		}else{
+			return false;
+		}
+	}
+
+	function getidprofile($id){
+		return $this->db->query("SELECT id_profile FROM profile WHERE id_user = '$id' ")->row()->id_profile;
+	}
+
 	function setsession($data){
 		$fullname = ($data->level_name == 'be') ? $data->fullname : explode('@',$data->email)[0] ;
+		if (empty($data->pic)) {
+			$pic = 'default.png';
+		}else{
+			$pic = $data->pic;
+		}
 		$sesi = array(	'uid' => $data->id_user,
 					  	'email' => $data->email,
 					  	'level' => $data->level_name,
 					  	'fullname' => $fullname,
+					  	'pic' => $pic,
 					  	'islogin' => TRUE
 					  	);
 		$this->session->set_userdata($sesi);
@@ -74,6 +109,23 @@ class Account_model extends CI_Model
 			return false;
 		}else{
 			return true;
+		}
+	}
+
+	function getexp($uid){
+		return $this->db->query("SELECT * FROM exp WHERE id_user = '$uid' AND status = 1 ")->result();
+	}
+
+	function addexp($data){
+		$filename = md5(microtime()).basename($data["file"]["name"]);
+		$target_file = "uploads/experience/".$filename;
+				
+		if (move_uploaded_file($data["file"]["tmp_name"], $target_file)){
+			$data["file"] = $filename;
+			$insert = $this->db->insert('exp',$data);
+			return $insert;
+		}else{
+			return false;
 		}
 	}
 

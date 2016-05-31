@@ -2,9 +2,6 @@
 
 <div class="container">
 	<div class="row isi">
-		<h2>
-		Kelas tersedia
-		</h2>
             <section class="col-md-8 col-md-offset-2">           
               <div class="box box-solid bg-light-blue">
                 <div class="box-header" >
@@ -18,10 +15,10 @@
                       <?php if ($course->enrolled): ?>
                         <a class="btn bg-green pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Enrolled</a>
                       <?php else: ?>
-                        <?php if ($course->count >= $data->quota): ?>
+                        <?php if ($course->count >= $course->quota): ?>
                           <a class="btn bg-red pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Full</a>
                         <?php else: ?>
-                          <a class="btn bg-blue pull-right" href="<?php echo site_url('course/enroll/'.$data->id_course) ?>"><i class="fa fa-user-plus">&nbsp;</i> JOIN</a>
+                          <a class="btn bg-blue pull-right" href="<?php echo site_url('course/enroll/'.$course->id_course) ?>"><i class="fa fa-user-plus">&nbsp;</i> JOIN</a>
                         <?php endif ?>
                       <?php endif ?>
                     <?php endif ?>

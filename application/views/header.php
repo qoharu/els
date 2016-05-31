@@ -2,6 +2,8 @@
 	$name = @$this->session->userdata('fullname');
 	$uid = @$this->session->userdata('uid');
 	$islogin = @$this->session->userdata('islogin');
+  $notif = getnotif();
+  $count = count($notif);
 ?>
 
 
@@ -12,7 +14,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/select2.min.css') ?>">
-		<link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.bootstrap.css') ?>">
 		<link href="<?= base_url('assets/css/font-awesome.min.css') ?>" rel="stylesheet"/>
 		<link href="<?= base_url('assets/css/main.css') ?>" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/AdminLTE.min.css') ?>">
@@ -40,50 +43,43 @@
 	
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-              <!-- Notifications Menu -->
               <li class="dropdown notifications-menu">
-                <!-- Menu toggle button -->
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-bell-o"></i>
-                  <span class="label label-danger">2</span>
+                  <span class="label label-danger"><?php echo $count ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <!-- Inner Menu: contains the notifications -->
                     <ul class="menu">
-                      <li><!-- start notification -->
-                        <a href="#">
-                          <i class="fa fa-users text-aqua"></i> Discussion
+                      <li>
+                      <?php foreach ($notif as $data): ?>
+                        <a href="<?php echo $data->link ?>">
+                          <i class="<?php echo kelasnotif($data->type) ?>"></i><?php echo $data->title ?>
                         </a>
-                      </li><!-- end notification -->
+                      <?php endforeach ?>
+                      </li>
                     </ul>
                   </li>
-                  <li class="footer"><a href="#">View all</a></li>
+                  <li class="footer"><a href="<?php echo site_url('home/notification') ?>">View all</a></li>
                 </ul>
               </li>
 
-              <!-- User Account Menu -->
               <li class="dropdown user user-menu">
-                <!-- Menu Toggle Button -->
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <!-- The user image in the navbar-->
-                  <img src="<?php echo base_url('assets/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image">
-                  <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                  <img src="<?php echo base_url('uploads/profile/'.$this->session->userdata('pic')) ?>" class="user-image" alt="User Image">
                   <span class="hidden-xs"><?php echo $this->session->userdata('fullname'); ?></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <!-- The user image in the menu -->
                   <li class="user-header">
-                    <img src="<?php echo base_url('assets/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
+                    <img src="<?php echo base_url('uploads/profile/'.$this->session->userdata('pic')) ?>" class="img-circle" alt="User Image">
                     <p>
                       <?php echo $this->session->userdata('fullname').' - '.strtoupper($this->session->userdata('level'))  ?>
                     </p>
                   </li>
 
-                  <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="<?php echo site_url('profile/'.$this->session->userdata('uid')); ?>" class="btn btn-default btn-flat">Profile</a>
+                      <a href="<?php echo site_url('account/user/'.$this->session->userdata('uid')); ?>" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
                       <a href="<?php echo site_url('account/logout') ?>" class="btn btn-default btn-flat">Logout</a>
@@ -110,6 +106,6 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-flat pull-right modal-close" data-dismiss="modal">OK</button>
                   </div>
-                </div><!-- /.modal-content -->
-              </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+                </div>
+              </div>
+            </div>

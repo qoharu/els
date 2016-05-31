@@ -20,15 +20,20 @@
 		function invite($id_cop, $user){
 			$uid = $this->session->userdata('uid');
 			$builder = "('$id_cop', '$uid')";
+			$b_notif = "('$user[0]', 'New Forum Invitation', '".site_url('cop/innovation_view/'.$id_cop)."', '4')";
+
 			$count = count($user);
 
 			for ($i=0; $i < $count ; $i++) { 
 				$builder .= ", ('$id_cop', '$user[$i]')";
+				if ($i != 0) {
+					$b_notif .= ", ('$user[$i]', 'New Forum Invitation', '".site_url('cop/innovation_view/'.$id_cop)."', '4')";
+				}
 			}
 
 			$query = $this->db->query("INSERT INTO cop_invitation(id_cop, id_user) VALUES".$builder);
-
-			if ($query) {
+			$notif = $this->db->query("INSERT INTO notif(id_user, title, link, type) VALUES".$b_notif);
+			if ($query && $notif) {
 				return 1;
 			}else{
 				return 0;
@@ -46,7 +51,8 @@
 				")->result();
 		}
 
-		function innov_archive(){
+		function innov_archive($page=1, $q=''){
+			$page = ($page * 5);
 			$uid = $this->session->userdata('uid');
 			return $this->db->query("SELECT title, id_cop, content, cop.created_at, cop.updated_at, fullname
 				FROM cop, user, profile
@@ -54,6 +60,8 @@
 					AND user.id_user = profile.id_user
 					AND type = 1
 					AND status = 0
+					AND (title LIKE '%$q%' OR content LIKE '%$q%')
+				LIMIT $page, 5
 				")->result();
 		}
 
@@ -111,7 +119,7 @@
 		}
 
 		function innov_get_thread($id){
-			return $this->db->query("SELECT title, cop.status, cop.summary, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
+			return $this->db->query("SELECT title, cop.status, pic, cop.summary, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
 				FROM cop, user, profile, expert
 				WHERE cop.id_user = user.id_user
 					AND id_cop = '$id'
@@ -129,7 +137,7 @@
 		}
 
 		function bp_get_thread($id){
-			return $this->db->query("SELECT scope_name, scope.id_scope, title, cop.status, cop.summary, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
+			return $this->db->query("SELECT scope_name, scope.id_scope, pic, title, cop.status, cop.summary, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
 				FROM cop, user, profile, expert, scope
 				WHERE cop.id_user = user.id_user
 					AND cop.id_scope = scope.id_scope
@@ -151,16 +159,17 @@
 				")->result();
 		}
 
-		function bp_archive($page){
+		function bp_archive($page, $q=''){
 			$page = ($page * 5);
 			$uid = $this->session->userdata('uid');
-			return $this->db->query("SELECT title, scope_name, id_cop, content, cop.created_at, cop.updated_at, fullname, (SELECT COUNT(*) FROM cop WHERE type=2 AND status = 0) AS count
+			return $this->db->query("SELECT title, scope_name, id_cop, content, cop.created_at, cop.updated_at, fullname, (SELECT COUNT(*) FROM cop WHERE type=2 AND status = 0 AND (title LIKE '%$q%' OR content LIKE '%$q%')) AS count
 				FROM cop, user, profile, scope
 				WHERE cop.id_user = user.id_user
 					AND cop.id_scope = scope.id_scope
 					AND user.id_user = profile.id_user
 					AND type = 2
 					AND status = 0
+					AND (title LIKE '%$q%' OR content LIKE '%$q%')
 				LIMIT $page, 5
 				")->result();
 		}
@@ -194,6 +203,23 @@
 				FROM step, profile
 				WHERE step.id_user = profile.id_user
 					AND id_cop = '$id_cop' ")->result();
+		}
+
+		function cop_participant($id){
+			$uid = $this->session->userdata('uid');
+			$cop = $this->db->query("SELECT DISTINCT id_user
+				FROM cop_comment
+				WHERE id_cop = '$id'
+					AND id_user != '$uid'
+				")->result();
+			foreach ($cop as $data) {
+				$hasil[] = $data->id_user;
+			}
+			return $hasil;
+		}
+
+		function getidstarter($id){
+			return $this->db->query("SELECT id_user, title FROM cop WHERE id_cop = '$id' ")->row();
 		}
 
 	}

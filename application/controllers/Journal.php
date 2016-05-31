@@ -27,6 +27,10 @@ class Journal extends CI_Controller
 		// Kirim data ke fungsi upload pada model Journal_model
 		$hasil = $this->Journal_model->upload($data);
 
+		if (isbe()) {
+			$this->General_model->setpoint($this->session->userdata('uid'), 50, "Upload Journal");
+		}
+
 		// Jika upload berhasil, maka ....
 		if ($hasil) {
 			redirect('journal'); // redirect ke index journal

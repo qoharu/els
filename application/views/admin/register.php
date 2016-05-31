@@ -47,7 +47,7 @@
           
         </div>
         <div class="col-md-5 content-right">
-          <form action="<?php echo site_url('admin/register_file') ?>" method="post" enctype="multipart/form-data" >
+          <form action="<?php echo site_url('admin/upload_post') ?>" method="post" enctype="multipart/form-data" >
             <h4 class="col-md-12">Upload CSV</h4>
               <div class="form-group col-md-12">
                 <input class="form-control input-md" type="file" name="file_csv" placeholder="Full Name" required="">

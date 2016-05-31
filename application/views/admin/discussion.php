@@ -9,11 +9,10 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
-
                 <h3>Discussion</h3>
 
                 <table class="table table-striped table-bordered">
-                    <tbody>
+                    <thead>
                     <tr>
                       <th>ID</th>
                       <th>Full Name</th>
@@ -22,6 +21,8 @@
                       <th>Created</th>
                       <th>Action</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <?php foreach ($discussion as $data): ?>
                       <?php 
                       $status = switchstatus($data->status);
@@ -34,9 +35,12 @@
                       <td><?php echo $data->created_at ?></td>
                       <td>
                         <a class="btn btn-xs btn-primary" href="<?php echo site_url('discussion/view_discussion/'.$data->id_discussion) ?>">View</a>
-                        <a class="btn btn-xs btn-success" href="<?php echo site_url('admin/print') ?>">Print Report</a>
+                        <a class="btn btn-xs btn-success" target="_blank" href="<?php echo site_url('admin/print_discussion/'.$data->id_discussion) ?>">Print Report</a>
                       </td>
                     </tr>
                     <?php endforeach ?>
                   </tbody>
                   </table>
+<script type="text/javascript">
+  $('table').DataTable();
+</script>
