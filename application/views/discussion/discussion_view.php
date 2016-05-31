@@ -1,4 +1,12 @@
 <?php include 'application/views/header.php' ?>
+
+<?php 
+if (empty($thread[0]->pic)) {
+    	$pic = "default.png";
+    }else{
+    	$pic = $thread[0]->pic;
+    }
+?>
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap3-wysihtml5.min.css') ?>">
 	<script type="text/javascript" src="<?= base_url('assets/js/bootstrap3-wysihtml5.all.min.js') ?>"></script>
 	<div class="container">
@@ -15,6 +23,8 @@
 			<a href="<?php echo $tangkal['url'] ?>"><?php echo $tangkal['title'] ?></a>&nbsp;
 		<?php $i++; endforeach ?>
 
+
+
 		</div>
 		<div class="box-body well">
 			<div class="col-md-3">
@@ -22,7 +32,7 @@
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header bg-red">
                   <div class="widget-user-image">
-                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$thread[0]->pic) ?>" alt="user image">
+                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$pic) ?>" alt="user image">
                   </div><!-- /.widget-user-image -->
                   <h4 class="widget-user-username">
                   	<a class="clearlink" href="<?php echo site_url('account/user/'.$thread[0]->id_user)  ?>">
@@ -83,6 +93,12 @@
     	$fullname = $komentar->fullname;
         $expert = $komentar->expert_name;
     }
+
+    if (empty($komentar->pic)) {
+    	$pic = "default.png";
+    }else{
+    	$pic = $komentar->pic;
+    }
  ?>
 
 <div class="col-md-12 box <?php echo $box ?> well">
@@ -91,7 +107,7 @@
 				<div class="box box-widget widget-user-2">
                 <div class="widget-user-header <?php echo $kelas ?>">
                   <div class="widget-user-image">
-                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$thread[0]->pic) ?>" alt="user image">
+                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$pic) ?>" alt="user image">
                   </div>
                   <h4 class="widget-user-username">
                   	<a class="clearlink" href="<?php echo site_url('account/user/'.$komentar->id_user)  ?>">

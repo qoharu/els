@@ -6,7 +6,7 @@ body {
 /*Navbar Atas-Semua*/
 .navbar {
     margin-bottom: 0;
-    background-color: #2D2D30;
+    background-color: #fff;
     border: 0;
     font-size: 11px !important;
     letter-spacing: 4px;
@@ -37,8 +37,8 @@ h3, h4 {
 
 /*Navbar Bagian Logo, Menu Yang Lagi Di Scroll (Active)*/
 .navbar-nav li.active a {
-  color: #FFF !important;
-  background-color: #29292C !important;
+  color: #000 !important;
+  background-color: #beca !important;
 }
 
 .container {
