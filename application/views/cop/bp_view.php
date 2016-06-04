@@ -51,7 +51,7 @@
 							<h2 class="text-left">Summary</h2>
 							<?php echo $thread[0]->summary ?>
 							<br>
-							<strong>Penugasan BE :</strong> <br>
+							<strong>BE Penanggung Jawab Diskusi :</strong> <br>
 							<?php foreach ($penugasan as $topic): ?>
 								<?php echo $topic->keterangan ?> - <a href="<?php echo site_url('profile/'.$topic->id_user) ?>"><?php echo $topic->fullname ?></a><br>
 							<?php endforeach ?>

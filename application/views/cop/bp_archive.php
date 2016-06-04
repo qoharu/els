@@ -17,7 +17,7 @@
 							<div class="box box-primary">
 								<div class="box-header with-border">
 									<h3 class="box-title">
-									<strong><a href="<?= site_url('cop/innovation_view/'.$inov->id_cop); ?>">
+									<strong><a href="<?= site_url('cop/bp_view/'.$inov->id_cop); ?>">
 									<?= $inov->title ?>
 									</a></strong>
 									</h3>

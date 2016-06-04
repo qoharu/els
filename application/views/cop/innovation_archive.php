@@ -2,7 +2,7 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 isi">
+				<div class="col-md-12">
 						<h3>Innovation Archive</h3>
 						<form>
 						<div class="input-group">
@@ -12,6 +12,7 @@
 			                	</span>
 		                </div>
 		                	</form>
+		                <div class="isi"></div>
 						<?php foreach ($list_innov as $inov): ?>
 							<div class="box box-primary">
 								<div class="box-header with-border">
@@ -32,7 +33,7 @@
 								</div>
 							</div>
 						<?php endforeach ?>
-
+						<?php echo $page ?>
 				</div>
 			</div>
 		</div>

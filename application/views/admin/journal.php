@@ -31,7 +31,7 @@
                       <td><?php echo $data->id_journal ?></td>
                       <td><?php echo $data->fullname ?></td>
                       <td><?php echo $data->title ?></td>
-                      <td><a class="btn btn-xs" href="<?php echo base_url('uploads/'.$data->file) ?>">Download</a></td>
+                      <td><a class="btn btn-xs" target="_blank" href="<?php echo base_url('uploads/'.$data->file) ?>">View</a></td>
                       <td><?php echo $data->views ?></td>
                       <td><?php echo $data->created_at ?></td>
                       <td>

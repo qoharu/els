@@ -163,10 +163,18 @@ class Discussion extends CI_Controller
 		$this->load->view('discussion/discussion_close',$data);
 	}
 
-	public function disc_close_post($id_discussion){
-		$close = $this->Discussion_model->close_post($id_discussion, $this->input->post('summary'));
+	public function disc_close_post($id){
+		$close = $this->Discussion_model->close_post($id, $this->input->post('summary'));
+
+		$participant = $this->Discussion_model->disc_participant($id);
+		$idtitle = $this->Discussion_model->getidstarter($id);
+		if ($idtitle->id_user != $this->session->userdata('uid')) {
+			$participant[count($participant)] = $idtitle->id_user;
+		}
+		$notif = $this->General_model->setnotif($participant, "Discussion Closed ".$idtitle->title,site_url('discussion/view_discussion/'.$id),0);
+
 		if ($close){
-			redirect('discussion/view_discussion/'.$id_discussion);
+			redirect('discussion/view_discussion/'.$id);
 		}
 
 	}

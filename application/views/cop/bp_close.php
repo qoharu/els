@@ -16,7 +16,7 @@
 							<div class="form-group">
 								<textarea name="summary" class="form-control input-md textarea" rows="12" maxlength="500" required="" placeholder="Kesimpulan"></textarea>	
 							</div>
-							<h3>Penugasan BE (optional)</h3>
+							<h3>Penanggung Jawab Diskusi (optional)</h3>
 
 							<?php if (!$step): ?>
 								Kuota diskusi untuk <?php echo $scope ?> sudah habis

@@ -40,10 +40,11 @@
                         <?php echo $komentar->content ?>
                       </div>
                     <?php else: ?>
+                      <?php $fullname = explode('@', $komentar->email)[0] ?>
                       <div class="comment-text komentar box">
                         <span class="username">
                           <span class="text-muted pull-right"><?php echo $komentar->created_at ?></span>
-                          <strong><?php echo $komentar->fullname ?></strong><br>
+                          <strong><?php echo $fullname ?></strong><br>
                         </span>
                           <?php echo $komentar->content ?>
                       </div>
@@ -52,7 +53,7 @@
                   <?php endforeach ?>
                     
                   <?php if ($i): ?>
-                    <button class="btn btn-danger btn-block btn-flat" id="load-comment">Load more...</button>
+                    <button class="btn btn-danger btn-block btn-flat" id="load-comment"><?php echo $i ?></button>
                   <?php endif ?>
                 </div>
               </div>

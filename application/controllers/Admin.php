@@ -6,10 +6,10 @@ class Admin extends CI_Controller
 {
 		function __construct(){
 			parent::__construct();
-			if (!isadmin() or ! issuperadmin()) {
-				redirect('home');
-			}
 			$this->load->model('Admin_model');
+			// if (!isadmin() || !issuperadmin()) {
+			// 	redirect('home');
+			// }
 		}
 		public function index(){
 			redirect('admin/summary');

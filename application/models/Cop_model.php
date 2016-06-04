@@ -51,10 +51,10 @@
 				")->result();
 		}
 
-		function innov_archive($page=1, $q=''){
+		function innov_archive($page, $q=''){
 			$page = ($page * 5);
 			$uid = $this->session->userdata('uid');
-			return $this->db->query("SELECT title, id_cop, content, cop.created_at, cop.updated_at, fullname
+			return $this->db->query("SELECT title, id_cop, content, cop.created_at, cop.updated_at, fullname, (SELECT COUNT(*) FROM cop WHERE type=1 AND status = 0 AND (title LIKE '%$q%' OR content LIKE '%$q%')) AS count
 				FROM cop, user, profile
 				WHERE cop.id_user = user.id_user
 					AND user.id_user = profile.id_user
@@ -215,7 +215,20 @@
 			foreach ($cop as $data) {
 				$hasil[] = $data->id_user;
 			}
-			return $hasil;
+			return @$hasil;
+		}
+
+		function innov_participant($id){
+			$uid = $this->session->userdata('uid');
+			$cop = $this->db->query("SELECT DISTINCT id_user
+				FROM cop_invitation
+				WHERE id_cop = '$id'
+					AND id_user != '$uid'
+				")->result();
+			foreach ($cop as $data) {
+				$hasil[] = $data->id_user;
+			}
+			return @$hasil;
 		}
 
 		function getidstarter($id){

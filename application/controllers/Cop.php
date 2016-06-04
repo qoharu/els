@@ -100,6 +100,7 @@ class Cop extends CI_Controller
 		$data['id_scope'] = $detil[0]->id_scope;
 		$data['step'] = $this->General_model->cekstep($detil[0]->id_scope);
 
+
 		$data['id_cop'] = $id_cop;
 		$this->load->view('cop/bp_close', $data);
 	}
@@ -110,7 +111,21 @@ class Cop extends CI_Controller
 		$data['topic'] = $this->input->post('topic');
 		$data['scope'] = $scope;
 		$hasil = $this->Cop_model->bp_close($id_cop, $data);
-				
+
+		$participant = $this->Cop_model->cop_participant($id_cop);
+		$idtitle = $this->Cop_model->getidstarter($id_cop);
+		if ($idtitle->id_user != $this->session->userdata('uid')) {
+			$participant[count($participant)] = $idtitle->id_user;
+		}
+		if (!empty($participant)) {
+			$notif = $this->General_model->setnotif($participant, "Forum Closed ".$idtitle->title,site_url('cop/bp_view/'.$id_cop),1);
+		}
+
+		if (!empty(@$data['be'])) {
+			$notif = $this->General_model->setnotif($data['be'], "New Responsibilities ".$idtitle->title,site_url('cop/bp_view/'.$id_cop),0);
+		}
+
+
 		if ($hasil) {
 			redirect('cop/bp_view/'.$id_cop);
 		}
@@ -173,13 +188,13 @@ class Cop extends CI_Controller
 
 		$insert = $this->Cop_model->innov_post_comment($data);
 		
-		$participant = $this->Cop_model->cop_participant($id);
+		$participant = $this->Cop_model->innov_participant($id);
 		$idtitle = $this->Cop_model->getidstarter($id);
 		if ($idtitle->id_user != $this->session->userdata('uid')) {
 			$participant[count($participant)] = $idtitle->id_user;
 		}
 		if (!empty($participant)) {
-			$notif = $this->General_model->setnotif($participant, "New Respond on ".$idtitle->title,site_url('cop/innovation_view/'.$id),1);
+			$notif = $this->General_model->setnotif($participant, "New Respond on ".$idtitle->title,site_url('cop/innovation_view/'.$id),4);
 		}
 		if (isbe()) {
 			$this->General_model->setpoint($this->session->userdata('uid'), 1, "Respond Innovation");
@@ -226,19 +241,41 @@ class Cop extends CI_Controller
 		$this->load->view('cop/innovation_close', $data);
 	}
 
-	public function innovation_close_post($id_cop){
+	public function innovation_close_post($id){
 		$summary = $this->input->post('summary');
-		$hasil = $this->Cop_model->innov_close($id_cop, $summary);
+		$hasil = $this->Cop_model->innov_close($id, $summary);
+
+		$participant = $this->Cop_model->innov_participant($id);
+		$idtitle = $this->Cop_model->getidstarter($id);
+		if ($idtitle->id_user != $this->session->userdata('uid')) {
+			$participant[count($participant)] = $idtitle->id_user;
+		}
+		if (!empty($participant)) {
+			$notif = $this->General_model->setnotif($participant, "Forum Closed ".$idtitle->title,site_url('cop/innovation_view/'.$id),4);
+		}
 
 		if ($hasil) {
 			redirect('cop');
 		}
 	}
 
-	public function innovation_archive(){
+	public function innovation_archive($page=1){
+		$page--;
 		$data['title'] = "Innovation Archive";
-		$data['list_innov'] = $this->Cop_model->innov_archive();
-		$this->load->view('cop/innovation_archive', $data);
+		$q = $this->input->get('q');
+		$data['list_innov'] = $this->Cop_model->innov_archive($page, $q);
+
+		$count = @$data['list_innov'][0]->count;
+		$halaman = (int) ceil($count / 5);
+		$data['page'] = '';
+		for ($i=1; $i <= $halaman; $i++) {
+			if ($i == $page+1) {
+				$data['page'] .= "<a href='".site_url('cop/innov_archive/'.$i)."' class='btn btn-default active disabled'>$i</a>";
+			}else{
+				$data['page'] .= "<a href='".site_url('cop/innov_archive/'.$i)."' class='btn btn-default'>$i</a>";
+			}
+		}
+		$this->load->view('cop/innovation_archive',$data);
 	}
 
 	public function bestpractice($scope=''){

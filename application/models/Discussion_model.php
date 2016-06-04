@@ -129,7 +129,7 @@ class Discussion_model extends CI_Model
 			foreach ($cop as $data) {
 				$hasil[] = $data->id_user;
 			}
-			return $hasil;
+			return @$hasil;
 		}
 
 	function getidstarter($id){
