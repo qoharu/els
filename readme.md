@@ -1,6 +1,5 @@
 ##Notes
-
-#### Update 4/6/2016
+1. Update 4/6/2016
 Fix bugs :
 	- Journal
 		+ fix Journal comment karyawan tidak muncul
@@ -17,8 +16,10 @@ Fix bugs :
 		+ fix Course Report
 	- General
 		+ fix error profile/(:id_user)
------
-Updates :
+		+ 
+		
+----
+2. Updates :
 	- Journal
 	- COP
 		+ "Penugasan BE" menjadi "BE Penanggung Jawab Diskusi" 
