@@ -1,0 +1,6 @@
+Berdasarkan latar belakang permasalahan yang telah didefinisikan sebelumnya, Tim Edufi menghadirkan Sebuku, sebuah mobile apps yang membantu pembaca buku dan pemilik buku bekas dengan cara menjadi suatu marketplace buku sebagai media transaksi antar user. Aplikasi ini dilengkapi dengan teknologi yang mampu membantu user untuk mencari buku terdekat. Berikut adalah beberapa fitur utama dari aplikasi Sebuku.
+1. Pencarian Buku Berdasarkan Lokasi Denganalgoritma pencarianSebuku,pengguna akanmendapatkan informasi buku terdekat dan sesuai dengan kecenderungan genre buku yang disukai pengguna seiring dengan seringnya pemakaian aplikasi.
+2. Tukar Buku dengan Buku Dengan sebuku, pengguna dapat menukarkan buku yang sudah selesai dibaca dengan buku yang sedang diinginkan dengan pengguna lainnya.
+3. Effortless Books Submission Di Sebuku, pengguna tidak perlu menginputkan judul, pengarang, isbn, dsb. Untuk menambahkan buku untuk ditukar/dijual. Cukup pindai barcode pada buku dan Sebuku akan mencarikan detilnya dalam hitungan milidetik.
+4. Jual Beli Buku Jualdanbelibukubaruataubekasdaripenggunalainsecaramudah dan aman dengan Sebuku Secure Payment (SSP).
+5. Wishlist Buku Simpan untuk sementara detail buku yang ingin didapatkan, dengan waktu singkat Sebuku akan merekomendasikan beberapa buku yang sesuai dengan jarak terdekat

@@ -122,10 +122,6 @@ if (empty($thread[0]->pic)) {
 			</div>
 			<div class="col-md-9">
 				<div class="box box-widget widget-user-2">
-					<div class="widget-user-header <?php echo $kelas ?>">
-							<small class="pull-right"><?php echo $komentar->created_at ?></small>
-							<h4><?php echo $komentar->title ?></h4>
-					</div>
 					<div class="box-footer content-forum">
 						<?php echo $komentar->content ?>
 					</div>

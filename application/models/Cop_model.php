@@ -235,4 +235,25 @@
 			return $this->db->query("SELECT id_user, title FROM cop WHERE id_cop = '$id' ")->row();
 		}
 
+		function add_attachment($id, $file){
+			$filename = md5(microtime()).basename($file["name"]);
+			$target_file = "uploads/attachment/".$filename;
+			
+			if (move_uploaded_file($file["tmp_name"], $target_file)){
+				$kirim = $this->db->query("INSERT INTO cop_attachment (id_cop, file) 
+					VALUES ('$id', '$filename' ) ");
+				if ($kirim) {
+					return true;
+				}else{
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
+
+		public function getattachment($id){
+			return $this->db->query("SELECT * FROM cop_attachment WHERE id_cop = '$id' ")->result();
+		}
+
 	}

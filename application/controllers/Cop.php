@@ -210,7 +210,7 @@ class Cop extends CI_Controller
 		$data['thread'] = $this->Cop_model->innov_get_thread($id_cop);
 		$data['title'] = "Innovation - ".$data['thread'][0]->title;
 		$data['type'] = 'innovation';
-
+		$data['attachment'] = $this->Cop_model->getattachment($id_cop);
 		$comment = $this->Cop_model->get_comment($id_cop, $page);
 		$data['comment'] = $comment['data'];
 		$data['id_cop'] = $id_cop;
@@ -284,6 +284,17 @@ class Cop extends CI_Controller
 
 		$this->load->view('cop/bestpractice',$data);
 	}
+
+	public function attachment_post($id){
+		$file = $_FILES['attachment'];
+		$insert = $this->Cop_model->add_attachment($id, $file);
+
+		if ($insert){
+			redirect('cop/innovation_view/'.$id);
+		}
+	}
+
+	
 
 
 }

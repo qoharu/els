@@ -45,7 +45,24 @@
 					</div>
 					<div class="box-footer content-forum">
 						<?= $thread[0]->content; ?>
+						<?php if (!empty($attachment)): ?>
+							<h4>Attachment</h4>
+							<?php foreach ($attachment as $data): ?>
+								<a target="_blank" href="<?php echo base_url('uploads/attachment/'.$data->file) ?>"><?php echo $data->file ?></a><br>
+							<?php endforeach ?>
+						<?php endif ?>
 
+						<?php if ($this->session->userdata('uid') == $thread[0]->id_user): ?>
+							<hr>
+							<form action="<?php echo site_url('cop/attachment_post/'.$thread[0]->id_cop) ?>" method="POST" enctype="multipart/form-data" >
+								<div class="input-group">
+									<input type="file" name="attachment" class="form-control" required="">
+									<span class="input-group-btn">
+										<button type="submit" class="btn btn-primary btn-flat">Attach new</button>
+									</span>
+								</div>
+							</form>
+						<?php endif ?>
 						<?php if (!$thread[0]->status): ?>
 							<hr>
 							<h2 class="text-left">Summary</h2>
@@ -141,9 +158,6 @@
 				<div class="box box-widget widget-user-2">
 					<div class="widget-user-header bg-blue">
 							<small class="pull-right"><?php echo date('D, d M Y h:m:s') ?></small>
-							<div class="form-group">
-		                      <input type="text" class="form-control" name="title" placeholder="Title">
-		                    </div>
 					</div>
 					<div class="box-footer content-forum">
 						<textarea class="textarea textarea-forum" required="" name="content" placeholder="Description"></textarea>

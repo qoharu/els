@@ -140,16 +140,13 @@
                 <div class="box-footer">
                 	<?php echo $this->session->userdata('level') ?>
                 </div>
-              </div><!-- /.widget-user -->
+              </div>
 			</div>
 			<div class="col-md-9">
 			<form action="<?php echo site_url('cop/bp_post_comment/'.$id_cop) ?>" method="post">
 				<div class="box box-widget widget-user-2">
 					<div class="widget-user-header bg-blue">
 							<small class="pull-right"><?php echo date('D, d M Y h:m:s') ?></small>
-							<div class="form-group">
-		                      <input type="text" class="form-control" name="title" placeholder="Title">
-		                    </div>
 					</div>
 					<div class="box-footer content-forum">
 						<textarea class="textarea textarea-forum" required="" name="content" placeholder="Description"></textarea>

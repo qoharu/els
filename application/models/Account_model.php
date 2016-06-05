@@ -36,7 +36,7 @@ class Account_model extends CI_Model
 	function getprofile($u){
 		$uid = (int) $u;
 		return $this->db->query("SELECT
-			fullname, NIK, expert_name, email, directorate_name, scope_name, gender, birthdate, user.id_user, pic, registered_at,
+			fullname, id_profile, NIK, expert_name, email, directorate_name, scope_name, gender, birthdate, user.id_user, pic, registered_at,
 			(SELECT COUNT(*) FROM journal WHERE id_user = '$uid') AS countjournal,
 			(SELECT COUNT(*) FROM course WHERE id_user = '$uid') AS countcourse,
 			(SELECT COUNT(*) FROM discussion WHERE id_user = '$uid') AS countdisc,
@@ -127,6 +127,10 @@ class Account_model extends CI_Model
 		}else{
 			return false;
 		}
+	}
+
+	function pending($id){
+		return $this->db->query("SELECT COUNT(*) AS count FROM profile_pending WHERE id_profile = '$id' ")->row()->count;
 	}
 
 	

@@ -53,7 +53,7 @@
 							</div>
 
 							<div class="form-group col-md-12">
-									<select class="form-control input-md expert" name="expert">
+									<select class="form-control input-md expert" name="expert" required="">
 										<?php foreach ($expert as $data): ?>
 											<option value="<?php echo $data->id_expert ?>"><?php echo $data->expert_name ?></option>	
 										<?php endforeach ?>
@@ -62,7 +62,7 @@
 
 							<div class="form-group col-md-12">
 								<div class="input-group ">
-									<input class="form-control input-md " id="date" type="file" name="picture">
+									<input class="form-control input-md " id="date" type="file" name="picture" accept="image/*" required="">
 									<div class="input-group-addon">
 			                        	Picture
 			                      	</div>

@@ -32,6 +32,7 @@
 								?>
 								</select>
 							</div>
+							*You can add attachment later
 							<input class="btn col-md-4 btn-primary btn-flat pull-right" type="submit">
 						</form>
 					</div>

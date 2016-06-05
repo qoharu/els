@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 31 Mei 2016 pada 15.18
+-- Generation Time: 05 Jun 2016 pada 12.26
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -44,19 +44,35 @@ CREATE TABLE `cop` (
 --
 
 INSERT INTO `cop` (`id_cop`, `id_scope`, `id_user`, `title`, `content`, `summary`, `type`, `created_at`, `updated_at`, `status`) VALUES
-(21, 1, 5, 'coba', '<p>eco</p>', '<p>eco</p>', 2, '2016-05-27 16:09:16', '2016-05-27 23:41:23', 0),
-(22, 2, 2, 'Enterprise', '<p>hm</p>', '<p>aaa</p>', 2, '2016-05-27 23:27:42', '2016-05-27 23:28:17', 0),
-(23, 2, 2, 'EP lagi', '<p>coba ep</p>', '<p>a</p>', 2, '2016-05-27 23:28:37', '2016-05-31 02:28:19', 0),
-(24, 3, 2, 'SPB', '<p>Coba aja dulu</p>', '<p>SPB cenah</p>', 2, '2016-05-27 23:32:47', '2016-05-27 23:33:11', 0),
-(25, 4, 2, 'ICT', '<p>Coba ICT</p>', '<p>kes</p>', 2, '2016-05-27 23:40:00', '2016-05-27 23:40:18', 0),
-(26, 1, 10, 'ecommerce coba', '<p>ads</p>', '<p>ahay</p>', 2, '2016-05-28 00:00:25', '2016-05-28 00:00:52', 0),
-(27, NULL, 2, 'Coba notif inov', '<p>Cek 123 123 123</p>', '<p>asdasd</p>', 1, '2016-05-31 07:03:04', '2016-05-31 07:03:50', 0),
-(28, NULL, 2, 'inov', '<p>cek</p>', NULL, 1, '2016-05-31 07:04:04', '2016-05-31 07:04:04', 1),
-(29, NULL, 2, 'inov lagi', '<p>coba coba</p>', NULL, 1, '2016-05-31 07:16:49', '2016-05-31 07:16:49', 1),
-(30, 1, 2, 'Coba', '<p>Cek 123 cek</p>', '<p>kesh</p>', 2, '2016-05-31 07:56:37', '2016-05-31 11:06:08', 0),
-(31, NULL, 2, 'Testing inov', '<p>Deskriasjipdas</p>', NULL, 1, '2016-05-31 11:01:32', '2016-05-31 11:01:32', 1),
-(32, 4, 5, 'Best', '<p>Coba buka ICT</p>', '<p>Kesimpulannya</p>', 2, '2016-05-31 11:04:10', '2016-05-31 11:04:37', 0),
-(33, 2, 2, 'coba bp', '<p>Cek</p>', NULL, 2, '2016-05-31 11:37:27', '2016-05-31 11:37:27', 1);
+(1, NULL, 2, 'coba inov', '<p>cek</p>', '<p>tutup ah</p>', 1, '2016-06-04 03:44:52', '2016-06-04 03:58:44', 0),
+(2, 1, 4, 'coba BP', '<p>yoi</p>', '<p>Lo lo lo</p>', 2, '2016-06-04 04:06:45', '2016-06-04 04:10:56', 0),
+(3, 2, 2, 'Coba lagi', '<p>asdasdasd</p>', '<p>Hampura di close</p>', 2, '2016-06-04 04:12:36', '2016-06-04 04:16:35', 0),
+(4, 3, 4, 'asd', '<p>asaaa</p>', '<p>zxczxc</p>', 2, '2016-06-04 04:17:49', '2016-06-04 04:17:57', 0),
+(5, 3, 4, 'ss', '<p>aaaaaa</p>', '<p>cek</p>', 2, '2016-06-04 04:23:10', '2016-06-04 04:23:24', 0),
+(6, 4, 4, 'asdasdds', '<p>zzz</p>', '<p>asdwffffff</p>', 2, '2016-06-04 04:23:36', '2016-06-04 04:24:04', 0),
+(7, 4, 4, 'euy', '<p>aaa</p>', '<p>hehe</p>', 2, '2016-06-04 04:51:30', '2016-06-04 04:54:36', 0),
+(8, 3, 10, 'asd', '<p>arinicantik</p>', '<p>arini cantik katanya</p>', 2, '2016-06-05 04:13:13', '2016-06-05 04:13:29', 0),
+(9, NULL, 2, 'Coba inov lagi', '<p>tes&nbsp;</p>', NULL, 1, '2016-06-05 09:16:15', '2016-06-05 09:16:15', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `cop_attachment`
+--
+
+CREATE TABLE `cop_attachment` (
+  `id_attachment` int(11) NOT NULL,
+  `id_cop` int(11) NOT NULL,
+  `file` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `cop_attachment`
+--
+
+INSERT INTO `cop_attachment` (`id_attachment`, `id_cop`, `file`) VALUES
+(1, 9, 'f72d158d9ddf37741cb4b987da4e78f0itulah.txt'),
+(2, 9, '651b5f8058d328ba2372d40f9e72c9cdProposal EduFi.docx');
 
 -- --------------------------------------------------------
 
@@ -79,19 +95,18 @@ CREATE TABLE `cop_comment` (
 --
 
 INSERT INTO `cop_comment` (`id_comment`, `id_cop`, `id_user`, `title`, `content`, `created_at`, `updated_at`) VALUES
-(1, 30, 4, '', '<p>oppoo</p>', '2016-05-31 07:57:10', '0000-00-00 00:00:00'),
-(2, 30, 5, '', '<p>apa bray</p>', '2016-05-31 07:58:02', '0000-00-00 00:00:00'),
-(3, 30, 5, '', '<p>sue</p>', '2016-05-31 07:59:41', '0000-00-00 00:00:00'),
-(4, 30, 5, '', '<p>cek notif</p>', '2016-05-31 08:03:39', '0000-00-00 00:00:00'),
-(5, 30, 5, '', '<p>coba lagi notif</p>', '2016-05-31 08:04:48', '0000-00-00 00:00:00'),
-(6, 30, 5, '', '<p>coba lagi dongs</p>', '2016-05-31 08:08:42', '0000-00-00 00:00:00'),
-(7, 28, 2, '', '<p>hoalaaah~</p>', '2016-05-31 08:21:12', '0000-00-00 00:00:00'),
-(8, 28, 2, '', '<p>hoalaaah~</p>', '2016-05-31 08:21:12', '0000-00-00 00:00:00'),
-(9, 30, 18, '', '<p>coba</p>', '2016-05-31 10:54:30', '0000-00-00 00:00:00'),
-(10, 31, 5, '', '<p>apaan lo nginvite gue</p>', '2016-05-31 11:01:53', '0000-00-00 00:00:00'),
-(11, 33, 2, '', '<p>dasdasdasdjagdad</p>', '2016-05-31 11:43:27', '0000-00-00 00:00:00'),
-(12, 33, 2, '', '<p>dasdasdasdjagdad</p>', '2016-05-31 11:45:15', '0000-00-00 00:00:00'),
-(13, 33, 2, '', '<p>tes lagi</p>', '2016-05-31 11:45:33', '0000-00-00 00:00:00');
+(1, 1, 2, '', '<p>coba</p>', '2016-06-04 03:44:59', '0000-00-00 00:00:00'),
+(2, 1, 4, '', '<p>apa sob</p>', '2016-06-04 03:46:03', '0000-00-00 00:00:00'),
+(3, 1, 4, '', '<p>oit</p>', '2016-06-04 03:50:11', '0000-00-00 00:00:00'),
+(4, 1, 2, '', '<p>naon</p>', '2016-06-04 03:52:13', '0000-00-00 00:00:00'),
+(5, 1, 5, '', '<p>bahas naon ieu?</p>', '2016-06-04 03:54:56', '0000-00-00 00:00:00'),
+(6, 2, 2, '', '<p>oit</p>', '2016-06-04 04:07:44', '0000-00-00 00:00:00'),
+(7, 2, 4, '', '<p>jadi gini gan</p>', '2016-06-04 04:08:18', '0000-00-00 00:00:00'),
+(8, 2, 4, '', '<p>tutup aja deh</p>', '2016-06-04 04:08:33', '0000-00-00 00:00:00'),
+(9, 3, 2, '', '<p>cek</p>', '2016-06-04 04:12:41', '0000-00-00 00:00:00'),
+(10, 3, 4, '', '<p>asd</p>', '2016-06-04 04:13:05', '0000-00-00 00:00:00'),
+(11, 6, 4, '', '<p>sdwasdw</p>', '2016-06-04 04:23:42', '0000-00-00 00:00:00'),
+(12, 6, 4, 'aa', '<p>a</p>', '2016-06-04 04:23:49', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -110,21 +125,13 @@ CREATE TABLE `cop_invitation` (
 --
 
 INSERT INTO `cop_invitation` (`id_invitation`, `id_cop`, `id_user`) VALUES
-(1, 27, 2),
-(2, 27, 5),
-(3, 27, 10),
-(4, 28, 2),
-(5, 28, 5),
-(6, 28, 10),
-(7, 29, 2),
-(8, 29, 4),
-(9, 29, 5),
-(10, 31, 2),
-(11, 31, 4),
-(12, 31, 5),
-(13, 31, 10),
-(14, 31, 16),
-(15, 31, 18);
+(1, 1, 2),
+(2, 1, 4),
+(3, 1, 16),
+(4, 1, 5),
+(5, 9, 2),
+(6, 9, 4),
+(7, 9, 10);
 
 -- --------------------------------------------------------
 
@@ -140,6 +147,7 @@ CREATE TABLE `course` (
   `title` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `datetime` datetime NOT NULL,
+  `enddate` datetime NOT NULL,
   `location` varchar(20) NOT NULL,
   `quota` int(11) NOT NULL,
   `summary` text NOT NULL,
@@ -153,9 +161,8 @@ CREATE TABLE `course` (
 -- Dumping data untuk tabel `course`
 --
 
-INSERT INTO `course` (`id_course`, `id_user`, `id_step`, `id_scope`, `title`, `description`, `datetime`, `location`, `quota`, `summary`, `report_file`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 22, 3, 'Kuliah Strategic Planning And Business 101', '<p>Pengantar Strategic planning and business</p>', '2016-05-30 06:00:00', 'Gedung C', 20, '', '', 1, '2016-05-28 06:47:28', '2016-05-28 06:47:28'),
-(2, 2, 28, 2, 'Waaaaw', '<p>Cek 123</p>', '2016-05-31 00:00:00', 'Kos', 1, '<p>Alhamdulillah Selesai</p>', '', 0, '2016-05-31 11:16:40', '2016-05-31 11:18:27');
+INSERT INTO `course` (`id_course`, `id_user`, `id_step`, `id_scope`, `title`, `description`, `datetime`, `enddate`, `location`, `quota`, `summary`, `report_file`, `status`, `created_at`, `updated_at`) VALUES
+(1, 4, 7, 3, 'Kuliah dafuq', '<p>Deskripsi gan</p>', '2016-06-05 00:00:00', '2016-06-07 00:00:00', 'On request', 20, '<p>Closed gan, gada yang dateng</p>', '', 0, '2016-06-05 04:28:36', '2016-06-05 04:37:52');
 
 -- --------------------------------------------------------
 
@@ -175,8 +182,9 @@ CREATE TABLE `course_participant` (
 --
 
 INSERT INTO `course_participant` (`id_participant`, `id_course`, `id_user`, `enrolled_at`) VALUES
-(1, 1, 3, '2016-05-31 04:13:34'),
-(2, 2, 9, '2016-05-31 11:17:08');
+(1, 1, 2, '2016-06-05 04:35:01'),
+(2, 1, 3, '2016-06-05 04:35:25'),
+(3, 1, 10, '2016-06-05 04:35:44');
 
 -- --------------------------------------------------------
 
@@ -231,18 +239,14 @@ CREATE TABLE `discussion` (
 --
 
 INSERT INTO `discussion` (`id_discussion`, `id_scope`, `id_user`, `id_step`, `title`, `content`, `summary`, `created_at`, `updated_at`, `status`, `views`) VALUES
-(15, 3, 2, 22, 'Coba strategic planning and business', '<p>Hayo loh hayo</p>', '', '2016-05-27 23:42:48', '2016-05-28 06:41:54', 0, 0),
-(16, 1, 2, 26, 'Ecommerce by rochadi~', '<p>yoi</p>', '', '2016-05-27 23:43:21', '2016-05-28 06:40:17', 0, 0),
-(17, 1, 4, 25, 'yeah', '<p>a</p>', '', '2016-05-27 23:45:15', '2016-05-28 00:17:38', 3, 0),
-(18, 2, 4, 18, 'yoi', '<p>aaa</p>', '', '2016-05-27 23:45:23', '2016-05-28 06:41:54', 0, 0),
-(19, 3, 4, 21, 'muah', '<p>amh</p>', '', '2016-05-27 23:45:30', '2016-05-28 00:17:38', 3, 0),
-(20, 2, 5, 19, 'enterprise~', '<p>asd</p>', '', '2016-05-27 23:55:32', '2016-05-28 00:17:38', 3, 0),
-(21, 3, 5, 23, 'udah ini spb3', '<p>ih</p>', '', '2016-05-27 23:55:47', '2016-05-28 00:17:38', 3, 0),
-(22, 4, 10, 24, 'tah discussion ict', '<p>coba coba weh</p>', '', '2016-05-27 23:57:11', '2016-05-28 06:41:54', 0, 0),
-(23, 2, 2, 28, 'a', '<p>a</p>', '<p>aaaaaaaaaaaaaaaaaaaasdasdasdwdasdawdasdawdasdawdadaw</p>', '2016-05-31 02:28:33', '2016-05-31 06:15:26', 0, 0),
-(24, 2, 2, 29, 'b', '<p>b</p>', '', '2016-05-31 02:28:38', '2016-05-31 02:29:12', 3, 0),
-(25, 2, 2, 30, 'c', '<p>c</p>', '', '2016-05-31 02:28:42', '2016-05-31 02:29:12', 3, 0),
-(26, 1, 2, 34, 'Judulnya ini', '<p>Deskripsinya itu</p>', '<p>Sudah Closed gan</p>', '2016-05-31 11:06:36', '2016-05-31 11:15:39', 0, 0);
+(1, 1, 4, 1, 'asdasdds', '<p>55513211313510031235131d35v1edv35d35bvd0b35er1e3y12r535th34te0f30eg3r0b3551351</p>', '', '2016-06-05 04:10:32', '2016-06-05 04:17:12', 0, 0),
+(2, 3, 4, 7, 'yoi', '<p>h jklhjklh jklh jklhjklhjklhjkhkjh klhgutf yi fuy ftd ytd ykg</p>', '', '2016-06-05 04:10:43', '2016-06-05 04:17:12', 0, 0),
+(3, 3, 4, 9, 'AAAAAAAAAAAAAAAAAAAAAAAA', '<p>BBBBBBBBBBBBBBBBBBBBgbggggggggggggggggggggggggggg</p>', '', '2016-06-05 04:10:54', '2016-06-05 04:12:39', 3, 0),
+(4, 4, 4, 10, 'sdfsdfsd', '<p>egmnvjkh jjcfgj drtasf h jytjt k7</p>', '', '2016-06-05 04:11:14', '2016-06-05 04:17:12', 0, 0),
+(5, 4, 4, 15, 'aaa', '<p>sdfasdasd</p>', '', '2016-06-05 04:11:18', '2016-06-05 04:12:39', 3, 0),
+(6, 1, 10, 3, 'ilove', '<p>mrtgggh</p>', '', '2016-06-05 04:12:14', '2016-06-05 04:12:39', 3, 0),
+(7, 2, 10, 6, 'ikjjj', '<p>lllcfgt</p>', '', '2016-06-05 04:12:21', '2016-06-05 04:17:12', 0, 0),
+(8, 3, 5, 16, 'asdasdds', '<p>222</p>', '<p>Rahasia</p>', '2016-06-05 04:16:58', '2016-06-05 04:20:14', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -265,15 +269,8 @@ CREATE TABLE `discussion_comment` (
 --
 
 INSERT INTO `discussion_comment` (`id_comment`, `id_discussion`, `id_user`, `title`, `content`, `created_at`, `updated_at`) VALUES
-(4, 22, 10, 'edaaaaan', '<p>oit</p>', '2016-05-28 01:30:16', '2016-05-28 01:30:16'),
-(5, 16, 3, '', '<p>Apa sih mas gak jelas banget jadi BE, mening saya gantiin aja sini</p>', '2016-05-28 06:30:58', '2016-05-28 06:30:58'),
-(6, 16, 3, '', '<p>Woy serius mas apaan sih</p>', '2016-05-28 06:31:27', '2016-05-28 06:31:27'),
-(7, 16, 2, '', '<p>Kamu jadi karyawan gausah banyak bacot, yang penting saya dapet point</p>', '2016-05-28 06:31:57', '2016-05-28 06:31:57'),
-(8, 23, 2, 'cek', '<p>yo</p>', '2016-05-31 02:29:26', '2016-05-31 02:29:26'),
-(9, 23, 3, 'v', '<p>v</p>', '2016-05-31 02:29:52', '2016-05-31 02:29:52'),
-(10, 23, 3, '', '<p>bisa kok</p>', '2016-05-31 04:44:56', '2016-05-31 04:44:56'),
-(11, 26, 9, '', '<p>Hai~~~</p>', '2016-05-31 11:08:25', '2016-05-31 11:08:25'),
-(12, 26, 2, '', '<p>Aya naon bray?</p>', '2016-05-31 11:13:51', '2016-05-31 11:13:51');
+(1, 1, 5, '', '<p>cek</p>', '2016-06-05 04:16:29', '2016-06-05 04:16:29'),
+(2, 8, 3, '', '<p>s</p>', '2016-06-05 04:19:38', '2016-06-05 04:19:38');
 
 -- --------------------------------------------------------
 
@@ -293,12 +290,7 @@ CREATE TABLE `discussion_vote` (
 --
 
 INSERT INTO `discussion_vote` (`id_vote`, `id_user`, `id_discussion`, `timestamp`) VALUES
-(19, 3, 16, '2016-05-28 00:16:38'),
-(20, 3, 18, '2016-05-28 00:16:41'),
-(21, 3, 15, '2016-05-28 00:16:42'),
-(22, 3, 22, '2016-05-28 00:16:44'),
-(23, 3, 26, '2016-05-31 11:07:23'),
-(24, 9, 26, '2016-05-31 11:07:57');
+(1, 3, 8, '2016-06-05 04:18:23');
 
 -- --------------------------------------------------------
 
@@ -314,14 +306,6 @@ CREATE TABLE `exp` (
   `status` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `exp`
---
-
-INSERT INTO `exp` (`id_exp`, `id_user`, `keterangan`, `file`, `status`, `created_at`) VALUES
-(2, 2, 'Juara makan kerupuk', '83501cd942922a6957761f2bd11bee49Discussion Report - yoi.pdf', 1, '2016-05-31 12:39:00'),
-(3, 2, 'Juara apa lagi', '0b15a34a6c39729ac73bbb371374f4e0Discussion Report - yoi.pdf', 1, '2016-05-31 12:39:01');
 
 -- --------------------------------------------------------
 
@@ -402,11 +386,7 @@ CREATE TABLE `journal` (
 --
 
 INSERT INTO `journal` (`id_journal`, `id_user`, `id_directorate`, `title`, `description`, `file`, `views`, `created_at`, `status`) VALUES
-(2, 2, 6, 'Analisis dan Implementasi Aplikasi Ini dan Itu', 'Ini adalah panduan umum startup challenge unpas 2016, lalala yeyeye, karena tulisan ini adalah deskripsi maka harusnya tulisan ini panjang banget gitu loh ya biar keliatannya bagus pake banget', '34160e9a6fbc8078bc2a45d0716af20e[NEW] Panduan Umum Startup Challenge UNPAS 2016 (update 4 April 2016).pdf', 9, '2016-05-26 02:40:02', 1),
-(3, 2, 4, 'Coba', 'aslkdjawidjjd aslkdjawid aslkdjawi', '61eb65bb2a3245a730b54b9ace3fa8a9Slide Sebuku.pdf', 3, '2016-05-10 15:09:14', 1),
-(4, 2, 6, 'apaan tuh', 'gak tau deh', '5f0e070824382c6c79cd0dae28b28fc0Sebuku Business Model.pdf', 3, '2016-05-26 02:30:13', 1),
-(5, 2, 5, 'Jurnal yoi', 'Deskripsi nyah', '4c5f6e6b584cecd26b02f40f1a935550Discussion Report - Coba strategic planning and business.pdf', 1, '2016-05-31 10:59:25', 1),
-(6, 2, 3, 'Coba dulu gan', 'askldakljdaskljdklasdjkl', 'fc69e88a73f2e1d47a39b9cde0002f58Discussion Report - yoi.pdf', 2, '2016-05-31 11:48:00', 1);
+(1, 2, 2, 'tes journal', 'tes', '1e99016ac3f4a794865857ebf421dae978635958_120516.pdf', 44, '2016-06-04 03:25:46', 1);
 
 -- --------------------------------------------------------
 
@@ -427,7 +407,11 @@ CREATE TABLE `journal_comment` (
 --
 
 INSERT INTO `journal_comment` (`id_comment`, `id_journal`, `id_user`, `content`, `created_at`) VALUES
-(1, 3, 18, 'coba comment', '2016-05-31 10:54:14');
+(1, 1, 2, 'tes komen jurnal', '2016-06-04 03:27:48'),
+(2, 1, 3, 'tes komen', '2016-06-04 03:28:11'),
+(3, 1, 2, 'aaaa', '2016-06-04 13:17:41'),
+(4, 1, 2, 'cek', '2016-06-04 13:44:07'),
+(5, 1, 4, 'notif coba', '2016-06-04 13:44:32');
 
 -- --------------------------------------------------------
 
@@ -470,23 +454,38 @@ CREATE TABLE `notif` (
 --
 
 INSERT INTO `notif` (`id_notif`, `id_user`, `title`, `link`, `type`, `red`) VALUES
-(7, 4, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/29', 4, 1),
-(8, 5, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/29', 4, 1),
-(21, 4, 'New Respond on Coba', 'http://localhost/els/cop/bp_view/30', 1, 1),
-(22, 5, 'New Respond on Coba', 'http://localhost/els/cop/bp_view/30', 1, 1),
-(23, 2, 'New Respond on Coba', 'http://localhost/els/cop/bp_view/30', 1, 1),
-(24, 2, 'New Respond on inov', 'http://localhost/els/cop/bp_view/28', 1, 1),
-(25, 4, 'New Respond on Coba', 'http://localhost/els/cop/bp_view/30', 1, 0),
-(26, 5, 'New Respond on Coba', 'http://localhost/els/cop/bp_view/30', 1, 1),
-(27, 2, 'New Respond on Coba', 'http://localhost/els/cop/bp_view/30', 1, 1),
-(28, 4, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/31', 4, 0),
-(29, 5, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/31', 4, 1),
-(30, 10, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/31', 4, 0),
-(31, 16, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/31', 4, 1),
-(32, 18, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/31', 4, 0),
-(33, 2, 'New Respond on Testing inov', 'http://localhost/els/cop/bp_view/31', 1, 1),
-(34, 2, 'New Respond on Judulnya ini', 'http://localhost/els/cop/bp_view/26', 0, 1),
-(35, 9, 'New Respond on Judulnya ini', 'http://localhost/els/discussion/view_discussion/26', 0, 1);
+(37, 4, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/1', 4, 1),
+(38, 16, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/1', 4, 0),
+(39, 5, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/1', 4, 1),
+(40, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 1),
+(41, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 1),
+(42, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 1),
+(43, 5, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 1),
+(44, 16, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 0),
+(45, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 1),
+(46, 4, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
+(47, 5, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
+(48, 16, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 0),
+(49, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
+(50, 4, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
+(51, 16, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 0),
+(52, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
+(53, 4, 'Forum Closed coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
+(54, 5, 'Forum Closed coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
+(55, 16, 'Forum Closed coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 0),
+(56, 4, 'New Respond on coba BP', 'http://localhost/els/cop/bp_view/2', 1, 1),
+(57, 2, 'New Respond on coba BP', 'http://localhost/els/cop/bp_view/2', 1, 1),
+(58, 2, 'New Respond on coba BP', 'http://localhost/els/cop/bp_view/2', 1, 1),
+(59, 2, 'New Respond on Coba lagi', 'http://localhost/els/cop/bp_view/3', 1, 1),
+(60, 2, 'New Respond on Coba lagi', 'http://localhost/els/cop/bp_view/3', 1, 1),
+(61, 4, 'Forum Closed Coba lagi', 'http://localhost/els/cop/bp_view', 1, 1),
+(64, 4, 'New Responsibilities euy', 'http://localhost/els/cop/bp_view/7', 0, 1),
+(65, 2, 'New Comment on  tes journal', 'http://localhost/els/journal/view/1', 2, 1),
+(68, 4, 'New Respond on asdasdds', 'http://localhost/els/discussion/view_discussion/1', 0, 1),
+(69, 5, 'New Respond on asdasdds', 'http://localhost/els/discussion/view_discussion/8', 0, 1),
+(70, 3, 'Discussion Closed asdasdds', 'http://localhost/els/discussion/view_discussion/8', 0, 1),
+(71, 4, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/9', 4, 1),
+(72, 10, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/9', 4, 0);
 
 -- --------------------------------------------------------
 
@@ -510,7 +509,32 @@ INSERT INTO `point` (`id_rating`, `id_user`, `value`, `keterangan`, `created_at`
 (1, 2, 50, 'Create BP', '2016-05-31 11:37:27'),
 (2, 2, 1, 'Respond Best Practice', '2016-05-31 11:45:15'),
 (3, 2, 1, 'Respond Best Practice', '2016-05-31 11:45:33'),
-(4, 2, 50, 'Upload Journal', '2016-05-31 11:48:00');
+(4, 2, 50, 'Upload Journal', '2016-05-31 11:48:00'),
+(5, 2, 50, 'Upload Journal', '2016-06-04 03:25:46'),
+(6, 2, 50, 'Create Innovation', '2016-06-04 03:44:52'),
+(7, 2, 1, 'Respond Innovation', '2016-06-04 03:45:00'),
+(8, 4, 1, 'Respond Innovation', '2016-06-04 03:46:03'),
+(9, 4, 1, 'Respond Innovation', '2016-06-04 03:50:11'),
+(10, 2, 1, 'Respond Innovation', '2016-06-04 03:52:13'),
+(11, 5, 1, 'Respond Innovation', '2016-06-04 03:54:56'),
+(12, 4, 50, 'Create BP', '2016-06-04 04:06:45'),
+(13, 2, 1, 'Respond Best Practice', '2016-06-04 04:07:44'),
+(14, 4, 1, 'Respond Best Practice', '2016-06-04 04:08:18'),
+(15, 4, 1, 'Respond Best Practice', '2016-06-04 04:08:33'),
+(16, 2, 50, 'Create BP', '2016-06-04 04:12:36'),
+(17, 2, 1, 'Respond Best Practice', '2016-06-04 04:12:41'),
+(18, 4, 1, 'Respond Best Practice', '2016-06-04 04:13:05'),
+(19, 4, 50, 'Create BP', '2016-06-04 04:17:49'),
+(20, 4, 50, 'Create BP', '2016-06-04 04:23:10'),
+(21, 4, 50, 'Create BP', '2016-06-04 04:23:36'),
+(22, 4, 1, 'Respond Best Practice', '2016-06-04 04:23:42'),
+(23, 4, 1, 'Respond Best Practice', '2016-06-04 04:23:49'),
+(24, 4, 50, 'Create BP', '2016-06-04 04:51:30'),
+(25, 2, 50, 'Upload Journal', '2016-06-04 15:04:05'),
+(26, 10, 50, 'Create BP', '2016-06-05 04:13:13'),
+(27, 5, 1, 'Respond Discussion', '2016-06-05 04:16:29'),
+(28, 4, 50, 'Open Course', '2016-06-05 04:28:36'),
+(29, 2, 50, 'Create Innovation', '2016-06-05 09:16:15');
 
 -- --------------------------------------------------------
 
@@ -536,11 +560,11 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id_profile`, `NIK`, `id_user`, `fullname`, `birthdate`, `gender`, `id_expert`, `pic`, `updated_at`, `login`) VALUES
-(1, '62012', 2, 'AAAAAAAAA', '1984-05-16', 'M', 36, '83f38c97de9d46f2f6f3e5cf591432cdsurabi-enhaii-di-medan.jpg', '2016-05-31 10:49:26', 1),
-(3, '75238', 4, 'Yudi Nugraha', NULL, NULL, 32, 'default.png', '2016-05-27 01:34:43', 1),
-(4, '740195', 5, 'Mohamad Noer Fajar', '2001-05-16', 'M', 12, '278ea3c732b770525ed4904aad3a5300Image_de80f95.jpg', '2016-05-31 11:03:05', 1),
+(1, '62012', 2, 'Rochadi', '1984-05-16', 'M', 1, '44534e014cf2e07397194a3b3f990a7bsurabi-enhaii-di-medan.jpg', '2016-06-04 14:50:31', 1),
+(3, '75238', 4, 'Yudi Nugraha', '1966-01-19', 'F', 13, '0a56cb4a68ea220be9ada8656f3f1e17Picture 2.jpg', '2016-06-05 04:37:16', 1),
+(4, '740195', 5, 'Mohamad Noer Fajar', '2001-05-16', 'M', 12, 'default.png', '2016-05-31 22:29:43', 1),
 (5, '', 10, 'Muhammad Salmin', NULL, NULL, 14, 'default.png', '2016-05-27 01:37:01', 1),
-(8, '2147483647', 16, 'Tifani', '2016-05-26', 'M', 2, '375a780a62d477c2017244ba48d428d2Capture.PNG', '2016-05-31 11:58:31', 1),
+(8, '2147483647', 16, 'Tifani', '2016-05-26', 'M', 2, 'default.png', '2016-05-31 22:29:49', 1),
 (9, NULL, 18, 'Jan Fanro', NULL, NULL, 98, 'default.png', '2016-05-31 10:50:22', 1),
 (10, NULL, 19, 'Selly lrst', NULL, NULL, 98, 'default.png', '2016-05-31 08:36:15', 0);
 
@@ -560,6 +584,13 @@ CREATE TABLE `profile_pending` (
   `id_expert` int(11) DEFAULT NULL,
   `pic` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `profile_pending`
+--
+
+INSERT INTO `profile_pending` (`id_pending`, `id_profile`, `NIK`, `fullname`, `birthdate`, `gender`, `id_expert`, `pic`) VALUES
+(1, 1, 62012, 'Rochadi', '1984-05-16', 'M', 3, '767d74ac369711742ea79ef88c68ae4amaps.jpg');
 
 -- --------------------------------------------------------
 
@@ -599,7 +630,7 @@ CREATE TABLE `state` (
 --
 
 INSERT INTO `state` (`id_state`, `step`) VALUES
-(1, 2);
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -622,25 +653,19 @@ CREATE TABLE `step` (
 --
 
 INSERT INTO `step` (`id_step`, `id_user`, `id_scope`, `step`, `keterangan`, `id_cop`, `bp_quota`) VALUES
-(18, 4, 2, 4, 'em1', 22, 0),
-(19, 5, 2, 8, 'em2', 22, 0),
-(20, 10, 2, 9, 'em3', 22, 0),
-(21, 4, 3, 8, 'spb1', 24, 0),
-(22, 2, 3, 5, 'spb2', 24, 0),
-(23, 5, 3, 8, 'spb3', 24, 0),
-(24, 10, 4, 4, 'satu aja', 25, 0),
-(25, 4, 1, 8, 'ec1', 21, 0),
-(26, 2, 1, 4, 'ec12', 21, 0),
-(27, 10, 1, 9, 'yooii', 26, 0),
-(28, 2, 2, 5, 'z', 23, 0),
-(29, 2, 2, 8, 'x', 23, 0),
-(30, 2, 2, 8, 'c', 23, 0),
-(31, 4, 4, 9, 'ini A', 32, 0),
-(32, 2, 4, 9, 'ini B', 32, 0),
-(33, 5, 4, 9, 'ini C', 32, 0),
-(34, 2, 1, 3, 'netywork', 30, 0),
-(35, 18, 1, 9, 'gener', 30, 0),
-(36, 10, 1, 9, 'lte~', 30, 0);
+(1, 4, 1, 4, 'aaaaaa', 2, 0),
+(2, 18, 1, 9, 'b', 2, 0),
+(3, 10, 1, 8, 'c', 2, 0),
+(4, 16, 2, 9, 'z', 3, 0),
+(5, 18, 2, 9, 'x', 3, 0),
+(6, 10, 2, 4, 'c', 3, 0),
+(7, 4, 3, 5, 'aaa', 4, 0),
+(8, 18, 3, 9, 's', 5, 0),
+(9, 4, 3, 8, 'd', 5, 0),
+(10, 4, 4, 4, 'zz', 6, 0),
+(11, 16, 4, 9, 'xx', 6, 0),
+(15, 4, 4, 8, 'hehehe', 7, 0),
+(16, 5, 3, 4, 'Woy', 8, 0);
 
 -- --------------------------------------------------------
 
@@ -686,6 +711,14 @@ ALTER TABLE `cop`
   ADD PRIMARY KEY (`id_cop`),
   ADD KEY `id_scope` (`id_scope`),
   ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `cop_attachment`
+--
+ALTER TABLE `cop_attachment`
+  ADD PRIMARY KEY (`id_attachment`),
+  ADD UNIQUE KEY `file` (`file`),
+  ADD KEY `id_cop` (`id_cop`);
 
 --
 -- Indexes for table `cop_comment`
@@ -856,27 +889,32 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cop`
 --
 ALTER TABLE `cop`
-  MODIFY `id_cop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_cop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `cop_attachment`
+--
+ALTER TABLE `cop_attachment`
+  MODIFY `id_attachment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `cop_comment`
 --
 ALTER TABLE `cop_comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `cop_invitation`
 --
 ALTER TABLE `cop_invitation`
-  MODIFY `id_invitation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_invitation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id_course` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_course` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `course_participant`
 --
 ALTER TABLE `course_participant`
-  MODIFY `id_participant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_participant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `directorate`
 --
@@ -886,22 +924,22 @@ ALTER TABLE `directorate`
 -- AUTO_INCREMENT for table `discussion`
 --
 ALTER TABLE `discussion`
-  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `discussion_comment`
 --
 ALTER TABLE `discussion_comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `discussion_vote`
 --
 ALTER TABLE `discussion_vote`
-  MODIFY `id_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `exp`
 --
 ALTER TABLE `exp`
-  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `expert`
 --
@@ -911,12 +949,12 @@ ALTER TABLE `expert`
 -- AUTO_INCREMENT for table `journal`
 --
 ALTER TABLE `journal`
-  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `journal_comment`
 --
 ALTER TABLE `journal_comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `level`
 --
@@ -926,12 +964,12 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `notif`
 --
 ALTER TABLE `notif`
-  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `point`
 --
 ALTER TABLE `point`
-  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `profile`
 --
@@ -941,7 +979,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT for table `profile_pending`
 --
 ALTER TABLE `profile_pending`
-  MODIFY `id_pending` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pending` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `scope`
 --
@@ -956,7 +994,7 @@ ALTER TABLE `state`
 -- AUTO_INCREMENT for table `step`
 --
 ALTER TABLE `step`
-  MODIFY `id_step` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_step` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `user`
 --
