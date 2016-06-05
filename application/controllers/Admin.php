@@ -60,8 +60,14 @@ class Admin extends CI_Controller
 
 		public function approve_journal($id_journal){
 			$update = $this->Admin_model->approve_journal($id_journal);
-
 			if ($update) {
+				redirect('admin/journal');
+			}
+		}
+
+		public function decline_journal($id){
+			$delete = $this->Admin_model->decline_journal($id);
+			if ($delete) {
 				redirect('admin/journal');
 			}
 		}
@@ -70,6 +76,7 @@ class Admin extends CI_Controller
 			$data['title'] = "Admin - Course";
 			$data['active'][3] = 'active';
 			$data['course'] = $this->Admin_model->getcourse();
+			$data['closed'] = $this->Admin_model->getclosedcourse();
 
 			$this->load->view('admin/course', $data);
 		}
@@ -93,7 +100,7 @@ class Admin extends CI_Controller
 
 		public function register(){
 			$data['title'] = "Admin - Register";
-			$data['active'][1] = 'active';
+			$data['active'][6] = 'active';
 			$this->load->view('admin/register', $data);
 		}
 
@@ -144,9 +151,18 @@ class Admin extends CI_Controller
 			$data['detail'] = $this->Admin_model->cop_get_thread($id_cop);
 			$data['participant'] = $this->Admin_model->cop_participant($id_cop);
 			$data['title'] = "Discussion Report - ".$data['detail']->title;
-			$data['url'] = site_url('cop/view_discussion/'.$id_cop);
+			$data['url'] = ($data['detail']->type == 1) ? site_url('cop/innovation_view/'.$id_cop) : site_url('cop/bp_view/'.$id_cop) ;
 			$this->load->view('admin/print_cop', $data);
 		}
+
+		public function print_course($id){
+			$data['detail'] = $this->Admin_model->detailcourse($id);
+			$data['participant'] = $this->Admin_model->courseparticipant($id);
+			$data['title'] = "Course Report - ".$data['detail']->title;
+			$data['url'] = site_url('course/view_course/'.$id);
+			$this->load->view('admin/print_course', $data);
+		}
+
 
 		public function approve_pending($id){
 			$pending = $this->Admin_model->getpendingdetail($id);
@@ -163,6 +179,14 @@ class Admin extends CI_Controller
 				redirect('admin/user');
 			}
 
+		}
+
+		public function view_pending($id){
+			$data['pending'] = $this->Admin_model->data_pending($id);
+			$data['profile'] = $this->Admin_model->data_profile($id);
+			$data['title'] = "View Pending Profile";
+
+			$this->load->view('admin/pending',$data);
 		}
 
 		public function approve_exp($id){

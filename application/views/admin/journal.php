@@ -31,11 +31,12 @@
                       <td><?php echo $data->id_journal ?></td>
                       <td><?php echo $data->fullname ?></td>
                       <td><?php echo $data->title ?></td>
-                      <td><a class="btn btn-xs" target="_blank" href="<?php echo base_url('uploads/'.$data->file) ?>">View</a></td>
+                      <td><a class="btn btn-xs btn-primary" target="_blank" href="<?php echo base_url('uploads/'.$data->file) ?>">Download / View</a></td>
                       <td><?php echo $data->views ?></td>
                       <td><?php echo $data->created_at ?></td>
                       <td>
-                        <a class="btn btn-success" href="<?php echo site_url('admin/approve_journal/'.$data->id_journal) ?>"> Approve</a>
+                        <a class="btn btn-xs btn-success " href="<?php echo site_url('admin/approve_journal/'.$data->id_journal) ?>"> Approve</a>
+                        <a class="btn btn-xs btn-danger" href="<?php echo site_url('admin/decline_journal/'.$data->id_journal) ?>"> Decline</a>
                       </td>
                     </tr>
                   <?php endforeach ?>
@@ -63,7 +64,7 @@
                       <td><?php echo $data->id_journal ?></td>
                       <td><?php echo $data->fullname ?></td>
                       <td><?php echo $data->title ?></td>
-                      <td><a class="btn btn-xs btn-primary" target="_blank" href="<?php echo base_url('uploads/'.$data->file) ?>">Download</a></td>
+                      <td><a class="btn btn-xs btn-primary" target="_blank" href="<?php echo base_url('uploads/'.$data->file) ?>">Download / View</a></td>
                       <td><?php echo $data->views ?></td>
                       <td><?php echo $data->status ?></td>
                       <td><?php echo $data->created_at ?></td>

@@ -17,7 +17,7 @@
                   </div>
                   <a class="btn bg-blue col-md-2 col-md-offset-5" href="<?php echo base_url('uploads/'.$journal[0]->file) ?>"><i class="fa fa-download"></i>&nbsp; Download</a>
 
-                  <span class="pull-right text-muted"><?php echo $journal[0]->views ?> views - 2 comments</span>
+                  <span class="pull-right text-muted"><?php echo $journal[0]->views ?> views - <?php echo count($comment) ?> comments</span>
                 </div>
                 <div class="box-footer col-md-12 komentar-badan">
                   <form action="<?php echo site_url('journal/post_comment/'.$journal[0]->id_journal) ?>" method="post">
@@ -35,8 +35,8 @@
                         <span class="username">
                           <span class="text-muted pull-right"><?php echo $komentar->created_at ?></span>
                           <small class="label bg-red">be</small>
-                          <strong><a href=""> <?php echo $komentar->fullname ?></a></strong><br>
-                        </span><!-- /.username -->
+                          <strong><a href="<?php echo site_url('profile/'.$komentar->id_user) ?>"> <?php echo $komentar->fullname ?></a></strong><br>
+                        </span>
                         <?php echo $komentar->content ?>
                       </div>
                     <?php else: ?>
@@ -77,9 +77,9 @@
                 </div>
                 <div class="box-footer no-padding">
                   <ul class="nav nav-stacked">
-                    <li><a href="#">Journal <span class="pull-right badge bg-blue"><?php echo $count['journal'] ?></span></a></li>
-                    <li><a href="#">Course <span class="pull-right badge bg-aqua"><?php echo $count['course'] ?></span></a></li>
-                    <li><a href="#">Discussion <span class="pull-right badge bg-green"><?php echo $count['discussion'] ?></span></a></li>
+                    <li><a>Journal <span class="pull-right badge bg-blue"><?php echo $itung['journal'] ?></span></a></li>
+                    <li><a>Course <span class="pull-right badge bg-aqua"><?php echo $itung['course'] ?></span></a></li>
+                    <li><a>Discussion <span class="pull-right badge bg-green"><?php echo $itung['discussion'] ?></span></a></li>
                   </ul>
                 </div>
               </div><!-- /.widget-user -->

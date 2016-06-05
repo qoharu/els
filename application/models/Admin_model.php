@@ -53,6 +53,37 @@ class Admin_model extends CI_Model
 			")->result();
 	}
 
+	function getclosedcourse(){
+		return $this->db->query("SELECT title, scope_name, description, location, datetime,  id_course,
+				(SELECT COUNT(*) FROM course_participant WHERE course_participant.id_course = course.id_course) AS count, quota, fullname, course.id_user
+			FROM course, profile, scope
+			WHERE status = 0
+				AND course.id_scope = scope.id_scope
+				AND course.id_user = profile.id_user
+			ORDER BY id_course DESC
+			")->result();
+	}
+
+	function detailcourse($id){
+		return $this->db->query("SELECT title, email, NIK as nik, expert_name, scope_name, description, created_at, summary, status, location, datetime, enddate, id_course,
+				(SELECT COUNT(*) FROM course_participant WHERE course_participant.id_course = course.id_course) AS count, quota, fullname, course.id_user
+			FROM course, profile, scope, user, expert
+			WHERE id_course = '$id'
+				AND course.id_scope = scope.id_scope
+				AND course.id_user = profile.id_user
+				AND profile.id_expert = expert.id_expert
+				AND course.id_user = user.id_user")->row();
+	}
+
+	function courseparticipant($id){
+		return $this->db->query("SELECT fullname, email, expert_name, course_participant.id_user
+				FROM course_participant
+				LEFT JOIN user ON course_participant.id_user = user.id_user
+				LEFT JOIN profile ON course_participant.id_user = profile.id_user
+				LEFT JOIN expert ON profile.id_expert = expert.id_expert
+				WHERE id_course = '$id' ")->result();
+	}
+
 	function getdiscussion(){
 		return $this->db->query("SELECT * FROM discussion, profile WHERE discussion.id_user = profile.id_user ")->result();
 	}
@@ -64,9 +95,6 @@ class Admin_model extends CI_Model
 		return $this->db->query("SELECT * FROM cop, profile WHERE type = 1 AND cop.id_user = profile.id_user")->result();
 	}
 
-	function approve_journal($id_journal){
-		return $this->db->query("UPDATE journal SET status = 1 WHERE id_journal = '$id_journal' ");
-	}
 
 	function register($data){
 		$fullname = $data['fullname'];
@@ -115,13 +143,14 @@ class Admin_model extends CI_Model
 	}
 
 	function cop_get_thread($id){
-		return $this->db->query("SELECT title, cop.status, cop.summary, id_cop, scope_name, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name, email, type
-				FROM cop, user, profile, expert, scope
-				WHERE cop.id_user = user.id_user
-					AND id_cop = '$id'
-					AND cop.id_scope = scope.id_scope
-					AND user.id_user = profile.id_user
-					AND profile.id_expert = expert.id_expert
+		return $this->db->query("SELECT cop.title, cop.status, cop.summary, cop.id_cop, cop.content, cop.created_at, cop.updated_at, cop.type,
+					scope.scope_name, user.id_user, profile.fullname, expert.expert_name, user.email
+				FROM cop
+				LEFT JOIN user ON cop.id_user = user.id_user
+				LEFT JOIN profile ON user.id_user = profile.id_user
+				LEFT JOIN expert ON profile.id_expert = expert.id_expert
+				LEFT JOIN scope ON cop.id_scope = scope.id_scope
+				WHERE id_cop = '$id'
 				")->row();
 	}
 
@@ -137,7 +166,7 @@ class Admin_model extends CI_Model
 	}
 
 	function getpending(){
-		return $this->db->query("SELECT profile.fullname, user.email, profile.id_user, id_pending 
+		return $this->db->query("SELECT profile.fullname, profile.id_profile, user.email, profile.id_user, id_pending 
 			FROM user, profile, profile_pending
 			WHERE profile_pending.id_profile = profile.id_profile
 				AND profile.id_user = user.id_user ")->result();
@@ -168,6 +197,14 @@ class Admin_model extends CI_Model
 		return $delete;
 	}
 
+	function data_pending($id){
+		return $this->db->query("SELECT * FROM profile_pending, expert WHERE id_profile = '$id' AND expert.id_expert = profile_pending.id_expert ")->row();
+	}
+
+	function data_profile($id){
+		return $this->db->query("SELECT * FROM profile, expert WHERE id_profile = '$id' AND expert.id_expert = profile.id_expert ")->row();
+	}
+
 	function course_detail($id){
 	
 	}
@@ -180,4 +217,11 @@ class Admin_model extends CI_Model
 		return $this->db->query("DELETE FROM exp WHERE id_exp='$id' ");
 	}
 
+	function approve_journal($id_journal){
+		return $this->db->query("UPDATE journal SET status = 1 WHERE id_journal = '$id_journal' ");
+	}
+
+	function decline_journal($id){
+		return $this->db->query("DELETE FROM journal WHERE id_journal='$id' ");
+	}
 }

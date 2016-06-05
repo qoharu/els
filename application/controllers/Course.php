@@ -42,6 +42,7 @@ class Course extends CI_Controller
 		$data['description'] = $this->input->post('description');
 		$data['quota'] = $this->input->post('quota');
 		$data['datetime'] = $this->input->post('datetime');
+		$data['enddate'] = $this->input->post('enddate');
 		$data['location'] = $this->input->post('location');
 		$data['id_scope'] = $this->input->post('id_scope');
 		$data['id_user'] = $this->session->userdata('uid');

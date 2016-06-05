@@ -25,7 +25,7 @@
 									    	<h3 class="box-title"><strong><a href="<?php echo site_url('journal/view/'.$journal->id_journal) ?>"><?php echo $journal->title; ?></a></strong></h3>
 									    	<div class="author">
 										    	Oleh : 
-										    		<a href="<?php echo site_url('user/'.$journal->id_user) ?>">
+										    		<a href="<?php echo site_url('profile/'.$journal->id_user) ?>">
 										    			<strong><?php echo $journal->fullname ?></strong>
 										    		</a>
 									    	</div>

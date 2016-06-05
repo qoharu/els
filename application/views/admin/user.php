@@ -32,7 +32,7 @@
                       <td><?php echo $data->fullname ?></td>
                       <td><?php echo $data->email ?></td>
                       <td>
-                        <a class="btn btn-xs btn-primary" href="<?php echo site_url('admin/view_pending/'.$data->id_pending) ?>">view</a>
+                        <a class="btn btn-xs btn-primary" href="<?php echo site_url('admin/view_pending/'.$data->id_profile) ?>">view</a>
                         <a class="btn btn-xs btn-success" href="<?php echo site_url('admin/approve_pending/'.$data->id_pending) ?>">approve</a>
                         <a class="btn btn-xs btn-danger" href="<?php echo site_url('admin/decline_pending/'.$data->id_pending) ?>">decline</a></td>
                     </tr>

@@ -165,7 +165,7 @@ if (empty($thread[0]->pic)) {
 					<div class="widget-user-header bg-blue">
 							<small class="pull-right"><?php echo date('D, d M Y h:m:s') ?></small>
 							<div class="form-group">
-		                      <input type="text" class="form-control" name="title" placeholder="Title">
+		                      <input type="text" class="form-control" name="title" placeholder="Title (Optional)">
 		                    </div>
 					</div>
 					<div class="box-footer content-forum">

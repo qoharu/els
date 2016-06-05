@@ -78,9 +78,12 @@
                   </li>
 
                   <li class="user-footer">
+                  <?php if (isbe()): ?>
+                    
                     <div class="pull-left">
                       <a href="<?php echo site_url('account/user/'.$this->session->userdata('uid')); ?>" class="btn btn-default btn-flat">Profile</a>
                     </div>
+                  <?php endif ?>
                     <div class="pull-right">
                       <a href="<?php echo site_url('account/logout') ?>" class="btn btn-default btn-flat">Logout</a>
                     </div>

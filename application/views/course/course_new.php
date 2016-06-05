@@ -37,6 +37,15 @@
 							<div class="form-group col-md-4">
 								<div class="input-group ">
 									<div class="input-group-addon">
+			                        	<i class="fa fa-calendar"></i>
+			                      	</div>
+									<input class="form-control input-md " id="enddate" type="text" name="enddate" placeholder="End Date" required="">
+								</div>
+							</div>
+
+							<div class="form-group col-md-4">
+								<div class="input-group ">
+									<div class="input-group-addon">
 			                        	<i class="fa fa-map-marker"></i>
 			                      	</div>
 									<input class="form-control input-md " type="text" name="location" placeholder="Tempat" required="">
@@ -60,6 +69,15 @@
 		</div>
 	<script type="text/javascript">
 		$("#datetime").daterangepicker({
+			timePicker: true,
+	        singleDatePicker: true,
+	        timePicker24Hour : true,
+	        showDropdowns: true,
+	        timePickerIncrement: 30,
+	        format: 'YYYY-MM-DD H:mm:ss'
+		});
+
+		$("#enddate").daterangepicker({
 			timePicker: true,
 	        singleDatePicker: true,
 	        timePicker24Hour : true,

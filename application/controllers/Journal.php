@@ -47,6 +47,13 @@ class Journal extends CI_Controller
 	public function post_comment($id_journal){
 		$data['content'] = @$_POST['content'];
 		$hasil = $this->Journal_model->postcomment($data,$id_journal);
+
+		$data = $this->Journal_model->viewjournal($id_journal)[0];
+		$id[0] = $data->id_user;
+		if ($id[0] != $this->session->userdata('uid')) {
+			$notif = $this->General_model->setnotif($id[0], "New Comment on  ".$data->title, site_url('journal/view/'.$id_journal),2);
+		}
+		
 		if ($hasil) {
 			redirect('journal/view/'.$id_journal);
 		}
@@ -70,7 +77,7 @@ class Journal extends CI_Controller
 		$data['journal'] = $this->Journal_model->viewjournal($id_journal);
 		$data['title'] = $data['journal'][0]->title." | Journal";
 		$data['comment'] = $this->Journal_model->getcomment($id_journal, $comment_page);
-		$data['count'] = array(
+		$data['itung'] = array(
 						'journal' => $this->General_model->getjournalcount($data['journal'][0]->id_user), 
 						'course' => $this->General_model->getcoursecount($data['journal'][0]->id_user),
 						'discussion' => $this->General_model->getdiscussioncount($data['journal'][0]->id_user)

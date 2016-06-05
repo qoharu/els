@@ -9,7 +9,7 @@
                 </div>
                 <div class="box-body">
 
-                <h3>Course</h3>
+                <h3>Course Open</h3>
                 <table class="table table-striped table-bordered">
                    <thead>
                     <tr>
@@ -24,6 +24,36 @@
                    </thead> 
                   <tbody>
                   <?php foreach ($course as $data): ?>
+                    <tr>
+                      <td><?php echo $data->id_course ?></td>
+                      <td><?php echo $data->fullname ?></td>
+                      <td><?php echo $data->title ?></td>
+                      <td><?php echo $data->count ?></td>
+                      <td><?php echo $data->quota ?></td>
+                      <td><?php echo $data->datetime ?></td>
+                      <td>
+                        <a class="btn btn-xs btn-primary" href="<?php echo site_url('course/view_course/'.$data->id_course) ?>">View</a>
+                      </td>
+                    </tr>
+                  <?php endforeach ?>
+                  </tbody>
+                  </table>
+
+                  <h3>Closed Course</h3>
+                <table class="table table-striped table-bordered">
+                   <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Fullname</th>
+                      <th>Title</th>
+                      <th>Participant</th>
+                      <th>Quota</th>
+                      <th>Date Time</th>
+                      <th>Action</th>
+                    </tr>
+                   </thead> 
+                  <tbody>
+                  <?php foreach ($closed as $data): ?>
                     <tr>
                       <td><?php echo $data->id_course ?></td>
                       <td><?php echo $data->fullname ?></td>

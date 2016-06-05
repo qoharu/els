@@ -42,6 +42,7 @@
                     <div class="col-xs-3 text-center border-right text-black">
                       <canvas class="canvas-course"></canvas>
                       <i class="fa fa-calendar"> </i>&nbsp; <?php echo $course->datetime ?>
+                      <i class="fa fa-calendar"> </i>&nbsp; <?php echo $course->enddate ?>
                     </div>
                     <div class="col-xs-3 text-center border-right text-black">
                       <canvas class="canvas-course"></canvas>

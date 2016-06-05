@@ -149,3 +149,10 @@ h2 {
 	height: 500px;
 	padding-top: 100px;
 }
+.content-pending{
+	border-right: 1px dashed #dddddd;
+	border-left: 1px dashed #dddddd;
+	height: 450px;
+	padding-top: 200px;
+	font-size: 50px;
+}

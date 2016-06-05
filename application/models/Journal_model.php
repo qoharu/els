@@ -88,5 +88,9 @@ class Journal_model extends CI_Model
 			")->result();
 	}
 
+	function getiduser($id){
+		return $this->db->query("SELECT id_user FROM journal WHERE id_journal = '$id' ")->row()->id_user;
+	}
+
 
 }

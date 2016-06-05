@@ -60,15 +60,15 @@ class General_model extends CI_Model
 		return $this->db->query("UPDATE notif SET red = 1 WHERE id_user = '$uid' ");
 	}
 	function getjournalcount($id_user){
-		return $this->db->query("SELECT * FROM journal where id_user = '$id_user' ")->num_rows();
+		return $this->db->query("SELECT COUNT(*) AS count FROM journal where id_user = '$id_user' ")->row()->count;
 	}
 
 	function getdiscussioncount($id_user){
-		return $this->db->query("SELECT * FROM discussion where id_user = '$id_user' ")->num_rows();
+		return $this->db->query("SELECT COUNT(*) AS count FROM discussion where id_user = '$id_user' ")->row()->count;
 	}
 
 	function getcoursecount($id_user){
-		return $this->db->query("SELECT * FROM course where id_user = '$id_user' ")->num_rows();
+		return $this->db->query("SELECT COUNT(*) AS count FROM course where id_user = '$id_user' ")->row()->count;
 	}
 
 	function cekstep($id_scope){

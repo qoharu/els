@@ -6,7 +6,7 @@ class Course_model extends CI_Model
 {
 	function listcourse(){
 		$uid = $this->session->userdata('uid');
-		return $this->db->query("SELECT title, scope_name, description, location, datetime,  id_course,
+		return $this->db->query("SELECT title, scope_name, description, location, datetime, enddate, id_course,
 				(SELECT COUNT(*) FROM course_participant WHERE course_participant.id_course = course.id_course) AS count, quota, fullname, course.id_user, (SELECT COUNT(*) FROM course_participant WHERE course_participant.id_course = course.id_course AND id_user = '$uid') AS enrolled
 			FROM course, profile, scope
 			WHERE status = 1
@@ -52,7 +52,7 @@ class Course_model extends CI_Model
 
 	function detail_course($id_course){
 		$uid = $this->session->userdata('uid');
-		return $this->db->query("SELECT title, scope_name, description, status, location, datetime, id_course,
+		return $this->db->query("SELECT title, scope_name, description, status, location, datetime, enddate, id_course,
 				(SELECT COUNT(*) FROM course_participant WHERE course_participant.id_course = course.id_course) AS count, quota, fullname, course.id_user, (SELECT COUNT(*) FROM course_participant WHERE course_participant.id_course = course.id_course AND id_user = '$uid') AS enrolled
 			FROM course, profile, scope
 			WHERE id_course = '$id_course'
