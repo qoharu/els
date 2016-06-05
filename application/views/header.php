@@ -43,6 +43,8 @@
 	
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+            <?php if (isbe() || iskaryawan()): ?>
+              
               <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-bell-o"></i>
@@ -63,6 +65,7 @@
                   <li class="footer"><a href="<?php echo site_url('home/notification') ?>">View all</a></li>
                 </ul>
               </li>
+            <?php endif ?>
 
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

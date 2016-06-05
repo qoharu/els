@@ -122,7 +122,7 @@ class Cop extends CI_Controller
 		}
 
 		if (!empty(@$data['be'])) {
-			$notif = $this->General_model->setnotif($data['be'], "New Responsibilities ".$idtitle->title,site_url('cop/bp_view/'.$id_cop),0);
+			$notif = @$this->General_model->setnotif($data['be'], "New Responsibilities ".$idtitle->title,site_url('cop/bp_view/'.$id_cop),0);
 		}
 
 
