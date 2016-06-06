@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 05 Jun 2016 pada 12.26
+-- Generation Time: 06 Jun 2016 pada 15.27
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -52,7 +52,14 @@ INSERT INTO `cop` (`id_cop`, `id_scope`, `id_user`, `title`, `content`, `summary
 (6, 4, 4, 'asdasdds', '<p>zzz</p>', '<p>asdwffffff</p>', 2, '2016-06-04 04:23:36', '2016-06-04 04:24:04', 0),
 (7, 4, 4, 'euy', '<p>aaa</p>', '<p>hehe</p>', 2, '2016-06-04 04:51:30', '2016-06-04 04:54:36', 0),
 (8, 3, 10, 'asd', '<p>arinicantik</p>', '<p>arini cantik katanya</p>', 2, '2016-06-05 04:13:13', '2016-06-05 04:13:29', 0),
-(9, NULL, 2, 'Coba inov lagi', '<p>tes&nbsp;</p>', NULL, 1, '2016-06-05 09:16:15', '2016-06-05 09:16:15', 1);
+(9, NULL, 2, 'Coba inov lagi', '<p>tes&nbsp;</p>', NULL, 1, '2016-06-05 09:16:15', '2016-06-05 09:16:15', 1),
+(10, NULL, 2, 'kljklsdklajsdlajkd', '<p>asldlajwidjasdn asldk aklsjd</p>', NULL, 1, '2016-06-05 10:32:56', '2016-06-05 10:32:56', 1),
+(11, 3, 2, 'dfgdfgd', '<p>dfgdfgdfg</p>', '<p>klkljjlljk</p>', 2, '2016-06-05 10:33:24', '2016-06-05 10:33:39', 0),
+(12, 4, 2, 'zzz', '<p>asdasdasd</p>', '<p>asdasd</p>', 2, '2016-06-05 10:39:32', '2016-06-05 10:39:46', 0),
+(13, 1, 2, 'zzz', '<p>xxc</p>', '<p>a</p>', 2, '2016-06-06 02:42:03', '2016-06-06 02:42:16', 0),
+(14, 3, 2, 'aaa', '<p>asd</p>', '<p>azxc</p>', 2, '2016-06-06 02:43:14', '2016-06-06 02:43:27', 0),
+(15, 2, 2, 'asd', '<p>asoiul</p>', '<p>jkl</p>', 2, '2016-06-06 02:46:13', '2016-06-06 02:46:19', 0),
+(16, 3, 2, 'asdasd', '<p>asdasdas</p>', '<p>aa</p>', 2, '2016-06-06 02:58:49', '2016-06-06 02:58:58', 0);
 
 -- --------------------------------------------------------
 
@@ -72,7 +79,9 @@ CREATE TABLE `cop_attachment` (
 
 INSERT INTO `cop_attachment` (`id_attachment`, `id_cop`, `file`) VALUES
 (1, 9, 'f72d158d9ddf37741cb4b987da4e78f0itulah.txt'),
-(2, 9, '651b5f8058d328ba2372d40f9e72c9cdProposal EduFi.docx');
+(2, 9, '651b5f8058d328ba2372d40f9e72c9cdProposal EduFi.docx'),
+(3, 10, '7e9d9b88adadb1ee516eb8894c409e28Screenshot_20160313-071822.png'),
+(4, 10, '7c9b0ea60f5405bd78e86977d9399810Screenshot_20160313-071928.png');
 
 -- --------------------------------------------------------
 
@@ -84,7 +93,7 @@ CREATE TABLE `cop_comment` (
   `id_comment` int(11) NOT NULL,
   `id_cop` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
+  `title` varchar(100) DEFAULT '',
   `content` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -106,7 +115,9 @@ INSERT INTO `cop_comment` (`id_comment`, `id_cop`, `id_user`, `title`, `content`
 (9, 3, 2, '', '<p>cek</p>', '2016-06-04 04:12:41', '0000-00-00 00:00:00'),
 (10, 3, 4, '', '<p>asd</p>', '2016-06-04 04:13:05', '0000-00-00 00:00:00'),
 (11, 6, 4, '', '<p>sdwasdw</p>', '2016-06-04 04:23:42', '0000-00-00 00:00:00'),
-(12, 6, 4, 'aa', '<p>a</p>', '2016-06-04 04:23:49', '0000-00-00 00:00:00');
+(12, 6, 4, 'aa', '<p>a</p>', '2016-06-04 04:23:49', '0000-00-00 00:00:00'),
+(13, 9, 2, NULL, '<p>asdasd</p>', '2016-06-06 02:41:26', '0000-00-00 00:00:00'),
+(14, 14, 2, NULL, '<p>asdasd</p>', '2016-06-06 02:43:19', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -131,7 +142,10 @@ INSERT INTO `cop_invitation` (`id_invitation`, `id_cop`, `id_user`) VALUES
 (4, 1, 5),
 (5, 9, 2),
 (6, 9, 4),
-(7, 9, 10);
+(7, 9, 10),
+(8, 10, 2),
+(9, 10, 5),
+(10, 10, 18);
 
 -- --------------------------------------------------------
 
@@ -246,7 +260,12 @@ INSERT INTO `discussion` (`id_discussion`, `id_scope`, `id_user`, `id_step`, `ti
 (5, 4, 4, 15, 'aaa', '<p>sdfasdasd</p>', '', '2016-06-05 04:11:18', '2016-06-05 04:12:39', 3, 0),
 (6, 1, 10, 3, 'ilove', '<p>mrtgggh</p>', '', '2016-06-05 04:12:14', '2016-06-05 04:12:39', 3, 0),
 (7, 2, 10, 6, 'ikjjj', '<p>lllcfgt</p>', '', '2016-06-05 04:12:21', '2016-06-05 04:17:12', 0, 0),
-(8, 3, 5, 16, 'asdasdds', '<p>222</p>', '<p>Rahasia</p>', '2016-06-05 04:16:58', '2016-06-05 04:20:14', 0, 0);
+(8, 3, 5, 16, 'asdasdds', '<p>222</p>', '<p>Rahasia</p>', '2016-06-05 04:16:58', '2016-06-05 04:20:14', 0, 0),
+(9, 1, 2, 21, 'AAa', '<p>aaa</p>', '<p>tes</p>', '2016-06-06 02:46:38', '2016-06-06 02:53:05', 0, 0),
+(10, 2, 2, 24, 'Jjj', '<p>jjj</p>', '<p>cek</p>', '2016-06-06 02:46:43', '2016-06-06 02:53:44', 0, 0),
+(11, 3, 2, 23, 'vvv', '<p>vvv</p>', '', '2016-06-06 02:46:46', '2016-06-06 02:55:03', 0, 0),
+(12, 3, 2, 25, 'hadeuh', '<p>asdasd</p>', '<p>zxczxczxc</p>', '2016-06-06 02:59:15', '2016-06-06 02:59:58', 0, 0),
+(13, 3, 2, 26, 'xcvxcvxcvxc', '<p>dfsdsdf</p>', '', '2016-06-06 02:59:20', '2016-06-06 02:59:35', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -258,7 +277,7 @@ CREATE TABLE `discussion_comment` (
   `id_comment` int(11) NOT NULL,
   `id_discussion` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `title` text NOT NULL,
+  `title` text,
   `content` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -270,7 +289,9 @@ CREATE TABLE `discussion_comment` (
 
 INSERT INTO `discussion_comment` (`id_comment`, `id_discussion`, `id_user`, `title`, `content`, `created_at`, `updated_at`) VALUES
 (1, 1, 5, '', '<p>cek</p>', '2016-06-05 04:16:29', '2016-06-05 04:16:29'),
-(2, 8, 3, '', '<p>s</p>', '2016-06-05 04:19:38', '2016-06-05 04:19:38');
+(2, 8, 3, '', '<p>s</p>', '2016-06-05 04:19:38', '2016-06-05 04:19:38'),
+(3, 9, 2, NULL, '<p>asdasdasd</p>', '2016-06-06 02:48:01', '2016-06-06 02:48:01'),
+(4, 12, 2, NULL, '<p>asdasd</p>', '2016-06-06 02:59:54', '2016-06-06 02:59:54');
 
 -- --------------------------------------------------------
 
@@ -485,7 +506,17 @@ INSERT INTO `notif` (`id_notif`, `id_user`, `title`, `link`, `type`, `red`) VALU
 (69, 5, 'New Respond on asdasdds', 'http://localhost/els/discussion/view_discussion/8', 0, 1),
 (70, 3, 'Discussion Closed asdasdds', 'http://localhost/els/discussion/view_discussion/8', 0, 1),
 (71, 4, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/9', 4, 1),
-(72, 10, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/9', 4, 0);
+(72, 10, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/9', 4, 0),
+(73, 5, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/10', 4, 0),
+(74, 18, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/10', 4, 0),
+(78, 4, 'New Responsibilities zzz', 'http://localhost/els/cop/bp_view/12', 0, 0),
+(79, 18, 'New Responsibilities zzz', 'http://localhost/els/cop/bp_view/12', 0, 0),
+(80, 10, 'New Responsibilities zzz', 'http://localhost/els/cop/bp_view/12', 0, 0),
+(81, 4, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 0),
+(82, 10, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 0),
+(88, 2, 'New Responsibilities asd', 'http://localhost/els/cop/bp_view/15', 0, 1),
+(90, 2, 'New Responsibilities asdasd', 'http://localhost/els/cop/bp_view/16', 0, 1),
+(91, 2, 'New Responsibilities asdasd', 'http://localhost/els/cop/bp_view/16', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -534,7 +565,18 @@ INSERT INTO `point` (`id_rating`, `id_user`, `value`, `keterangan`, `created_at`
 (26, 10, 50, 'Create BP', '2016-06-05 04:13:13'),
 (27, 5, 1, 'Respond Discussion', '2016-06-05 04:16:29'),
 (28, 4, 50, 'Open Course', '2016-06-05 04:28:36'),
-(29, 2, 50, 'Create Innovation', '2016-06-05 09:16:15');
+(29, 2, 50, 'Create Innovation', '2016-06-05 09:16:15'),
+(30, 2, 50, 'Create Innovation', '2016-06-05 10:32:56'),
+(31, 2, 50, 'Create BP', '2016-06-05 10:33:24'),
+(32, 2, 50, 'Create BP', '2016-06-05 10:39:32'),
+(33, 2, 1, 'Respond Innovation', '2016-06-06 02:41:26'),
+(34, 2, 50, 'Create BP', '2016-06-06 02:42:03'),
+(35, 2, 50, 'Create BP', '2016-06-06 02:43:14'),
+(36, 2, 1, 'Respond Best Practice', '2016-06-06 02:43:19'),
+(37, 2, 50, 'Create BP', '2016-06-06 02:46:13'),
+(38, 2, 50, 'Create BP', '2016-06-06 02:58:49'),
+(39, 2, 1, 'Respond Discussion', '2016-06-06 02:59:54'),
+(40, 2, 50, 'Upload Journal', '2016-06-06 03:20:07');
 
 -- --------------------------------------------------------
 
@@ -630,7 +672,7 @@ CREATE TABLE `state` (
 --
 
 INSERT INTO `state` (`id_state`, `step`) VALUES
-(1, 3);
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -665,7 +707,17 @@ INSERT INTO `step` (`id_step`, `id_user`, `id_scope`, `step`, `keterangan`, `id_
 (10, 4, 4, 4, 'zz', 6, 0),
 (11, 16, 4, 9, 'xx', 6, 0),
 (15, 4, 4, 8, 'hehehe', 7, 0),
-(16, 5, 3, 4, 'Woy', 8, 0);
+(16, 5, 3, 4, 'Woy', 8, 0),
+(17, 16, 3, 9, 'vbnvbn', 11, 0),
+(18, 4, 4, 9, 'aaa', 12, 0),
+(19, 18, 4, 9, 'xxx', 12, 0),
+(20, 10, 4, 9, 'qweqweqweqwe', 12, 0),
+(21, 2, 1, 4, 'aaaaaaaaaaa', 13, 0),
+(22, 16, 1, 9, 'x', 13, 0),
+(23, 2, 3, 4, 'vvv', 14, 0),
+(24, 2, 2, 4, 'jjj', 15, 0),
+(25, 2, 3, 4, 'xcxzc', 16, 0),
+(26, 2, 3, 8, 'zxczxc', 16, 0);
 
 -- --------------------------------------------------------
 
@@ -889,22 +941,22 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cop`
 --
 ALTER TABLE `cop`
-  MODIFY `id_cop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_cop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `cop_attachment`
 --
 ALTER TABLE `cop_attachment`
-  MODIFY `id_attachment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_attachment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `cop_comment`
 --
 ALTER TABLE `cop_comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `cop_invitation`
 --
 ALTER TABLE `cop_invitation`
-  MODIFY `id_invitation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_invitation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `course`
 --
@@ -924,12 +976,12 @@ ALTER TABLE `directorate`
 -- AUTO_INCREMENT for table `discussion`
 --
 ALTER TABLE `discussion`
-  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `discussion_comment`
 --
 ALTER TABLE `discussion_comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `discussion_vote`
 --
@@ -964,12 +1016,12 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `notif`
 --
 ALTER TABLE `notif`
-  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 --
 -- AUTO_INCREMENT for table `point`
 --
 ALTER TABLE `point`
-  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `profile`
 --
@@ -994,7 +1046,7 @@ ALTER TABLE `state`
 -- AUTO_INCREMENT for table `step`
 --
 ALTER TABLE `step`
-  MODIFY `id_step` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_step` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `user`
 --
