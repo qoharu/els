@@ -31,16 +31,22 @@ class General_model extends CI_Model
 	}
 
 	function setnotif($uid, $title, $link, $type){
-		$builder = "('$uid[0]', '$title', '$link', '$type')";
-		$count = count($uid);
-		if ($count > 1) {
-			for ($i=1; $i < $count ; $i++) {
-				$builder .= ", ('$uid[$i]', '$title', '$link', '$type')";
+		if (!empty($uid)) {
+			$builder = "('$uid[0]', '$title', '$link', '$type')";
+			$count = count($uid);
+			if ($count > 1) {
+				for ($i=1; $i < $count ; $i++) {
+					if (!empty($uid[$i])) {
+						$builder .= ", ('$uid[$i]', '$title', '$link', '$type')";
+					}
+				}
 			}
-		}
-		$query = $this->db->query("INSERT INTO notif(id_user, title, link, type) VALUES".$builder);
+			$query = $this->db->query("INSERT INTO notif(id_user, title, link, type) VALUES".$builder);
 
-		return $query;
+			return $query;
+		}else{
+			return 1;
+		}
 	}
 
 	function setpoint($id_user, $value, $keterangan ){

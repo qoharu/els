@@ -122,6 +122,9 @@ if (empty($thread[0]->pic)) {
 			</div>
 			<div class="col-md-9">
 				<div class="box box-widget widget-user-2">
+				<div class="widget-user-header <?php echo $kelas ?>">
+						<small class="pull-right"><?php echo $komentar->created_at ?></small>
+					</div>
 					<div class="box-footer content-forum">
 						<?php echo $komentar->content ?>
 					</div>
@@ -160,9 +163,6 @@ if (empty($thread[0]->pic)) {
 				<div class="box box-widget widget-user-2">
 					<div class="widget-user-header bg-blue">
 							<small class="pull-right"><?php echo date('D, d M Y h:m:s') ?></small>
-							<div class="form-group">
-		                      <input type="text" class="form-control" name="title" placeholder="Title (Optional)">
-		                    </div>
 					</div>
 					<div class="box-footer content-forum">
 						<textarea class="textarea textarea-forum" name="content" placeholder="Description" required ></textarea>

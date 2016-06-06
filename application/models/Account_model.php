@@ -50,6 +50,10 @@ class Account_model extends CI_Model
 		")->row();
 	}
 
+	function point($id){
+		return $this->db->query("SELECT * FROM point WHERE id_user = '$id' ")->result();
+	}
+
 	function hasprofile($uid){
 		$db=$this->db->query("SELECT id_profile FROM profile WHERE id_user='$uid' AND login='1' ");
 		if ($db->num_rows() != 1) {

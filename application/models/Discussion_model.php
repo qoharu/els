@@ -116,7 +116,12 @@ class Discussion_model extends CI_Model
 	}
 
 	function close_post($id_discussion, $summary){
-		return $this->db->query("UPDATE discussion SET status = 0, summary = '$summary' WHERE id_discussion = '$id_discussion' ");
+		$close = $this->db->query("UPDATE discussion SET status = 0, summary = '$summary' WHERE id_discussion = '$id_discussion' ");
+		$stepdata = $this->db->query("SELECT id_step FROM discussion WHERE id_discussion = '$id_discussion' ")->row()->id_step;
+		$step = $this->db->query("UPDATE step set step = 4 WHERE id_step = '$stepdata' ");
+		if ($close && $step) {
+			return 1;
+		}
 	}
 
 	function disc_participant($id){

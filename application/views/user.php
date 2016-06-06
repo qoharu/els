@@ -73,6 +73,16 @@
                     <li><?php echo $data->keterangan ?></li>
                   <?php endforeach ?>
                   </p>
+
+                  <?php if (isadmin() || issuperadmin()): ?>
+                  <hr>
+                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Points</strong>
+                  <p>
+                  <?php foreach ($point as $data): ?>
+                    <li><?php echo $data->keterangan ?> (<?php echo $data->value ?>)</li>
+                  <?php endforeach ?>
+                  </p>
+                  <?php endif ?>
                 </div>
               </div>
             </div>

@@ -118,7 +118,7 @@ class Cop extends CI_Controller
 			$participant[count($participant)] = $idtitle->id_user;
 		}
 		if (!empty($participant)) {
-			$notif = $this->General_model->setnotif($participant, "Forum Closed ".$idtitle->title,site_url('cop/bp_view/'.$id_cop),1);
+			$notif = @$this->General_model->setnotif($participant, "Forum Closed ".$idtitle->title,site_url('cop/bp_view/'.$id_cop),1);
 		}
 
 		if (!empty(@$data['be'])) {

@@ -75,6 +75,7 @@ class Account extends CI_Controller
 	public function user($uid){
 		$data['profile'] = $this->Account_model->getprofile($uid);
 		$data['experience'] = $this->Account_model->getexp($uid);
+		$data['point'] = $this->Account_model->point($uid);
 		$data['pending'] = ($this->Account_model->pending($data['profile']->id_profile) >= 1) ? 1 : 0 ;
 		$data['title'] = "Profile";
 
