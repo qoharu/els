@@ -27,7 +27,6 @@
                   <span class="input-group-btn">
                     <a class="btn btn-flat btn-default" id="passbtn" ><i class="fa fa-eye"></i></a>
                   </span>
-                  
                 </div>
               </div>
 

@@ -137,5 +137,9 @@ class Account_model extends CI_Model
 		return $this->db->query("SELECT COUNT(*) AS count FROM profile_pending WHERE id_profile = '$id' ")->row()->count;
 	}
 
+	function changepwd($id, $password){
+		$password = md5($password);
+		return $this->db->query("UPDATE user SET password = '$password' WHERE id_user = '$id' ");
+	}
 	
 }

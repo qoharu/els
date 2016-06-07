@@ -32,12 +32,15 @@
                 <div class="box-header with-border">
                   <h2 class="box-title"><strong> About Me </strong></h2>
                   <?php if ($this->session->userdata('uid') == $profile->id_user): ?>
-                    
+                    <div class="pull-right">
+                      
                     <?php if ($pending): ?>
-                      <a class="btn btn-warning pull-right disabled" href="">Pending</a>
+                      <a class="btn btn-warning disabled" href="">Pending</a>
                     <?php else: ?>
-                      <a class="btn btn-primary pull-right" href="<?php echo site_url('account/edit') ?>">Edit</a>
+                      <a class="btn btn-primary" href="<?php echo site_url('account/edit') ?>">Edit</a>
                     <?php endif ?>
+                      <a class="btn btn-success" href="<?php echo site_url('account/changepwd') ?>">Change Password</a>
+                    </div>
                   <?php endif ?>
                 </div><!-- /.box-header -->
                 <div class="box-body">

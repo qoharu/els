@@ -34,7 +34,6 @@
 								</div>
 								<div class="box-body">
 									<p><?php echo substr(@$forum[$i]->content, 0, 100) ?></p>
-									<span class="pull-right badge bg-blue"><?php echo @$forum[$i]->views ?> views</span>
 								</div>
 							</div>
 	            	</div>

@@ -95,7 +95,7 @@
                       <td>
                         <a class="btn btn-xs btn-primary" href="<?php echo site_url('profile/'.$data->id_user) ?>">view</a>
                         <?php if (issuperadmin()): ?>
-                        <a class="btn btn-xs btn-success" href="">reset password</a>
+                        <a class="btn btn-xs btn-success" href="<?php echo site_url('account/changepwd/'.$data->id_user) ?>">Change password</a>
                           <?php if ($data->stat): ?>
                             <a class="btn btn-xs btn-danger" href="<?php echo site_url('admin/deactivate/'.$data->id_user) ?>">deactivate</a>
                           <?php else: ?>
@@ -130,6 +130,7 @@
                         <?php if (issuperadmin()): ?> 
                           <?php if ($data->stat): ?>
                           <a class="btn btn-xs btn-danger" href="<?php echo site_url('admin/deactivate/'.$data->id_user) ?>">deactivate</a>
+                          <a class="btn btn-xs btn-success" href="<?php echo site_url('account/changepwd/'.$data->id_user) ?>">Change password</a>
                         <?php else: ?>
                           <a class="btn btn-xs btn-success" href="<?php echo site_url('admin/activate/'.$data->id_user) ?>">activate</a>
                         <?php endif ?>

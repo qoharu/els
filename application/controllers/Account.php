@@ -112,5 +112,32 @@ class Account extends CI_Controller
 			redirect('account/user/'.$this->session->userdata('uid'));
 		}
 	}
+
+	public function changepwd($uid = 0){
+		if ($uid == 0) {
+			$uid = $this->session->userdata('uid');
+		}
+
+		if (isadmin() || issuperadmin() || $this->session->userdata('uid') == $uid) {
+			$data['user'] = $uid;
+			$data['title'] = 'Reset Password';
+			$this->load->view('changepwd',$data);
+		}else{
+			redirect('home');
+		}
+
+	}
 	
+	public function changepwd_post($id)
+	{
+		$newpwd=$this->input->post('password');
+		$update=$this->Account_model->changepwd($id,$newpwd);
+		if ($update) {
+			if (isadmin() || issuperadmin()) {
+				redirect('admin/user');
+			}else{
+				redirect('home');
+			}
+		}
+	}
 }
