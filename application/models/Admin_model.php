@@ -205,10 +205,6 @@ class Admin_model extends CI_Model
 		return $this->db->query("SELECT * FROM profile, expert WHERE id_profile = '$id' AND expert.id_expert = profile.id_expert ")->row();
 	}
 
-	function course_detail($id){
-	
-	}
-
 	function approve_exp($id){
 		return $this->db->query("UPDATE exp SET status = 1 WHERE id_exp = '$id' ");
 	}

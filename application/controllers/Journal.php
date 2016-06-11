@@ -38,11 +38,6 @@ class Journal extends CI_Controller
 			echo "false";
 		}
 	}
-
-	public function edit($id_journal)
-	{
-		# code...
-	}
 	
 	public function post_comment($id_journal){
 		$data['content'] = @$_POST['content'];

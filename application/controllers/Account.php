@@ -14,10 +14,11 @@ class Account extends CI_Controller
 		redirect('account/login');
 	}
 
-	public function login(){
+	public function login($success=3){
 		if ($this->session->userdata('islogin')) {
 			redirect('home/dash');
 		}
+		$data['success'] = $success;
 		$data['title'] = "Login Page";
 		$this->load->view('login', $data);
 	}
@@ -55,7 +56,7 @@ class Account extends CI_Controller
 					break;
 			}
 		}else{
-			redirect('account/login?message=');
+			$this->login(0);
 		}
 	}
 

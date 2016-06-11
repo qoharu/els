@@ -2,8 +2,15 @@
 
 		<div class="container-text">
 			<form class="form-login" action="<?php echo site_url('account/post_login') ?>" method="POST">
-				<center><h2 class"form-login-heading center">Please Login</h2></center>
+				<center><h2 class="form-login-heading center">Please Login</h2></center>
 				<br>
+				<?php if ($success == 0): ?>
+					
+				<div class="col-md-12 form-group alert alert-danger alert-dismissable">
+	            	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	                <i class="icon fa fa-ban"></i> Login Failed!
+	            </div>
+				<?php endif ?>
 				<div class="form-group">
 					<input type="email" class="form-control" name="email" placeholder="Email" required>
 				</div>

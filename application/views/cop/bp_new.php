@@ -16,8 +16,7 @@
 								<input class="form-control input-md" type="text" name="title" placeholder="Judul" required="">
 							</div>
 							<div class="form-group">
-								<select class="form-control" name="id_scope">
-									<option disabled selected>Functional Scope</option>
+								<select class="form-control" name="id_scope" required="">
 									<?php foreach ($scope as $skop): ?>
 										<?php if ($skop->id_scope != 99): ?>
 											<option value="<?php echo $skop->id_scope ?>"><?php echo $skop->scope_name ?></option>

@@ -151,11 +151,6 @@ class Discussion extends CI_Controller
 
 	}
 
-	public function browse($scope="all", $page){
-		$q = mysql_escape_string($_GET['q']);
-		$data['list'] = $this->Discussion_model->browse($scope, $page, $q);	
-	}
-
 	public function disc_close($id){
 		$data['thread'] = $this->Discussion_model->disc_get_thread($id);
 		$data['title'] = "Close Forum";

@@ -69,7 +69,7 @@ class Course extends CI_Controller
 	public function close_course($id_course){
 		$data['id_course'] = $id_course;
 		$data['title'] = 'Course Summary';
-
+		
 		$this->load->view('course/course_close',$data);
 	}
 
@@ -80,13 +80,6 @@ class Course extends CI_Controller
 		}
 	}	
 
-	public function browse($page){
-		$q = mysql_escape_string(@$_GET['q']);
-		$data['course'] = $this->Course_model->browsecourse($page,$q);
-		$this->load->view('course_browse');
-	}
-
-
 	public function enroll($id_course){
 		$insert = $this->Course_model->enroll($id_course);
 		if ($insert){
@@ -94,7 +87,4 @@ class Course extends CI_Controller
 		}
 	}
 	
-	public function view($id_course){
-
-	}
 }

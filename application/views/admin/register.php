@@ -40,6 +40,19 @@
                 <input class="btn btn-block btn-primary btn-flat" type="submit">
               </div>
             </form>
+            <?php if ($success == 1): ?>
+              <div class="col-md-12 form-group alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  Register Success
+              </div>
+            <?php endif ?>
+
+            <?php if ($success == 0): ?>
+              <div class="col-md-12 form-group alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  Register Failed
+              </div>
+            <?php endif ?>
         </div>
         <div class="content-reg col-md-2 text-center">
         <h2>OR</h2>
@@ -49,13 +62,14 @@
           <form action="<?php echo site_url('admin/upload_post') ?>" method="post" enctype="multipart/form-data" >
             <h4 class="col-md-12">Upload CSV</h4>
               <div class="form-group col-md-12">
-                <input class="form-control input-md" type="file" name="file_csv" placeholder="Full Name" required="">
+                <input class="form-control input-md" type="file" name="file_csv" accept=".csv" placeholder="Full Name" required="">
               </div>
 
               <div class="form-group col-md-4 pull-right">
                 <input class="btn btn-block btn-primary btn-flat" type="submit" value="Upload">
               </div>
             </form>
+            <?php echo @$warning ?>
         </div>
 
       </div>

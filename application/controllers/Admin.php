@@ -7,9 +7,9 @@ class Admin extends CI_Controller
 		function __construct(){
 			parent::__construct();
 			$this->load->model('Admin_model');
-			// if (!isadmin() || !issuperadmin()) {
-			// 	redirect('home');
-			// }
+			if (!isadmin() && !issuperadmin()) {
+				redirect('home');
+			}
 		}
 		public function index(){
 			redirect('admin/summary');
@@ -98,9 +98,11 @@ class Admin extends CI_Controller
 			$this->load->view('admin/cop', $data);
 		}
 
-		public function register(){
+		public function register($warning = "", $success=3){
 			$data['title'] = "Admin - Register";
 			$data['active'][6] = 'active';
+			$data['warning'] = $warning;
+			$data['success'] = $success;
 			$this->load->view('admin/register', $data);
 		}
 
@@ -110,18 +112,26 @@ class Admin extends CI_Controller
 			$data['password'] = $this->input->post('password');
 			$data['level'] = $this->input->post('level');
 			
-			$input = $this->Admin_model->register($data);
+			$success = $this->Admin_model->register($data);
 			
-			if ($input) {
-				redirect('admin/register');
-			}
+			$this->register(NULL, $success);
 		}
 
 		public function upload_post(){
 			$i=0;
+			$res = "";
+			echo "<a href='".site_url('admin/register')."'>BACK </a>";
 			if (!empty($_FILES['file_csv']['name'])) {
 				if (($handle = fopen($_FILES['file_csv']['tmp_name'], "r")) !== FALSE) {
-		            while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+					$res .= "<table class='table table-bordered' border=1>";
+					$res .= "<thead>
+						<td>Fullname</td>
+						<td>Email</td>
+						<td>Password</td>
+						<td>Level</td>
+						<td>Status</td>
+					</thead>";
+		            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 		            	if ($i != 0) {
 							$reg['fullname'] = $data[0];
 		            		$reg['email'] = $data[1];
@@ -129,14 +139,22 @@ class Admin extends CI_Controller
 							$reg['level'] = ($data[3] == 2) ? 2 : 3 ;
 		            		
 		            		$ret[$i] = $this->Admin_model->register($reg);
-		                	echo "$data[0] $data[1] $data[2] $data[3] $ret <br>";
+		            		$ret[$i] = ($ret[$i]) ? "Success" : "Failed";
+		                	$res .= "<tr>
+		                		<td>$data[0]</td>
+		                		<td>$data[1]</td>
+		                		<td>$data[2]</td>
+		                		<td>$data[3]</td>
+		                		<td>$ret[$i]</td>
+		                		</tr>";
 		            	}
 		            	$i++;
 		            }
-		            var_dump($ret);
 		            fclose($handle);
+		            $res .= "</table>";
 		        }
 			}
+			$this->register($res);
 		}
 
 		public function print_discussion($id_disc){
