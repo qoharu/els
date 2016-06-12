@@ -28,10 +28,6 @@ class Journal_model extends CI_Model
 
 	}
 
-	function edit($data){
-
-	}
-
 	function postcomment($data,$id){
 		$content = $data['content'];
 		$uid = $this->session->userdata('uid');

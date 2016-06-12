@@ -5,10 +5,6 @@
 class Discussion_model extends CI_Model
 {
 
-	function browse($value=''){
-
-	}
-
 	function vote_detail($id_scope=1){
 		$uid = $this->session->userdata('uid');
 		return $this->db->query("SELECT id_discussion, fullname, title, (SELECT COUNT(*) FROM discussion_vote where discussion.id_discussion = discussion_vote.id_discussion) as vote, (SELECT IF( EXISTS(SELECT * FROM discussion_vote WHERE id_user='$uid' AND discussion.id_discussion = discussion_vote.id_discussion ),1,0)) as voted
@@ -164,9 +160,9 @@ class Discussion_model extends CI_Model
 				}
 				break;
 			case ($date > 7 && $date <= 21):
-				// setting quota jadi 0 biar di bp bisa nambah penugasan
-				$quota = $this->db->query("UPDATE step SET bp_quota = 0 WHERE step = 2 OR step = 9");
 				if ($state != 2) {
+					// setting quota jadi 0 biar di bp bisa nambah penugasan
+					$quota = $this->db->query("UPDATE step SET bp_quota = 0 WHERE step = 2 OR step = 9");
 					// ambil id_discussion dengan vote terbesar
 					for ($i=1; $i <=4 ; $i++) { 
 						$id_disc[$i] = $this->db->query("

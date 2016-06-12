@@ -9,8 +9,7 @@
                 </div>
                 <div class="box-body">
                 <?php if (issuperadmin()): ?>
-                  
-                <a class="btn btn-primary pull-right" href="<?php echo site_url('admin/register') ?>">Register</a>
+
                 <?php endif ?>
 
                 <?php if (issuperadmin()): ?>
