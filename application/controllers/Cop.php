@@ -19,7 +19,7 @@ class Cop extends CI_Controller
 // BEST PRACTICE
 	public function bp_new(){
 		$data['title'] = "New Best Practice";
-		$data['scope'] = $this->General_model->getscope();
+		$data['scope'] = $this->General_model->getscope(); //ambil list scope
 		$this->load->view('cop/bp_new',$data);
 	}
 
@@ -31,7 +31,7 @@ class Cop extends CI_Controller
 		$data['type'] = '2';
 		$insert = $this->Cop_model->insert_bp($data);
 		if (isbe()) {
-			$this->General_model->setpoint($this->session->userdata('uid'), 50, "Create BP");
+			$this->General_model->setpoint($this->session->userdata('uid'), 50, "Create BP"); // kalau be yang post, maka tambah point 50
 		}
 		if ($insert) {
 			redirect('cop/bp_view/'.$insert);
@@ -44,12 +44,13 @@ class Cop extends CI_Controller
 					'title' => $this->input->post('title'),
 					'content' => $this->input->post('content') );
 		
-		$participant = $this->Cop_model->cop_participant($id);
-		$idtitle = $this->Cop_model->getidstarter($id);
+		// NOTIF
+		$participant = $this->Cop_model->cop_participant($id); // ambil data participant
+		$idtitle = $this->Cop_model->getidstarter($id); // ambil id sama title forum dari thread starter
 		if ($idtitle->id_user != $this->session->userdata('uid')) {
 			$participant[count($participant)] = $idtitle->id_user;
 		}
-		$insert = $this->Cop_model->bp_post_comment($data);
+		$insert = $this->Cop_model->bp_post_comment($data); // post comment
 		if (!empty($participant)) {
 			$notif = $this->General_model->setnotif($participant, "New Respond on ".$idtitle->title,site_url('cop/bp_view/'.$id),1);
 		}

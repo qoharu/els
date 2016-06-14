@@ -98,7 +98,7 @@
 				<div class="box box-widget widget-user-2">
                 <div class="widget-user-header <?php echo $kelas ?>">
                   <div class="widget-user-image">
-                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$thread[0]->pic) ?>" alt="user image">
+                    <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$komentar->pic) ?>" alt="user image">
                   </div>
                   <h4 class="widget-user-username">
                   	<a class="clearlink" href="<?php echo site_url('account/user/'.$komentar->id_user)  ?>">

@@ -68,7 +68,7 @@
 		function get_comment($id, $page=0){
 			$page = ($page * 20);
 
-			$hasil['data'] = $this->db->query("SELECT fullname, user.id_user, title, content, expert_name, level_name, created_at 
+			$hasil['data'] = $this->db->query("SELECT fullname, pic, user.id_user, title, content, expert_name, level_name, created_at 
 				FROM cop_comment, user, profile, level, expert
 				WHERE id_cop = '$id' 
 					AND cop_comment.id_user = user.id_user
@@ -119,7 +119,7 @@
 		}
 
 		function innov_get_thread($id){
-			return $this->db->query("SELECT title, cop.status, pic, cop.summary, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
+			return $this->db->query("SELECT title, cop.status, profile.pic, cop.summary, id_cop, content, user.id_user, cop.created_at, cop.updated_at, fullname, expert_name
 				FROM cop, user, profile, expert
 				WHERE cop.id_user = user.id_user
 					AND id_cop = '$id'
@@ -207,6 +207,16 @@
 
 		function cop_participant($id){
 			$uid = $this->session->userdata('uid');
+			/*	Select distinct fungsinya untuk mengambil record dari table yang nilainya berbeda
+			misal :
+			|_id_|_comment_|
+			| 1  | asdasd  |
+			| 2  | aaa     |
+			| 3  | xcvxcv  |
+			| 3  | www     |
+			SELECT id akan menghasilkan 1,2,3,3
+			sedangkan SELECT DISTICT id akan menghasilkan 1,2,3	
+			*/
 			$cop = $this->db->query("SELECT DISTINCT id_user
 				FROM cop_comment
 				WHERE id_cop = '$id'
