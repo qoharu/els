@@ -30,9 +30,7 @@ class Cop extends CI_Controller
 		$data['content'] = $this->input->post('content');
 		$data['type'] = '2';
 		$insert = $this->Cop_model->insert_bp($data);
-		if (isbe()) {
-			$this->General_model->setpoint($this->session->userdata('uid'), 50, "Create BP"); // kalau be yang post, maka tambah point 50
-		}
+		
 		if ($insert) {
 			redirect('cop/bp_view/'.$insert);
 		}
@@ -121,7 +119,9 @@ class Cop extends CI_Controller
 		if (!empty($participant)) {
 			$notif = @$this->General_model->setnotif($participant, "Forum Closed ".$idtitle->title,site_url('cop/bp_view/'.$id_cop),1);
 		}
-
+		if (isbe()) {
+			$this->General_model->setpoint($this->session->userdata('uid'), 50, "Create BP"); // kalau be yang post, maka tambah point 50
+		}
 		if (!empty(@$data['be'])) {
 			$notif = @$this->General_model->setnotif($data['be'], "New Responsibilities ".$idtitle->title,site_url('cop/bp_view/'.$id_cop),0);
 		}
@@ -171,9 +171,7 @@ class Cop extends CI_Controller
 	public function innovation_post(){
 		$insert = $this->Cop_model->insert_innovation($_POST);
 		if ($insert) {
-			if (isbe()) {
-				$this->General_model->setpoint($this->session->userdata('uid'), 50, "Create Innovation");
-			}
+			
 			$invite = $this->Cop_model->invite($insert, $_POST['user']);
 			if ($invite) {
 				redirect('cop/innovation_view/'.$insert);
@@ -250,6 +248,8 @@ class Cop extends CI_Controller
 		$idtitle = $this->Cop_model->getidstarter($id);
 		if ($idtitle->id_user != $this->session->userdata('uid')) {
 			$participant[count($participant)] = $idtitle->id_user;
+		}if (isbe()) {
+			$this->General_model->setpoint($this->session->userdata('uid'), 50, "Create Innovation");
 		}
 		if (!empty($participant)) {
 			$notif = $this->General_model->setnotif($participant, "Forum Closed ".$idtitle->title,site_url('cop/innovation_view/'.$id),4);

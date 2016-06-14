@@ -167,7 +167,9 @@ class Discussion extends CI_Controller
 			$participant[count($participant)] = $idtitle->id_user;
 		}
 		$notif = $this->General_model->setnotif($participant, "Discussion Closed ".$idtitle->title,site_url('discussion/view_discussion/'.$id),0);
-
+		if (isbe()) {
+			$this->General_model->setpoint($this->session->userdata('uid'), 50, "Create Discussion");
+		}
 		if ($close){
 			redirect('discussion/view_discussion/'.$id);
 		}
