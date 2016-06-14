@@ -55,7 +55,11 @@
 							<div class="form-group col-md-12">
 									<select class="form-control input-md expert" name="expert" required="">
 										<?php foreach ($expert as $data): ?>
-											<option value="<?php echo $data->id_expert ?>"><?php echo $data->expert_name ?></option>	
+											<?php if ($data->expert_name == $profile->expert_name): ?>
+											<option  value="<?php echo $data->id_expert ?>" selected><?php echo $data->expert_name ?></option>	
+											<?php else: ?>
+											<option value="<?php echo $data->id_expert ?>" ><?php echo $data->expert_name ?></option>
+											<?php endif ?>
 										<?php endforeach ?>
 									</select>
 							</div>

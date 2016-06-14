@@ -62,7 +62,6 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="footer"><a href="<?php echo site_url('home/notification') ?>">View all</a></li>
                 </ul>
               </li>
             <?php endif ?>
