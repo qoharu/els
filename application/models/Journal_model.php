@@ -88,5 +88,10 @@ class Journal_model extends CI_Model
 		return $this->db->query("SELECT id_user FROM journal WHERE id_journal = '$id' ")->row()->id_user;
 	}
 
+	function lastnotif(){
+		$uid = $this->session->userdata('uid');
+		return $this->db->query("SELECT * FROM journal WHERE id_user = '$uid' ORDER BY id_journal DESC ")->row();
+	}
+
 
 }

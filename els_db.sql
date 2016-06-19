@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 Jun 2016 pada 18.08
+-- Generation Time: 20 Jun 2016 pada 01.41
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -299,7 +299,8 @@ INSERT INTO `discussion_comment` (`id_comment`, `id_discussion`, `id_user`, `tit
 (1, 1, 5, '', '<p>cek</p>', '2016-06-05 04:16:29', '2016-06-05 04:16:29'),
 (2, 8, 3, '', '<p>s</p>', '2016-06-05 04:19:38', '2016-06-05 04:19:38'),
 (3, 9, 2, NULL, '<p>asdasdasd</p>', '2016-06-06 02:48:01', '2016-06-06 02:48:01'),
-(4, 12, 2, NULL, '<p>asdasd</p>', '2016-06-06 02:59:54', '2016-06-06 02:59:54');
+(4, 12, 2, NULL, '<p>asdasd</p>', '2016-06-06 02:59:54', '2016-06-06 02:59:54'),
+(5, 1, 2, NULL, '<p>asdasdadad</p>', '2016-06-19 23:14:11', '2016-06-19 23:14:11');
 
 -- --------------------------------------------------------
 
@@ -335,6 +336,14 @@ CREATE TABLE `exp` (
   `status` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `exp`
+--
+
+INSERT INTO `exp` (`id_exp`, `id_user`, `keterangan`, `file`, `status`, `created_at`) VALUES
+(1, 2, 'cobaan we', '', 1, '2016-06-19 16:27:38'),
+(2, 2, 'asdasd', '', 1, '2016-06-19 16:28:17');
 
 -- --------------------------------------------------------
 
@@ -417,7 +426,8 @@ CREATE TABLE `journal` (
 
 INSERT INTO `journal` (`id_journal`, `id_user`, `id_directorate`, `title`, `description`, `file`, `views`, `created_at`, `status`, `keterangan`) VALUES
 (1, 3, 3, 'coba deh', 'cek 123', '71157c4f1efb079b986380eff69b9db5analisis-kebutuhan.pdf', 0, '2016-06-19 15:20:43', 2, 'asdasdas'),
-(2, 3, 2, 'Bangkong', 'euy', 'e6970e7e70e5977f7f825498da204496Lampiran_Proposal_dan__MOU.pdf', 3, '2016-06-19 15:37:17', 1, '');
+(2, 3, 2, 'Bangkong', 'euy', 'e6970e7e70e5977f7f825498da204496Lampiran_Proposal_dan__MOU.pdf', 3, '2016-06-19 15:37:17', 1, ''),
+(3, 3, 3, 'coba deui', 'sakainget weh', 'b133683c122fb0b7dd67b6b5a1f00933Lampiran_Proposal_dan__MOU.pdf', 0, '2016-06-19 23:39:19', 1, '');
 
 -- --------------------------------------------------------
 
@@ -529,7 +539,59 @@ INSERT INTO `notif` (`id_notif`, `id_user`, `title`, `link`, `type`, `red`) VALU
 (95, 10, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 0),
 (96, 2, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 1),
 (97, 4, 'New Respond on asdasdasd', 'http://localhost/els/cop/bp_view/20', 1, 0),
-(98, 2, 'New Responsibilities qweqweqwe', 'http://localhost/els/cop/bp_view/22', 0, 1);
+(98, 2, 'New Responsibilities qweqweqwe', 'http://localhost/els/cop/bp_view/22', 0, 1),
+(99, 5, 'New Respond on asdasdds', 'http://localhost/els/discussion/view_discussion/1', 0, 0),
+(100, 4, 'New Respond on asdasdds', 'http://localhost/els/discussion/view_discussion/1', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `open_discussion`
+--
+
+CREATE TABLE `open_discussion` (
+  `id_discussion` int(11) NOT NULL,
+  `id_scope` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `title` varchar(160) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `open_discussion`
+--
+
+INSERT INTO `open_discussion` (`id_discussion`, `id_scope`, `id_user`, `title`, `content`, `created_at`, `updated_at`, `status`, `views`) VALUES
+(1, 3, 2, 'Coba dulu sama rochadi', '<p>cobain ya satu dua tiga</p>', '2016-06-19 22:53:11', '2016-06-19 22:53:11', 1, 0),
+(2, 2, 3, 'halah', '<p>karyawan bikin thread euy</p>', '2016-06-19 23:15:22', '2016-06-19 23:27:19', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `open_discussion_comment`
+--
+
+CREATE TABLE `open_discussion_comment` (
+  `id_comment` int(11) NOT NULL,
+  `id_discussion` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `open_discussion_comment`
+--
+
+INSERT INTO `open_discussion_comment` (`id_comment`, `id_discussion`, `id_user`, `content`, `created_at`) VALUES
+(1, 1, 2, '<p>asdasdasdadw</p>', '2016-06-19 23:14:27'),
+(2, 1, 3, '<p>xxcvxcvxcv</p>', '2016-06-19 23:14:58'),
+(3, 2, 3, '<p>coba</p>', '2016-06-19 23:15:29'),
+(4, 2, 3, '<p>udahlah bisa da</p>', '2016-06-19 23:15:37');
 
 -- --------------------------------------------------------
 
@@ -597,7 +659,8 @@ INSERT INTO `point` (`id_rating`, `id_user`, `value`, `keterangan`, `created_at`
 (45, 4, 1, 'Respond Innovation', '2016-06-14 04:18:02'),
 (46, 4, 50, 'Create BP', '2016-06-14 04:23:03'),
 (47, 2, 1, 'Respond Best Practice', '2016-06-14 04:23:57'),
-(48, 2, 50, 'Create BP', '2016-06-19 01:57:56');
+(48, 2, 50, 'Create BP', '2016-06-19 01:57:56'),
+(49, 2, 1, 'Respond Discussion', '2016-06-19 23:14:11');
 
 -- --------------------------------------------------------
 
@@ -899,6 +962,22 @@ ALTER TABLE `notif`
   ADD KEY `id_user_2` (`id_user`);
 
 --
+-- Indexes for table `open_discussion`
+--
+ALTER TABLE `open_discussion`
+  ADD PRIMARY KEY (`id_discussion`),
+  ADD KEY `id_scope` (`id_scope`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `open_discussion_comment`
+--
+ALTER TABLE `open_discussion_comment`
+  ADD PRIMARY KEY (`id_comment`),
+  ADD KEY `id_discussion` (`id_discussion`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indexes for table `point`
 --
 ALTER TABLE `point`
@@ -998,7 +1077,7 @@ ALTER TABLE `discussion`
 -- AUTO_INCREMENT for table `discussion_comment`
 --
 ALTER TABLE `discussion_comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `discussion_vote`
 --
@@ -1008,7 +1087,7 @@ ALTER TABLE `discussion_vote`
 -- AUTO_INCREMENT for table `exp`
 --
 ALTER TABLE `exp`
-  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `expert`
 --
@@ -1018,7 +1097,7 @@ ALTER TABLE `expert`
 -- AUTO_INCREMENT for table `journal`
 --
 ALTER TABLE `journal`
-  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `journal_comment`
 --
@@ -1033,12 +1112,22 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `notif`
 --
 ALTER TABLE `notif`
-  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+--
+-- AUTO_INCREMENT for table `open_discussion`
+--
+ALTER TABLE `open_discussion`
+  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `open_discussion_comment`
+--
+ALTER TABLE `open_discussion_comment`
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `point`
 --
 ALTER TABLE `point`
-  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `profile`
 --

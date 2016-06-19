@@ -13,6 +13,10 @@
 		                </div>
 					</form>
 					</div>
+					<div class="col-md-12">
+						<?php echo @$notifikasi; ?>
+						
+					</div>
 					<div  class="col-md-12 well">
 						<a href="<?php echo site_url('journal/newpost') ?>" title="New post" class="btn btn-primary btn-lg btn-flat pull-right"><i class="fa fa-plus"></i></a>
 						<h2>Jurnal Populer</h2>
