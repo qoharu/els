@@ -19,6 +19,7 @@
 									<?= $inov->title ?>
 									</a></strong>
 									</h3>
+									<span class="pull-right"><?php echo $inov->created_at ?></span>
 										<div class="author">
 												Oleh : 
 											<a href="">
@@ -51,6 +52,7 @@
 									<?= $bp->title ?>
 									</a></strong>
 									</h3>
+										<span class="pull-right"><?php echo $bp->created_at ?></span>
 										<div class="author">
 												Oleh : 
 											<a href="">

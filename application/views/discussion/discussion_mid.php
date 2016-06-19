@@ -25,6 +25,7 @@
 											<a href="<?php echo site_url('discussion/view_discussion/'.@$forum[$i]->id_discussion) ?>"><?php echo @$forum[$i]->title ?></a>
 										</strong>
 									</h3>
+									<span class="pull-right"><?php echo @$forum[$i]->created_at ?></span>
 									<div class="author">
 										Oleh : 
 										<a href="<?php echo site_url('profile/'.@$forum[$i]->id_user) ?>">

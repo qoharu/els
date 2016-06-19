@@ -16,13 +16,8 @@
 								<input class="form-control input-md" type="text" name="title" placeholder="Judul" required="">
 							</div>
 							<div class="form-group">
-								<select class="form-control" name="id_scope" required="">
-									<?php foreach ($scope as $skop): ?>
-										<?php if ($skop->id_scope != 99): ?>
-											<option value="<?php echo $skop->id_scope ?>"><?php echo $skop->scope_name ?></option>
-										<?php endif ?>
-									<?php endforeach ?>
-								</select>
+									<span class="badge bg-blue"><?php echo $scope->scope_name ?></span>
+									<input type="hidden" name="id_scope" value="<?php echo $scope->id_scope ?>">
 							</div>
 							<div class="form-group">
 								<textarea name="content" class="form-control input-md textarea" id="" rows="12" maxlength="500" required="" placeholder="Deskripsi"></textarea>	

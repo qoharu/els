@@ -65,6 +65,16 @@ class General_model extends CI_Model
 		$uid = $this->session->userdata('uid');
 		return $this->db->query("UPDATE notif SET red = 1 WHERE id_user = '$uid' ");
 	}
+
+	function getuserscope($id){
+		return $this->db->query("SELECT scope.scope_name, scope.id_scope 
+			FROM user, profile, scope, expert, directorate
+			WHERE user.id_user = profile.id_user
+				AND profile.id_expert = expert.id_expert
+				AND expert.id_directorate = directorate.id_directorate
+				AND directorate.id_scope = scope.id_scope
+				AND user.id_user = '$id' ")->row();
+	}
 	function getjournalcount($id_user){
 		return $this->db->query("SELECT COUNT(*) AS count FROM journal where id_user = '$id_user' ")->row()->count;
 	}

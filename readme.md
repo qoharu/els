@@ -1,4 +1,32 @@
 ##Notes
+
+####Update Revisi
+---
+Revisi aplikasi:
+UM
+- super admin harusnya sesuai functional scope agar
+- gak ada pemberitahuan kenapa di decline jurnalnya
+- login username sma pass pake nik saja
++ edit profil dihapus saja
+- add experience menjadi tugas super admin
+- grafik kinerja be
++ user bisa melihat profil be
+
+COP 
++ update forum terbaru paling atas (archive sama yg baru)
++ tanggal muncul di list forum yg dibikin
+- history kegiatan BE (forum yg dibuat, forum yg diinvite)
++ scope ambil otomatis dr profile
+
+GD
++ update forum terbaru paling atas (archive sama yg baru)
++ tanggal muncul di list forum yg dibikin
++ langsung get "judul"
+- sediakan akses karyawan untuk create
++ tanggal
+
+
+
 1. Update 4/6/2016
 Fix bugs :
 	- Journal

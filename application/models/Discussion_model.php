@@ -34,12 +34,13 @@ class Discussion_model extends CI_Model
 
 	function get_archive($page,$q=''){
 		$page = ($page * 20);
-		return $this->db->query("SELECT title, fullname, content, scope_name, id_discussion, (SELECT COUNT(*) FROM discussion WHERE status = 0) AS count
+		return $this->db->query("SELECT title, fullname, profile.id_user, content, created_at, scope_name, id_discussion, (SELECT COUNT(*) FROM discussion WHERE status = 0) AS count
 			FROM discussion, scope, profile
 			WHERE discussion.status = 0
 				AND discussion.id_scope = scope.id_scope
 				AND discussion.id_user = profile.id_user
 				AND (title LIKE '%$q%' OR content LIKE '%$q%')
+			ORDER BY id_discussion DESC
 			LIMIT $page, 20 ")->result();
 	}
 

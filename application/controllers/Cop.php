@@ -19,7 +19,7 @@ class Cop extends CI_Controller
 // BEST PRACTICE
 	public function bp_new(){
 		$data['title'] = "New Best Practice";
-		$data['scope'] = $this->General_model->getscope(); //ambil list scope
+		$data['scope'] = $this->General_model->getuserscope($this->session->userdata('uid')); 
 		$this->load->view('cop/bp_new',$data);
 	}
 

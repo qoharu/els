@@ -48,20 +48,23 @@
 					AND user.id_user = profile.id_user
 					AND id_cop IN (SELECT id_cop FROM cop_invitation WHERE id_user='$uid' )
 					AND status = 1
+					ORDER BY id_cop DESC
 				")->result();
 		}
 
 		function innov_archive($page, $q=''){
 			$page = ($page * 5);
 			$uid = $this->session->userdata('uid');
-			return $this->db->query("SELECT title, id_cop, content, cop.created_at, cop.updated_at, fullname, (SELECT COUNT(*) FROM cop WHERE type=1 AND status = 0 AND (title LIKE '%$q%' OR content LIKE '%$q%')) AS count
+			return $this->db->query("SELECT title, user.id_user, id_cop, content, cop.created_at, cop.updated_at, fullname, (SELECT COUNT(*) FROM cop WHERE type=1 AND status = 0 AND (title LIKE '%$q%' OR content LIKE '%$q%')) AS count
 				FROM cop, user, profile
 				WHERE cop.id_user = user.id_user
 					AND user.id_user = profile.id_user
 					AND type = 1
 					AND status = 0
 					AND (title LIKE '%$q%' OR content LIKE '%$q%')
+				ORDER BY id_cop DESC
 				LIMIT $page, 5
+
 				")->result();
 		}
 
@@ -156,13 +159,14 @@
 					AND user.id_user = profile.id_user
 					AND type = 2
 					AND status = 1
+					ORDER BY id_cop DESC
 				")->result();
 		}
 
 		function bp_archive($page, $q=''){
 			$page = ($page * 5);
 			$uid = $this->session->userdata('uid');
-			return $this->db->query("SELECT title, scope_name, id_cop, content, cop.created_at, cop.updated_at, fullname, (SELECT COUNT(*) FROM cop WHERE type=2 AND status = 0 AND (title LIKE '%$q%' OR content LIKE '%$q%')) AS count
+			return $this->db->query("SELECT title, id_user, scope_name, id_cop, content, cop.created_at, cop.updated_at, fullname, (SELECT COUNT(*) FROM cop WHERE type=2 AND status = 0 AND (title LIKE '%$q%' OR content LIKE '%$q%')) AS count
 				FROM cop, user, profile, scope
 				WHERE cop.id_user = user.id_user
 					AND cop.id_scope = scope.id_scope
@@ -170,6 +174,7 @@
 					AND type = 2
 					AND status = 0
 					AND (title LIKE '%$q%' OR content LIKE '%$q%')
+				ORDER BY id_cop DESC
 				LIMIT $page, 5
 				")->result();
 		}

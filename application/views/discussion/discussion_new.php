@@ -9,12 +9,12 @@
 					<div class="box box-primary">
 					<div class="box-header with-border">
 						<a class="btn btn-sm btn-warning pull-right" href="<?php echo site_url('cop/bp_view/'.$step[0]->id_cop) ?>">Review Best Practice</a>
-						<h3>New Discussion <small>(<?php echo $step[0]->keterangan ?>)</small></h3>
+						<h3>New Discussion</h3>
 					</div>
 					<div class="box-body">
 						<form class="" action="<?php echo site_url('discussion/post_discussion/'.$step[0]->id_step) ?>" method="post" >
 							<div class="form-group">
-								<input class="form-control input-md" type="text" name="title" placeholder="Judul" required="">
+								<input class="form-control input-md" type="text" name="title" placeholder="Judul" value="<?php echo $step[0]->keterangan ?>" required="">
 							</div>
 							<div class="form-group">
 								<span class="badge bg-blue"><?php echo $step[0]->scope_name ?></span>

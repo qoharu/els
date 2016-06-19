@@ -21,9 +21,10 @@
 									<?= $inov->title ?>
 									</a></strong>
 									</h3>
+										<span class="pull-right"><?php echo $inov->created_at ?></span>
 										<div class="author">
 												Oleh : 
-											<a href="">
+											<a href="<?php echo site_url('account/user/'.$inov->id_user) ?>">
 												<strong><?= $inov->fullname ?></strong>
 											</a>
 										</div>
