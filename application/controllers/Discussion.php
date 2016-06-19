@@ -194,4 +194,21 @@ class Discussion extends CI_Controller
 		}
 		$this->load->view('discussion/discussion_archive', $data);
 	}
+
+	// OPEN DISCUSSION
+	public function open(){
+		$data['title'] =  "Open Discussion";
+		$data['list'] = $this->Discussion_model->od_get();
+
+		$this->load->view('discussion/od',$data);
+	}
+
+	public function open_create(){
+		$data['title'] = "Create Discussion";
+		$data['scope'] = $this->General_model->getscope();
+
+		$this->load->view('discussion/od_create',$data);
+	}
+	
+
 }
