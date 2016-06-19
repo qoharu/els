@@ -22,7 +22,7 @@ GD
 + update forum terbaru paling atas (archive sama yg baru) __V__
 + tanggal muncul di list forum yg dibikin __V__
 + langsung get "judul" __V__
-- sediakan akses karyawan untuk create 
++ sediakan akses karyawan untuk create __V__
 + tanggal __V__
 
 CJ
