@@ -35,11 +35,20 @@ class Admin_model extends CI_Model
 	}
 
 	function getpendingjournal(){
-		return $this->db->query("SELECT * FROM journal, profile WHERE journal.id_user = profile.id_user AND status = 0")->result();
+		return $this->db->query("SELECT * 
+			FROM journal
+			LEFT JOIN user ON journal.id_user = user.id_user
+			LEFT JOIN profile ON journal.id_user = profile.id_user
+			WHERE status = 0
+			")->result();
 	}
 
 	function getjournal(){
-		return $this->db->query("SELECT * FROM journal, profile WHERE journal.id_user = profile.id_user AND status = 1")->result();
+		return $this->db->query("SELECT * 
+			FROM journal
+			LEFT JOIN user ON journal.id_user = user.id_user
+			LEFT JOIN profile ON journal.id_user = profile.id_user
+			WHERE status = 1")->result();
 	}
 
 	function getcourse(){
@@ -217,7 +226,7 @@ class Admin_model extends CI_Model
 		return $this->db->query("UPDATE journal SET status = 1 WHERE id_journal = '$id_journal' ");
 	}
 
-	function decline_journal($id){
-		return $this->db->query("DELETE FROM journal WHERE id_journal='$id' ");
+	function decline_journal($id, $keterangan){
+		return $this->db->query("UPDATE journal SET status = 2, keterangan = '$keterangan' WHERE id_journal='$id' ");
 	}
 }

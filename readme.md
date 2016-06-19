@@ -2,10 +2,10 @@
 
 ####Update Revisi
 ---
-Revisi aplikasi:
+Revisi aplikasi:  
 UM
 - super admin harusnya sesuai functional scope agar
-- gak ada pemberitahuan kenapa di decline jurnalnya
++ gak ada pemberitahuan kenapa di decline jurnalnya __V__
 - login username sma pass pake nik saja
 + edit profil dihapus saja __V__
 - add experience menjadi tugas super admin
@@ -15,16 +15,18 @@ UM
 COP 
 + update forum terbaru paling atas (archive sama yg baru) __V__
 + tanggal muncul di list forum yg dibikin __V__
-- history kegiatan BE (forum yg dibuat, forum yg diinvite)
++ history kegiatan BE (forum yg dibuat, forum yg diinvite) __V__
 + scope ambil otomatis dr profile __V__
 
 GD
 + update forum terbaru paling atas (archive sama yg baru) __V__
 + tanggal muncul di list forum yg dibikin __V__
 + langsung get "judul" __V__
-- sediakan akses karyawan untuk create
+- sediakan akses karyawan untuk create 
 + tanggal __V__
 
+CJ
++ Karyawan bisa upload journal __V__
 
 ---
 1. Update 4/6/2016

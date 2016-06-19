@@ -52,7 +52,7 @@
 							<?php endforeach ?>
 						<?php endif ?>
 
-						<?php if ($this->session->userdata('uid') == $thread[0]->id_user): ?>
+						<?php if ($this->session->userdata('uid') == $thread[0]->id_user && $thread[0]->status): ?>
 							<hr>
 							<form action="<?php echo site_url('cop/attachment_post/'.$thread[0]->id_cop) ?>" method="POST" enctype="multipart/form-data" >
 								<div class="input-group">

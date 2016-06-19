@@ -41,14 +41,14 @@ class Journal_model extends CI_Model
 	}
 
 	function listjournal(){
-		return $this->db->query(" SELECT journal.title, profile.fullname, journal.description, journal.id_journal, user.id_user, directorate.directorate_name  
-			FROM journal, directorate, user, profile 
-			WHERE journal.id_directorate = directorate.id_directorate 
-				AND user.id_user = journal.id_user
-				AND user.id_user = profile.id_user
-				AND status=1
-				ORDER BY journal.views
-				LIMIT 0,9")->result();
+		return $this->db->query(" SELECT *
+			FROM journal 
+			LEFT JOIN directorate ON journal.id_directorate = directorate.id_directorate
+			LEFT JOIN user ON journal.id_user = user.id_user
+			LEFT JOIN profile ON journal.id_user = profile.id_user
+			WHERE status=1
+			ORDER BY views
+			LIMIT 0,9")->result();
 	}
 
 	function browsejournal($page,$query){

@@ -279,13 +279,12 @@ class Cop extends CI_Controller
 		$this->load->view('cop/innovation_archive',$data);
 	}
 
-	public function bestpractice($scope=''){
-		$data['title'] = "Best Practice $scope";
-		$data['forum'] = $this->Cop_model->getbpscope($scope);
-
-		$this->load->view('cop/bestpractice',$data);
+	public function my_cop(){
+		$data['title'] = "COP Dashboard";
+		$data['bp'] = $this->Cop_model->history_bp($this->session->userdata('uid'));
+		$data['innov'] = $this->Cop_model->history_innov($this->session->userdata('uid'));
+		$this->load->view('cop/cop_my',$data);
 	}
-
 	public function attachment_post($id){
 		$file = $_FILES['attachment'];
 		$insert = $this->Cop_model->add_attachment($id, $file);
@@ -294,6 +293,8 @@ class Cop extends CI_Controller
 			redirect('cop/innovation_view/'.$id);
 		}
 	}
+
+
 
 	
 

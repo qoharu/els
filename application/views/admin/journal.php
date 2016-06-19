@@ -27,6 +27,11 @@
                     </thead>
                     <tbody>
                   <?php foreach ($pending_journal as $data): ?>
+                    <?php
+                      if (empty($data->fullname)) {
+                        $data->fullname = explode('@', $data->email)[0];
+                      }
+                    ?>
                     <tr>
                       <td><?php echo $data->id_journal ?></td>
                       <td><?php echo $data->fullname ?></td>
@@ -60,6 +65,11 @@
                     </thead>
                     <tbody>
                   <?php foreach ($journal as $data): ?>
+                    <?php
+                      if (empty($data->fullname)) {
+                        $data->fullname = explode('@', $data->email)[0];
+                      }
+                    ?>
                     <tr>
                       <td><?php echo $data->id_journal ?></td>
                       <td><?php echo $data->fullname ?></td>

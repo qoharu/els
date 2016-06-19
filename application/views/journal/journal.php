@@ -19,13 +19,21 @@
 						<hr>
 						<?php $i=0 ?>
 						<?php foreach ($listjournal as $journal): ?>
+							<?php
+								if (empty($journal->fullname)) {
+									$journal->fullname = explode('@', $journal->email)[0];
+									$link = "";
+								}else{
+									$link = site_url('profile/'.$journal->id_user);
+								}
+							?>
 								<div class="col-md-4">
 									<div class="box box-primary">
 										<div class="box-header with-border">
 									    	<h3 class="box-title"><strong><a href="<?php echo site_url('journal/view/'.$journal->id_journal) ?>"><?php echo $journal->title; ?></a></strong></h3>
 									    	<div class="author">
 										    	Oleh : 
-										    		<a href="<?php echo site_url('profile/'.$journal->id_user) ?>">
+										    		<a href="<?php echo $link ?>">
 										    			<strong><?php echo $journal->fullname ?></strong>
 										    		</a>
 									    	</div>

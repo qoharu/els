@@ -3,13 +3,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 isi">
-            	<div class="col-md-12">
+	            		<div class="col-md-12">
+						<a class="btn btn-md btn-block btn-flat btn-danger" href="<?php echo site_url('cop/my_cop') ?>">Dashboard COP</a>
+	            		</div>
+            	<div class="col-md-12 isi">
             		<div class="pull-right">
 						<a href="<?php echo site_url('cop/innovation_archive') ?>" title="Archive" class="btn btn-flat btn-lg bg-navy"><span class="fa fa-file-archive-o"></span> &nbsp;Archive</a>
             			<a href="<?php echo site_url('cop/innovation_new') ?>" class="btn btn-flat btn-lg btn-primary">New Innovation</a>
 	            	</div>
-
-						
 						<h3>Innovation</h3>
 						<?php foreach ($list_innov as $inov): ?>
 							<div class="box box-primary">

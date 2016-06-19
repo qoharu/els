@@ -26,6 +26,7 @@
 		                        <li class="<?php echo @$disabled ?>">
 			                        <a href="<?php echo $link ?>">
 			                        <?php echo $data->keterangan ?>
+			                        <small> (<?php echo $data->created_at ?>)</small>
 			                        <span class="pull-right badge bg-blue"><?php echo $data->scope_name ?></span></a>
 		                        </li>
 		                    <?php endforeach ?>
@@ -57,6 +58,7 @@
 		                        <li>
 			                        <a href="<?php echo site_url('discussion/view_discussion/'.$data->id_discussion) ?>">
 			                        <?php echo $data->title ?>
+			                        <small> (<?php echo $data->created_at ?>)</small>
 			                        <span class="pull-right badge <?php echo $kelas ?>"><?php echo $judul ?></span></a>
 		                        </li>
 		                    <?php endforeach ?>

@@ -66,8 +66,14 @@ class Admin extends CI_Controller
 		}
 
 		public function decline_journal($id){
-			$delete = $this->Admin_model->decline_journal($id);
-			if ($delete) {
+			$data['title'] = "Decline Journal";
+			$data['id'] = $id;
+			$this->load->view('admin/journal_decline',$data);
+		}
+
+		public function decline_journal_post($id){
+			$update = $this->Admin_model->decline_journal($id, $this->input->post('keterangan'));
+			if ($update) {
 				redirect('admin/journal');
 			}
 		}

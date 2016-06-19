@@ -271,4 +271,24 @@
 			return $this->db->query("SELECT * FROM cop_attachment WHERE id_cop = '$id' ")->result();
 		}
 
+		public function history_bp($uid){
+			return $this->db->query("SELECT title, scope_name, status, id_cop, content, cop.created_at, cop.updated_at, fullname
+				FROM cop, user, profile, scope
+				WHERE cop.id_user = user.id_user
+					AND cop.id_scope = scope.id_scope
+					AND user.id_user = profile.id_user
+					AND cop.id_user = '$uid'
+					AND type = 2
+					ORDER BY id_cop DESC")->result();
+		}
+
+		public function history_innov($uid){
+			return $this->db->query("SELECT title, id_cop, content, cop.created_at, status, cop.updated_at, fullname
+				FROM cop, user, profile
+				WHERE cop.id_user = user.id_user
+					AND user.id_user = profile.id_user
+					AND cop.id_user = '$uid'
+					AND id_cop IN (SELECT id_cop FROM cop_invitation WHERE id_user='$uid' )
+					ORDER BY id_cop DESC")->result();
+		}
 	}
