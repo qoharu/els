@@ -7,26 +7,26 @@ UM
 - super admin harusnya sesuai functional scope agar
 - gak ada pemberitahuan kenapa di decline jurnalnya
 - login username sma pass pake nik saja
-+ edit profil dihapus saja
++ edit profil dihapus saja __V__
 - add experience menjadi tugas super admin
 - grafik kinerja be
-+ user bisa melihat profil be
++ user bisa melihat profil be __V__
 
 COP 
-+ update forum terbaru paling atas (archive sama yg baru)
-+ tanggal muncul di list forum yg dibikin
++ update forum terbaru paling atas (archive sama yg baru) __V__
++ tanggal muncul di list forum yg dibikin __V__
 - history kegiatan BE (forum yg dibuat, forum yg diinvite)
-+ scope ambil otomatis dr profile
++ scope ambil otomatis dr profile __V__
 
 GD
-+ update forum terbaru paling atas (archive sama yg baru)
-+ tanggal muncul di list forum yg dibikin
-+ langsung get "judul"
++ update forum terbaru paling atas (archive sama yg baru) __V__
++ tanggal muncul di list forum yg dibikin __V__
++ langsung get "judul" __V__
 - sediakan akses karyawan untuk create
-+ tanggal
++ tanggal __V__
 
 
-
+---
 1. Update 4/6/2016
 Fix bugs :
 	- Journal
