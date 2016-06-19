@@ -4,15 +4,15 @@ class Account_model extends CI_Model
 {
 	function validate($data){
 		$password=$data['password'];
-		$email=$data['email'];
-		$user = $this->db->query("SELECT * FROM user WHERE email='$email' AND password = '$password' AND stat = 1 ");
+		$username=$data['username'];
+		$user = $this->db->query("SELECT * FROM user WHERE username='$username' AND password = '$password' AND stat = 1 ");
 
 		if($user->num_rows()==1){
 			$datauser = $user->row();
 			if ($datauser->id_level == 2) {
 				$query="SELECT user.id_user, email, level_name, fullname, pic 
 					FROM user, level, profile
-					WHERE user.email='$email' 
+					WHERE user.username='$username' 
 						AND user.password='$password'
 						AND user.stat = 1
 						AND level.id_level = user.id_level
@@ -20,7 +20,7 @@ class Account_model extends CI_Model
 			}else{
 				$query="SELECT user.id_user, email, level_name
 					FROM user, level
-					WHERE user.email='$email' 
+					WHERE user.username='$username' 
 						AND user.password='$password'
 						AND user.stat = 1 
 						AND level.id_level = user.id_level ";
@@ -121,11 +121,12 @@ class Account_model extends CI_Model
 	}
 
 	function addexp($data){
-		$filename = md5(microtime()).basename($data["file"]["name"]);
-		$target_file = "uploads/experience/".$filename;
+		// $filename = md5(microtime()).basename($data["file"]["name"]);
+		// $target_file = "uploads/experience/".$filename;
 				
-		if (move_uploaded_file($data["file"]["tmp_name"], $target_file)){
-			$data["file"] = $filename;
+		// if (move_uploaded_file($data["file"]["tmp_name"], $target_file)){
+		if (1){
+			// $data["file"] = $filename;
 			$insert = $this->db->insert('exp',$data);
 			return $insert;
 		}else{

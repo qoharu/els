@@ -67,9 +67,8 @@
 
                   <hr>
                   <strong><i class="fa fa-file-text-o margin-r-5"></i> Experience</strong>
-                  <?php if ($this->session->userdata('uid') == $profile->id_user): ?>
-                    
-                  <a class="btn btn-primary pull-right" href="<?php echo site_url('account/addexp') ?>">Add Experience</a>
+                  <?php if (issuperadmin()): ?>
+                  <a class="btn btn-primary pull-right" href="<?php echo site_url('account/addexp/'.$profile->id_user) ?>">Add Experience</a>
                   <?php endif ?>
                   <p>
                   <?php foreach ($experience as $data): ?>

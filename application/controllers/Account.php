@@ -33,7 +33,7 @@ class Account extends CI_Controller
 		if ($this->session->userdata('islogin')) {
 			redirect('home/dash');
 		}
-		$data['email'] = $this->input->post('email');
+		$data['username'] = $this->input->post('username');
 		$data['password'] = md5($this->input->post('password'));
 		$validasi = $this->Account_model->validate($data);
 		if ($validasi) {
@@ -83,18 +83,22 @@ class Account extends CI_Controller
 		$this->load->view('user',$data);
 	}
 
-	public function addexp(){
-		$this->load->view('addexp');
+	public function addexp($uid){
+		$data['title'] = "Add Experience";
+		$data['id'] = $uid;
+		$this->load->view('addexp',$data);
 	}
 
-	public function addexp_post(){
+	public function addexp_post($uid){
 		$data['keterangan'] = $this->input->post('keterangan');
-		$data['file'] = $_FILES['file'];
-		$data['id_user'] = $this->session->userdata('uid');
+		// $data['file'] = $_FILES['file'];
+		// $data['id_user'] = $this->session->userdata('uid');
+		$data['id_user'] = $uid;
+		$data['status'] = 1;
 		$insert = $this->Account_model->addexp($data);
 
 		if ($insert) {
-			redirect("account/user/".$this->session->userdata('uid'));
+			redirect("account/user/".$uid);
 		}
 
 	}

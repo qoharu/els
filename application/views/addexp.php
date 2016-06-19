@@ -7,21 +7,21 @@
 						<h3>Add Experience</h3>
 					</div>
 					<div class="box-body">
-						<form action="<?php echo site_url('account/addexp_post/') ?>" method="post" enctype="multipart/form-data" >
+						<form action="<?php echo site_url('account/addexp_post/'.$id) ?>" method="post">
 							<div class="form-group ">
 								<div class="input-group col-md-12 ">
 									<input class="form-control input-md " type="text" name="keterangan" placeholder="Description" required="">
 								</div>
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<div class="input-group col-md-12 ">
 									<input class="form-control input-md " id="date" type="file" name="file">
 									<div class="input-group-addon">
 			                        	Bukti Tugas - PDF
 			                      	</div>
 								</div>
-							</div>
+							</div> -->
 
 							<div class="form-group col-md-4 pull-right">
 								<input class="btn btn-block btn-primary btn-flat" type="submit">
