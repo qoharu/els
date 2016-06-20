@@ -21,6 +21,7 @@ class Home extends CI_Controller
 
 	public function dash(){
 		$data['title'] = "Dashboard";
+		$data['be'] = $this->General_model->getbe();
 		$this->load->view('dash',$data);
 	}
 

@@ -75,11 +75,11 @@ class Account extends CI_Controller
 	public function user($uid){
 		$level = $this->Account_model->getlevel($uid);
 		if ($level->id_level == 2) {
-		$data['profile'] = $this->Account_model->getprofile($uid);
-		$data['experience'] = $this->Account_model->getexp($uid);
-		$data['point'] = $this->Account_model->point($uid);
-		$data['pointdetail'] = $this->Account_model->pointdetail($uid);
-		$data['pending'] = ($this->Account_model->pending($data['profile']->id_profile) >= 1) ? 1 : 0 ;
+			$data['profile'] = $this->Account_model->getprofile($uid);
+			$data['experience'] = $this->Account_model->getexp($uid);
+			$data['point'] = $this->Account_model->point($uid);
+			$data['pointdetail'] = $this->Account_model->pointdetail($uid);
+			$data['pending'] = ($this->Account_model->pending($data['profile']->id_profile) >= 1) ? 1 : 0 ;
 		}
 		$data['level'] = $level->id_level;
 		$data['title'] = "Profile";

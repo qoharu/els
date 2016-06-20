@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row">
 	
-	<div class="col-md-12 isi-dash">
+	<div class="col-md-10 isi-dash">
 		<div class="col-lg-6 col-lg-offset-3 panel">
 			<div class="panel-heading">
 				<h4>Selamat <?php echo greet() ?>, <strong><?php echo $this->session->userdata('fullname'); ?></strong></h4>
@@ -66,6 +66,17 @@
 	        </a>
 	    </div>
 
+	</div>
+
+	<div class="col-md-2 panel isi-dash">
+		<div class="panel-heading">
+			<h3 class="text-center">List BE</h3>
+		</div>
+		<div class="panel-body">
+			<?php foreach ($be as $data): ?>
+				<a href="<?php echo site_url('account/user/'.$data->id_user) ?>"><?php echo $data->fullname ?></a> <br>
+			<?php endforeach ?>
+		</div>
 	</div>
 	</div>
 </div>

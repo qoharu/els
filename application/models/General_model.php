@@ -109,5 +109,11 @@ class General_model extends CI_Model
 		}
 	}
 
+	// function getbe(){
+	// 	return $this->db->query("SELECT fullname, email, stat, user.id_user, nik, registered_at
+	// 		FROM user, profile
+	// 		WHERE user.id_user = profile.id_user
+	// 			AND user.id_level = 2")->result();
+	// }
 	
 }
