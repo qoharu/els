@@ -4,20 +4,20 @@
 <div class="container">
 	<div class="row">
 	
-	<div class="col-md-10 isi-dash">
-		<div class="col-lg-6 col-lg-offset-3 panel">
+	<div class="col-md-9 isi-dash">
+		<div class="col-lg-8 col-lg-offset-2 panel">
 			<div class="panel-heading">
 				<h4>Selamat <?php echo greet() ?>, <strong><?php echo $this->session->userdata('fullname'); ?></strong></h4>
 			</div>
 		</div>
 		<?php 
 			if (iskaryawan()) {
-				$kelas = 'col-lg-6';
+				$kelas = 'col-lg-8';
 			}else{
-				$kelas = 'col-lg-3';
+				$kelas = 'col-lg-4';
 			}
 		?>
-	    <div class="<?php echo $kelas ?> col-lg-offset-3">
+	    <div class="<?php echo $kelas ?> col-lg-offset-2">
 			<!-- small box -->
 	        <a class="btn btn-flat small-box bg-primary" href="<?php echo site_url('discussion') ?>">
 	        <div class="inner">
@@ -30,7 +30,7 @@
 	    </div>
 	    
 	    <?php if (!iskaryawan()): ?>
-	    <div class="col-lg-3">
+	    <div class="col-lg-4">
 			<!-- small box -->
 	        <a class="btn btn-flat small-box btn-success" href="<?php echo site_url('cop') ?>">
 	        <div class="inner">
@@ -42,7 +42,7 @@
 	        </a>
 	    </div>
 	    <?php endif ?>
-	    <div class="col-lg-3 col-lg-offset-3">
+	    <div class="col-lg-4 col-lg-offset-2">
 			<!-- small box -->
 	        <a class="btn btn-flat small-box btn-info" href="<?php echo site_url('journal') ?>">
 	        <div class="inner">
@@ -54,7 +54,7 @@
 	        </a>
 	    </div>
 
-	    <div class="col-lg-3">
+	    <div class="col-lg-4">
 			<!-- small box -->
 	        <a class="btn btn-flat small-box btn-danger" href="<?php echo site_url('course') ?>">
 	        <div class="inner">
@@ -68,7 +68,7 @@
 
 	</div>
 
-	<div class="col-md-2 panel isi-dash">
+	<div class="col-md-3 panel isi-dash">
 		<div class="panel-heading">
 			<h3 class="text-center">List BE</h3>
 		</div>

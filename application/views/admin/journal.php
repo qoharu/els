@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                   <?php foreach ($pending_journal as $data): ?>
-                    <?php if ($admin_scope == $data->id_scope): ?>
+                    <?php if ($admin_scope == $data->id_scope || $this->session->userdata('username') == 'superadmin'): ?>
                       
                     <?php
                       if (empty($data->fullname)) {
