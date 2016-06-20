@@ -10,7 +10,7 @@ class Account_model extends CI_Model
 		if($user->num_rows()==1){
 			$datauser = $user->row();
 			if ($datauser->id_level == 2) {
-				$query="SELECT user.id_user, email, level_name, fullname, pic 
+				$query="SELECT user.id_user,username, email, level_name, fullname, pic 
 					FROM user, level, profile
 					WHERE user.username='$username' 
 						AND user.password='$password'
@@ -18,7 +18,7 @@ class Account_model extends CI_Model
 						AND level.id_level = user.id_level
 						AND user.id_user = profile.id_user ";
 			}else{
-				$query="SELECT user.id_user, email, level_name
+				$query="SELECT user.id_user,username, email, level_name
 					FROM user, level
 					WHERE user.username='$username' 
 						AND user.password='$password'
@@ -32,7 +32,13 @@ class Account_model extends CI_Model
 			return false;
 		}
 	}
-
+	function getlevel($u){
+		return $this->db->query("SELECT level_name, user.id_level 
+			FROM user, level 
+			WHERE user.id_user = '$u'
+				AND user.id_level = level.id_level
+			")->row();
+	}
 	function getprofile($u){
 		$uid = (int) $u;
 		return $this->db->query("SELECT
@@ -52,6 +58,21 @@ class Account_model extends CI_Model
 
 	function point($id){
 		return $this->db->query("SELECT * FROM point WHERE id_user = '$id' ")->result();
+	}
+
+	function pointdetail($id){
+		$hasil['innov'] = $this->db->query("SELECT COUNT(*) as count, SUM(value) as sum 
+			FROM point WHERE id_user = '$id' AND keterangan LIKE '%Create Innovation%' ")->row();
+		$hasil['bp'] = $this->db->query("SELECT COUNT(*) as count, SUM(value) as sum 
+			FROM point WHERE id_user = '$id' AND keterangan LIKE '%Create BP%' ")->row();
+		$hasil['gd'] = $this->db->query("SELECT COUNT(*) as count, SUM(value) as sum 
+			FROM point WHERE id_user = '$id' AND keterangan LIKE '%Create Discussion%' ")->row();
+		$hasil['respond'] = $this->db->query("SELECT COUNT(*) as count, SUM(value) as sum 
+			FROM point WHERE id_user = '$id' AND keterangan LIKE '%respond%' ")->row();
+		$hasil['journal'] = $this->db->query("SELECT COUNT(*) as count, SUM(value) as sum 
+			FROM point WHERE id_user = '$id' AND keterangan LIKE '%Journal%' ")->row();
+
+		return $hasil;
 	}
 
 	function hasprofile($uid){
@@ -93,6 +114,7 @@ class Account_model extends CI_Model
 					  	'level' => $data->level_name,
 					  	'fullname' => $fullname,
 					  	'pic' => $pic,
+					  	'username' => $data->username,
 					  	'islogin' => TRUE
 					  	);
 		$this->session->set_userdata($sesi);

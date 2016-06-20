@@ -230,4 +230,46 @@ class Discussion_model extends CI_Model
 				break;
 		}
 	}
+
+	function od_get(){
+		return $this->db->query("SELECT * FROM open_discussion
+			LEFT JOIN user ON user.id_user = open_discussion.id_user
+			LEFT JOIN profile ON profile.id_user = open_discussion.id_user
+			")->result();
+	}
+	function open_insert($data){
+		return $this->db->insert('open_discussion',$data);
+	}
+
+	function open_getthread($id){
+		return $this->db->query("SELECT open_discussion.*, email, scope_name, profile.fullname, expert_name
+			FROM open_discussion
+			LEFT JOIN user ON open_discussion.id_user = user.id_user 
+			LEFT JOIN profile ON profile.id_user = open_discussion.id_user
+			LEFT JOIN scope ON scope.id_scope = open_discussion.id_scope
+			LEFT JOIN level ON user.id_level = level.id_level
+			LEFT JOIN expert ON profile.id_expert = expert.id_expert
+			WHERE id_discussion = '$id'
+			")->row();
+	}
+
+	function open_getcomment($id,$page){
+		$page = ($page * 20);
+
+		$hasil['data'] = $this->db->query("SELECT * 
+			FROM open_discussion_comment
+			LEFT JOIN user ON open_discussion_comment.id_user = user.id_user 
+			LEFT JOIN profile ON user.id_user = profile.id_user
+			LEFT JOIN level ON user.id_level = level.id_level
+			LEFT JOIN expert ON profile.id_expert = expert.id_expert
+			WHERE id_discussion = '$id'
+			ORDER BY id_comment ASC
+			LIMIT $page, 20")->result();
+		$hasil['count'] = $this->db->query("SELECT COUNT(*) AS count FROM open_discussion_comment WHERE id_discussion='$id' ")->row();
+		return $hasil;
+	}
+
+	function open_close($id){
+		return $this->db->query("UPDATE open_discussion SET status = 0 WHERE id_discussion = '$id' ");
+	}
 }

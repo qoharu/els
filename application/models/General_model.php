@@ -91,5 +91,23 @@ class General_model extends CI_Model
 		return 3 - $this->db->query("SELECT * FROM step where id_scope= '$id_scope' AND bp_quota = 1 ")->num_rows();
 	}
 
+	function getadminscope(){
+		$username = $this->session->userdata('username');
+		switch ($username) {
+			case 'adminec':
+				return 1;
+				break;
+			case 'adminem':
+				return 2;
+				break;
+			case 'adminspb':
+				return 3;
+				break;
+			case 'adminict':
+				return 4;
+				break;
+		}
+	}
+
 	
 }

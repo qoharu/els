@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 Jun 2016 pada 18.08
+-- Generation Time: 20 Jun 2016 pada 03.26
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -39,33 +39,6 @@ CREATE TABLE `cop` (
   `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `cop`
---
-
-INSERT INTO `cop` (`id_cop`, `id_scope`, `id_user`, `title`, `content`, `summary`, `type`, `created_at`, `updated_at`, `status`) VALUES
-(1, NULL, 2, 'coba inov', '<p>cek</p>', '<p>tutup ah</p>', 1, '2016-06-04 03:44:52', '2016-06-04 03:58:44', 0),
-(2, 1, 4, 'coba BP', '<p>yoi</p>', '<p>Lo lo lo</p>', 2, '2016-06-04 04:06:45', '2016-06-04 04:10:56', 0),
-(3, 2, 2, 'Coba lagi', '<p>asdasdasd</p>', '<p>Hampura di close</p>', 2, '2016-06-04 04:12:36', '2016-06-04 04:16:35', 0),
-(4, 3, 4, 'asd', '<p>asaaa</p>', '<p>zxczxc</p>', 2, '2016-06-04 04:17:49', '2016-06-04 04:17:57', 0),
-(5, 3, 4, 'ss', '<p>aaaaaa</p>', '<p>cek</p>', 2, '2016-06-04 04:23:10', '2016-06-04 04:23:24', 0),
-(6, 4, 4, 'asdasdds', '<p>zzz</p>', '<p>asdwffffff</p>', 2, '2016-06-04 04:23:36', '2016-06-04 04:24:04', 0),
-(7, 4, 4, 'euy', '<p>aaa</p>', '<p>hehe</p>', 2, '2016-06-04 04:51:30', '2016-06-04 04:54:36', 0),
-(8, 3, 10, 'asd', '<p>arinicantik</p>', '<p>arini cantik katanya</p>', 2, '2016-06-05 04:13:13', '2016-06-05 04:13:29', 0),
-(9, NULL, 2, 'Coba inov lagi', '<p>tes&nbsp;</p>', NULL, 1, '2016-06-05 09:16:15', '2016-06-05 09:16:15', 1),
-(10, NULL, 2, 'kljklsdklajsdlajkd', '<p>asldlajwidjasdn asldk aklsjd</p>', NULL, 1, '2016-06-05 10:32:56', '2016-06-05 10:32:56', 1),
-(11, 3, 2, 'dfgdfgd', '<p>dfgdfgdfg</p>', '<p>klkljjlljk</p>', 2, '2016-06-05 10:33:24', '2016-06-05 10:33:39', 0),
-(12, 4, 2, 'zzz', '<p>asdasdasd</p>', '<p>asdasd</p>', 2, '2016-06-05 10:39:32', '2016-06-05 10:39:46', 0),
-(13, 1, 2, 'zzz', '<p>xxc</p>', '<p>a</p>', 2, '2016-06-06 02:42:03', '2016-06-06 02:42:16', 0),
-(14, 3, 2, 'aaa', '<p>asd</p>', '<p>azxc</p>', 2, '2016-06-06 02:43:14', '2016-06-06 02:43:27', 0),
-(15, 2, 2, 'asd', '<p>asoiul</p>', '<p>jkl</p>', 2, '2016-06-06 02:46:13', '2016-06-06 02:46:19', 0),
-(16, 3, 2, 'asdasd', '<p>asdasdas</p>', '<p>aa</p>', 2, '2016-06-06 02:58:49', '2016-06-06 02:58:58', 0),
-(17, 3, 2, 'wawawawaw', '<p>zxczxczxc</p>', '<p>xzczxc</p>', 2, '2016-06-11 05:45:39', '2016-06-11 05:45:52', 0),
-(18, NULL, 2, 'sfsdfsdf', '<p>cvbcvcvb</p>', NULL, 2, '2016-06-11 05:46:25', '2016-06-11 05:46:25', 1),
-(19, NULL, 2, 'asdasd', '<p>asdasd</p>', NULL, 2, '2016-06-11 05:47:11', '2016-06-11 05:47:11', 1),
-(20, 3, 4, 'asdasdasd', '<p>aaa</p>', NULL, 2, '2016-06-14 04:23:03', '2016-06-14 04:23:03', 1),
-(22, 2, 2, 'qweqweqwe', '<p>cvbbxcvb</p>', '<p>euy</p>', 2, '2016-06-19 01:57:16', '2016-06-19 01:57:56', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -77,16 +50,6 @@ CREATE TABLE `cop_attachment` (
   `id_cop` int(11) NOT NULL,
   `file` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `cop_attachment`
---
-
-INSERT INTO `cop_attachment` (`id_attachment`, `id_cop`, `file`) VALUES
-(1, 9, 'f72d158d9ddf37741cb4b987da4e78f0itulah.txt'),
-(2, 9, '651b5f8058d328ba2372d40f9e72c9cdProposal EduFi.docx'),
-(3, 10, '7e9d9b88adadb1ee516eb8894c409e28Screenshot_20160313-071822.png'),
-(4, 10, '7c9b0ea60f5405bd78e86977d9399810Screenshot_20160313-071928.png');
 
 -- --------------------------------------------------------
 
@@ -104,29 +67,6 @@ CREATE TABLE `cop_comment` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `cop_comment`
---
-
-INSERT INTO `cop_comment` (`id_comment`, `id_cop`, `id_user`, `title`, `content`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '', '<p>coba</p>', '2016-06-04 03:44:59', '0000-00-00 00:00:00'),
-(2, 1, 4, '', '<p>apa sob</p>', '2016-06-04 03:46:03', '0000-00-00 00:00:00'),
-(3, 1, 4, '', '<p>oit</p>', '2016-06-04 03:50:11', '0000-00-00 00:00:00'),
-(4, 1, 2, '', '<p>naon</p>', '2016-06-04 03:52:13', '0000-00-00 00:00:00'),
-(5, 1, 5, '', '<p>bahas naon ieu?</p>', '2016-06-04 03:54:56', '0000-00-00 00:00:00'),
-(6, 2, 2, '', '<p>oit</p>', '2016-06-04 04:07:44', '0000-00-00 00:00:00'),
-(7, 2, 4, '', '<p>jadi gini gan</p>', '2016-06-04 04:08:18', '0000-00-00 00:00:00'),
-(8, 2, 4, '', '<p>tutup aja deh</p>', '2016-06-04 04:08:33', '0000-00-00 00:00:00'),
-(9, 3, 2, '', '<p>cek</p>', '2016-06-04 04:12:41', '0000-00-00 00:00:00'),
-(10, 3, 4, '', '<p>asd</p>', '2016-06-04 04:13:05', '0000-00-00 00:00:00'),
-(11, 6, 4, '', '<p>sdwasdw</p>', '2016-06-04 04:23:42', '0000-00-00 00:00:00'),
-(12, 6, 4, 'aa', '<p>a</p>', '2016-06-04 04:23:49', '0000-00-00 00:00:00'),
-(13, 9, 2, NULL, '<p>asdasd</p>', '2016-06-06 02:41:26', '0000-00-00 00:00:00'),
-(14, 14, 2, NULL, '<p>asdasd</p>', '2016-06-06 02:43:19', '0000-00-00 00:00:00'),
-(15, 10, 2, NULL, '<p>bro</p>', '2016-06-14 04:17:17', '0000-00-00 00:00:00'),
-(16, 9, 4, NULL, '<p>naon bray</p>', '2016-06-14 04:18:02', '0000-00-00 00:00:00'),
-(17, 20, 2, NULL, '<p>coba</p>', '2016-06-14 04:23:56', '0000-00-00 00:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -138,22 +78,6 @@ CREATE TABLE `cop_invitation` (
   `id_cop` int(11) NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `cop_invitation`
---
-
-INSERT INTO `cop_invitation` (`id_invitation`, `id_cop`, `id_user`) VALUES
-(1, 1, 2),
-(2, 1, 4),
-(3, 1, 16),
-(4, 1, 5),
-(5, 9, 2),
-(6, 9, 4),
-(7, 9, 10),
-(8, 10, 2),
-(9, 10, 5),
-(10, 10, 18);
 
 -- --------------------------------------------------------
 
@@ -179,13 +103,6 @@ CREATE TABLE `course` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `course`
---
-
-INSERT INTO `course` (`id_course`, `id_user`, `id_step`, `id_scope`, `title`, `description`, `datetime`, `enddate`, `location`, `quota`, `summary`, `report_file`, `status`, `created_at`, `updated_at`) VALUES
-(1, 4, 7, 3, 'Kuliah dafuq', '<p>Deskripsi gan</p>', '2016-06-05 00:00:00', '2016-06-07 00:00:00', 'On request', 20, '<p>Closed gan, gada yang dateng</p>', '', 0, '2016-06-05 04:28:36', '2016-06-05 04:37:52');
-
 -- --------------------------------------------------------
 
 --
@@ -198,15 +115,6 @@ CREATE TABLE `course_participant` (
   `id_user` int(11) NOT NULL,
   `enrolled_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `course_participant`
---
-
-INSERT INTO `course_participant` (`id_participant`, `id_course`, `id_user`, `enrolled_at`) VALUES
-(1, 1, 2, '2016-06-05 04:35:01'),
-(2, 1, 3, '2016-06-05 04:35:25'),
-(3, 1, 10, '2016-06-05 04:35:44');
 
 -- --------------------------------------------------------
 
@@ -256,25 +164,6 @@ CREATE TABLE `discussion` (
   `views` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `discussion`
---
-
-INSERT INTO `discussion` (`id_discussion`, `id_scope`, `id_user`, `id_step`, `title`, `content`, `summary`, `created_at`, `updated_at`, `status`, `views`) VALUES
-(1, 1, 4, 1, 'asdasdds', '<p>55513211313510031235131d35v1edv35d35bvd0b35er1e3y12r535th34te0f30eg3r0b3551351</p>', '', '2016-06-05 04:10:32', '2016-06-05 04:17:12', 0, 0),
-(2, 3, 4, 7, 'yoi', '<p>h jklhjklh jklh jklhjklhjklhjkhkjh klhgutf yi fuy ftd ytd ykg</p>', '', '2016-06-05 04:10:43', '2016-06-05 04:17:12', 0, 0),
-(3, 3, 4, 9, 'AAAAAAAAAAAAAAAAAAAAAAAA', '<p>BBBBBBBBBBBBBBBBBBBBgbggggggggggggggggggggggggggg</p>', '', '2016-06-05 04:10:54', '2016-06-05 04:12:39', 3, 0),
-(4, 4, 4, 10, 'sdfsdfsd', '<p>egmnvjkh jjcfgj drtasf h jytjt k7</p>', '', '2016-06-05 04:11:14', '2016-06-05 04:17:12', 0, 0),
-(5, 4, 4, 15, 'aaa', '<p>sdfasdasd</p>', '', '2016-06-05 04:11:18', '2016-06-05 04:12:39', 3, 0),
-(6, 1, 10, 3, 'ilove', '<p>mrtgggh</p>', '', '2016-06-05 04:12:14', '2016-06-05 04:12:39', 3, 0),
-(7, 2, 10, 6, 'ikjjj', '<p>lllcfgt</p>', '', '2016-06-05 04:12:21', '2016-06-05 04:17:12', 0, 0),
-(8, 3, 5, 16, 'asdasdds', '<p>222</p>', '<p>Rahasia</p>', '2016-06-05 04:16:58', '2016-06-05 04:20:14', 0, 0),
-(9, 1, 2, 21, 'AAa', '<p>aaa</p>', '<p>tes</p>', '2016-06-06 02:46:38', '2016-06-06 02:53:05', 0, 0),
-(10, 2, 2, 24, 'Jjj', '<p>jjj</p>', '<p>cek</p>', '2016-06-06 02:46:43', '2016-06-06 02:53:44', 0, 0),
-(11, 3, 2, 23, 'vvv', '<p>vvv</p>', '', '2016-06-06 02:46:46', '2016-06-06 02:55:03', 0, 0),
-(12, 3, 2, 25, 'hadeuh', '<p>asdasd</p>', '<p>zxczxczxc</p>', '2016-06-06 02:59:15', '2016-06-06 02:59:58', 0, 0),
-(13, 3, 2, 26, 'xcvxcvxcvxc', '<p>dfsdsdf</p>', '', '2016-06-06 02:59:20', '2016-06-06 02:59:35', 3, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -291,16 +180,6 @@ CREATE TABLE `discussion_comment` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `discussion_comment`
---
-
-INSERT INTO `discussion_comment` (`id_comment`, `id_discussion`, `id_user`, `title`, `content`, `created_at`, `updated_at`) VALUES
-(1, 1, 5, '', '<p>cek</p>', '2016-06-05 04:16:29', '2016-06-05 04:16:29'),
-(2, 8, 3, '', '<p>s</p>', '2016-06-05 04:19:38', '2016-06-05 04:19:38'),
-(3, 9, 2, NULL, '<p>asdasdasd</p>', '2016-06-06 02:48:01', '2016-06-06 02:48:01'),
-(4, 12, 2, NULL, '<p>asdasd</p>', '2016-06-06 02:59:54', '2016-06-06 02:59:54');
-
 -- --------------------------------------------------------
 
 --
@@ -313,13 +192,6 @@ CREATE TABLE `discussion_vote` (
   `id_discussion` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `discussion_vote`
---
-
-INSERT INTO `discussion_vote` (`id_vote`, `id_user`, `id_discussion`, `timestamp`) VALUES
-(1, 3, 8, '2016-06-05 04:18:23');
 
 -- --------------------------------------------------------
 
@@ -411,14 +283,6 @@ CREATE TABLE `journal` (
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `journal`
---
-
-INSERT INTO `journal` (`id_journal`, `id_user`, `id_directorate`, `title`, `description`, `file`, `views`, `created_at`, `status`, `keterangan`) VALUES
-(1, 3, 3, 'coba deh', 'cek 123', '71157c4f1efb079b986380eff69b9db5analisis-kebutuhan.pdf', 0, '2016-06-19 15:20:43', 2, 'asdasdas'),
-(2, 3, 2, 'Bangkong', 'euy', 'e6970e7e70e5977f7f825498da204496Lampiran_Proposal_dan__MOU.pdf', 3, '2016-06-19 15:37:17', 1, '');
-
 -- --------------------------------------------------------
 
 --
@@ -432,13 +296,6 @@ CREATE TABLE `journal_comment` (
   `content` text NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `journal_comment`
---
-
-INSERT INTO `journal_comment` (`id_comment`, `id_journal`, `id_user`, `content`, `created_at`) VALUES
-(1, 2, 3, 'asd', '2016-06-19 15:49:11');
 
 -- --------------------------------------------------------
 
@@ -476,60 +333,37 @@ CREATE TABLE `notif` (
   `red` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `notif`
+-- Struktur dari tabel `open_discussion`
 --
 
-INSERT INTO `notif` (`id_notif`, `id_user`, `title`, `link`, `type`, `red`) VALUES
-(37, 4, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/1', 4, 1),
-(38, 16, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/1', 4, 0),
-(39, 5, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/1', 4, 1),
-(40, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 1),
-(41, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 1),
-(42, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 1),
-(43, 5, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 1),
-(44, 16, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 0),
-(45, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 1, 1),
-(46, 4, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
-(47, 5, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
-(48, 16, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 0),
-(49, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
-(50, 4, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
-(51, 16, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 0),
-(52, 2, 'New Respond on coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
-(53, 4, 'Forum Closed coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
-(54, 5, 'Forum Closed coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 1),
-(55, 16, 'Forum Closed coba inov', 'http://localhost/els/cop/innovation_view/1', 4, 0),
-(56, 4, 'New Respond on coba BP', 'http://localhost/els/cop/bp_view/2', 1, 1),
-(57, 2, 'New Respond on coba BP', 'http://localhost/els/cop/bp_view/2', 1, 1),
-(58, 2, 'New Respond on coba BP', 'http://localhost/els/cop/bp_view/2', 1, 1),
-(59, 2, 'New Respond on Coba lagi', 'http://localhost/els/cop/bp_view/3', 1, 1),
-(60, 2, 'New Respond on Coba lagi', 'http://localhost/els/cop/bp_view/3', 1, 1),
-(61, 4, 'Forum Closed Coba lagi', 'http://localhost/els/cop/bp_view', 1, 1),
-(64, 4, 'New Responsibilities euy', 'http://localhost/els/cop/bp_view/7', 0, 1),
-(65, 2, 'New Comment on  tes journal', 'http://localhost/els/journal/view/1', 2, 1),
-(68, 4, 'New Respond on asdasdds', 'http://localhost/els/discussion/view_discussion/1', 0, 1),
-(69, 5, 'New Respond on asdasdds', 'http://localhost/els/discussion/view_discussion/8', 0, 1),
-(70, 3, 'Discussion Closed asdasdds', 'http://localhost/els/discussion/view_discussion/8', 0, 1),
-(71, 4, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/9', 4, 1),
-(72, 10, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/9', 4, 0),
-(73, 5, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/10', 4, 0),
-(74, 18, 'New Forum Invitation', 'http://localhost/els/cop/innovation_view/10', 4, 0),
-(78, 4, 'New Responsibilities zzz', 'http://localhost/els/cop/bp_view/12', 0, 1),
-(79, 18, 'New Responsibilities zzz', 'http://localhost/els/cop/bp_view/12', 0, 0),
-(80, 10, 'New Responsibilities zzz', 'http://localhost/els/cop/bp_view/12', 0, 0),
-(81, 4, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 1),
-(82, 10, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 0),
-(88, 2, 'New Responsibilities asd', 'http://localhost/els/cop/bp_view/15', 0, 1),
-(90, 2, 'New Responsibilities asdasd', 'http://localhost/els/cop/bp_view/16', 0, 1),
-(91, 2, 'New Responsibilities asdasd', 'http://localhost/els/cop/bp_view/16', 0, 1),
-(92, 5, 'New Respond on kljklsdklajsdlajkd', 'http://localhost/els/cop/innovation_view/10', 4, 0),
-(93, 18, 'New Respond on kljklsdklajsdlajkd', 'http://localhost/els/cop/innovation_view/10', 4, 0),
-(94, 2, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 1),
-(95, 10, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 0),
-(96, 2, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 1),
-(97, 4, 'New Respond on asdasdasd', 'http://localhost/els/cop/bp_view/20', 1, 0),
-(98, 2, 'New Responsibilities qweqweqwe', 'http://localhost/els/cop/bp_view/22', 0, 1);
+CREATE TABLE `open_discussion` (
+  `id_discussion` int(11) NOT NULL,
+  `id_scope` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `title` varchar(160) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `open_discussion_comment`
+--
+
+CREATE TABLE `open_discussion_comment` (
+  `id_comment` int(11) NOT NULL,
+  `id_discussion` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -544,60 +378,6 @@ CREATE TABLE `point` (
   `keterangan` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `point`
---
-
-INSERT INTO `point` (`id_rating`, `id_user`, `value`, `keterangan`, `created_at`) VALUES
-(1, 2, 50, 'Create BP', '2016-05-31 11:37:27'),
-(2, 2, 1, 'Respond Best Practice', '2016-05-31 11:45:15'),
-(3, 2, 1, 'Respond Best Practice', '2016-05-31 11:45:33'),
-(4, 2, 50, 'Upload Journal', '2016-05-31 11:48:00'),
-(5, 2, 50, 'Upload Journal', '2016-06-04 03:25:46'),
-(6, 2, 50, 'Create Innovation', '2016-06-04 03:44:52'),
-(7, 2, 1, 'Respond Innovation', '2016-06-04 03:45:00'),
-(8, 4, 1, 'Respond Innovation', '2016-06-04 03:46:03'),
-(9, 4, 1, 'Respond Innovation', '2016-06-04 03:50:11'),
-(10, 2, 1, 'Respond Innovation', '2016-06-04 03:52:13'),
-(11, 5, 1, 'Respond Innovation', '2016-06-04 03:54:56'),
-(12, 4, 50, 'Create BP', '2016-06-04 04:06:45'),
-(13, 2, 1, 'Respond Best Practice', '2016-06-04 04:07:44'),
-(14, 4, 1, 'Respond Best Practice', '2016-06-04 04:08:18'),
-(15, 4, 1, 'Respond Best Practice', '2016-06-04 04:08:33'),
-(16, 2, 50, 'Create BP', '2016-06-04 04:12:36'),
-(17, 2, 1, 'Respond Best Practice', '2016-06-04 04:12:41'),
-(18, 4, 1, 'Respond Best Practice', '2016-06-04 04:13:05'),
-(19, 4, 50, 'Create BP', '2016-06-04 04:17:49'),
-(20, 4, 50, 'Create BP', '2016-06-04 04:23:10'),
-(21, 4, 50, 'Create BP', '2016-06-04 04:23:36'),
-(22, 4, 1, 'Respond Best Practice', '2016-06-04 04:23:42'),
-(23, 4, 1, 'Respond Best Practice', '2016-06-04 04:23:49'),
-(24, 4, 50, 'Create BP', '2016-06-04 04:51:30'),
-(25, 2, 50, 'Upload Journal', '2016-06-04 15:04:05'),
-(26, 10, 50, 'Create BP', '2016-06-05 04:13:13'),
-(27, 5, 1, 'Respond Discussion', '2016-06-05 04:16:29'),
-(28, 4, 50, 'Open Course', '2016-06-05 04:28:36'),
-(29, 2, 50, 'Create Innovation', '2016-06-05 09:16:15'),
-(30, 2, 50, 'Create Innovation', '2016-06-05 10:32:56'),
-(31, 2, 50, 'Create BP', '2016-06-05 10:33:24'),
-(32, 2, 50, 'Create BP', '2016-06-05 10:39:32'),
-(33, 2, 1, 'Respond Innovation', '2016-06-06 02:41:26'),
-(34, 2, 50, 'Create BP', '2016-06-06 02:42:03'),
-(35, 2, 50, 'Create BP', '2016-06-06 02:43:14'),
-(36, 2, 1, 'Respond Best Practice', '2016-06-06 02:43:19'),
-(37, 2, 50, 'Create BP', '2016-06-06 02:46:13'),
-(38, 2, 50, 'Create BP', '2016-06-06 02:58:49'),
-(39, 2, 1, 'Respond Discussion', '2016-06-06 02:59:54'),
-(40, 2, 50, 'Upload Journal', '2016-06-06 03:20:07'),
-(41, 2, 50, 'Create BP', '2016-06-11 05:45:39'),
-(42, 2, 50, 'Create BP', '2016-06-11 05:46:25'),
-(43, 2, 50, 'Create BP', '2016-06-11 05:47:11'),
-(44, 2, 1, 'Respond Innovation', '2016-06-14 04:17:17'),
-(45, 4, 1, 'Respond Innovation', '2016-06-14 04:18:02'),
-(46, 4, 50, 'Create BP', '2016-06-14 04:23:03'),
-(47, 2, 1, 'Respond Best Practice', '2016-06-14 04:23:57'),
-(48, 2, 50, 'Create BP', '2016-06-19 01:57:56');
 
 -- --------------------------------------------------------
 
@@ -711,36 +491,6 @@ CREATE TABLE `step` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `step`
---
-
-INSERT INTO `step` (`id_step`, `id_user`, `id_scope`, `step`, `keterangan`, `id_cop`, `bp_quota`, `created_at`) VALUES
-(1, 4, 1, 4, 'aaaaaa', 2, 0, '2016-06-19 03:26:33'),
-(2, 18, 1, 9, 'b', 2, 0, '2016-06-19 03:26:33'),
-(3, 10, 1, 8, 'c', 2, 0, '2016-06-19 03:26:33'),
-(4, 16, 2, 9, 'z', 3, 0, '2016-06-19 03:26:33'),
-(5, 18, 2, 9, 'x', 3, 0, '2016-06-19 03:26:33'),
-(6, 10, 2, 4, 'c', 3, 0, '2016-06-19 03:26:33'),
-(7, 4, 3, 5, 'aaa', 4, 0, '2016-06-19 03:26:33'),
-(8, 18, 3, 9, 's', 5, 0, '2016-06-19 03:26:33'),
-(9, 4, 3, 8, 'd', 5, 0, '2016-06-19 03:26:33'),
-(10, 4, 4, 4, 'zz', 6, 0, '2016-06-19 03:26:33'),
-(11, 16, 4, 9, 'xx', 6, 0, '2016-06-19 03:26:33'),
-(15, 4, 4, 8, 'hehehe', 7, 0, '2016-06-19 03:26:33'),
-(16, 5, 3, 4, 'Woy', 8, 0, '2016-06-19 03:26:33'),
-(17, 16, 3, 9, 'vbnvbn', 11, 0, '2016-06-19 03:26:33'),
-(18, 4, 4, 9, 'aaa', 12, 0, '2016-06-19 03:26:33'),
-(19, 18, 4, 9, 'xxx', 12, 0, '2016-06-19 03:26:33'),
-(20, 10, 4, 9, 'qweqweqweqwe', 12, 0, '2016-06-19 03:26:33'),
-(21, 2, 1, 4, 'aaaaaaaaaaa', 13, 0, '2016-06-19 03:26:33'),
-(22, 16, 1, 9, 'x', 13, 0, '2016-06-19 03:26:33'),
-(23, 2, 3, 4, 'vvv', 14, 0, '2016-06-19 03:26:33'),
-(24, 2, 2, 4, 'jjj', 15, 0, '2016-06-19 03:26:33'),
-(25, 2, 3, 4, 'xcxzc', 16, 0, '2016-06-19 03:26:33'),
-(26, 2, 3, 8, 'zxczxc', 16, 0, '2016-06-19 03:26:33'),
-(27, 2, 2, 1, 'abc', 22, 1, '2016-06-19 03:26:33');
-
 -- --------------------------------------------------------
 
 --
@@ -764,10 +514,14 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `id_level`, `registered_at`, `stat`) VALUES
 (1, 'superadmin', 'superadmin@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 1, '2016-06-19 15:55:48', 1),
 (2, '62012', 'rochadi@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-06-19 03:43:16', 1),
-(3, 'karyawan', 'karyawan@gmail.com', '9e014682c94e0f2cc834bf7348bda428', 3, '2016-06-19 15:55:38', 1),
+(3, '1111', 'karyawan@gmail.com', '9e014682c94e0f2cc834bf7348bda428', 3, '2016-06-20 00:26:29', 1),
 (4, '75238', 'yudi_nugraha@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-06-19 03:43:25', 1),
 (5, '740195', 'mohamad_n_fajar@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-06-19 03:43:32', 1),
-(21, 'admin', 'admin@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 4, '2016-06-19 15:56:56', 1);
+(21, 'admin', 'admin@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 4, '2016-06-19 15:56:56', 1),
+(62, 'adminec', 'adminec@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 1, '2016-06-20 00:47:51', 1),
+(63, 'adminem', 'adminem@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 1, '2016-06-20 00:47:51', 1),
+(64, 'adminspb', 'adminspb@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 1, '2016-06-20 00:47:51', 1),
+(65, 'adminict', 'adminict@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 1, '2016-06-20 00:47:51', 1);
 
 --
 -- Indexes for dumped tables
@@ -899,6 +653,22 @@ ALTER TABLE `notif`
   ADD KEY `id_user_2` (`id_user`);
 
 --
+-- Indexes for table `open_discussion`
+--
+ALTER TABLE `open_discussion`
+  ADD PRIMARY KEY (`id_discussion`),
+  ADD KEY `id_scope` (`id_scope`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `open_discussion_comment`
+--
+ALTER TABLE `open_discussion_comment`
+  ADD PRIMARY KEY (`id_comment`),
+  ADD KEY `id_discussion` (`id_discussion`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indexes for table `point`
 --
 ALTER TABLE `point`
@@ -993,12 +763,12 @@ ALTER TABLE `directorate`
 -- AUTO_INCREMENT for table `discussion`
 --
 ALTER TABLE `discussion`
-  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `discussion_comment`
 --
 ALTER TABLE `discussion_comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `discussion_vote`
 --
@@ -1008,7 +778,7 @@ ALTER TABLE `discussion_vote`
 -- AUTO_INCREMENT for table `exp`
 --
 ALTER TABLE `exp`
-  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `expert`
 --
@@ -1018,7 +788,7 @@ ALTER TABLE `expert`
 -- AUTO_INCREMENT for table `journal`
 --
 ALTER TABLE `journal`
-  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `journal_comment`
 --
@@ -1033,12 +803,22 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `notif`
 --
 ALTER TABLE `notif`
-  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+--
+-- AUTO_INCREMENT for table `open_discussion`
+--
+ALTER TABLE `open_discussion`
+  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `open_discussion_comment`
+--
+ALTER TABLE `open_discussion_comment`
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `point`
 --
 ALTER TABLE `point`
-  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `profile`
 --
@@ -1068,7 +848,7 @@ ALTER TABLE `step`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --

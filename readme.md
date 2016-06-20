@@ -4,12 +4,12 @@
 ---
 Revisi aplikasi:  
 UM
-- super admin harusnya sesuai functional scope agar
++ super admin harusnya sesuai functional scope agar __V__
 + gak ada pemberitahuan kenapa di decline jurnalnya __V__
 + login username sma pass pake nik saja __V__
 + edit profil dihapus saja __V__
 + add experience menjadi tugas super admin __V__
-- grafik kinerja be
++ grafik kinerja be __V__
 + user bisa melihat profil be __V__
 
 COP 
@@ -22,7 +22,7 @@ GD
 + update forum terbaru paling atas (archive sama yg baru) __V__
 + tanggal muncul di list forum yg dibikin __V__
 + langsung get "judul" __V__
-- sediakan akses karyawan untuk create 
++ sediakan akses karyawan untuk create __V__
 + tanggal __V__
 
 CJ

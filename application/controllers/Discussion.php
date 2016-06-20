@@ -194,4 +194,72 @@ class Discussion extends CI_Controller
 		}
 		$this->load->view('discussion/discussion_archive', $data);
 	}
+
+	// OPEN DISCUSSION
+	public function open(){
+		$data['title'] =  "Open Discussion";
+		$data['list'] = $this->Discussion_model->od_get();
+
+		$this->load->view('discussion/od',$data);
+	}
+
+	public function open_create(){
+		$data['title'] = "Create Discussion";
+		$data['scope'] = $this->General_model->getscope();
+
+		$this->load->view('discussion/od_create',$data);
+	}
+
+	public function open_create_post(){
+		$data['title'] = $this->input->post('title');
+		$data['content'] = $this->input->post('content');
+		$data['id_scope'] = $this->input->post('id_scope');
+		$data['id_user'] = $this->session->userdata('uid');
+
+		$insert = $this->Discussion_model->open_insert($data);
+
+		if ($insert) {
+			redirect('discussion/open');
+		}
+	}
+
+	public function open_view($id,$page=1){
+		$page--;
+		$data['title'] = "View Forum";
+		$data['thread'] = $this->Discussion_model->open_getthread($id);
+		$comment = $this->Discussion_model->open_getcomment($id, $page);
+		$data['comment'] = $comment['data'];
+
+		$count = $comment['count']->count;
+		$halaman = (int) ceil($count / 20);
+		$data['page'] = '';
+		for ($i=1; $i <= $halaman; $i++) {
+			if ($i == $page+1) {
+				$data['page'] .= "<a href='".site_url('discussion/open_view/'.$id.'/'.$i)."' class='btn btn-default active disabled'>$i</a>";
+			}else{
+				$data['page'] .= "<a href='".site_url('discussion/open_view/'.$id.'/'.$i)."' class='btn btn-default'>$i</a>";
+			}
+		}
+		$this->load->view('discussion/od_view',$data);
+	}
+
+	public function open_close($id){
+		$close = $this->Discussion_model->open_close($id);
+		if ($close) {
+			redirect('discussion/open_view/'.$id);
+		}
+	}
+
+	public function open_respond_post($id){
+		$data['id_discussion'] = $id;
+		$data['id_user'] = $this->session->userdata('uid');
+		$data['content'] = $this->input->post('content');
+
+		$insert = $this->db->insert('open_discussion_comment',$data);
+		if ($insert) {
+			redirect('discussion/open_view/'.$id);
+		}
+	}
+
+
 }

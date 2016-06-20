@@ -13,6 +13,14 @@ class Journal extends CI_Controller
 
 	public function index(){
 		$data['title'] = "Journal";
+		$notif = @$this->Journal_model->lastnotif();
+		if (@$notif->status == 2) {
+			$string = "Journal anda demgan judul <b>$notif->title</b> ditolak karena <b>$notif->keterangan</b>";
+			$data['notifikasi'] = "<div class='callout callout-warning'><p>$string</p></div>";
+		}else if(@$notif->status == 1){
+			$string = "Journal anda dengan judul <b>$notif->title</b> telah dipublikasikan";
+			$data['notifikasi'] = "<div class='callout callout-success'><p>$string</p></div>";
+		}
 		$data['listjournal'] = $this->Journal_model->listjournal(); //ambil data list journal
 		$this->load->view('journal/journal', $data); //tampilkan view journal.php dengan $data
 	}

@@ -1,5 +1,6 @@
 <?php include 'header.php'; ?>
-
+<?php if ($level == 2): ?>
+<script type="text/javascript" src="<?php echo base_url('assets/js/Chart.min.js') ?>"></script>
 <div class="container">
 	<div class="row isi">
 		<div class="col-md-3">
@@ -79,6 +80,47 @@
                   <?php if (isadmin() || issuperadmin()): ?>
                   <hr>
                   <strong><i class="fa fa-file-text-o margin-r-5"></i> Points</strong>
+                  <canvas id="chart" width="400" height="200"></canvas>
+                  <script type="text/javascript">
+                    barData = {
+                      labels : ["Innovation","Best Practice","Discussion","Respond forum","Journal"],
+                      datasets : [
+                        {
+                          label : "Points",
+                          backgroundColor : "#48A497",
+                          borderColor : "#48A4D1",
+                          data : [
+                            <?php echo $pointdetail['innov']->sum; ?>,
+                            <?php echo $pointdetail['bp']->sum; ?>,
+                            <?php echo $pointdetail['gd']->sum; ?>,
+                            <?php echo $pointdetail['respond']->sum; ?>,
+                            <?php echo $pointdetail['journal']->sum; ?>
+                          ]
+                        },
+                        {
+                          label : 'Sum',
+                          backgroundColor : "rgba(73,188,170,0.4)",
+                          borderColor : "rgba(72,174,209,0.4)",
+                          data : [
+                            <?php echo $pointdetail['innov']->count; ?>,
+                            <?php echo $pointdetail['bp']->count; ?>,
+                            <?php echo $pointdetail['gd']->count; ?>,
+                            <?php echo $pointdetail['respond']->count; ?>,
+                            <?php echo $pointdetail['journal']->count; ?>
+                          ]
+                        }
+
+                      ]
+                    }
+
+                    var grafik = $("#chart");
+                    // new Chart(grafik).bar(barData);
+
+                    new Chart(grafik, {
+                        type: 'bar',
+                        data: barData
+                    });
+                  </script>
                   <p>
                   <?php foreach ($point as $data): ?>
                     <li><?php echo $data->keterangan ?> (<?php echo $data->value ?>)</li>
@@ -90,3 +132,8 @@
             </div>
 	</div>
 </div>
+<?php else: ?>
+<div class="isi isi-dash well col-md-8 col-md-offset-2">
+    user ini tidak memiliki profile
+</div>
+<?php endif ?>
