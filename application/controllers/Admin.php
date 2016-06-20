@@ -4,18 +4,22 @@
 */
 class Admin extends CI_Controller
 {
+	private $admin_scope;
+
 		function __construct(){
 			parent::__construct();
 			$this->load->model('Admin_model');
 			if (!isadmin() && !issuperadmin()) {
 				redirect('home');
 			}
+			$this->admin_scope = $this->General_model->getadminscope();
 		}
 		public function index(){
 			redirect('admin/summary');
 		}
 
 		public function summary(){
+			$data['admin_scope'] = $this->admin_scope;
 			$data['title'] = "Summary";
 			$data['summary'] = $this->Admin_model->summary();
 			$data['active'][0] = 'active';
@@ -23,6 +27,7 @@ class Admin extends CI_Controller
 		}
 
 		public function user(){
+			$data['admin_scope'] = $this->admin_scope;
 			$data['title'] = "Admin - Users";
 			$data['active'][1] = 'active';
 			$data['pending'] = $this->Admin_model->getpending();
@@ -50,6 +55,7 @@ class Admin extends CI_Controller
 		}
 
 		public function journal(){
+			$data['admin_scope'] = $this->admin_scope;
 			$data['title'] = "Admin - Journal";
 			$data['active'][2] = 'active';
 			$data['pending_journal'] = $this->Admin_model->getpendingjournal();
@@ -79,6 +85,7 @@ class Admin extends CI_Controller
 		}
 
 		public function course(){
+			$data['admin_scope'] = $this->admin_scope;
 			$data['title'] = "Admin - Course";
 			$data['active'][3] = 'active';
 			$data['course'] = $this->Admin_model->getcourse();
@@ -88,6 +95,7 @@ class Admin extends CI_Controller
 		}
 
 		public function discussion(){
+			$data['admin_scope'] = $this->admin_scope;
 			$data['title'] = "Admin - Discussion";
 			$data['active'][4] = 'active';
 			$data['discussion'] = $this->Admin_model->getdiscussion();
@@ -96,6 +104,7 @@ class Admin extends CI_Controller
 		}
 
 		public function cop(){
+			$data['admin_scope'] = $this->admin_scope;
 			$data['title'] = "Admin - COP";
 			$data['active'][5] = 'active';
 			$data['best_practice'] = $this->Admin_model->getbp();
@@ -189,6 +198,7 @@ class Admin extends CI_Controller
 
 
 		public function approve_pending($id){
+			$data['admin_scope'] = $this->admin_scope;
 			$pending = $this->Admin_model->getpendingdetail($id);
 			$update = $this->Admin_model->approve_pending($pending);
 			if ($update) {

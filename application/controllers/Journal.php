@@ -13,11 +13,11 @@ class Journal extends CI_Controller
 
 	public function index(){
 		$data['title'] = "Journal";
-		$notif = $this->Journal_model->lastnotif();
-		if ($notif->status == 2) {
+		$notif = @$this->Journal_model->lastnotif();
+		if (@$notif->status == 2) {
 			$string = "Journal anda demgan judul <b>$notif->title</b> ditolak karena <b>$notif->keterangan</b>";
 			$data['notifikasi'] = "<div class='callout callout-warning'><p>$string</p></div>";
-		}else if($notif->status == 1){
+		}else if(@$notif->status == 1){
 			$string = "Journal anda dengan judul <b>$notif->title</b> telah dipublikasikan";
 			$data['notifikasi'] = "<div class='callout callout-success'><p>$string</p></div>";
 		}

@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+<?php if ($level == 2): ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/Chart.min.js') ?>"></script>
 <div class="container">
 	<div class="row isi">
@@ -131,3 +132,8 @@
             </div>
 	</div>
 </div>
+<?php else: ?>
+<div class="isi isi-dash well col-md-8 col-md-offset-2">
+    user ini tidak memiliki profile
+</div>
+<?php endif ?>

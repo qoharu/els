@@ -1,4 +1,12 @@
 <?php include 'application/views/header.php' ?>
+<?php 
+if (empty($journal[0]->fullname)) {
+  $journal[0]->fullname = explode('@', $journal[0]->email)[0];
+}
+if (empty($journal[0]->pic)) {
+  $journal[0]->pic = 'default.png';
+}
+?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9 isi ">
@@ -69,7 +77,7 @@
                     <img class="img-circle" src="<?php echo site_url('uploads/profile/'.$journal[0]->pic) ?>" alt="User Avatar">
                   </div><!-- /.widget-user-image -->
                   <h3 class="widget-user-username">
-                  	<a class="clearlink" href="<?php echo site_url('user/'.$journal[0]->id_user) ?>">
+                  	<a class="clearlink" href="<?php echo site_url('account/user/'.$journal[0]->id_user) ?>">
                   		<?php echo $journal[0]->fullname ?>
                   	</a>
                   </h3>

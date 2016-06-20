@@ -35,9 +35,11 @@ class Admin_model extends CI_Model
 	}
 
 	function getpendingjournal(){
-		return $this->db->query("SELECT * 
+		return $this->db->query("SELECT user.*, journal.*, scope.id_scope 
 			FROM journal
 			LEFT JOIN user ON journal.id_user = user.id_user
+			LEFT JOIN directorate ON journal.id_directorate = directorate.id_directorate
+			LEFT JOIN scope ON scope.id_scope = directorate.id_scope
 			LEFT JOIN profile ON journal.id_user = profile.id_user
 			WHERE status = 0
 			")->result();

@@ -27,6 +27,8 @@
                     </thead>
                     <tbody>
                   <?php foreach ($pending_journal as $data): ?>
+                    <?php if ($admin_scope == $data->id_scope): ?>
+                      
                     <?php
                       if (empty($data->fullname)) {
                         $data->fullname = explode('@', $data->email)[0];
@@ -44,6 +46,7 @@
                         <a class="btn btn-xs btn-danger" href="<?php echo site_url('admin/decline_journal/'.$data->id_journal) ?>"> Decline</a>
                       </td>
                     </tr>
+                    <?php endif ?>
                   <?php endforeach ?>
                   </tbody>
                   </table>

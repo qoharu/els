@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 20 Jun 2016 pada 01.41
+-- Generation Time: 20 Jun 2016 pada 03.07
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -273,7 +273,8 @@ INSERT INTO `discussion` (`id_discussion`, `id_scope`, `id_user`, `id_step`, `ti
 (10, 2, 2, 24, 'Jjj', '<p>jjj</p>', '<p>cek</p>', '2016-06-06 02:46:43', '2016-06-06 02:53:44', 0, 0),
 (11, 3, 2, 23, 'vvv', '<p>vvv</p>', '', '2016-06-06 02:46:46', '2016-06-06 02:55:03', 0, 0),
 (12, 3, 2, 25, 'hadeuh', '<p>asdasd</p>', '<p>zxczxczxc</p>', '2016-06-06 02:59:15', '2016-06-06 02:59:58', 0, 0),
-(13, 3, 2, 26, 'xcvxcvxcvxc', '<p>dfsdsdf</p>', '', '2016-06-06 02:59:20', '2016-06-06 02:59:35', 3, 0);
+(13, 3, 2, 26, 'xcvxcvxcvxc', '<p>dfsdsdf</p>', '', '2016-06-06 02:59:20', '2016-06-06 02:59:35', 3, 0),
+(14, 2, 2, 27, 'abc', '<p>sdfsdfsdfsdf</p>', '<p>asdasdasdasd</p>', '2016-06-20 00:03:53', '2016-06-20 00:04:49', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -426,8 +427,11 @@ CREATE TABLE `journal` (
 
 INSERT INTO `journal` (`id_journal`, `id_user`, `id_directorate`, `title`, `description`, `file`, `views`, `created_at`, `status`, `keterangan`) VALUES
 (1, 3, 3, 'coba deh', 'cek 123', '71157c4f1efb079b986380eff69b9db5analisis-kebutuhan.pdf', 0, '2016-06-19 15:20:43', 2, 'asdasdas'),
-(2, 3, 2, 'Bangkong', 'euy', 'e6970e7e70e5977f7f825498da204496Lampiran_Proposal_dan__MOU.pdf', 3, '2016-06-19 15:37:17', 1, ''),
-(3, 3, 3, 'coba deui', 'sakainget weh', 'b133683c122fb0b7dd67b6b5a1f00933Lampiran_Proposal_dan__MOU.pdf', 0, '2016-06-19 23:39:19', 1, '');
+(2, 3, 2, 'Bangkong', 'euy', 'e6970e7e70e5977f7f825498da204496Lampiran_Proposal_dan__MOU.pdf', 4, '2016-06-19 15:37:17', 1, ''),
+(3, 3, 3, 'coba deui', 'sakainget weh', 'b133683c122fb0b7dd67b6b5a1f00933Lampiran_Proposal_dan__MOU.pdf', 9, '2016-06-19 23:39:19', 1, ''),
+(4, 2, 1, 'cek 123', 'aaaaa', 'da0124841c4a014147af1c8d26c64a09109-343-1-PB.pdf', 1, '2016-06-20 00:25:23', 1, ''),
+(5, 4, 2, 'asd', 'coba deui sama yudi', '01d2ea0e11b8782fd838a9d2e67ee682ipi113641.pdf', 3, '2016-06-20 00:27:07', 1, ''),
+(6, 3, 3, 'cobalagiasldk', 'asdlkjaskljd', 'dada3775b22fa1f9cf009358b0d5025cKR._439_Tahun_2015.pdf', 0, '2016-06-20 01:01:47', 0, '');
 
 -- --------------------------------------------------------
 
@@ -538,10 +542,10 @@ INSERT INTO `notif` (`id_notif`, `id_user`, `title`, `link`, `type`, `red`) VALU
 (94, 2, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 1),
 (95, 10, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 0),
 (96, 2, 'New Respond on Coba inov lagi', 'http://localhost/els/cop/innovation_view/9', 4, 1),
-(97, 4, 'New Respond on asdasdasd', 'http://localhost/els/cop/bp_view/20', 1, 0),
+(97, 4, 'New Respond on asdasdasd', 'http://localhost/els/cop/bp_view/20', 1, 1),
 (98, 2, 'New Responsibilities qweqweqwe', 'http://localhost/els/cop/bp_view/22', 0, 1),
 (99, 5, 'New Respond on asdasdds', 'http://localhost/els/discussion/view_discussion/1', 0, 0),
-(100, 4, 'New Respond on asdasdds', 'http://localhost/els/discussion/view_discussion/1', 0, 0);
+(100, 4, 'New Respond on asdasdds', 'http://localhost/els/discussion/view_discussion/1', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -660,7 +664,10 @@ INSERT INTO `point` (`id_rating`, `id_user`, `value`, `keterangan`, `created_at`
 (46, 4, 50, 'Create BP', '2016-06-14 04:23:03'),
 (47, 2, 1, 'Respond Best Practice', '2016-06-14 04:23:57'),
 (48, 2, 50, 'Create BP', '2016-06-19 01:57:56'),
-(49, 2, 1, 'Respond Discussion', '2016-06-19 23:14:11');
+(49, 2, 1, 'Respond Discussion', '2016-06-19 23:14:11'),
+(50, 2, 50, 'Create Discussion', '2016-06-20 00:04:49'),
+(51, 2, 50, 'Upload Journal', '2016-06-20 00:25:23'),
+(52, 4, 50, 'Upload Journal', '2016-06-20 00:27:07');
 
 -- --------------------------------------------------------
 
@@ -802,7 +809,7 @@ INSERT INTO `step` (`id_step`, `id_user`, `id_scope`, `step`, `keterangan`, `id_
 (24, 2, 2, 4, 'jjj', 15, 0, '2016-06-19 03:26:33'),
 (25, 2, 3, 4, 'xcxzc', 16, 0, '2016-06-19 03:26:33'),
 (26, 2, 3, 8, 'zxczxc', 16, 0, '2016-06-19 03:26:33'),
-(27, 2, 2, 1, 'abc', 22, 1, '2016-06-19 03:26:33');
+(27, 2, 2, 4, 'abc', 22, 0, '2016-06-19 03:26:33');
 
 -- --------------------------------------------------------
 
@@ -827,10 +834,14 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `id_level`, `registered_at`, `stat`) VALUES
 (1, 'superadmin', 'superadmin@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 1, '2016-06-19 15:55:48', 1),
 (2, '62012', 'rochadi@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-06-19 03:43:16', 1),
-(3, 'karyawan', 'karyawan@gmail.com', '9e014682c94e0f2cc834bf7348bda428', 3, '2016-06-19 15:55:38', 1),
+(3, '1111', 'karyawan@gmail.com', '9e014682c94e0f2cc834bf7348bda428', 3, '2016-06-20 00:26:29', 1),
 (4, '75238', 'yudi_nugraha@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-06-19 03:43:25', 1),
 (5, '740195', 'mohamad_n_fajar@telkomsel.co.id', '1a2e9da658917c5abff3d683b2d02619', 2, '2016-06-19 03:43:32', 1),
-(21, 'admin', 'admin@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 4, '2016-06-19 15:56:56', 1);
+(21, 'admin', 'admin@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 4, '2016-06-19 15:56:56', 1),
+(62, 'adminec', 'adminec@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 1, '2016-06-20 00:47:51', 1),
+(63, 'adminem', 'adminem@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 1, '2016-06-20 00:47:51', 1),
+(64, 'adminspb', 'adminspb@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 1, '2016-06-20 00:47:51', 1),
+(65, 'adminict', 'adminict@gmail.com', '1a2e9da658917c5abff3d683b2d02619', 1, '2016-06-20 00:47:51', 1);
 
 --
 -- Indexes for dumped tables
@@ -1072,7 +1083,7 @@ ALTER TABLE `directorate`
 -- AUTO_INCREMENT for table `discussion`
 --
 ALTER TABLE `discussion`
-  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `discussion_comment`
 --
@@ -1097,7 +1108,7 @@ ALTER TABLE `expert`
 -- AUTO_INCREMENT for table `journal`
 --
 ALTER TABLE `journal`
-  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `journal_comment`
 --
@@ -1127,7 +1138,7 @@ ALTER TABLE `open_discussion_comment`
 -- AUTO_INCREMENT for table `point`
 --
 ALTER TABLE `point`
-  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `profile`
 --
@@ -1157,7 +1168,7 @@ ALTER TABLE `step`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
