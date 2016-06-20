@@ -7,6 +7,7 @@
 					<div class="box box-primary">
 					<div class="box-header with-border">
 						<h3>New Open Discussion</h3>
+						<small><?php echo date('D, d-m-Y') ?></small>
 					</div>
 					<div class="box-body">
 						<form class="" action="<?php echo site_url('discussion/open_create_post') ?>" method="post" >

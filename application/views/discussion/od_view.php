@@ -3,6 +3,7 @@
 	$pic = (empty($thread->pic)) ? "default.png" : $thread->pic;
 	$thread->fullname = (empty($thread->fullname)) ? explode("@", $thread->email)[0] : $thread->fullname;
 	$thread->expert_name = (empty($thread->expert_name)) ? "Karyawan" : $thread->expert_name;
+	$kelas = ($thread->id_level == 2) ? "bg-orange" : "bg-navy";
 ?>
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap3-wysihtml5.min.css') ?>">
 	<script type="text/javascript" src="<?= base_url('assets/js/bootstrap3-wysihtml5.all.min.js') ?>"></script>
@@ -18,7 +19,7 @@
 		<div class="box-body well">
 			<div class="col-md-3">
 				<div class="box box-widget widget-user-2">
-                <div class="widget-user-header bg-red">
+                <div class="widget-user-header <?php echo $kelas ?>">
                   <div class="widget-user-image">
                     <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$pic) ?>" alt="user image">
                   </div>
@@ -35,7 +36,7 @@
 			</div>
 			<div class="col-md-9">
 				<div class="box box-widget widget-user-2">
-					<div class="widget-user-header bg-red">
+					<div class="widget-user-header <?php echo $kelas ?>">
 							<small class="pull-right"><?= $thread->created_at; ?></small>
 							<h4><?= $thread->title; ?></h4>
 					</div>

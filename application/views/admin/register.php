@@ -18,6 +18,10 @@
               </div>
 
               <div class="form-group col-md-12">
+                <input class="form-control input-md" type="text" name="username" placeholder="Username (NIK)" required="">
+              </div>
+
+              <div class="form-group col-md-12">
                 <input class="form-control input-md" type="email" name="email" placeholder="Email" required="">
               </div>
 

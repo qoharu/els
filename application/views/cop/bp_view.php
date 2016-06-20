@@ -20,7 +20,7 @@
 			<div class="col-md-3">
 				<div class="box box-widget widget-user-2">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header bg-red">
+                <div class="widget-user-header bg-orange">
                   <div class="widget-user-image">
                     <img class="img-thumbnail" width="20" height="20" src="<?php echo site_url('uploads/profile/'.$thread[0]->pic) ?>" alt="user image">
                   </div><!-- /.widget-user-image -->
@@ -37,7 +37,7 @@
 			</div>
 			<div class="col-md-9">
 				<div class="box box-widget widget-user-2">
-					<div class="widget-user-header bg-red">
+					<div class="widget-user-header bg-orange">
 							<small class="pull-right">
 								<?php echo date('D, d M Y H:i:s',strtotime($thread[0]->created_at)) ?>
 							</small>

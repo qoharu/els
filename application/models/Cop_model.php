@@ -166,7 +166,7 @@
 		function bp_archive($page, $q=''){
 			$page = ($page * 5);
 			$uid = $this->session->userdata('uid');
-			return $this->db->query("SELECT title, id_user, scope_name, id_cop, content, cop.created_at, cop.updated_at, fullname, (SELECT COUNT(*) FROM cop WHERE type=2 AND status = 0 AND (title LIKE '%$q%' OR content LIKE '%$q%')) AS count
+			return $this->db->query("SELECT title, cop.id_user, scope_name, id_cop, content, cop.created_at, cop.updated_at, fullname, (SELECT COUNT(*) FROM cop WHERE type=2 AND status = 0 AND (title LIKE '%$q%' OR content LIKE '%$q%')) AS count
 				FROM cop, user, profile, scope
 				WHERE cop.id_user = user.id_user
 					AND cop.id_scope = scope.id_scope

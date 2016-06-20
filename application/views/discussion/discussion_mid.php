@@ -4,7 +4,7 @@
 	$i = 0;
 ?>
 
-<div class="pull-right col-md-3 isi">
+<div class="pull-right col-md-5 isi">
         <a href="http://localhost/els/discussion/discussion_archive" title="Archive" class="btn btn-flat btn-lg bg-navy"><span class="fa fa-file-archive-o"></span> &nbsp;Archive</a>
         <a href="http://localhost/els/discussion/open" title="Archive" class="btn btn-flat btn-lg bg-blue">&nbsp;Open forum</a>
 

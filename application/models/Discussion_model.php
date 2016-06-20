@@ -235,6 +235,7 @@ class Discussion_model extends CI_Model
 		return $this->db->query("SELECT * FROM open_discussion
 			LEFT JOIN user ON user.id_user = open_discussion.id_user
 			LEFT JOIN profile ON profile.id_user = open_discussion.id_user
+			ORDER BY id_discussion DESC
 			")->result();
 	}
 	function open_insert($data){
@@ -242,7 +243,7 @@ class Discussion_model extends CI_Model
 	}
 
 	function open_getthread($id){
-		return $this->db->query("SELECT open_discussion.*, email, scope_name, profile.fullname, expert_name
+		return $this->db->query("SELECT open_discussion.*, email, user.id_level, level_name, scope_name, profile.fullname, expert_name
 			FROM open_discussion
 			LEFT JOIN user ON open_discussion.id_user = user.id_user 
 			LEFT JOIN profile ON profile.id_user = open_discussion.id_user

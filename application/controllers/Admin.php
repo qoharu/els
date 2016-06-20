@@ -123,6 +123,7 @@ class Admin extends CI_Controller
 
 		public function register_post(){
 			$data['email'] = $this->input->post('email');
+			$data['username'] = $this->input->post('username');
 			$data['fullname'] = $this->input->post('fullname');
 			$data['password'] = $this->input->post('password');
 			$data['level'] = $this->input->post('level');
@@ -141,6 +142,7 @@ class Admin extends CI_Controller
 					$res .= "<table class='table table-bordered' border=1>";
 					$res .= "<thead>
 						<td>Fullname</td>
+						<td>Username</td>
 						<td>Email</td>
 						<td>Password</td>
 						<td>Level</td>
@@ -149,9 +151,10 @@ class Admin extends CI_Controller
 		            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 		            	if ($i != 0) {
 							$reg['fullname'] = $data[0];
-		            		$reg['email'] = $data[1];
-							$reg['password'] = $data[2];
-							$reg['level'] = ($data[3] == 2) ? 2 : 3 ;
+							$reg['username'] = $data[1];
+		            		$reg['email'] = $data[2];
+							$reg['password'] = $data[3];
+							$reg['level'] = ($data[4] == 2) ? 2 : 3 ;
 		            		
 		            		$ret[$i] = $this->Admin_model->register($reg);
 		            		$ret[$i] = ($ret[$i]) ? "Success" : "Failed";
@@ -160,6 +163,7 @@ class Admin extends CI_Controller
 		                		<td>$data[1]</td>
 		                		<td>$data[2]</td>
 		                		<td>$data[3]</td>
+		                		<td>$data[4]</td>
 		                		<td>$ret[$i]</td>
 		                		</tr>";
 		            	}

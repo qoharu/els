@@ -108,12 +108,13 @@ class Admin_model extends CI_Model
 
 
 	function register($data){
+		$fullname = $data['username'];
 		$fullname = $data['fullname'];
 		$email = $data['email'];
 		$password = md5($data['password']);
 		$level = $data['level'];
 
-		$insert = $this->db->query("INSERT INTO user(password, email, id_level) VALUES('$password','$email', '$level')");
+		$insert = $this->db->query("INSERT INTO user(password, email, username, id_level) VALUES('$password','$email','$username', '$level')");
 		if ($insert && $level == 2) {
 			$id = $this->db->query("SELECT max(id_user) as id_user FROM user ")->row()->id_user;
 			$masukin = $this->db->query("INSERT INTO profile(fullname, id_user) VALUES ('$fullname','$id') ");
