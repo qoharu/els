@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 20 Jun 2016 pada 03.26
+-- Generation Time: 20 Jun 2016 pada 03.47
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -283,6 +283,13 @@ CREATE TABLE `journal` (
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `journal`
+--
+
+INSERT INTO `journal` (`id_journal`, `id_user`, `id_directorate`, `title`, `description`, `file`, `views`, `created_at`, `status`, `keterangan`) VALUES
+(8, 3, 1, 'asdasd', 'dsadawd', '72a01487a5e54d84fe94fc7fd1006304Lampiran_Proposal_dan__MOU.pdf', 0, '2016-06-20 01:45:06', 0, '');
+
 -- --------------------------------------------------------
 
 --
@@ -351,6 +358,13 @@ CREATE TABLE `open_discussion` (
   `views` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `open_discussion`
+--
+
+INSERT INTO `open_discussion` (`id_discussion`, `id_scope`, `id_user`, `title`, `content`, `created_at`, `updated_at`, `status`, `views`) VALUES
+(3, 1, 2, 'asdsadasd', '<p>asdasdasdasd</p>', '2016-06-20 01:43:06', '2016-06-20 01:43:06', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -364,6 +378,14 @@ CREATE TABLE `open_discussion_comment` (
   `content` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `open_discussion_comment`
+--
+
+INSERT INTO `open_discussion_comment` (`id_comment`, `id_discussion`, `id_user`, `content`, `created_at`) VALUES
+(5, 3, 2, '<p>asasdasdasd</p>', '2016-06-20 01:43:21'),
+(6, 3, 3, '<p>asdavczbh</p>', '2016-06-20 01:43:48');
 
 -- --------------------------------------------------------
 
@@ -406,16 +428,7 @@ INSERT INTO `profile` (`id_profile`, `NIK`, `id_user`, `fullname`, `birthdate`, 
 (1, '62012', 2, 'Rochadi', '1984-05-16', 'M', 3, '767d74ac369711742ea79ef88c68ae4amaps.jpg', '2016-06-07 14:13:59', 1),
 (3, '75238', 4, 'Yudi Nugraha', '1966-01-19', 'F', 13, '0a56cb4a68ea220be9ada8656f3f1e17Picture 2.jpg', '2016-06-05 04:37:16', 1),
 (4, '740195', 5, 'Mohamad Noer Fajar', '2001-05-16', 'M', 12, 'default.png', '2016-05-31 22:29:43', 1),
-(5, '', 10, 'Muhammad Salmin', NULL, NULL, 14, 'default.png', '2016-05-27 01:37:01', 1),
-(8, '2147483647', 16, 'Tifani', '2016-05-26', 'M', 2, 'default.png', '2016-05-31 22:29:49', 1),
-(9, NULL, 18, 'Jan Fanro', NULL, NULL, 98, 'default.png', '2016-05-31 10:50:22', 1),
-(10, NULL, 19, 'Selly lrst', NULL, NULL, 98, 'default.png', '2016-05-31 08:36:15', 0),
-(11, NULL, 22, 'Salman', NULL, NULL, 98, 'default.png', '2016-06-11 04:51:19', 0),
-(12, NULL, 52, 'asdasd', NULL, NULL, 98, 'default.png', '2016-06-11 05:16:17', 0),
-(13, NULL, 54, 'lkj', NULL, NULL, 98, 'default.png', '2016-06-11 05:16:58', 0),
-(14, NULL, 56, 's', NULL, NULL, 98, 'default.png', '2016-06-11 05:17:44', 0),
-(15, NULL, 58, 'Muhammad Salman', NULL, NULL, 98, 'default.png', '2016-06-11 05:21:15', 0),
-(16, NULL, 61, 'dd', NULL, NULL, 98, 'default.png', '2016-06-11 05:32:40', 0);
+(5, '12132', 10, 'Muhammad Salmin', NULL, NULL, 14, 'default.png', '2016-06-20 01:46:59', 1);
 
 -- --------------------------------------------------------
 
@@ -788,7 +801,7 @@ ALTER TABLE `expert`
 -- AUTO_INCREMENT for table `journal`
 --
 ALTER TABLE `journal`
-  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `journal_comment`
 --
@@ -808,12 +821,12 @@ ALTER TABLE `notif`
 -- AUTO_INCREMENT for table `open_discussion`
 --
 ALTER TABLE `open_discussion`
-  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_discussion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `open_discussion_comment`
 --
 ALTER TABLE `open_discussion_comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `point`
 --
