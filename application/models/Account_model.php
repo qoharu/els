@@ -54,6 +54,21 @@ class Account_model extends CI_Model
 		return $this->db->query("SELECT * FROM point WHERE id_user = '$id' ")->result();
 	}
 
+	function pointdetail($id){
+		$hasil['innov'] = $this->db->query("SELECT COUNT(*) as count, SUM(value) as sum 
+			FROM point WHERE id_user = '$id' AND keterangan LIKE '%Create Innovation%' ")->row();
+		$hasil['bp'] = $this->db->query("SELECT COUNT(*) as count, SUM(value) as sum 
+			FROM point WHERE id_user = '$id' AND keterangan LIKE '%Create BP%' ")->row();
+		$hasil['gd'] = $this->db->query("SELECT COUNT(*) as count, SUM(value) as sum 
+			FROM point WHERE id_user = '$id' AND keterangan LIKE '%Create Discussion%' ")->row();
+		$hasil['respond'] = $this->db->query("SELECT COUNT(*) as count, SUM(value) as sum 
+			FROM point WHERE id_user = '$id' AND keterangan LIKE '%respond%' ")->row();
+		$hasil['journal'] = $this->db->query("SELECT COUNT(*) as count, SUM(value) as sum 
+			FROM point WHERE id_user = '$id' AND keterangan LIKE '%Journal%' ")->row();
+
+		return $hasil;
+	}
+
 	function hasprofile($uid){
 		$db=$this->db->query("SELECT id_profile FROM profile WHERE id_user='$uid' AND login='1' ");
 		if ($db->num_rows() != 1) {
