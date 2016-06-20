@@ -108,7 +108,7 @@ class Admin_model extends CI_Model
 
 
 	function register($data){
-		$fullname = $data['username'];
+		$username = $data['username'];
 		$fullname = $data['fullname'];
 		$email = $data['email'];
 		$password = md5($data['password']);
