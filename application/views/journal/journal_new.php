@@ -15,6 +15,7 @@
 					<div class="form-group">
 						<textarea name="description" class="form-control input-md" id="" rows="5" maxlength="500" required="" placeholder="Deskripsi"></textarea>	
 					</div>
+					<?php if (iskaryawan()): ?>
 					<div class="form-group">
 						<select name="directorate" class="form-control" id="" required="">
 							<option selected disabled>Direktorat</option>
@@ -23,6 +24,12 @@
 							<?php endforeach ?>
 						</select>
 					</div>
+					<?php elseif(isbe()): ?>
+						<div class="form-group">
+							<span class="badge bg-blue"><?php echo $dir->directorate_name ?></span>
+							<input type="hidden" name="directorate" value="<?php echo $dir->id_directorate ?>">
+						</div>
+					<?php endif ?>
 					<div class="form-group">
 						<input class="form-control" type="file" name="file" required="">
 					</div>

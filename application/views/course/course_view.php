@@ -18,7 +18,11 @@
                         <?php if ($course->count >= $course->quota): ?>
                           <a class="btn bg-red pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Full</a>
                         <?php else: ?>
+                          <?php if ((time()) > strtotime($course->datetime)): ?>
+                          <a class="btn bg-red pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Outdated</a>
+                          <?php else: ?>
                           <a class="btn bg-blue pull-right" href="<?php echo site_url('course/enroll/'.$course->id_course) ?>"><i class="fa fa-user-plus">&nbsp;</i> JOIN</a>
+                          <?php endif ?>
                         <?php endif ?>
                       <?php endif ?>
                     <?php endif ?>

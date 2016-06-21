@@ -65,6 +65,9 @@ class Journal extends CI_Controller
 	public function newpost(){
 		$data['title'] = "Post Journal";
 		$data['directorate'] = $this->General_model->getdirectorate();
+		if (isbe()) {
+			$data['dir'] = $this->Journal_model->getuserdirectorate();
+		}
 		$this->load->view('journal/journal_new', $data);
 	}
 

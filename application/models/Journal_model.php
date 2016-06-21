@@ -95,5 +95,15 @@ class Journal_model extends CI_Model
 		return $this->db->query("SELECT * FROM journal WHERE id_user = '$uid' ORDER BY id_journal DESC ")->row();
 	}
 
+	function getuserdirectorate(){
+		$uid = $this->session->userdata('uid');
+		return $this->db->query("SELECT directorate_name, expert.id_directorate
+			FROM profile
+			LEFT JOIN expert ON profile.id_expert = expert.id_expert
+			LEFT JOIN directorate ON expert.id_directorate = directorate.id_directorate
+			WHERE profile.id_user = '$uid'
+			")->row();
+	}
+
 
 }
