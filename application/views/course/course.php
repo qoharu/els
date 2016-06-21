@@ -24,7 +24,7 @@
                       <?php if ($data->count >= $data->quota): ?>
                         <a class="btn bg-red pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Full</a>
                       <?php else: ?>
-                        <?php if ((time()-(60*60*24)) < strtotime($data->datetime)): ?>
+                        <?php if (time() > strtotime($data->datetime)): ?>
                         <a class="btn bg-red pull-right disabled" ><i class="fa fa-user-plus">&nbsp;</i>Outdated</a>
                         <?php else: ?>
                         <a class="btn bg-blue pull-right" href="<?php echo site_url('course/enroll/'.$data->id_course) ?>"><i class="fa fa-user-plus">&nbsp;</i> JOIN</a>
